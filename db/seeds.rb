@@ -6,28 +6,41 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+require 'securerandom'
+
+Designation.delete_all
+Setting.delete_all
+Employee.delete_all
+
 (1..100).each do |k|
   des = Designation.new
-  des.ID = k
-  des.Title = "Title#{k}"
+  des.id = k
+  des.title = "Title#{k}"
   des.save
   
   em = Employee.new
-  em.ID = "ID_#{k}"
-  em.City = "City#{k}"
-  em.Code = "Code#{k}"
-  em.Country = "Country#{k}"
-  em.Designation = des.ID
-  em.FirstName = "FirstName#{k}"
-  em.ICNo = "ICNo#{k}"
-  em.LastName = "LastName#{k}"
-  em.MiddleName = "MiddleName#{k}"
-  em.PostalCode = "PostalCode#{k}"
-  em.Salary = k * 10.00
-  em.State = "State#{k}"
-  em.Street = "Street#{k}"
-  em.epfNo = "EPF_#{k}"
+  em.id = SecureRandom.uuid
+  em.code = "Code#{k}"
+  em.designation_id = des.id
+  em.firstname = "FirstName#{k}"
+  em.icno = "ICNo#{k}"
+  em.lastname = "LastName#{k}"
+  em.middlename = "MiddleName#{k}"
+  em.salary = k * 10.00
+  em.epfno = "EPF_#{k}"
   em.socso = "Socso_#{k}"
-  em.Code = "Code#{k}"
+  em.code = "Code#{k}"
+  
+  addr = Address.new("Street#{k}", "City#{k}", "State#{k}", "PostalCode#{k}", "Country#{k}")
+  em.address = addr
   em.save
+  
+  set = Setting.new
+  set.id = k
+  set.dailyallowance = 100
+  set.designation_id = des.id
+  set.epf = 56
+  set.incometax = 89
+  set.socso = 77
+  set.save
 end

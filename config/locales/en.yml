@@ -2,4 +2,37 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  designation:
+    blank:
+      title: Title is required
+  address:
+    blank:
+      street: Street is required
+      city: City is required
+      state: State is required
+      postalcode: PostalCode is required
+      country: Country is required
+  employee:
+    blank:
+      code: Code is required
+      firstname: First Name is required
+      middlename: Middle Name is required
+      lastname: Last Name is required
+      icno: IC No. is required
+      salary: Salary is required
+      designation: Designation is required
+      epf: EPF No. is required
+      socso: SOCSO is required
+    invalid:
+      salary: Salary is invalid
+  setting:
+    blank:
+      dailyallowance: Daily Allowance is required
+      epf: EPF Deduction is required
+      socso: SOCSO Deduction is required
+      incometax: Income Tax is required
+    invalid:
+      dailyallowance: Daily Allowance is invalid
+      epf: EPF Deduction is invalid
+      socso: SOCSO Deduction is invalid
+      incometax: Income Tax is invalid

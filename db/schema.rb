@@ -11,32 +11,42 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121019011714) do
+ActiveRecord::Schema.define(:version => 20121020060813) do
 
-  create_table "designation", :primary_key => "ID", :force => true do |t|
-    t.string "Title", :null => false
+  create_table "designation", :force => true do |t|
+    t.string "title", :null => false
   end
 
-  add_index "designation", ["Title"], :name => "Title", :unique => true
+  add_index "designation", ["title"], :name => "title", :unique => true
 
-  create_table "employee", :primary_key => "ID", :force => true do |t|
-    t.string  "Code",        :limit => 10,                                :null => false
-    t.string  "FirstName",                                                :null => false
-    t.string  "MiddleName"
-    t.string  "LastName"
-    t.string  "ICNo",                                                     :null => false
-    t.decimal "Salary",                    :precision => 10, :scale => 2, :null => false
-    t.string  "Street",                                                   :null => false
-    t.string  "City",                                                     :null => false
-    t.string  "State",                                                    :null => false
-    t.string  "PostalCode",                                               :null => false
-    t.string  "Country",                                                  :null => false
-    t.integer "Designation"
-    t.string  "epfNo",                                                    :null => false
-    t.string  "socso",                                                    :null => false
+  create_table "employee", :force => true do |t|
+    t.string  "code",           :limit => 10,                                :null => false
+    t.string  "firstname",                                                   :null => false
+    t.string  "middlename"
+    t.string  "lastname"
+    t.string  "icno",                                                        :null => false
+    t.decimal "salary",                       :precision => 10, :scale => 2, :null => false
+    t.string  "street",                                                      :null => false
+    t.string  "city",                                                        :null => false
+    t.string  "state",                                                       :null => false
+    t.string  "postalcode",                                                  :null => false
+    t.string  "country",                                                     :null => false
+    t.integer "designation_id"
+    t.string  "epfno",                                                       :null => false
+    t.string  "socso",                                                       :null => false
   end
 
-  add_index "employee", ["Code"], :name => "Code", :unique => true
-  add_index "employee", ["Designation"], :name => "Designation"
+  add_index "employee", ["code"], :name => "code", :unique => true
+  add_index "employee", ["designation_id"], :name => "designation"
+
+  create_table "setting", :force => true do |t|
+    t.integer "designation_id"
+    t.decimal "dailyallowance", :precision => 10, :scale => 2, :null => false
+    t.decimal "epf",            :precision => 10, :scale => 2, :null => false
+    t.decimal "socso",          :precision => 10, :scale => 2, :null => false
+    t.decimal "incometax",      :precision => 10, :scale => 2, :null => false
+  end
+
+  add_index "setting", ["designation_id"], :name => "designation", :unique => true
 
 end
