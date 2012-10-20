@@ -4,6 +4,15 @@
 en:
   general:
     title: Payroll System
+    internal_server_error: Internal Server Error
+    loading: Loading
+    admin: Administration
+    employee: Employee
+    designation: Designation
+    setting: Setting
+    user: User
+    report: Report
+    payroll: Payroll
   designation:
     blank:
       title: Title is required

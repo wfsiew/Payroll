@@ -16,4 +16,11 @@
 //= require libs
 //= require utils
 //= require nav_list
+//= require base
+//= require menu
+//= require emp
+//= require des
+//= require conf
+//= require user
+//= require payroll
 //= require_tree .
