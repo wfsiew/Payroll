@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require js/jquery_ui
+//= require libs
+//= require utils
+//= require nav_list
 //= require_tree .
