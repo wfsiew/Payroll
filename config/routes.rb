@@ -1,6 +1,15 @@
 Payroll::Application.routes.draw do
   root :to => 'home#index'
   
+  scope 'designation', :as => 'designation' do
+    match '' => 'designation#index', :via => :get
+    match 'list' => 'designation#list', :as => :list, :via => :get
+    match 'new' => 'designation#new', :as => :new, :via => :get
+    match 'create' => 'designation#create', :as => :create, :via => :post
+    match 'edit(/:id)' => 'designation#edit', :as => :edit, :via => :get
+    match 'update' => 'designation#update', :as => :update, :via => :post
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -7,4 +7,5 @@ class Designation < ActiveRecord::Base
   self.table_name = 'designation'
   
   validates_presence_of :title, :message => 'designation.blank.title'
+  validates_uniqueness_of :title, :message => 'designation.unique.title'
 end

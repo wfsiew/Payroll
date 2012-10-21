@@ -1,0 +1,13 @@
+<% @title = t('designation.title') %>
+<% @dialog_title = t('designation.title') %>
+<% @dialog_add_title = t('designation.add') %>
+<% @dialog_edit_title = t('designation.edit') %>
+<% content_for :search_form do %>
+  <%= render 'search_form' %>
+<% end %>
+<% content_for :content_list do %>
+  <%= render 'list' %>
+<% end %>
+<% content_for :dialog do %>
+  <%= render 'home/dialog_save' %>
+<% end %>

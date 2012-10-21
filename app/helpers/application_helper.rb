@@ -4,7 +4,7 @@ module ApplicationHelper
     attr_accessor :total, :pagenum
     attr_reader :pagesize
     
-    @@default_page_size = 10
+    @@default_page_size = 50
 
     def initialize(total, pagenum, pagesize)
       @total = total

@@ -1,0 +1,21 @@
+<%= form_tag('.', :id => @form_id, :class => 'save_form ui-widget-content ui-widget ui-corner-all') do %>
+  <table>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :title, "#{t('designation.field.title')}:" %>
+      </td>
+      <td>
+        <%= text_field_tag :title, @designation.title, :id => 'id_title', :class => 'text', :placeholder => t('designation.placeholder.title') %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <div class="row_button">
+          <%= render 'home/save_button' %>
+          <%= render 'home/cancel_button' %>
+        </div>
+      </td>
+    </tr>
+  </table>
+<% end %>

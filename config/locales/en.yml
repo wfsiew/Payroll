@@ -13,9 +13,27 @@ en:
     user: User
     report: Report
     payroll: Payroll
+    save: Save
+    cancel: Cancel
+    searchfor: Search For
+    add: Add
+    delete: Delete
+    find: Find
+    search_placeholder: type here to search
+    display: Display
+    all: All
   designation:
+    title: Designation
+    add: Add New Designation
+    edit: Edit Designation
+    field:
+      title: Title
+    placeholder:
+      title: enter title
     blank:
       title: Title is required
+    unique:
+      title: Title %{value} already exist
   address:
     blank:
       street: Street is required

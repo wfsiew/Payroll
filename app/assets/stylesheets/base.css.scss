@@ -164,16 +164,16 @@ div.row_button {
 
 .spinner {
   display: inline-block;
-  background: url('images/loading.gif');
+  background: url('img/loading.gif');
   width: 15px;
   height: 15px;
 }
 
-input[type='text'], input[type='password'] {
+input[type='text'], input[type='password'], input[type='search'] {
   border: 1px solid #ccc;
 }
 
-input[type='text']:HOVER, input[type='password']:HOVER {
+input[type='text']:HOVER, input[type='password']:HOVER, input[type='search']:HOVER {
   border: 1px solid #000;
 }
 
@@ -228,7 +228,7 @@ input[type='text']:HOVER, input[type='password']:HOVER {
 }
 
 .icons {
-  background: url('images/icons.png') no-repeat !important;
+  background: url('img/icons.png') no-repeat !important;
   width: 16px;
   height: 16px;
   display: inline-block;
