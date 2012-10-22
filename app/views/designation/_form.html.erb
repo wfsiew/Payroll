@@ -2,7 +2,7 @@
   <table>
     <tr>
       <td valign="top" class="lbl">
-        <%= label_tag :title, "#{t('designation.field.title')}:" %>
+        <%= label_tag :title, t('designation.field.title'), :class => 'label' %>
       </td>
       <td>
         <%= text_field_tag :title, @designation.title, :id => 'id_title', :class => 'text', :placeholder => t('designation.placeholder.title') %>

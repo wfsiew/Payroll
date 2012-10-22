@@ -43,7 +43,7 @@ class DesignationController < ApplicationController
         fmt.json { render :json => { :success => 1 } }
         
       else
-        fmt.json { render :json => DesignationHelper.get_errors(o.errors) }
+        fmt.json { render :json => DesignationHelper.get_errors(o.errors, params) }
       end
     end
   end

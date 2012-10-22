@@ -105,9 +105,10 @@
 
     function func_update(id) {
       var data = get_data('edit');
+      data['id'] = id;
       $('#edit-form input').next().remove();
       $('#edit-form select').next().remove();
-      $.post(url.update + id, data, function(result) {
+      $.post(url.update, data, function(result) {
         if (result.success == 1)
           update_success();
         
@@ -194,20 +195,19 @@
 
       var data = {
         code : form.find('#id_code').val(),
-        icNo : form.find('#id_icno').val(),
-        firstName : form.find('#id_firstname').val(),
-        middleName : form.find('#id_middlename').val(),
-        lastName : form.find('#id_lastname').val(),
-        'designation.id' : form.find('#id_designation').val(),
-        'designation.title' : form.find('#id_designation option:selected').text(),
-        epfNo : form.find('#id_epfno').val(),
+        icno : form.find('#id_icno').val(),
+        firstname : form.find('#id_firstname').val(),
+        middlename : form.find('#id_middlename').val(),
+        lastname : form.find('#id_lastname').val(),
+        designation_id : form.find('#id_designation').val(),
+        epfno : form.find('#id_epfno').val(),
         socso : form.find('#id_socso').val(),
         salary : form.find('#id_salary').val(),
-        'address.street' : form.find('#id_street').val(),
-        'address.city' : form.find('#id_city').val(),
-        'address.state' : form.find('#id_state').val(),
-        'address.postalCode' : form.find('#id_postalcode').val(),
-        'address.country' : form.find('#id_country').val()
+        street : form.find('#id_street').val(),
+        city : form.find('#id_city').val(),
+        state : form.find('#id_state').val(),
+        postalcode : form.find('#id_postalcode').val(),
+        country : form.find('#id_country').val()
       };
 
       return data;

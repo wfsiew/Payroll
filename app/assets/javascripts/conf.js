@@ -1,9 +1,9 @@
 ﻿var conf = ( function() {
     var url = {
-      add : app.getUrl('/setting/add/'),
-      edit : app.getUrl('/setting/edit/'),
-      del : app.getUrl('/setting/delete/'),
-      list : app.getUrl('/setting/list/')
+      add : '/setting/add/',
+      edit : '/setting/edit/',
+      del : '/setting/delete/',
+      list : '/setting/list/'
     }
 
     var popup_dialog_opt = null;
@@ -229,7 +229,7 @@
     }
 
     function load() {
-      return menu.get(app.getUrl('/setting/'), init);
+      return menu.get('/setting/', init);
     }
 
     return {

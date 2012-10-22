@@ -1,7 +1,7 @@
 var payroll = ( function() {
     var url = {
-      list : app.getUrl('/payroll/list/'),
-      report : app.getUrl('/payroll/report/')
+      list : '/payroll/list/',
+      report : '/payroll/report/'
     };
 
     function func_generate(id) {
@@ -38,7 +38,7 @@ var payroll = ( function() {
     }
 
     function load() {
-      return menu.get(app.getUrl('/payroll/'), init);
+      return menu.get('/payroll/', init);
     }
 
     return {

@@ -67,8 +67,9 @@
      * This function handles the keyup event on the search textbox.
      * It checks for <enter> key.
      */
-    function query_keyup() {
-      utils.countdown_filter(show_list);
+    function query_keyup(evt) {
+      if (evt.keyCode != '13')
+        utils.countdown_filter(show_list);
     }
 
     /**

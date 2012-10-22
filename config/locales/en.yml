@@ -36,23 +36,47 @@ en:
     unique:
       title: Title %{value} already exist
   address:
+    title: Address
+    field:
+      street: Street
+      city: City
+      state: State
+      postalcode: Postal Code
+      country: Country
+    placeholder:
+      street: enter street
+      city: enter city
+      state: enter state
+      postalcode: enter postal code
+      country: enter country
     blank:
       street: Street is required
       city: City is required
       state: State is required
-      postalcode: PostalCode is required
+      postalcode: Postal Code is required
       country: Country is required
   employee:
     title: Employee
     add: Add New Employee
     edit: Edit Employee
     field:
-      code: Code
+      code: Employee Code
       firstname: First Name
       middlename: Middle Name
       lastname: Last Name
       icno: IC No.
       designation: Designation
+      epf: EPF No.
+      socso: SOCSO No.
+    placeholder:
+      code: enter employee code
+      firstname: enter first name
+      middlename: enter middle name
+      lastname: enter last name
+      icno: enter IC number
+      salary: enter salary
+      epf: enter EPF number
+      socso: enter SOCSO number
     blank:
       code: Code is required
       firstname: First Name is required

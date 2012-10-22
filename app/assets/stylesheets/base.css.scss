@@ -169,6 +169,10 @@ div.row_button {
   height: 15px;
 }
 
+.label:after {
+  content: ":";
+}
+
 input[type='text'], input[type='password'], input[type='search'] {
   border: 1px solid #ccc;
 }

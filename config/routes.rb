@@ -14,6 +14,10 @@ Payroll::Application.routes.draw do
   scope 'employee', :as => 'employee' do
     match '' => 'employee#index', :via => :get
     match 'list' => 'employee#list', :as => :list, :via => :get
+    match 'new' => 'employee#new', :as => :new, :via => :get
+    match 'create' => 'employee#create', :as => :create, :via => :post
+    match 'edit(/:id)' => 'employee#edit', :as => :edit, :via => :get
+    match 'update' => 'employee#update', :as => :update, :via => :post
   end
   
   # The priority is based upon order of creation:

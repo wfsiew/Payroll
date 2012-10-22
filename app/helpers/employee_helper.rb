@@ -5,8 +5,7 @@ module EmployeeHelper
     
     has_next = pager.has_next? ? 1 : 0
     has_prev = pager.has_prev? ? 1 : 0
-    criteria = Employee.joins('left outer join designation d on employee.designation_id = d.id')
-    list = criteria.order('code').all(:offset => pager.lower_bound, :limit => pager.pagesize)
+    list = Employee.order('code').all(:offset => pager.lower_bound, :limit => pager.pagesize)
     { :item_msg => pager.item_message, :hasnext => has_next, :hasprev => has_prev, :nextpage => pagenum + 1, :prevpage => pagenum - 1,
       :list => list }
   end
@@ -23,7 +22,7 @@ module EmployeeHelper
       :list => list }
   end
   
-  def self.get_errors(errors, attr = {})
+  def self.get_errors(errors, others = nil, attr = {})
     m = {}
     errors.each do |k, v|
       if v == 'employee.unique.code'
@@ -32,12 +31,18 @@ module EmployeeHelper
       end
       m[k] = I18n.t(v)
     end
+    
+    if others.present?
+      others.each do |k, v|
+        m[k] = I18n.t(v)
+      end
+    end
     { :error => 1, :errors => m }
   end
   
   private
   
-  def get_filter_criteria(find, keyword)
+  def self.get_filter_criteria(find, keyword)
     text = "%#{keyword}%"
     
     case find

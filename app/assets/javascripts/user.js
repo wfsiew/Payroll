@@ -1,9 +1,9 @@
 ﻿var user = ( function() {
     var url = {
-      add : app.getUrl('/user/add/'),
-      edit : app.getUrl('/user/edit/'),
-      del : app.getUrl('/user/delete/'),
-      list : app.getUrl('/user/list/')
+      add : '/user/add/',
+      edit : '/user/edit/',
+      del : '/user/delete/',
+      list : '/user/list/'
     };
 
     var popup_dialog_opt = null;
@@ -217,7 +217,7 @@
     }
 
     function load() {
-      return menu.get(app.getUrl('/user/'), init);
+      return menu.get('/user/', init);
     }
 
     return {

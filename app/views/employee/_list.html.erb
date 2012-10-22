@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-    <%= @data[:list].each do |o| %>
+    <% @data[:list].each do |o| %>
       <tr id="tr_<%= o.id %>" class="<%= cycle("ui-state-active", "ui-state-default") %>">
         <td class="data chkbox"><input class="chk" type="checkbox" /></td>
         <td class="data"><%= o.code %></td>
