@@ -33,4 +33,19 @@ module DesignationHelper
     end
     { :error => 1, :errors => m }
   end
+  
+  def self.item_message(keyword, pagenum, pagesize)
+    total = 0
+    if keyword.blank?
+      total = Designation.count
+      pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
+      return pager.item_message
+      
+    else
+      criteria = Designation.where('title like ?', "%#{keyword}%")
+      total = criteria.count
+      pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
+      return pager.item_message
+    end
+  end
 end

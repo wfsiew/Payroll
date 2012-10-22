@@ -44,4 +44,4 @@ var payroll = ( function() {
     return {
       load : load
     };
-}()); 
+}());

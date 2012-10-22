@@ -74,7 +74,7 @@
      */
     function clear_dialogs() {
       remove_dialog("div[id^='dialog-message']");
-      remove_dialog("div[id^='dialog']");
+      remove_dialog("div[id^='dialog-']");
     }
 
     /**

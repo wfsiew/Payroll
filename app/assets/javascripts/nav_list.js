@@ -169,4 +169,4 @@
       query_keyup : query_keyup,
       set_item_msg : set_item_msg
     };
-}()); 
+}());

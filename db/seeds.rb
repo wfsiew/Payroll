@@ -14,22 +14,20 @@ Employee.delete_all
 
 (1..100).each do |k|
   des = Designation.new
-  des.id = k
   des.title = "Title#{k}"
   des.save
   
   em = Employee.new
   em.id = SecureRandom.uuid
   em.code = "Code#{k}"
-  em.designation_id = des.id
+  em.designation_id = k
   em.firstname = "FirstName#{k}"
-  em.icno = "ICNo#{k}"
-  em.lastname = "LastName#{k}"
   em.middlename = "MiddleName#{k}"
+  em.lastname = "LastName#{k}"
+  em.icno = "ICNo#{k}"
   em.salary = k * 10.00
   em.epfno = "EPF_#{k}"
   em.socso = "Socso_#{k}"
-  em.code = "Code#{k}"
   
   addr = Address.new("Street#{k}", "City#{k}", "State#{k}", "PostalCode#{k}", "Country#{k}")
   em.address = addr

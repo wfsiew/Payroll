@@ -1,9 +1,11 @@
 ﻿var emp = ( function() {
     var url = {
-      add : app.getUrl('/employee/add/'),
-      edit : app.getUrl('/employee/edit/'),
-      del : app.getUrl('/employee/delete/'),
-      list : app.getUrl('/employee/list/')
+      add : '/employee/new/',
+      create : '/employee/create.json',
+      edit : '/employee/edit/',
+      update : '/employee/update.json',
+      del : '/employee/delete/',
+      list : '/employee/list/'
     };
 
     var popup_dialog_opt = null;
@@ -53,7 +55,7 @@
       var data = get_data('add');
       $('#add-form input').next().remove();
       $('#add-form select').next().remove();
-      $.post(url.add, data, function(result) {
+      $.post(url.create, data, function(result) {
         if (result.success == 1)
           save_success();
           
@@ -66,7 +68,7 @@
                 msg : result.errors[e]
               };
               var h = new EJS({
-                url : app.getUrl('/media/tpl/label_error.html'),
+                url : '/assets/tpl/label_error.html',
                 ext : '.html'
               }).render(o);
               if (e == 'designation.id')
@@ -105,7 +107,7 @@
       var data = get_data('edit');
       $('#edit-form input').next().remove();
       $('#edit-form select').next().remove();
-      $.post(url.edit + id, data, function(result) {
+      $.post(url.update + id, data, function(result) {
         if (result.success == 1)
           update_success();
         
@@ -118,7 +120,7 @@
                 msg : result.errors[e]
               };
               var h = new EJS({
-                url : app.getUrl('/media/tpl/label_error.html'),
+                url : '/assets/tpl/label_error.html',
                 ext : '.html'
               }).render(o);
               if (e == 'designation.id')
@@ -240,10 +242,10 @@
     }
 
     function load() {
-      return menu.get(app.getUrl('/employee/'), init);
+      return menu.get('/employee/', init);
     }
 
     return {
       load : load
     };
-}()); 
+}());

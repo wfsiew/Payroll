@@ -11,4 +11,4 @@ var payslip = ( function() {
     };
 }());
 
-$(document).ready(payslip.init); 
+$(document).ready(payslip.init);

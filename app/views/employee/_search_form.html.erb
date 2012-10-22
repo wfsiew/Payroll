@@ -1,0 +1,11 @@
+<label for="id_selection"><%= t('general.searchby') %>:</label>
+<select id="id_selection" class="search_option ui-state-default">
+  <option value="0"><%= t('general.all') %></option>
+  <option value="1"><%= t('employee.field.code') %></option>
+  <option value="2"><%= t('employee.field.firstname') %></option>
+  <option value="3"><%= t('employee.field.middlename') %></option>
+  <option value="4"><%= t('employee.field.lastname') %></option>
+  <option value="5"><%= t('employee.field.icno') %></option>
+  <option value="6"><%= t('employee.field.designation') %></option>
+</select>
+<%= render 'home/search_panel' %>

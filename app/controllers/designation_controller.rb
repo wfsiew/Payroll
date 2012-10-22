@@ -61,21 +61,28 @@ class DesignationController < ApplicationController
     o = Designation.find(params[:id])
     
     respond_to do |fmt|
-      begin
-        if o.update_attributes(:title => params[:title])
-          fmt.json { render :json => { :success => 1 } }
+      if o.update_attributes(:title => params[:title])
+        fmt.json { render :json => { :success => 1 } }
         
-        else
-          fmt.json { render :json => DesignationHelper.get_errors(o.errors, params) }
-        end
-        
-      rescue ActiveRecord::RecordNotUnique => e
-        fmt.json { render :json => { :error => 1, :errors => { :title => t('designation.unique.title', :value => o.title) } } }
+      else
+        fmt.json { render :json => DesignationHelper.get_errors(o.errors, params) }
       end
     end
   end
   
   def destroy
+    keyword = params[:keyword].blank? ? '' : params[:keyword]
+    pgnum = params[:pgnum].blank? ? 1 : params[:pgnum].to_i
+    pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
+    ids = params[:id]
     
+    lsid = ids.split(',')
+    Designation.delete_all(:id => lsid)
+    
+    itemscount = DesignationHelper.item_message(keyword, pgnum, pgsize)
+    
+    respond_to do |fmt|
+      fmt.json { render :json => { :success => 1, :itemscount => itemscount } }
+    end
   end
 end

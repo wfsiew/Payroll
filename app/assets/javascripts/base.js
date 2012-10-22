@@ -6,14 +6,9 @@
       utils.init_server_error_dialog();
     }
 
-    function getUrl(a) {
-      return a;
-    }
-
     return {
-      init : init,
-      getUrl : getUrl
+      init : init
     };
 }());
 
-$(app.init); 
+$(app.init);

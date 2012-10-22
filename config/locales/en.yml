@@ -16,6 +16,7 @@ en:
     save: Save
     cancel: Cancel
     searchfor: Search For
+    searchby: Search By
     add: Add
     delete: Delete
     find: Find
@@ -42,6 +43,16 @@ en:
       postalcode: PostalCode is required
       country: Country is required
   employee:
+    title: Employee
+    add: Add New Employee
+    edit: Edit Employee
+    field:
+      code: Code
+      firstname: First Name
+      middlename: Middle Name
+      lastname: Last Name
+      icno: IC No.
+      designation: Designation
     blank:
       code: Code is required
       firstname: First Name is required
@@ -54,6 +65,8 @@ en:
       socso: SOCSO is required
     invalid:
       salary: Salary is invalid
+    unique:
+      code: Code %{value} already exist
   setting:
     blank:
       dailyallowance: Daily Allowance is required

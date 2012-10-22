@@ -23,4 +23,4 @@
       get : get,
       init : init
     };
-}()); 
+}());

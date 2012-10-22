@@ -1,11 +1,11 @@
 ﻿var des = ( function() {
     var url = {
-      add : app.getUrl('/designation/new/'),
-      create: app.getUrl('/designation/create.json'),
-      edit : app.getUrl('/designation/edit/'),
-      update : app.getUrl('/designation/update.json'),
-      del : app.getUrl('/designation/delete/'),
-      list : app.getUrl('/designation/list/')
+      add : '/designation/new/',
+      create: '/designation/create.json',
+      edit : '/designation/edit/',
+      update : '/designation/update.json',
+      del : '/designation/delete.json',
+      list : '/designation/list/'
     };
 
     var popup_dialog_opt = null;
@@ -67,7 +67,7 @@
                 msg : result.errors[e]
               };
               var h = new EJS({
-                url : app.getUrl('/assets/tpl/label_error.html'),
+                url : '/assets/tpl/label_error.html',
                 ext : '.html'
               }).render(o);
               $("#add-form input[name='" + e + "']").after(h);
@@ -115,7 +115,7 @@
                 msg : result.errors[e]
               };
               var h = new EJS({
-                url : app.getUrl('/assets/tpl/label_error.html'),
+                url : '/assets/tpl/label_error.html',
                 ext : '.html'
               }).render(o);
               $("#edit-form input[name='" + e + "']").after(h);
@@ -219,10 +219,10 @@
     }
 
     function load() {
-      return menu.get(app.getUrl('/designation/'), init);
+      return menu.get('/designation/', init);
     }
 
     return {
       load : load
     };
-}()); 
+}());
