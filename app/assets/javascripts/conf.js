@@ -1,10 +1,10 @@
 ﻿var conf = ( function() {
     var url = {
       add : '/setting/new/',
-      create : '/setting/create.json',
+      create : '/setting/create/',
       edit : '/setting/edit/',
-      update : '/setting/update.json',
-      del : '/setting/delete.json',
+      update : '/setting/update/',
+      del : '/setting/delete/',
       list : '/setting/list/'
     }
 
@@ -54,6 +54,7 @@
     function func_save() {
       var data = get_data('add');
       $('#add-form input').next().remove();
+      $('#add-form select').next().remove();
       $.post(url.create, data, function(result) {
         if (result.success == 1)
           save_success();
@@ -67,10 +68,10 @@
                 msg : result.errors[e]
               };
               var h = new EJS({
-                url : app.getUrl('/media/tpl/label_error.html'),
+                url : '/assets/tpl/label_error.html',
                 ext : '.html'
               }).render(o);
-              if (e == 'designation.id')
+              if (e == 'designation_id')
                 $("#add-form select[name='" + e + "']").after(h);
               
               else
@@ -104,9 +105,9 @@
 
     function func_update(id) {
       var data = get_data('edit');
-      data['id'] = id;
       $('#edit-form input').next().remove();
-      $.post(url.update, data, function(result) {
+      $('#edit-form select').next().remove();
+      $.post(url.update + id, data, function(result) {
         if (result.success == 1)
           update_success();
         
@@ -119,10 +120,10 @@
                 msg : result.errors[e]
               };
               var h = new EJS({
-                url : app.getUrl('/media/tpl/label_error.html'),
+                url : '/assets/tpl/label_error.html',
                 ext : '.html'
               }).render(o);
-              if (e == 'designation.id')
+              if (e == 'designation_id')
                 $("#edit-form select[name='" + e + "']").after(h);
               
               else

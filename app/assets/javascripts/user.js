@@ -1,7 +1,9 @@
 ﻿var user = ( function() {
     var url = {
-      add : '/user/add/',
+      add : '/user/new/',
+      create : '/user/create/',
       edit : '/user/edit/',
+      update : '/user/update/',
       del : '/user/delete/',
       list : '/user/list/'
     };
@@ -52,7 +54,7 @@
     function func_save() {
       var data = get_data('add');
       $('#add-form input').next().remove();
-      $.post(url.add, data, function(result) {
+      $.post(url.create, data, function(result) {
         if (result.success == 1)
           save_success();
         
@@ -65,7 +67,7 @@
                 msg : result.errors[e]
               };
               var h = new EJS({
-                url : app.getUrl('/media/tpl/label_error.html'),
+                url : '/assets/tpl/label_error.html',
                 ext : '.html'
               }).render(o);
               $("#add-form input[name='" + e + "']").after(h);
@@ -99,7 +101,7 @@
     function func_update(id) {
       var data = get_data('edit');
       $('#edit-form input').next().remove();
-      $.post(url.edit + id, data, function(result) {
+      $.post(url.update + id, data, function(result) {
         if (result.success == 1)
           update_success();
         
@@ -112,7 +114,7 @@
                 msg : result.errors[e]
               };
               var h = new EJS({
-                url : app.getUrl('/media/tpl/label_error.html'),
+                url : '/assets/tpl/label_error.html',
                 ext : '.html'
               }).render(o);
               $("#edit-form input[name='" + e + "']").after(h);
@@ -182,7 +184,8 @@
 
       var data = {
         username : form.find('#id_username').val(),
-        password : form.find('#id_password').val()
+        pwd : form.find('#id_password').val(),
+        pwdconfirm : form.find('#id_passwordconfirm')
       };
 
       return data;

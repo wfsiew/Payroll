@@ -14,4 +14,6 @@ class Setting < ActiveRecord::Base
   validates_numericality_of :epf, :greater_than_or_equal_to => 0, :message => 'setting.invalid.epf'
   validates_numericality_of :socso, :greater_than_or_equal_to => 0, :message => 'setting.invalid.socso'
   validates_numericality_of :incometax, :greater_than_or_equal_to => 0, :message => 'setting.invalid.incometax'
+  
+  validates_uniqueness_of :designation_id, :message => 'setting.unique.designation'
 end

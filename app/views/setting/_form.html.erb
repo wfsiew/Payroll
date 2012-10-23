@@ -2,10 +2,10 @@
   <table>
     <tr>
       <td valign="top" class="lbl">
-        <%= label_tag :designation, t('employee.field.designation'), :class => 'label' %>
+        <%= label_tag :designation_id, t('employee.field.designation'), :class => 'label' %>
       </td>
       <td>
-        <%= select_tag :designation, options_from_collection_for_select(@designation_list, 'id', 'title', @setting.designation_id), :id => 'id_designation', :class => 'select' %>
+        <%= select_tag :designation_id, options_from_collection_for_select(@designation_list, 'id', 'title', @setting.designation_id), :id => 'id_designation', :class => 'select' %>
       </td>
     </tr>
     <tr>

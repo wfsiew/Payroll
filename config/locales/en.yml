@@ -116,3 +116,17 @@ en:
       epf: EPF Deduction is invalid
       socso: SOCSO Deduction is invalid
       incometax: Income Tax is invalid
+    unique:
+      designation: Setting %{value} already exist
+  user:
+    title: User
+    add: Add New User
+    edit: Edit User
+    field:
+      username: Username
+      password: Password
+      passwordconfirm: Confirm Password
+    placeholder:
+      username: enter username
+      password: enter password
+      passwordconfirm: enter password confirmation

@@ -1,0 +1,37 @@
+<%= form_tag('.', :id => @form_id, :class => 'save_form ui-widget-content ui-widget ui-corner-all') do %>
+  <table>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :username, t('user.field.username'), :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :username, @user.username, :id => 'id_username', :class => 'text', :placeholder => t('user.placeholder.username') %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :pwd, t('user.field.password'), :class => 'label' %>
+      </td>
+      <td>
+        <%= password_field_tag :pwd, @user.pwd, :id => 'id_password', :class => 'text', :placeholder => t('user.placeholder.password') %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :pwd_confirmation, t('user.field.passwordconfirm'), :class => 'label' %>
+      </td>
+      <td>
+        <%= password_field_tag :pwd_confirmation, @user.pwd_confirmation, :id => 'id_passwordconfirm', :class => 'text', :placeholder => t('user.placeholder.passwordconfirm') %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <div class="row_button">
+          <%= render 'home/save_button' %>
+          <%= render 'home/cancel_button' %>
+        </div>
+      </td>
+    </tr>
+  </table>
+<% end %>

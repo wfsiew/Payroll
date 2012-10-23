@@ -1,14 +1,19 @@
 class EmployeeController < ApplicationController
   layout false
   
+  # GET /employee
+  # GET /employee.json
   def index
     @data = EmployeeHelper.get_all(1, ApplicationHelper::Pager.default_page_size)
     
     respond_to do |fmt|
       fmt.html { render 'index', :layout => 'list' }
+      fmt.json { render :json => @data }
     end
   end
   
+  # GET /employee/list
+  # GET /employee/list.json
   def list
     find = params[:find].blank? ? 0 : params[:find].to_i
     keyword = params[:keyword].blank? ? '' : params[:keyword]
@@ -24,9 +29,12 @@ class EmployeeController < ApplicationController
     
     respond_to do |fmt|
       fmt.html { render :partial => 'list' }
+      fmt.json { render :json => @data }
     end
   end
   
+  # GET /employee/new
+  # GET /employee/new.json
   def new
     @employee = Employee.new
     @form_id = 'add-form'
@@ -34,34 +42,36 @@ class EmployeeController < ApplicationController
     
     respond_to do |fmt|
       fmt.html { render :partial => 'form' }
+      fmt.json { render :json => @employee }
     end
   end
   
+  # POST /employee/create
   def create
     o = Employee.new(:code => params[:code], :firstname => params[:firstname], :middlename => params[:middlename],
                      :lastname => params[:lastname], :icno => params[:icno], :salary => params[:salary],
-                     :designation_id => params[:designation_id, :epfno => params[:epfno], :socso => params[:socso])
+                     :designation_id => params[:designation_id], :epfno => params[:epfno], :socso => params[:socso])
     a = Address.new(params[:street], params[:city], params[:state], params[:postalcode], params[:country])
     
     address_valid = a.valid?
     employee_valid = o.valid?
     
-    respond_to do |fmt|
-      if address_valid && employee_valid
-        o.address = a
-        if o.save
-          fmt.json { render :json => { :success => 1 } }
+    if address_valid && employee_valid
+      o.address = a
+      if o.save
+        render :json => { :success => 1 }
           
-        else
-          fmt.json { render :json => EmployeeHelper.get_errors(o.errors, a.errors, params) }
-        end
-        
       else
-        fmt.json { render :json => EmployeeHelper.get_errors(o.errors, a.errors, params) }
+        render :json => EmployeeHelper.get_errors(o.errors, a.errors, params)
       end
+        
+    else
+      render :json => EmployeeHelper.get_errors(o.errors, a.errors, params)
     end
   end
   
+  # GET /employee/edit/1
+  # GET /employee/edit/1.json
   def edit
     @employee = Employee.find(params[:id])
     @form_id = 'edit-form'
@@ -69,9 +79,11 @@ class EmployeeController < ApplicationController
     
     respond_to do |fmt|
       fmt.html { render :partial => 'form' }
+      fmt.json { render :json => @employee }
     end
   end
   
+  # POST /employee/update/1
   def update
     o = Employee.find(params[:id])
     
@@ -90,22 +102,21 @@ class EmployeeController < ApplicationController
     address_valid = a.valid?
     employee_valid = o.valid?
     
-    respond_to do |fmt|
-      if address_valid && employee_valid
-        o.address = a
-        if o.save
-          fmt.json { render :json => { :success => 1 } }
+    if address_valid && employee_valid
+      o.address = a
+      if o.save
+        render :json => { :success => 1 }
           
-        else
-          fmt.json { render :json => EmployeeHelper.get_errors(o.errors, a.errors, params) }
-        end
-        
       else
-        fmt.json { render :json => EmployeeHelper.get_errors(o.errors, a.errors, params) }
+        render :json => EmployeeHelper.get_errors(o.errors, a.errors, params)
       end
+        
+    else
+      render :json => EmployeeHelper.get_errors(o.errors, a.errors, params)
     end
   end
   
+  # POST /employee/delete
   def destroy
     find = params[:find].blank? ? 0 : params[:find].to_i
     keyword = params[:keyword].blank? ? '' : params[:keyword]
@@ -118,8 +129,6 @@ class EmployeeController < ApplicationController
     
     itemscount = EmployeeHelper.item_message(find, keyword, pgnum, pgsize)
     
-    respond_to do |fmt|
-      fmt.json { render :json => { :success => 1, :itemscount => itemscount } }
-    end
+    render :json => { :success => 1, :itemscount => itemscount }
   end
 end

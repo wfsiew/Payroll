@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121020060813) do
+ActiveRecord::Schema.define(:version => 20121023143455) do
 
   create_table "designation", :force => true do |t|
     t.string "title", :null => false
@@ -48,5 +48,12 @@ ActiveRecord::Schema.define(:version => 20121020060813) do
   end
 
   add_index "setting", ["designation_id"], :name => "designation", :unique => true
+
+  create_table "user", :force => true do |t|
+    t.string "username", :limit => 50, :null => false
+    t.string "password"
+  end
+
+  add_index "user", ["username"], :name => "username", :unique => true
 
 end

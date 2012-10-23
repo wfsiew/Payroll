@@ -1,10 +1,10 @@
 ﻿var des = ( function() {
     var url = {
       add : '/designation/new/',
-      create: '/designation/create.json',
+      create: '/designation/create/',
       edit : '/designation/edit/',
-      update : '/designation/update.json',
-      del : '/designation/delete.json',
+      update : '/designation/update/',
+      del : '/designation/delete/',
       list : '/designation/list/'
     };
 
@@ -100,9 +100,8 @@
 
     function func_update(id) {
       var data = get_data('edit');
-      data['id'] = id;
       $('#edit-form input').next().remove();
-      $.post(url.update, data, function(result) {
+      $.post(url.update + id, data, function(result) {
         if (result.success == 1)
           update_success();
         

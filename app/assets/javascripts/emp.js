@@ -1,10 +1,10 @@
 ﻿var emp = ( function() {
     var url = {
       add : '/employee/new/',
-      create : '/employee/create.json',
+      create : '/employee/create/',
       edit : '/employee/edit/',
-      update : '/employee/update.json',
-      del : '/employee/delete.json',
+      update : '/employee/update/',
+      del : '/employee/delete/',
       list : '/employee/list/'
     };
 
@@ -71,7 +71,7 @@
                 url : '/assets/tpl/label_error.html',
                 ext : '.html'
               }).render(o);
-              if (e == 'designation.id')
+              if (e == 'designation_id')
                 $("#add-form select[name='" + e + "']").after(h);
               
               else
@@ -105,10 +105,9 @@
 
     function func_update(id) {
       var data = get_data('edit');
-      data['id'] = id;
       $('#edit-form input').next().remove();
       $('#edit-form select').next().remove();
-      $.post(url.update, data, function(result) {
+      $.post(url.update + id, data, function(result) {
         if (result.success == 1)
           update_success();
         
@@ -124,7 +123,7 @@
                 url : '/assets/tpl/label_error.html',
                 ext : '.html'
               }).render(o);
-              if (e == 'designation.id')
+              if (e == 'designation_id')
                 $("#edit-form select[name='" + e + "']").after(h);
               
               else
