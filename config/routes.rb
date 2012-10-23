@@ -21,6 +21,16 @@ Payroll::Application.routes.draw do
     match 'delete' => 'employee#destroy', :as => :delete, :via => :post
   end
   
+  scope 'setting', :as => 'setting' do
+    match '' => 'setting#index', :via => :get
+	  match 'list' => 'setting#list', :as => :list, :via => :get
+	  match 'new' => 'setting#new', :as => :new, :via => :get
+    match 'create' => 'setting#create', :as => :create, :via => :post
+    match 'edit(/:id)' => 'setting#edit', :as => :edit, :via => :get
+    match 'update' => 'setting#update', :as => :update, :via => :post
+    match 'delete' => 'setting#destroy', :as => :delete, :via => :post
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -3,6 +3,8 @@ class Employee < ActiveRecord::Base
   composed_of :address, :class_name => 'Address', :mapping => [%w(street street), %w(city city), %w(state state), 
                                                                %w(postalcode postalcode), %w(country country)]
   
+  belongs_to :designation
+  
   self.table_name = 'employee'
   
   validates_presence_of :code, :message => 'employee.blank.code'
@@ -17,13 +19,4 @@ class Employee < ActiveRecord::Base
   
   validates_numericality_of :salary, :greater_than_or_equal_to => 0, :message => 'employee.invalid.salary'
   validates_uniqueness_of :code, :message => 'employee.unique.code'
-
-  def designation
-    begin
-      o = Designation.find(designation_id)
-      return o
-    rescue ActiveRecord::RecordNotFound
-    end
-    nil
-  end
 end

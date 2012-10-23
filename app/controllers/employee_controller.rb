@@ -38,8 +38,9 @@ class EmployeeController < ApplicationController
   end
   
   def create
-    o = Employee.new(:code => params[:code], :icno => params[:icno], :firstname => params[:firstname], :middlename => params[:middlename],
-                     :lastname => params[:lastname], :epfno => params[:epfno], :socso => params[:socso], :salary => params[:salary])
+    o = Employee.new(:code => params[:code], :firstname => params[:firstname], :middlename => params[:middlename],
+                     :lastname => params[:lastname], :icno => params[:icno], :salary => params[:salary],
+                     :designation_id => params[:designation_id, :epfno => params[:epfno], :socso => params[:socso])
     a = Address.new(params[:street], params[:city], params[:state], params[:postalcode], params[:country])
     
     address_valid = a.valid?
@@ -77,13 +78,14 @@ class EmployeeController < ApplicationController
     a = Address.new(params[:street], params[:city], params[:state], params[:postalcode], params[:country])
     
     o.code = params[:code]
-    o.icno = params[:icno]
     o.firstname = params[:firstname]
     o.middlename = params[:middlename]
     o.lastname = params[:lastname]
+    o.icno = params[:icno]
+    o.salary = params[:salary]
+    o.designation_id = params[:designation_id]
     o.epfno = params[:epfno]
     o.socso = params[:socso]
-    o.salary = params[:salary]
     
     address_valid = a.valid?
     employee_valid = o.valid?
@@ -114,7 +116,7 @@ class EmployeeController < ApplicationController
     lsid = ids.split(',')
     Designation.delete_all(:id => lsid)
     
-    itemscount = EmployeeHelper.item_message(keyword, pgnum, pgsize)
+    itemscount = EmployeeHelper.item_message(find, keyword, pgnum, pgsize)
     
     respond_to do |fmt|
       fmt.json { render :json => { :success => 1, :itemscount => itemscount } }

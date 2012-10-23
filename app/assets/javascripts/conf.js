@@ -1,8 +1,10 @@
 ﻿var conf = ( function() {
     var url = {
-      add : '/setting/add/',
+      add : '/setting/new/',
+      create : '/setting/create.json',
       edit : '/setting/edit/',
-      del : '/setting/delete/',
+      update : '/setting/update.json',
+      del : '/setting/delete.json',
       list : '/setting/list/'
     }
 
@@ -52,7 +54,7 @@
     function func_save() {
       var data = get_data('add');
       $('#add-form input').next().remove();
-      $.post(url.add, data, function(result) {
+      $.post(url.create, data, function(result) {
         if (result.success == 1)
           save_success();
         
@@ -102,8 +104,9 @@
 
     function func_update(id) {
       var data = get_data('edit');
+      data['id'] = id;
       $('#edit-form input').next().remove();
-      $.post(url.edit + id, data, function(result) {
+      $.post(url.update, data, function(result) {
         if (result.success == 1)
           update_success();
         
@@ -189,12 +192,11 @@
       var form = (t == 'add' ? $('#add-form') : $('#edit-form'));
 
       var data = {
-        'designation.id' : form.find('#id_designation').val(),
-        'designation.title' : form.find('#id_designation option:selected').text(),
-        dailyAllowance : form.find('#id_daily').val(),
+        designation_id : form.find('#id_designation').val(),
+        dailyallowance : form.find('#id_daily').val(),
         epf : form.find('#id_epf').val(),
         socso : form.find('#id_socso').val(),
-        incomeTax : form.find('#id_incometax').val()
+        incometax : form.find('#id_incometax').val()
       };
 
       return data;

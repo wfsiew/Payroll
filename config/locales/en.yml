@@ -23,6 +23,7 @@ en:
     search_placeholder: type here to search
     display: Display
     all: All
+    currency: RM
   designation:
     title: Designation
     add: Add New Designation
@@ -92,6 +93,19 @@ en:
     unique:
       code: Code %{value} already exist
   setting:
+    title: Setting
+    add: Add New Setting
+    edit: Edit Setting
+    field:
+      dailyallowance: Daily Allowance
+      epf: EPF
+      socso: SOCSO
+      incometax: Income Tax
+    placeholder:
+      dailyallowance: enter Daily Allowance
+      epf: enter EPF Deduction
+      socso: enter SOCSO Deduction
+      incometax: enter Income Tax Deduction
     blank:
       dailyallowance: Daily Allowance is required
       epf: EPF Deduction is required
