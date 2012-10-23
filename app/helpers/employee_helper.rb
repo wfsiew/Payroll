@@ -26,7 +26,7 @@ module EmployeeHelper
     m = {}
     errors.each do |k, v|
       if v == 'employee.unique.code'
-        m[k] = I18n.t(v, :value => attr[code])
+        m[k] = I18n.t(v, :value => attr[:code])
         next
       end
       m[k] = I18n.t(v)
@@ -38,6 +38,21 @@ module EmployeeHelper
       end
     end
     { :error => 1, :errors => m }
+  end
+  
+  def self.item_message(find, keyword, pagenum, pagesize)
+    total = 0
+    if find == 0 && keyword.blank?
+      total = Employee.count
+      pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
+      return pager.item_message
+      
+    else
+      criteria, order = get_filter_criteria(find, keyword)
+      total = criteria.count
+      pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
+      return pager.item_message
+    end
   end
   
   private

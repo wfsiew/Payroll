@@ -66,7 +66,7 @@
     </tr>
     <tr>
       <td valign="top" class="lbl">
-        <%= label_tag :socso, t('employee.field.salary'), :class => 'label' %>
+        <%= label_tag :salary, t('employee.field.salary'), :class => 'label' %>
       </td>
       <td>
         <%= text_field_tag :salary, @employee.salary, :id => 'id_salary', :class => 'text', :placeholder => t('employee.placeholder.salary') %>
@@ -82,7 +82,7 @@
         <%= label_tag :street, t('address.field.street'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :country, @employee.street, :id => 'id_street', :class => 'text', :placeholder => t('address.placeholder.street') %>
+        <%= text_field_tag :street, @employee.street, :id => 'id_street', :class => 'text', :placeholder => t('address.placeholder.street') %>
       </td>
     </tr>
     <tr>
@@ -90,7 +90,7 @@
         <%= label_tag :city, t('address.field.city'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :country, @employee.city, :id => 'id_city', :class => 'text', :placeholder => t('address.placeholder.city') %>
+        <%= text_field_tag :city, @employee.city, :id => 'id_city', :class => 'text', :placeholder => t('address.placeholder.city') %>
       </td>
     </tr>
     <tr>
@@ -98,7 +98,7 @@
         <%= label_tag :state, t('address.field.state'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :country, @employee.state, :id => 'id_state', :class => 'text', :placeholder => t('address.placeholder.state') %>
+        <%= text_field_tag :state, @employee.state, :id => 'id_state', :class => 'text', :placeholder => t('address.placeholder.state') %>
       </td>
     </tr>
     <tr>

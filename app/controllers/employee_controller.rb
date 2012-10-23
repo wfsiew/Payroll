@@ -74,12 +74,50 @@ class EmployeeController < ApplicationController
   def update
     o = Employee.find(params[:id])
     
-    employee_hash = { :code => params[:code], :icno => params[:icno], :firstname => params[:firstname], :middlename => params[:middlename],
-                      :lastname => params[:lastname], :epfno => params[:epfno], :socso => params[:socso], :salary => params[:salary] }
-    address_hash = { params[:street], params[:city], params[:state], params[:postalcode], params[:country] }
+    a = Address.new(params[:street], params[:city], params[:state], params[:postalcode], params[:country])
+    
+    o.code = params[:code]
+    o.icno = params[:icno]
+    o.firstname = params[:firstname]
+    o.middlename = params[:middlename]
+    o.lastname = params[:lastname]
+    o.epfno = params[:epfno]
+    o.socso = params[:socso]
+    o.salary = params[:salary]
+    
+    address_valid = a.valid?
+    employee_valid = o.valid?
+    
+    respond_to do |fmt|
+      if address_valid && employee_valid
+        o.address = a
+        if o.save
+          fmt.json { render :json => { :success => 1 } }
+          
+        else
+          fmt.json { render :json => EmployeeHelper.get_errors(o.errors, a.errors, params) }
+        end
+        
+      else
+        fmt.json { render :json => EmployeeHelper.get_errors(o.errors, a.errors, params) }
+      end
+    end
   end
   
   def destroy
+    find = params[:find].blank? ? 0 : params[:find].to_i
+    keyword = params[:keyword].blank? ? '' : params[:keyword]
+    pgnum = params[:pgnum].blank? ? 1 : params[:pgnum].to_i
+    pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
+    ids = params[:id]
     
+    lsid = ids.split(',')
+    Designation.delete_all(:id => lsid)
+    
+    itemscount = EmployeeHelper.item_message(keyword, pgnum, pgsize)
+    
+    respond_to do |fmt|
+      fmt.json { render :json => { :success => 1, :itemscount => itemscount } }
+    end
   end
 end

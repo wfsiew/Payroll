@@ -4,7 +4,7 @@
       create : '/employee/create.json',
       edit : '/employee/edit/',
       update : '/employee/update.json',
-      del : '/employee/delete/',
+      del : '/employee/delete.json',
       list : '/employee/list/'
     };
 
