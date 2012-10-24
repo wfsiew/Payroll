@@ -164,7 +164,7 @@ div.row_button {
 
 .spinner {
   display: inline-block;
-  background: url('img/loading.gif');
+  background: url('/assets/loading.gif');
   width: 15px;
   height: 15px;
 }
@@ -232,7 +232,7 @@ input[type='text']:HOVER, input[type='password']:HOVER, input[type='search']:HOV
 }
 
 .icons {
-  background: url('img/icons.png') no-repeat !important;
+  background: url('/assets/icons.png') no-repeat !important;
   width: 16px;
   height: 16px;
   display: inline-block;

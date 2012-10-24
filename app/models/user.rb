@@ -6,11 +6,11 @@ class User < ActiveRecord::Base
   
   self.table_name = 'user'
   
-  validates :username, :uniqueness => true,
-                       :length => { :within => 3..50 }
-  validates :pwd, :confirmation => true,
-                  :length => { :within => 4..20 },
-                  :presence => true,
+  validates :username, :uniqueness => { :message => 'user.unique.username' },
+                       :length => { :within => 3..50, :message => 'user.tooshort.username' }
+  validates :pwd, :confirmation => { :message => 'user.confirmation.password' },
+                  :length => { :within => 4..20, :message => 'user.tooshort.password' },
+                  :presence => { :message => 'user.blank.password' },
                   :if => :password_required?
                   
   before_save :encrypt_new_password

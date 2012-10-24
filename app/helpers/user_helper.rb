@@ -28,6 +28,15 @@ module UserHelper
       if v == 'user.unique.username'
         m[k] = I18n.t(v, :value => attr[:username])
         next
+
+      elsif v == 'user.tooshort.username'
+        m[k] = I18n.t(v, :value => 3)
+        next
+        
+      elsif v == 'user.tooshort.password'
+        m[k] = I18n.t(v, :value => 4)
+        next
+        
       end
       m[k] = I18n.t(v)
     end

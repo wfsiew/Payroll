@@ -130,3 +130,12 @@ en:
       username: enter username
       password: enter password
       passwordconfirm: enter password confirmation
+    blank:
+      password: Password is required
+    unique:
+      username: Username %{value} already exist
+    tooshort:
+      username: Minimum is %{value} characters
+      password: Minimum is %{value} characters
+    confirmation:
+      password: Password doesn't match confirmation

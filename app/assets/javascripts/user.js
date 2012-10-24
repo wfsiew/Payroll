@@ -185,7 +185,7 @@
       var data = {
         username : form.find('#id_username').val(),
         pwd : form.find('#id_password').val(),
-        pwdconfirm : form.find('#id_passwordconfirm')
+        pwdconfirm : form.find('#id_passwordconfirm').val()
       };
 
       return data;
