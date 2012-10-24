@@ -1,0 +1,14 @@
+<%= label_tag :id_selection, t('general.searchfor'), :class => 'label' %>
+<select id="id_selection" class="search_option">
+  <%= options_for_select({ t('general.all') => 0, t('employee.field.code') => 1,
+                           t('employee.field.firstname') => 2, t('employee.field.middlename') => 3,
+                           t('employee.field.lastname') => 4, t('employee.field.icno') => 5,
+                           t('employee.field.designation') => 6 }) %>
+</select>
+<%= render 'home/search_input' %>
+<div>
+  <%= label_tag :id_monthselect, t('general.formonth'), :class => 'label' %>
+  <select id="id_monthselect" class="search_option">
+    <%= options_for_select(@month_hash) %>
+  </select>
+</div>

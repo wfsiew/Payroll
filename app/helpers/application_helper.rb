@@ -68,6 +68,8 @@ module ApplicationHelper
   end
     
   module Utils
+    require 'time'
+    
     # Get the paging message.
     def self.item_message(total, pagenum, pagesize)
       x = (pagenum - 1) * pagesize + 1
@@ -87,6 +89,12 @@ module ApplicationHelper
     # Checks for numeric.
     def self.numeric?(val)
       true if Float(val) rescue false
+    end
+    
+    # Get month name for the specified month number,
+    # e.g return January for 1
+    def self.month_name(i)
+      Date::MONTHNAMES[i]
     end
   end
 end

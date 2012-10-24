@@ -41,6 +41,12 @@ Payroll::Application.routes.draw do
     match 'delete' => 'user#destroy', :as => :delete, :via => :post
   end
   
+  scope 'payroll', :as => 'payroll' do
+    match '' => 'payroll#index', :via => :get
+    match 'list' => 'payroll#list', :as => :list, :via => :get
+    match 'report(/:id(/:month))' => 'payroll#report', :as => :report, :via => :get
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,11 +1,8 @@
-<label for="id_selection"><%= t('general.searchby') %>:</label>
+<%= label_tag :id_selection, t('general.searchby'), :class => 'label' %>
 <select id="id_selection" class="search_option ui-state-default">
-  <option value="0"><%= t('general.all') %></option>
-  <option value="1"><%= t('employee.field.code') %></option>
-  <option value="2"><%= t('employee.field.firstname') %></option>
-  <option value="3"><%= t('employee.field.middlename') %></option>
-  <option value="4"><%= t('employee.field.lastname') %></option>
-  <option value="5"><%= t('employee.field.icno') %></option>
-  <option value="6"><%= t('employee.field.designation') %></option>
+  <%= options_for_select({ t('general.all') => 0, t('employee.field.code') => 1,
+                           t('employee.field.firstname') => 2, t('employee.field.middlename') => 3,
+                           t('employee.field.lastname') => 4, t('employee.field.icno') => 5,
+                           t('employee.field.designation') => 6 }) %>
 </select>
 <%= render 'home/search_panel' %>

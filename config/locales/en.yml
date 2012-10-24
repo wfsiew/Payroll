@@ -23,6 +23,7 @@ en:
     search_placeholder: type here to search
     display: Display
     all: All
+    formonth: For The Month
     currency: RM
   designation:
     title: Designation
@@ -139,3 +140,6 @@ en:
       password: Minimum is %{value} characters
     confirmation:
       password: Password doesn't match confirmation
+  payroll:
+    title: Payroll
+    report: Payroll Report

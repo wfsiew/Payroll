@@ -64,8 +64,13 @@
      * @param id The dialog id.
      */
     function remove_dialog(id) {
-      $(id).dialog('destroy');
-      $(id).remove();
+      var o = $(id);
+      try {
+        o.dialog('destroy');
+        o.remove();
+      }
+      
+      catch (e) {}
     }
 
     /**
@@ -74,7 +79,7 @@
      */
     function clear_dialogs() {
       remove_dialog("div[id^='dialog-message']");
-      remove_dialog("div[id^='dialog-']");
+      remove_dialog("div[id^='dialog']");
     }
 
     /**

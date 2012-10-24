@@ -1,0 +1,27 @@
+<% if @data.present? && @data[:list].any? %>
+  <table class="list_table">
+    <thead class="ui-widget-header">
+      <tr>
+        <th class="data"><%= t('employee.field.code') %></th>
+        <th class="data"><%= t('employee.field.firstname') %></th>
+        <th class="data"><%= t('employee.field.middlename') %></th>
+        <th class="data"><%= t('employee.field.lastname') %></th>
+        <th class="data"><%= t('employee.field.icno') %></th>
+        <th class="data"><%= t('employee.field.designation') %></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @data[:list].each do |o| %>
+      <tr id="tr_<%= o.id %>" class="<%= cycle("ui-state-active", "ui-state-default") %>">
+        <td class="data"><%= o.code %></td>
+        <td class="data"><%= o.firstname %></td>
+        <td class="data"><%= o.middlename %></td>
+        <td class="data"><%= o.lastname %></td>
+        <td class="data"><%= o.icno %></td>
+        <td class="data"><%= o.designation.title if o.designation.present? %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+<input id="id_pg" type="hidden" value="<%= @data[:hasprev] %>,<%= @data[:hasnext] %>,<%= @data[:prevpage] %>,<%= @data[:nextpage] %>,<%= @data[:item_msg] %>" />
