@@ -181,6 +181,10 @@ input[type='text']:HOVER, input[type='password']:HOVER, input[type='search']:HOV
   border: 1px solid #000;
 }
 
+input[type='text']:FOCUS, input[type='password']:FOCUS, input[type='search']:FOCUS {
+  background-color: #ffc;
+}
+
 /* start payroll css */
 
 .heading, .subdet, .data_table th {
