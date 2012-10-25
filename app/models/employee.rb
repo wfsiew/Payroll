@@ -19,4 +19,9 @@ class Employee < ActiveRecord::Base
   
   validates_numericality_of :salary, :greater_than_or_equal_to => 0, :message => 'employee.invalid.salary'
   validates_uniqueness_of :code, :message => 'employee.unique.code'
+  
+  def initialize
+    super
+    self.salary ||= 0
+  end
 end

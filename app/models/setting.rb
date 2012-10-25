@@ -16,4 +16,12 @@ class Setting < ActiveRecord::Base
   validates_numericality_of :incometax, :greater_than_or_equal_to => 0, :message => 'setting.invalid.incometax'
   
   validates_uniqueness_of :designation_id, :message => 'setting.unique.designation'
+  
+  def initialize
+    super
+    self.dailyallowance ||= 0
+    self.epf ||= 0
+    self.socso ||= 0
+    self.incometax ||= 0
+  end
 end

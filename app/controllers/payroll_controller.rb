@@ -48,7 +48,11 @@ class PayrollController < ApplicationController
     designation = @employee.designation
     @setting = Setting.new
     
-    if designation.present?
+    if @employee.blank?
+      @employee = Employee.new
+    end
+    
+    if designation.present? && designation.setting.present?
       @setting = designation.setting
     end
     
