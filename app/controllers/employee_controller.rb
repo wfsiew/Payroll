@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class EmployeeController < ApplicationController
   layout false
   
@@ -48,9 +50,10 @@ class EmployeeController < ApplicationController
   
   # POST /employee/create
   def create
-    o = Employee.new(:code => params[:code], :firstname => params[:firstname], :middlename => params[:middlename],
-                     :lastname => params[:lastname], :icno => params[:icno], :salary => params[:salary],
-                     :designation_id => params[:designation_id], :epfno => params[:epfno], :socso => params[:socso])
+    o = Employee.new(:id => SecureRandom.uuid, :code => params[:code], :firstname => params[:firstname],
+                     :middlename => params[:middlename], :lastname => params[:lastname], :icno => params[:icno],
+                     :salary => params[:salary], :designation_id => params[:designation_id], :epfno => params[:epfno],
+                     :socso => params[:socso])
     a = Address.new(params[:street], params[:city], params[:state], params[:postalcode], params[:country])
     
     address_valid = a.valid?

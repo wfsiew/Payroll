@@ -166,6 +166,10 @@
           var tr = $(trlist.join(','));
           tr.remove();
           delete tr;
+          if ($('.list_table tbody tr').length < 1) {
+            $('.list_table').remove();
+            utils.set_disabled('#id_delete', 1, null);
+          }
         }
       });
     }
@@ -203,7 +207,7 @@
     function init() {
       init_ui_opt();
       $('#id_add').click(show_form);
-      $('#id_delete').click(func_delete);
+      //$('#id_delete').click(func_delete);
       $('#id_find').click(nav_list.show_list);
       $('#id_display').change(nav_list.show_list);
       $('#id_query').keypress(nav_list.query_keypress);
@@ -214,6 +218,7 @@
       utils.bind_hover($('#id_add,#id_delete,#id_find'));
       nav_list.config.list_url = url.list;
       nav_list.config.list_func = init_list;
+      nav_list.config.del_func = func_delete;
       nav_list.init();
     }
 

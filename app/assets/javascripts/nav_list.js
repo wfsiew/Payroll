@@ -1,7 +1,8 @@
 ﻿var nav_list = ( function() {
     var config = {
       list_url : '',
-      list_func : null
+      list_func : null,
+      del_func : null
     };
 
     /**
@@ -98,50 +99,30 @@
       var val = $('#id_pg').val();
       var arr = val.split(',');
       if (arr[0] == '0') {
-        set_disabled('#id_prev', 1, null);
+        utils.set_disabled('#id_prev', 1, null);
       }
       
       else {
-        set_disabled('#id_prev', 0, go_prev);
+        utils.set_disabled('#id_prev', 0, go_prev);
       }
 
       if (arr[1] == '0') {
-        set_disabled('#id_next', 1, null);
+        utils.set_disabled('#id_next', 1, null);
       }
       
       else {
-        set_disabled('#id_next', 0, go_next);
+        utils.set_disabled('#id_next', 0, go_next);
+      }
+      
+      if ($.isFunction(config.del_func)) {
+        if ($('.list_table').length > 0)
+          utils.set_disabled('#id_delete', 0, config.del_func);
+          
+        else
+          utils.set_disabled('#id_delete', 1, null);
       }
 
       set_item_msg(arr[4]);
-      utils.bind_hover($('.list_button'));
-    }
-
-    /**
-     * @private
-     * This function enable/disable an element.
-     * @param id The element id.
-     * @param arg The parameter to enable (0) or disable (1) the element.
-     * @param handler The function to be attached to the click event.
-     */
-    function set_disabled(id, arg, handler) {
-      var o = $(id);
-      o.unbind('click');
-      o.unbind('mouseenter');
-      o.unbind('mouseleave');
-      if (arg == 1) {
-        o.attr('disabled', 'disabled');
-        o.removeClass('hover ui-state-hover');
-        o.addClass('ui-state-disabled');
-      }
-      
-      else {
-        o.removeAttr('disabled');
-        o.removeClass('ui-state-disabled');
-        o.addClass('hover');
-        o.click(handler);
-        utils.bind_hover(o);
-      }
     }
 
     /**

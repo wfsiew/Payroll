@@ -170,6 +170,33 @@
 
       return null;
     }
+    
+    /**
+     * @public
+     * This function enable/disable an element.
+     * @param id The element id.
+     * @param arg The parameter to enable (0) or disable (1) the element.
+     * @param handler The function to be attached to the click event.
+     */
+    function set_disabled(id, arg, handler) {
+      var o = $(id);
+      o.unbind('click');
+      o.unbind('mouseenter');
+      o.unbind('mouseleave');
+      if (arg == 1) {
+        o.attr('disabled', 'disabled');
+        o.removeClass('hover ui-state-hover');
+        o.addClass('ui-state-disabled');
+      }
+      
+      else {
+        o.removeAttr('disabled');
+        o.removeClass('ui-state-disabled');
+        o.addClass('hover');
+        o.click(handler);
+        bind_hover(o);
+      }
+    }
 
     return {
       init_alert_dialog : init_alert_dialog,
@@ -183,6 +210,7 @@
       bind_hoverlist : bind_hoverlist,
       countdown_filter : countdown_filter,
       stop_filter_timer : stop_filter_timer,
-      get_itemid : get_itemid
+      get_itemid : get_itemid,
+      set_disabled : set_disabled
     };
 }());
