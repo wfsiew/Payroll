@@ -5,6 +5,7 @@ class Setting < ActiveRecord::Base
   
   self.table_name = 'setting'
   
+  validates_presence_of :designation_id, :message => 'employee.blank.designation'
   validates_presence_of :dailyallowance, :message => 'setting.blank.dailyallowance'
   validates_presence_of :epf, :message => 'setting.blank.epf'
   validates_presence_of :socso, :message => 'setting.blank.socso'
@@ -17,11 +18,23 @@ class Setting < ActiveRecord::Base
   
   validates_uniqueness_of :designation_id, :message => 'setting.unique.designation'
   
-  def initialize
-    super
-    self.dailyallowance ||= 0
-    self.epf ||= 0
-    self.socso ||= 0
-    self.incometax ||= 0
+  def dailyallowance
+    a = read_attribute(:dailyallowance)
+    a.blank? ? 0 : a
+  end
+  
+  def epf
+    a = read_attribute(:epf)
+    a.blank? ? 0 : a
+  end
+  
+  def socso
+    a = read_attribute(:socso)
+    a.blank? ? 0 : a
+  end
+  
+  def incometax
+    a = read_attribute(:incometax)
+    a.blank? ? 0 : a
   end
 end

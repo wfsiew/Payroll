@@ -9,7 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require css/blitzer/jquery_ui
+ *= require blitzer/jquery_ui
  *= require base
  * require_tree .
  */
