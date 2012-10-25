@@ -24,6 +24,7 @@ en:
     display: Display
     all: All
     formonth: For The Month
+    print: Print
     currency: RM
   designation:
     title: Designation
@@ -143,3 +144,19 @@ en:
   payroll:
     title: Payroll
     report: Payroll Report
+  payslip:
+    name: NAME
+    period: PERIOD
+    code: EMPLOYEE CODE
+    icno: IC NO.
+    earnings: EARNINGS
+    deductions: DEDUCTIONS
+    basicpay: BASIC PAY
+    epf: EMPLOYEE EPF
+    dailyallowance: DAILY ALLOWANCE
+    socso: EMPLOYEE SOCSO
+    incometax: INCOME TAX
+    total: TOTAL
+    nettpay: NETT PAY
+    epfno: EPF
+    socsono: SOCSO

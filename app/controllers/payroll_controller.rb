@@ -61,6 +61,7 @@ class PayrollController < ApplicationController
     
     respond_to do |fmt|
       fmt.html { render 'payslip' }
+      fmt.json { render :json => [@employee, @setting, @total_earnings, @total_deduct, @nett_salary] }
     end
   end
 end
