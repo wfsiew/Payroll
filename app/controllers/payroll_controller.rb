@@ -56,8 +56,9 @@ class PayrollController < ApplicationController
       @setting = designation.setting
     end
     
+    month = ApplicationHelper::Utils.month_name(params[:month].to_i)
     year = Time.now.year
-    @period = "#{ApplicationHelper::Utils.month_name(params[:month].to_i)}-#{year}"
+    @period = "#{month}-#{year}"
     
     @total_earnings = SettingHelper.total_earnings(@employee, @setting)
     @total_deduct = SettingHelper.total_deductions(@setting)
