@@ -1,18 +1,24 @@
 module SettingHelper
-  def self.get_all(pagenum, pagesize)
+  DEFAULT_SORT_COLUMN = 'd.title'
+  DEFAULT_SORT_DIR = 'ASC'
+  
+  def self.get_all(pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
+    sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
     total = Setting.count
     pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
+    order = sort.to_s
     
     has_next = pager.has_next? ? 1 : 0
     has_prev = pager.has_prev? ? 1 : 0
 	  criteria = Setting.joins('left outer join designation d on setting.designation_id = d.id')
-    list = criteria.order('d.title').all(:offset => pager.lower_bound, :limit => pager.pagesize)
+    list = criteria.order(order).all(:offset => pager.lower_bound, :limit => pager.pagesize)
     { :item_msg => pager.item_message, :hasnext => has_next, :hasprev => has_prev, :nextpage => pagenum + 1, :prevpage => pagenum - 1,
-      :list => list }
+      :list => list, :sortcolumn => sort.column, :sortdir => sort.direction }
   end
   
-  def self.get_filter_by(keyword, pagenum, pagesize)
-    criteria, order = get_filter_criteria(keyword)
+  def self.get_filter_by(keyword, pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
+    sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
+    criteria, order = get_filter_criteria(keyword, sort)
     total = criteria.count
     pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
     
@@ -20,7 +26,7 @@ module SettingHelper
     has_prev = pager.has_prev? ? 1 : 0
     list = criteria.order(order).all(:offset => pager.lower_bound, :limit => pager.pagesize)
     { :item_msg => pager.item_message, :hasnext => has_next, :hasprev => has_prev, :nextpage => pagenum + 1, :prevpage => pagenum - 1,
-      :list => list }
+      :list => list, :sortcolumn => sort.column, :sortdir => sort.direction }
   end
   
   def self.get_errors(errors, attr = {})
@@ -67,11 +73,11 @@ module SettingHelper
   
   private
   
-  def self.get_filter_criteria(keyword)
+  def self.get_filter_criteria(keyword, sort = nil)
     text = "%#{keyword}%"
 	  criteria = Setting.joins('inner join designation d on setting.designation_id = d.id')
 	  criteria = criteria.where('d.title like ?', text)
-	  order = 'd.title'
+	  order = sort.present? ? sort.to_s : nil
 	  return criteria, order
   end
 end

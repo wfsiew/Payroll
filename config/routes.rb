@@ -3,7 +3,7 @@ Payroll::Application.routes.draw do
   
   scope 'designation', :as => 'designation' do
     match '' => 'designation#index', :via => :get
-    match 'list' => 'designation#list', :as => :list, :via => :get
+    match 'list' => 'designation#list', :as => :list, :via => [:get, :post]
     match 'new' => 'designation#new', :as => :new, :via => :get
     match 'create' => 'designation#create', :as => :create, :via => :post
     match 'edit(/:id)' => 'designation#edit', :as => :edit, :via => :get
@@ -13,7 +13,7 @@ Payroll::Application.routes.draw do
   
   scope 'employee', :as => 'employee' do
     match '' => 'employee#index', :via => :get
-    match 'list' => 'employee#list', :as => :list, :via => :get
+    match 'list' => 'employee#list', :as => :list, :via => [:get, :post]
     match 'new' => 'employee#new', :as => :new, :via => :get
     match 'create' => 'employee#create', :as => :create, :via => :post
     match 'edit(/:id)' => 'employee#edit', :as => :edit, :via => :get
@@ -23,7 +23,7 @@ Payroll::Application.routes.draw do
   
   scope 'setting', :as => 'setting' do
     match '' => 'setting#index', :via => :get
-	  match 'list' => 'setting#list', :as => :list, :via => :get
+	  match 'list' => 'setting#list', :as => :list, :via => [:get, :post]
 	  match 'new' => 'setting#new', :as => :new, :via => :get
     match 'create' => 'setting#create', :as => :create, :via => :post
     match 'edit(/:id)' => 'setting#edit', :as => :edit, :via => :get
@@ -33,7 +33,7 @@ Payroll::Application.routes.draw do
   
   scope 'user', :as => 'user' do
     match '' => 'user#index', :via => :get
-    match 'list' => 'user#list', :as => :list, :via => :get
+    match 'list' => 'user#list', :as => :list, :via => [:get, :post]
     match 'new' => 'user#new', :as => :new, :via => :get
     match 'create' => 'user#create', :as => :create, :via => :post
     match 'edit(/:id)' => 'user#edit', :as => :edit, :via => :get
@@ -43,7 +43,7 @@ Payroll::Application.routes.draw do
   
   scope 'payroll', :as => 'payroll' do
     match '' => 'payroll#index', :via => :get
-    match 'list' => 'payroll#list', :as => :list, :via => :get
+    match 'list' => 'payroll#list', :as => :list, :via => [:get, :post]
     match 'report(/:id(/:month))' => 'payroll#report', :as => :report, :via => :get
   end
   

@@ -4,7 +4,7 @@ class UserController < ApplicationController
   # GET /user
   # GET /user.json
   def index
-    @data = UserHelper.get_all(1, ApplicationHelper::Pager.default_page_size)
+    @data = UserHelper.get_all
     
     respond_to do |fmt|
       fmt.html { render 'index', :layout => 'list' }
@@ -18,12 +18,16 @@ class UserController < ApplicationController
     keyword = params[:keyword].blank? ? '' : params[:keyword]
     pgnum = params[:pgnum].blank? ? 1 : params[:pgnum].to_i
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
+    sortcolumn = params[:sortcolumn].blank? ? UserHelper::DEFAULT_SORT_COLUMN : params[:sortcolumn]
+    sortdir = params[:sortdir].blank? ? UserHelper::DEFAULT_SORT_DIR : params[:sortdir]
+    
+    sort = ApplicationHelper::Sort.new(sortcolumn, sortdir)
     
     if keyword.blank?
-      @data = UserHelper.get_all(pgnum, pgsize)
+      @data = UserHelper.get_all(pgnum, pgsize, sort)
       
     else
-      @data = UserHelper.get_filter_by(keyword, pgnum, pgsize)
+      @data = UserHelper.get_filter_by(keyword, pgnum, pgsize, sort)
     end
     
     respond_to do |fmt|
@@ -87,8 +91,7 @@ class UserController < ApplicationController
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
     ids = params[:id]
     
-    lsid = ids.split(',')
-    User.delete_all(:id => lsid)
+    User.delete_all(:id => ids)
     
     itemscount = UserHelper.item_message(keyword, pgnum, pgsize)
     

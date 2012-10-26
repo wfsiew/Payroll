@@ -97,4 +97,17 @@ module ApplicationHelper
       Date::MONTHNAMES[i]
     end
   end
+  
+  class Sort
+    attr_accessor :column, :direction
+    
+    def initialize(column, dir = 'ASC')
+      @column = column
+      @direction = dir
+    end
+    
+    def to_s
+      "#{@column} #{@direction}"
+    end
+  end
 end

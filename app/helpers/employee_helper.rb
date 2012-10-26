@@ -1,17 +1,31 @@
 module EmployeeHelper
-  def self.get_all(pagenum, pagesize)
+  DEFAULT_SORT_COLUMN = 'code'
+  DEFAULT_SORT_DIR = 'ASC'
+  
+  def self.get_all(pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
+    sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
     total = Employee.count
     pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
+    order = sort.to_s
     
     has_next = pager.has_next? ? 1 : 0
     has_prev = pager.has_prev? ? 1 : 0
-    list = Employee.order('code').all(:offset => pager.lower_bound, :limit => pager.pagesize)
+    
+    if sort.column == 'd.title'
+      criteria = get_join_designation
+      
+    else
+      criteria = Employee
+    end
+    
+    list = criteria.order(order).all(:offset => pager.lower_bound, :limit => pager.pagesize)
     { :item_msg => pager.item_message, :hasnext => has_next, :hasprev => has_prev, :nextpage => pagenum + 1, :prevpage => pagenum - 1,
-      :list => list }
+      :list => list, :sortcolumn => sort.column, :sortdir => sort.direction }
   end
   
-  def self.get_filter_by(find, keyword, pagenum, pagesize)
-    criteria, order = get_filter_criteria(find, keyword)
+  def self.get_filter_by(find, keyword, pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
+    sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
+    criteria, order = get_filter_criteria(find, keyword, sort)
     total = criteria.count
     pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
     
@@ -19,7 +33,7 @@ module EmployeeHelper
     has_prev = pager.has_prev? ? 1 : 0
     list = criteria.order(order).all(:offset => pager.lower_bound, :limit => pager.pagesize)
     { :item_msg => pager.item_message, :hasnext => has_next, :hasprev => has_prev, :nextpage => pagenum + 1, :prevpage => pagenum - 1,
-      :list => list }
+      :list => list, :sortcolumn => sort.column, :sortdir => sort.direction }
   end
   
   def self.get_errors(errors, others = nil, attr = {})
@@ -57,47 +71,49 @@ module EmployeeHelper
   
   private
   
-  def self.get_filter_criteria(find, keyword)
+  def self.get_filter_criteria(find, keyword, sort = nil)
     text = "%#{keyword}%"
+    order = sort.present? ? sort.to_s : nil
+    if (sort.present? && sort.column == 'd.title') || (find == 0 || find == 6)
+      criteria = get_join_designation
+      
+    else
+      criteria = Employee
+    end
     
     case find
     when 1
-      criteria = Employee.where('code like ?', text)
-      order = 'code'
+      criteria = criteria.where('code like ?', text)
       return criteria, order
       
     when 2
-      criteria = Employee.where('firstname like ?', text)
-      order = 'firstname'
+      criteria = criteria.where('firstname like ?', text)
       return criteria, order
       
     when 3
-      criteria = Employee.where('middlename like ?', text)
-      order = 'middlename'
+      criteria = criteria.where('middlename like ?', text)
       return criteria, order
       
     when 4
-      criteria = Employee.where('lastname like ?', text)
-      order = 'lastname'
+      criteria = criteria.where('lastname like ?', text)
       return criteria, order
       
     when 5
-      criteria = Employee.where('icno like ?', text)
-      order = 'icno'
+      criteria = criteria.where('icno like ?', text)
       return criteria, order
       
     when 6
-      criteria = Employee.joins('left outer join designation d on employee.designation_id = d.id')
       criteria = criteria.where('d.title like ?', text)
-      order = 'd.title'
       return criteria, order
       
     else
-      criteria = Employee.joins('left outer join designation d on employee.designation_id = d.id')
       criteria = criteria.where('code like ? or firstname like ? or middlename like ? or lastname like ? or icno like ? or d.title like ?', 
                                  text, text, text, text, text, text)
-      order = 'd.title'
       return criteria, order
     end
+  end
+  
+  def self.get_join_designation
+    Employee.joins('left outer join designation d on employee.designation_id = d.id')
   end
 end

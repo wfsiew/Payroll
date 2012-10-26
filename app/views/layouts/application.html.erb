@@ -9,29 +9,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="ui-widget-content">
-  <div id="maincontainer">
-    <div id="topsection" class="ui-state-default">
-      <div class="innertube">
-        <div id="theme_switcher"></div>
-      </div>
-    </div>
-    <div id="contentwrapper">
-      <div id="contentcolumn">
-        <div class="innertube"></div>
-      </div>
-    </div>
-    <div id="leftcolumn">
-      <div class="innertube"><%= render 'menu' %></div>
-    </div>
-  </div>
-  <div id="error-dialog" title="<%= t('general.internal_server_error') %>">
-    <div id="error_dialog"></div>
-  </div>
-  <div id="progress_status" class="ui-widget ui-state-active">
-    <h3>
-      <span class="spinner"></span>
-      <span style="margin-left: 20px"><%= t('general.loading') %> ...</span>
-    </h3>
-  </div>
+  <%= yield %>
 </body>
 </html>

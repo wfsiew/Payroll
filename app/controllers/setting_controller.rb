@@ -4,7 +4,7 @@ class SettingController < ApplicationController
   # GET /setting
   # GET /setting.json
   def index
-    @data = SettingHelper.get_all(1, ApplicationHelper::Pager.default_page_size)
+    @data = SettingHelper.get_all
 	
 	  respond_to do |fmt|
 	    fmt.html { render 'index', :layout => 'list' }
@@ -18,12 +18,16 @@ class SettingController < ApplicationController
     keyword = params[:keyword].blank? ? '' : params[:keyword]
     pgnum = params[:pgnum].blank? ? 1 : params[:pgnum].to_i
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
+    sortcolumn = params[:sortcolumn].blank? ? SettingHelper::DEFAULT_SORT_COLUMN : params[:sortcolumn]
+    sortdir = params[:sortdir].blank? ? SettingHelper::DEFAULT_SORT_DIR : params[:sortdir]
+    
+    sort = ApplicationHelper::Sort.new(sortcolumn, sortdir)
     
     if keyword.blank?
-      @data = SettingHelper.get_all(pgnum, pgsize)
+      @data = SettingHelper.get_all(pgnum, pgsize, sort)
       
     else
-      @data = SettingHelper.get_filter_by(keyword, pgnum, pgsize)
+      @data = SettingHelper.get_filter_by(keyword, pgnum, pgsize, sort)
     end
     
     respond_to do |fmt|
@@ -91,8 +95,7 @@ class SettingController < ApplicationController
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
     ids = params[:id]
     
-    lsid = ids.split(',')
-    Setting.delete_all(:id => lsid)
+    Setting.delete_all(:id => ids)
     
     itemscount = SettingHelper.item_message(keyword, pgnum, pgsize)
     

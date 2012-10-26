@@ -3,11 +3,36 @@
     <thead class="ui-widget-header">
       <tr>
         <th class="data chkbox"><input class="hdchk" type="checkbox" /></th>
-        <th class="data"><%= t('designation.field.title') %></th>
-        <th class="data"><%= t('setting.field.dailyallowance') %> (<%= t('general.currency') %>)</th>
-        <th class="data"><%= t('setting.field.epf') %> (<%= t('general.currency') %>)</th>
-        <th class="data"><%= t('setting.field.socso') %> (<%= t('general.currency') %>)</th>
-        <th class="data"><%= t('setting.field.incometax') %> (<%= t('general.currency') %>)</th>
+        <th class="data">
+          <div id="hd_d-title" class="sortheader hover">
+            <span class="colheader"><%= t('designation.field.title') %></span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_dailyallowance" class="sortheader hover">
+            <span class="colheader"><%= t('setting.field.dailyallowance') %></span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_epf" class="sortheader hover">
+            <span class="colheader"><%= t('setting.field.epf') %> (<%= t('general.currency') %>)</span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_socso" class="sortheader hover">
+            <span class="colheader"><%= t('setting.field.socso') %> (<%= t('general.currency') %>)</span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_incometax" class="sortheader hover">
+            <span class="colheader"><%= t('setting.field.incometax') %> (<%= t('general.currency') %>)</span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -24,4 +49,4 @@
     </tbody>
   </table>
 <% end %>
-<input id="id_pg" type="hidden" value="<%= @data[:hasprev] %>,<%= @data[:hasnext] %>,<%= @data[:prevpage] %>,<%= @data[:nextpage] %>,<%= @data[:item_msg] %>" />
+<input id="id_pg" type="hidden" value="<%= @data[:hasprev] %>,<%= @data[:hasnext] %>,<%= @data[:prevpage] %>,<%= @data[:nextpage] %>,<%= @data[:item_msg] %>,<%= @data[:sortcolumn] %>,<%= @data[:sortdir] %>" />

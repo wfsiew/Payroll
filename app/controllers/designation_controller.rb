@@ -4,7 +4,7 @@ class DesignationController < ApplicationController
   # GET /designation
   # GET /designation.json
   def index
-    @data = DesignationHelper.get_all(1, ApplicationHelper::Pager.default_page_size)
+    @data = DesignationHelper.get_all
     
     respond_to do |fmt|
       fmt.html { render 'index', :layout => 'list' }
@@ -18,12 +18,16 @@ class DesignationController < ApplicationController
     keyword = params[:keyword].blank? ? '' : params[:keyword]
     pgnum = params[:pgnum].blank? ? 1 : params[:pgnum].to_i
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
+    sortcolumn = params[:sortcolumn].blank? ? DesignationHelper::DEFAULT_SORT_COLUMN : params[:sortcolumn]
+    sortdir = params[:sortdir].blank? ? DesignationHelper::DEFAULT_SORT_DIR : params[:sortdir]
+    
+    sort = ApplicationHelper::Sort.new(sortcolumn, sortdir)
     
     if keyword.blank?
-      @data = DesignationHelper.get_all(pgnum, pgsize)
+      @data = DesignationHelper.get_all(pgnum, pgsize, sort)
       
     else
-      @data = DesignationHelper.get_filter_by(keyword, pgnum, pgsize)
+      @data = DesignationHelper.get_filter_by(keyword, pgnum, pgsize, sort)
     end
     
     respond_to do |fmt|
@@ -87,8 +91,7 @@ class DesignationController < ApplicationController
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
     ids = params[:id]
     
-    lsid = ids.split(',')
-    Designation.delete_all(:id => lsid)
+    Designation.delete_all(:id => ids)
     
     itemscount = DesignationHelper.item_message(keyword, pgnum, pgsize)
     

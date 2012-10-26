@@ -20,10 +20,23 @@
      * display size, current page no., and search parameters.
      */
     function update_list() {
-      var d = $('#id_display').val();
+      var pgsize = $('#id_display').val();
       var pgnum = $('#id_display').data('pgnum');
-      var s = get_search_query();
-      $('#right_box').load(config.list_url + '?pgnum=' + pgnum + '&pgsize=' + d + s, init_navigate);
+      var sort = get_sort();
+      var param = get_search_param();
+      param['pgnum'] = pgnum;
+      param['pgsize'] = pgsize;
+      
+      if (sort != null) {
+        param['sortcolumn'] = sort['column'];
+        param['sortdir'] = sort['dir'];
+      }
+      
+      $.post(config.list_url, param,
+        function(result) {
+          $('#right_box').html(result);
+          init_navigate();
+        });
     }
 
     /**
@@ -82,6 +95,26 @@
     function set_item_msg(arg) {
       $('.item_display').text(arg);
     }
+    
+    /**
+     * @public
+     * This function sets the sort info.
+     * @param s The sort info in {}.
+     */
+    function set_sort(s) {
+      $('#id_display').data('sort', s);
+      update_list();
+    }
+    
+    /**
+     * @private
+     * This function gets the current sort info in {}.
+     * @return The sort info in {}.
+     */
+    function get_sort() {
+      var s = $('#id_display').data('sort');
+      return s;
+    }
 
     /**
      * @private
@@ -115,31 +148,41 @@
       }
       
       if ($.isFunction(config.del_func)) {
-        if ($('.list_table').length > 0)
+        if ($('.list_table')[0] != null)
           utils.set_disabled('#id_delete', 0, config.del_func);
           
         else
           utils.set_disabled('#id_delete', 1, null);
       }
-
+      
+      sort.init_sort($('#hd_' + utils.safe_replace(arr[5], '.', '-')), arr[6]);
       set_item_msg(arr[4]);
     }
 
     /**
      * @private
-     * This function returns the search query string based on the search parameters.
-     * @return The search query string.
+     * This function returns the search parameters in {}.
+     * @return The search paramaters in {}.
      */
-    function get_search_query() {
+    function get_search_param() {
       var id_selection = $('#id_selection');
-      var search_by_qry = (id_selection[0] == null ? '' : '&find=' + id_selection.val());
       var keyword = $('#id_query').val();
-      var s = (search_by_qry == '&find=0' && keyword == '' ? '' : search_by_qry + '&keyword=' + encodeURIComponent(keyword));
-      return s;
+      var param = {};
+      if (id_selection[0] != null)
+        param['find'] = id_selection.val();
+        
+      if (param['find'] == '0' && keyword == '')
+        delete param['find']
+        
+      else
+        param['keyword'] = encodeURIComponent(keyword);
+      
+      return param;
     }
 
     function init() {
       init_navigate();
+      set_sort(null);
     }
 
     return {
@@ -149,6 +192,7 @@
       update_list : update_list,
       query_keypress : query_keypress,
       query_keyup : query_keyup,
-      set_item_msg : set_item_msg
+      set_item_msg : set_item_msg,
+      set_sort : set_sort
     };
 }());

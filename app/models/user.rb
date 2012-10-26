@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
                   :if => :password_required?
                   
   before_save :encrypt_new_password
+  
+  UNCHANGED_PASSWORD = '********'
                        
   def self.authenticate(username, password)
     user = find_by_username(username)
@@ -34,6 +36,9 @@ class User < ActiveRecord::Base
   end
   
   def password_required?
+    if pwd == UNCHANGED_PASSWORD
+      return false
+    end
     self.password.blank? || pwd.present?
   end
   

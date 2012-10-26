@@ -197,6 +197,21 @@
         bind_hover(o);
       }
     }
+    
+    /**
+     * @public
+     * This function replace a string.
+     * @param s The string to be replaced.
+     * @param a The string to be replaced.
+     * @param b The replacement string.
+     * @return The replaced string.
+     */
+    function safe_replace(s, a, b) {
+      if (s == null)
+        return s;
+        
+      return s.replace(a, b);
+    }
 
     return {
       init_alert_dialog : init_alert_dialog,
@@ -211,6 +226,7 @@
       countdown_filter : countdown_filter,
       stop_filter_timer : stop_filter_timer,
       get_itemid : get_itemid,
-      set_disabled : set_disabled
+      set_disabled : set_disabled,
+      safe_replace : safe_replace
     };
 }());

@@ -3,7 +3,12 @@
     <thead class="ui-widget-header">
       <tr>
         <th class="data chkbox"><input class="hdchk" type="checkbox" /></th>
-        <th class="data"><%= t('user.field.username') %></th>
+        <th class="data">
+          <div id="hd_username" class="sortheader hover">
+            <span class="colheader"><%= t('user.field.username') %></span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -16,4 +21,4 @@
     </tbody>
   </table>
 <% end %>
-<input id="id_pg" type="hidden" value="<%= @data[:hasprev] %>,<%= @data[:hasnext] %>,<%= @data[:prevpage] %>,<%= @data[:nextpage] %>,<%= @data[:item_msg] %>" />
+<input id="id_pg" type="hidden" value="<%= @data[:hasprev] %>,<%= @data[:hasnext] %>,<%= @data[:prevpage] %>,<%= @data[:nextpage] %>,<%= @data[:item_msg] %>,<%= @data[:sortcolumn] %>,<%= @data[:sortdir] %>" />

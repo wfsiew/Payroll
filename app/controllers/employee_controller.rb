@@ -6,7 +6,7 @@ class EmployeeController < ApplicationController
   # GET /employee
   # GET /employee.json
   def index
-    @data = EmployeeHelper.get_all(1, ApplicationHelper::Pager.default_page_size)
+    @data = EmployeeHelper.get_all
     
     respond_to do |fmt|
       fmt.html { render 'index', :layout => 'list' }
@@ -21,12 +21,16 @@ class EmployeeController < ApplicationController
     keyword = params[:keyword].blank? ? '' : params[:keyword]
     pgnum = params[:pgnum].blank? ? 1 : params[:pgnum].to_i
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
+    sortcolumn = params[:sortcolumn].blank? ? EmployeeHelper::DEFAULT_SORT_COLUMN : params[:sortcolumn]
+    sortdir = params[:sortdir].blank? ? EmployeeHelper::DEFAULT_SORT_DIR : params[:sortdir]
+    
+    sort = ApplicationHelper::Sort.new(sortcolumn, sortdir)
     
     if find == 0 && keyword.blank?
-      @data = EmployeeHelper.get_all(pgnum, pgsize)
+      @data = EmployeeHelper.get_all(pgnum, pgsize, sort)
       
     else
-      @data = EmployeeHelper.get_filter_by(find, keyword, pgnum, pgsize)
+      @data = EmployeeHelper.get_filter_by(find, keyword, pgnum, pgsize, sort)
     end
     
     respond_to do |fmt|
@@ -127,8 +131,7 @@ class EmployeeController < ApplicationController
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
     ids = params[:id]
     
-    lsid = ids.split(',')
-    Designation.delete_all(:id => lsid)
+    Designation.delete_all(:id => ids)
     
     itemscount = EmployeeHelper.item_message(find, keyword, pgnum, pgsize)
     

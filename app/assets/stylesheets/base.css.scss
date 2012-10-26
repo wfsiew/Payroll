@@ -173,6 +173,14 @@ div.row_button {
   content: ":";
 }
 
+.colheader,.sorticon {
+  display: inline-block !important;
+}
+
+.colheader {
+  height: 20px;
+}
+
 input[type='text'], input[type='password'], input[type='search'] {
   border: 1px solid #ccc;
 }

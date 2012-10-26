@@ -24,4 +24,5 @@
 //= require conf
 //= require user
 //= require payroll
+//= require sort
 // require_tree .

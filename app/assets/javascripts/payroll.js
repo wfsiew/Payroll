@@ -14,6 +14,11 @@ var payroll = ( function() {
       open(url.report + id + '/' + month, '_blank', f);
       return false;
     }
+    
+    function sort_list() {
+      var s = sort.set_sort_css($(this));
+      nav_list.set_sort(s);
+    }
 
     function init_list() {
       utils.bind_hoverlist($('.list_table tbody tr'));
@@ -23,6 +28,7 @@ var payroll = ( function() {
           func_generate(id);
         }
       });
+      $('.sortheader').click(sort_list);
     }
 
     function init() {

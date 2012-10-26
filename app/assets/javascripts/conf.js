@@ -155,7 +155,6 @@
         l.push(id);
       });
 
-      var arg = l.join(',');
       var val = $('#id_pg').val();
       var arr = val.split(',');
       var currpg = parseInt(arr[3], 10); --currpg;
@@ -163,7 +162,7 @@
       var search_by = $('#id_selection').val();
       var keyword = $('#id_query').val();
       var data = {
-        id : arg,
+        id : l,
         pgnum : currpg,
         pgsize : pgsize,
         find : search_by,
@@ -176,7 +175,7 @@
           var tr = $(trlist.join(','));
           tr.remove();
           delete tr;
-          if ($('.list_table tbody tr').length < 1) {
+          if ($('.list_table tbody tr')[0] == null) {
             $('.list_table').remove();
             utils.set_disabled('#id_delete', 1, null);
           }
@@ -206,6 +205,11 @@
 
       return data;
     }
+    
+    function sort_list() {
+      var s = sort.set_sort_css($(this));
+      nav_list.set_sort(s);
+    }
 
     function init_list() {
       $('.hdchk').click(select_all);
@@ -216,6 +220,7 @@
           func_edit(id);
         }
       });
+      $('.sortheader').click(sort_list);
     }
 
     function init() {

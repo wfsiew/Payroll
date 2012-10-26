@@ -3,12 +3,42 @@
     <thead class="ui-widget-header">
       <tr>
         <th class="data chkbox"><input class="hdchk" type="checkbox" /></th>
-        <th class="data"><%= t('employee.field.code') %></th>
-        <th class="data"><%= t('employee.field.firstname') %></th>
-        <th class="data"><%= t('employee.field.middlename') %></th>
-        <th class="data"><%= t('employee.field.lastname') %></th>
-        <th class="data"><%= t('employee.field.icno') %></th>
-        <th class="data"><%= t('employee.field.designation') %></th>
+        <th class="data">
+          <div id="hd_code" class="sortheader hover">
+            <span class="colheader"><%= t('employee.field.code') %></span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_firstname" class="sortheader hover">
+            <span class="colheader"><%= t('employee.field.firstname') %></span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_middlename" class="sortheader hover">
+            <span class="colheader"><%= t('employee.field.middlename') %></span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_lastname" class="sortheader hover">
+            <span class="colheader"><%= t('employee.field.lastname') %></span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_icno" class="sortheader hover">
+            <span class="colheader"><%= t('employee.field.icno') %></span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_d-title" class="sortheader hover">
+            <span class="colheader"><%= t('employee.field.designation') %></span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -26,4 +56,4 @@
     </tbody>
   </table>
 <% end %>
-<input id="id_pg" type="hidden" value="<%= @data[:hasprev] %>,<%= @data[:hasnext] %>,<%= @data[:prevpage] %>,<%= @data[:nextpage] %>,<%= @data[:item_msg] %>" />
+<input id="id_pg" type="hidden" value="<%= @data[:hasprev] %>,<%= @data[:hasnext] %>,<%= @data[:prevpage] %>,<%= @data[:nextpage] %>,<%= @data[:item_msg] %>,<%= @data[:sortcolumn] %>,<%= @data[:sortdir] %>" />
