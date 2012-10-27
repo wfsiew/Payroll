@@ -8,7 +8,7 @@ var theme = ( function() {
     });
     
     $.themes.init({
-      themes : ['blitzer', 'darkhive', 'blacktie'],
+      themes : ['blitzer', 'darkhive', 'trontastic', 'humanity'],
       defaultTheme : default_theme,
       onSelect : reload_IE
     });

@@ -61,7 +61,7 @@ module Payroll
     
     config.assets.precompile += %w(_payslip.css _payslip.js blitzer/jquery-ui-1.9.1.custom.min.css)
     
-    jquitheme = %w(blitzer dark-hive black-tie)
+    jquitheme = %w(blitzer dark-hive trontastic humanity)
     jquicss = 'jquery-ui-1.9.1.custom.min.css'
     
     jquitheme.each do |t|
