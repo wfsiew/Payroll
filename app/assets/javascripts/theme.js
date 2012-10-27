@@ -31,5 +31,5 @@ var theme = ( function() {
   return {
     init : init,
     current_theme : current_theme
-  }
+  };
 }());

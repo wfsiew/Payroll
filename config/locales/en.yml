@@ -4,7 +4,9 @@
 en:
   general:
     title: Payroll System
+    options: Options
     internal_server_error: Internal Server Error
+    select_theme: Select Theme
     loading: Loading
     admin: Administration
     employee: Employee
