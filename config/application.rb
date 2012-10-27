@@ -65,7 +65,8 @@ module Payroll
                 :group => :all,
                 :after => :append_assets_path do
                   config.assets.paths.unshift Rails.root.join("lib", "assets", "jquery-ui", "blitzer").to_s
-                  config.assets.paths.unshift Rails.root.join("lib", "assets", "jquery-ui", "dark-hive").to_s
+                  #config.assets.paths.unshift Rails.root.join("lib", "assets", "jquery-ui", "dark-hive").to_s
+                  #config.assets.paths.unshift Rails.root.join("lib", "assets", "jquery-ui", "black-tie").to_s
                 end
   end
 end

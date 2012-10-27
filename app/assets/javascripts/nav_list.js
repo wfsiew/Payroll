@@ -182,7 +182,6 @@
 
     function init() {
       init_navigate();
-      set_sort(null);
     }
 
     return {
