@@ -5,7 +5,8 @@
         <%= label_tag :code, t('employee.field.code'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :code, @employee.code, :id => 'id_code', :class => 'text', :placeholder => t('employee.placeholder.code') %>
+        <%= text_field_tag :code, @employee.code, :id => 'id_code', :class => 'text', :placeholder => t('employee.placeholder.code'),
+                           :title => t('employee.placeholder.code') %>
       </td>
     </tr>
     <tr>
@@ -13,7 +14,8 @@
         <%= label_tag :icno, t('employee.field.icno'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :icno, @employee.icno, :id => 'id_icno', :class => 'text', :placeholder => t('employee.placeholder.icno') %>
+        <%= text_field_tag :icno, @employee.icno, :id => 'id_icno', :class => 'text', :placeholder => t('employee.placeholder.icno'),
+                           :title => t('employee.placeholder.icno') %>
       </td>
     </tr>
     <tr>
@@ -21,7 +23,8 @@
         <%= label_tag :firstname, t('employee.field.firstname'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :firstname, @employee.firstname, :id => 'id_firstname', :class => 'text', :placeholder => t('employee.placeholder.firstname') %>
+        <%= text_field_tag :firstname, @employee.firstname, :id => 'id_firstname', :class => 'text', :placeholder => t('employee.placeholder.firstname'),
+                           :title => t('employee.placeholder.firstname') %>
       </td>
     </tr>
     <tr>
@@ -29,7 +32,8 @@
         <%= label_tag :middlename, t('employee.field.middlename'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :middlename, @employee.middlename, :id => 'id_middlename', :class => 'text', :placeholder => t('employee.placeholder.middlename') %>
+        <%= text_field_tag :middlename, @employee.middlename, :id => 'id_middlename', :class => 'text', :placeholder => t('employee.placeholder.middlename'),
+                           :title => t('employee.placeholder.middlename') %>
       </td>
     </tr>
     <tr>
@@ -37,7 +41,8 @@
         <%= label_tag :lastname, t('employee.field.lastname'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :lastname, @employee.lastname, :id => 'id_lastname', :class => 'text', :placeholder => t('employee.placeholder.lastname') %>
+        <%= text_field_tag :lastname, @employee.lastname, :id => 'id_lastname', :class => 'text', :placeholder => t('employee.placeholder.lastname'),
+                           :title => t('employee.placeholder.lastname') %>
       </td>
     </tr>
     <tr>
@@ -53,7 +58,8 @@
         <%= label_tag :epfno, t('employee.field.epf'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :epfno, @employee.epfno, :id => 'id_epfno', :class => 'text', :placeholder => t('employee.placeholder.epf') %>
+        <%= text_field_tag :epfno, @employee.epfno, :id => 'id_epfno', :class => 'text', :placeholder => t('employee.placeholder.epf'),
+                           :title => t('employee.placeholder.epf') %>
       </td>
     </tr>
     <tr>
@@ -61,7 +67,8 @@
         <%= label_tag :socso, t('employee.field.socso'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :socso, @employee.socso, :id => 'id_socso', :class => 'text', :placeholder => t('employee.placeholder.socso') %>
+        <%= text_field_tag :socso, @employee.socso, :id => 'id_socso', :class => 'text', :placeholder => t('employee.placeholder.socso'),
+                           :title => t('employee.placeholder.socso') %>
       </td>
     </tr>
     <tr>
@@ -69,7 +76,8 @@
         <%= label_tag :salary, t('employee.field.salary'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :salary, @employee.salary, :id => 'id_salary', :class => 'text', :placeholder => t('employee.placeholder.salary') %>
+        <%= text_field_tag :salary, @employee.salary, :id => 'id_salary', :class => 'text', :placeholder => t('employee.placeholder.salary'),
+                           :title => t('employee.placeholder.salary') %>
       </td>
     </tr>
     <tr>
@@ -82,7 +90,8 @@
         <%= label_tag :street, t('address.field.street'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :street, @employee.street, :id => 'id_street', :class => 'text', :placeholder => t('address.placeholder.street') %>
+        <%= text_field_tag :street, @employee.street, :id => 'id_street', :class => 'text', :placeholder => t('address.placeholder.street'),
+                           :title => t('address.placeholder.street') %>
       </td>
     </tr>
     <tr>
@@ -90,7 +99,8 @@
         <%= label_tag :city, t('address.field.city'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :city, @employee.city, :id => 'id_city', :class => 'text', :placeholder => t('address.placeholder.city') %>
+        <%= text_field_tag :city, @employee.city, :id => 'id_city', :class => 'text', :placeholder => t('address.placeholder.city'),
+                           :title => t('address.placeholder.city') %>
       </td>
     </tr>
     <tr>
@@ -98,7 +108,8 @@
         <%= label_tag :state, t('address.field.state'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :state, @employee.state, :id => 'id_state', :class => 'text', :placeholder => t('address.placeholder.state') %>
+        <%= text_field_tag :state, @employee.state, :id => 'id_state', :class => 'text', :placeholder => t('address.placeholder.state'),
+                           :title => t('address.placeholder.state') %>
       </td>
     </tr>
     <tr>
@@ -106,7 +117,8 @@
         <%= label_tag :postalcode, t('address.field.postalcode'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :postalcode, @employee.postalcode, :id => 'id_postalcode', :class => 'text', :placeholder => t('address.placeholder.postalcode') %>
+        <%= text_field_tag :postalcode, @employee.postalcode, :id => 'id_postalcode', :class => 'text', :placeholder => t('address.placeholder.postalcode'),
+                           :title => t('address.placeholder.postalcode') %>
       </td>
     </tr>
     <tr>
@@ -114,7 +126,8 @@
         <%= label_tag :country, t('address.field.country'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :country, @employee.country, :id => 'id_country', :class => 'text', :placeholder => t('address.placeholder.country') %>
+        <%= text_field_tag :country, @employee.country, :id => 'id_country', :class => 'text', :placeholder => t('address.placeholder.country'),
+                           :title => t('address.placeholder.country') %>
       </td>
     </tr>
     <tr>

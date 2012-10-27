@@ -181,15 +181,15 @@ div.row_button {
   height: 20px;
 }
 
-input[type='text'], input[type='password'], input[type='search'] {
+input[type='text'], input[type='password'] {
   border: 1px solid #ccc;
 }
 
-input[type='text']:HOVER, input[type='password']:HOVER, input[type='search']:HOVER {
+input[type='text']:HOVER, input[type='password']:HOVER {
   border: 1px solid #000;
 }
 
-input[type='text']:FOCUS, input[type='password']:FOCUS, input[type='search']:FOCUS {
+input[type='text']:FOCUS, input[type='password']:FOCUS {
   background-color: #ffc;
 }
 

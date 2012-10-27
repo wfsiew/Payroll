@@ -5,7 +5,8 @@
         <%= label_tag :username, t('user.field.username'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :username, @user.username, :id => 'id_username', :class => 'text', :placeholder => t('user.placeholder.username') %>
+        <%= text_field_tag :username, @user.username, :id => 'id_username', :class => 'text', :placeholder => t('user.placeholder.username'),
+                           :title => t('user.placeholder.username') %>
       </td>
     </tr>
     <tr>
@@ -13,7 +14,8 @@
         <%= label_tag :pwd, t('user.field.password'), :class => 'label' %>
       </td>
       <td>
-        <%= password_field_tag :pwd, @user.pwd, :id => 'id_password', :class => 'text', :placeholder => t('user.placeholder.password') %>
+        <%= password_field_tag :pwd, @user.pwd, :id => 'id_password', :class => 'text', :placeholder => t('user.placeholder.password'),
+                               :title => t('user.tooshort.password', :value => 4) %>
       </td>
     </tr>
     <tr>
@@ -21,7 +23,8 @@
         <%= label_tag :pwd_confirmation, t('user.field.passwordconfirm'), :class => 'label' %>
       </td>
       <td>
-        <%= password_field_tag :pwd_confirmation, @user.pwd_confirmation, :id => 'id_passwordconfirm', :class => 'text', :placeholder => t('user.placeholder.passwordconfirm') %>
+        <%= password_field_tag :pwd_confirmation, @user.pwd_confirmation, :id => 'id_passwordconfirm', :class => 'text', :placeholder => t('user.placeholder.passwordconfirm'),
+                               :title => t('user.placeholder.passwordconfirm') %>
       </td>
     </tr>
     <tr>

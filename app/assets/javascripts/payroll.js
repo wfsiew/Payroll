@@ -36,6 +36,7 @@ var payroll = ( function() {
       $('#id_display,#id_selection').change(nav_list.show_list);
       $('#id_query').keypress(nav_list.query_keypress);
       $('#id_query').keyup(nav_list.query_keyup);
+      $('#id_query').tooltip();
       utils.init_alert_dialog('#dialog-message');
       utils.bind_hover($('#id_find'));
       nav_list.config.list_url = url.list;

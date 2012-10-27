@@ -13,7 +13,8 @@
         <%= label_tag :dailyallowance, t('setting.field.dailyallowance'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :dailyallowance, @setting.dailyallowance, :id => 'id_daily', :class => 'text', :placeholder => t('setting.placeholder.dailyallowance') %>
+        <%= text_field_tag :dailyallowance, @setting.dailyallowance, :id => 'id_daily', :class => 'text', :placeholder => t('setting.placeholder.dailyallowance'),
+                           :title => t('setting.placeholder.dailyallowance') %>
       </td>
     </tr>
     <tr>
@@ -21,7 +22,8 @@
         <%= label_tag :epf, t('setting.field.epf'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :epf, @setting.epf, :id => 'id_epf', :class => 'text', :placeholder => t('setting.placeholder.epf') %>
+        <%= text_field_tag :epf, @setting.epf, :id => 'id_epf', :class => 'text', :placeholder => t('setting.placeholder.epf'),
+                           :title => t('setting.placeholder.epf') %>
       </td>
     </tr>
     <tr>
@@ -29,7 +31,8 @@
         <%= label_tag :socso, t('setting.field.socso'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :socso, @setting.socso, :id => 'id_socso', :class => 'text', :placeholder => t('setting.placeholder.socso') %>
+        <%= text_field_tag :socso, @setting.socso, :id => 'id_socso', :class => 'text', :placeholder => t('setting.placeholder.socso'),
+                           :title => t('setting.placeholder.socso') %>
       </td>
     </tr>
     <tr>
@@ -37,7 +40,8 @@
         <%= label_tag :incometax, t('setting.field.incometax'), :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :incometax, @setting.incometax, :id => 'id_incometax', :class => 'text', :placeholder => t('setting.placeholder.incometax') %>
+        <%= text_field_tag :incometax, @setting.incometax, :id => 'id_incometax', :class => 'text', :placeholder => t('setting.placeholder.incometax'),
+                           :title => t('setting.placeholder.incometax') %>
       </td>
     </tr>
     <tr>
