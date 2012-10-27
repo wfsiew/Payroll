@@ -59,14 +59,13 @@ module Payroll
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     
-    config.assets.precompile += %w(_payslip.css _payslip.js)
+    config.assets.precompile += %w(_payslip.css _payslip.js blitzer/jquery-ui-1.9.1.custom.min.css)
     
-    initializer :after_append_asset_paths,
-                :group => :all,
-                :after => :append_assets_path do
-                  #config.assets.paths.unshift Rails.root.join("lib", "assets", "jquery-ui", "blitzer").to_s
-                  #config.assets.paths.unshift Rails.root.join("lib", "assets", "jquery-ui", "dark-hive").to_s
-                  #config.assets.paths.unshift Rails.root.join("lib", "assets", "jquery-ui", "black-tie").to_s
-                end
+    jquitheme = %w(blitzer dark-hive black-tie)
+    jquicss = 'jquery-ui-1.9.1.custom.min.css'
+    
+    jquitheme.each do |t|
+      config.assets.precompile << "#{t}/#{jquicss}"
+    end
   end
 end
