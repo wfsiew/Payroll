@@ -1,5 +1,5 @@
 var theme = ( function() {
-  var default_theme = 'blacktie';
+  var default_theme = 'blitzer';
   
   function init() {
     var select_close = $('#theme_option .cancelicon');
