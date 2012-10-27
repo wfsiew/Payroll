@@ -11,19 +11,19 @@
 <body class="ui-widget-content">
   <table class="heading">
     <tr>
-      <td valign="top"><%= t('payslip.name') %> : <%= @employee.firstname %> <%= @employee.middlename %> <%= @employee.lastname %></td>
+      <td valign="top"><span class="boldtext"><%= t('payslip.name') %></span> : <%= @employee.firstname %> <%= @employee.middlename %> <%= @employee.lastname %></td>
       <td align="right">
         <table>
           <tr>
-            <td align="left"><%= t('payslip.period') %></td>
+            <td align="left"><span class="boldtext"><%= t('payslip.period') %></span></td>
             <td> : <%= @period %></td>
           </tr>
           <tr>
-            <td align="left"><%= t('payslip.code') %></td>
+            <td align="left"><span class="boldtext"><%= t('payslip.code') %></span></td>
             <td> : <%= @employee.code %></td>
           </tr>
           <tr>
-            <td align="left"><%= t('payslip.icno') %></td>
+            <td align="left"><span class="boldtext"><%= t('payslip.icno') %></span></td>
             <td> : <%= @employee.icno %></td>
           </tr>
         </table>
@@ -41,43 +41,43 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="det"><%= t('payslip.basicpay') %></span></td>
+        <td><span class="det boldtext"><%= t('payslip.basicpay') %></span></td>
         <td class="amt"><span><%= number_to_currency @employee.salary, :unit => '' %></span></td>
-        <td><span class="det"><%= t('payslip.epf') %></span></td>
+        <td><span class="det boldtext"><%= t('payslip.epf') %></span></td>
         <td class="amt"><span><%= number_to_currency @setting.epf, :unit => '' %></span></td>
       </tr>
       <tr>
-        <td><span class="det"><%= t('payslip.dailyallowance') %></span></td>
+        <td><span class="det boldtext"><%= t('payslip.dailyallowance') %></span></td>
         <td class="amt"><span><%= number_to_currency @setting.dailyallowance, :unit => '' %></span></td>
-        <td><span class="det"><%= t('payslip.socso') %></span></td>
+        <td><span class="det boldtext"><%= t('payslip.socso') %></span></td>
         <td class="amt"><span><%= number_to_currency @setting.socso, :unit => '' %></span></td>
       </tr>
       <tr>
         <td></td>
         <td></td>
-        <td><span class="det"><%= t('payslip.incometax') %></span></td>
+        <td><span class="det boldtext"><%= t('payslip.incometax') %></span></td>
         <td class="amt"><span><%= number_to_currency @setting.incometax, :unit => '' %></span></td>
       </tr>
       <tr>
-        <td class="sum amt"><span><%= t('payslip.total') %> : </span></td>
+        <td class="sum amt boldtext"><span><%= t('payslip.total') %> : </span></td>
         <td class="sum amt"><span><%= number_to_currency @total_earnings, :unit => '' %></span></td>
-        <td class="sum amt"><span><%= t('payslip.total') %> : </span></td>
+        <td class="sum amt boldtext"><span><%= t('payslip.total') %> : </span></td>
         <td class="sum amt"><span><%= number_to_currency @total_deduct, :unit => '' %></span></td>
       </tr>
       <tr>
         <td colspan="2"></td>
-        <td class="amt"><span><%= t('payslip.nettpay') %> : </span></td>
+        <td class="amt boldtext"><span><%= t('payslip.nettpay') %> : </span></td>
         <td class="amt"><span><%= number_to_currency @nett_salary, :unit => '' %></span></td>
       </tr>
     </tbody>
   </table>
   <table class="subdet">
     <tr>
-      <td><%= t('payslip.epfno') %></td>
+      <td><span class="boldtext"><%= t('payslip.epfno') %></span></td>
       <td> : <%= @employee.epfno %></td>
     </tr>
     <tr>
-      <td><%= t('payslip.socsono') %></td>
+      <td><span class="boldtext"><%= t('payslip.socsono') %></span></td>
       <td> : <%= @employee.socso %></td>
     </tr>
   </table>

@@ -8,9 +8,9 @@ var theme = ( function() {
     });
     
     $.themes.init({
-      themes: ['blitzer', 'darkhive', 'blacktie'],
-              defaultTheme: default_theme,
-              onSelect: reload_IE
+      themes : ['blitzer', 'darkhive', 'blacktie'],
+      defaultTheme : default_theme,
+      onSelect : reload_IE
     });
     $('#theme_body').themes();
     $("#main_options").click(show_options);
@@ -21,10 +21,15 @@ var theme = ( function() {
     $('#theme_option').slideToggle();
   }
   
+  function current_theme() {
+    return $.themes.currentTheme;
+  }
+  
   function reload_IE(id, display, url) {
   }
   
   return {
-    init : init
+    init : init,
+    current_theme : current_theme
   }
 }());

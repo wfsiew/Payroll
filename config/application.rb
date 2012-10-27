@@ -64,9 +64,9 @@ module Payroll
     initializer :after_append_asset_paths,
                 :group => :all,
                 :after => :append_assets_path do
-                  config.assets.paths.unshift Rails.root.join("lib", "assets", "jquery-ui", "blitzer").to_s
-                  config.assets.paths.unshift Rails.root.join("lib", "assets", "jquery-ui", "dark-hive").to_s
-                  config.assets.paths.unshift Rails.root.join("lib", "assets", "jquery-ui", "black-tie").to_s
+                  #config.assets.paths.unshift Rails.root.join("lib", "assets", "jquery-ui", "blitzer").to_s
+                  #config.assets.paths.unshift Rails.root.join("lib", "assets", "jquery-ui", "dark-hive").to_s
+                  #config.assets.paths.unshift Rails.root.join("lib", "assets", "jquery-ui", "black-tie").to_s
                 end
   end
 end

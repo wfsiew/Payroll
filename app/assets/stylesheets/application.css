@@ -10,7 +10,7 @@
  *
  *= require_self
  * require blitzer/jquery_ui
- *= require jquery
+ *= require jquery.themes
  *= require base
  * require_tree .
  */

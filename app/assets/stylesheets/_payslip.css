@@ -1,5 +1,6 @@
 /*
  *= require_self
  *= require base
- *= require blitzer/jquery_ui
+ * require blitzer/jquery_ui
+ *= require jquery.themes
  */

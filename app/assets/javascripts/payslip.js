@@ -4,6 +4,9 @@ var payslip = ( function() {
       $('.print_button').click(function() {
         print();
       });
+      var w = opener;
+      var theme = w.theme.current_theme;
+      $.themes.init({defaultTheme : theme});
     }
 
     return {
