@@ -17,6 +17,7 @@
 //= require libs
 //= require utils
 //= require nav_list
+//= require theme
 //= require base
 //= require menu
 //= require emp

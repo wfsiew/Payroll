@@ -181,6 +181,28 @@ div.row_button {
   height: 20px;
 }
 
+.aligncenter {
+  text-align: center;
+}
+
+#main_options {
+  float: right;
+  margin-right: 20px;
+  margin-top: 10px;
+  display: inline-block;
+  width: 70px;
+  text-align: justify;
+}
+
+.theme_options {
+  display: none;
+  height: 82px;
+  position: absolute;
+  top: 45px;
+  left: 890px;
+  z-index: 3000;
+}
+
 input[type='text'], input[type='password'] {
   border: 1px solid #ccc;
 }
@@ -276,4 +298,7 @@ input[type='text']:FOCUS, input[type='password']:FOCUS {
 }
 .printicon {
   background-position: 0 -168px !important;
+}
+.optionicon {
+  background-position: 0 -189px !important;
 }
