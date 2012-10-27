@@ -1,7 +1,7 @@
 <div id="menu">
   <h3><%= link_to t('general.admin'), '#' %></h3>
   <div>
-    <div><%= link_to t('general.employee'), '#', :onclick => "return emp.load()" %></div>
+    <div><%= link_to t('general.employee'), '#', :onclick => "return emp.load()", :id => 'menu_emp' %></div>
     <div><%= link_to t('general.designation'), '#', :onclick => "return des.load()" %></div>
     <div><%= link_to t('general.setting'), '#', :onclick => "return conf.load()" %></div>
     <div> <%= link_to t('general.user'), '#', :onclick => "return user.load()" %></div>

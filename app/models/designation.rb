@@ -1,8 +1,8 @@
 class Designation < ActiveRecord::Base
   attr_accessible :id, :title
   
-  has_many :employee
-  has_one :setting
+  has_many :employee, :dependent => :nullify
+  has_one :setting, :dependent => :nullify
   
   self.table_name = 'designation'
   

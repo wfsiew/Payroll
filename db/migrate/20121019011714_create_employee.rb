@@ -13,7 +13,7 @@ class CreateEmployee < ActiveRecord::Migration
       t.string :state, :null => false
       t.string :postalcode, :null => false
       t.string :country, :null => false
-      t.integer :designation_id
+      t.references :designation
       t.string :epfno, :null => false
       t.string :socso, :null => false
     end
