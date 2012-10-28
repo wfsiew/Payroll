@@ -159,7 +159,8 @@
 
       var val = $('#id_pg').val();
       var arr = val.split(',');
-      var currpg = parseInt(arr[3], 10); --currpg;
+      var currpg = parseInt(arr[3], 10);
+      --currpg;
       var pgsize = $('#id_display').val();
       var search_by = $('#id_selection').val();
       var keyword = $('#id_query').val();

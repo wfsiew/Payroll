@@ -11,6 +11,7 @@
      */
     function show_list() {
       $('#id_display').data('pgnum', 1);
+      utils.stop_filter_timer();
       update_list();
     }
 
