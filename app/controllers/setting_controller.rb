@@ -55,7 +55,7 @@ class SettingController < ApplicationController
                     :epf => params[:epf], :socso => params[:socso], :incometax => params[:incometax])
                     
     if o.save
-      render :json => { :success => 1 }
+      render :json => { :success => 1, :message => t('setting.create_success') }
       
     else
       render :json => SettingHelper.get_errors(o.errors, params)
@@ -81,7 +81,7 @@ class SettingController < ApplicationController
     
     if o.update_attributes(:designation_id => params[:designation_id], :dailyallowance => params[:dailyallowance],
                            :epf => params[:epf], :socso => params[:socso], :incometax => params[:incometax])
-      render :json => { :success => 1 }
+      render :json => { :success => 1, :message => t('setting.update_success') }
       
     else
       render :json => SettingHelper.get_errors(o.errors, params)
@@ -99,6 +99,6 @@ class SettingController < ApplicationController
     
     itemscount = SettingHelper.item_message(keyword, pgnum, pgsize)
     
-    render :json => { :success => 1, :itemscount => itemscount }
+    render :json => { :success => 1, :itemscount => itemscount, :message => t('setting.delete_success', :value => ids.size) }
   end
 end

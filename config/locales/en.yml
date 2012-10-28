@@ -32,6 +32,9 @@ en:
     title: Designation
     add: Add New Designation
     edit: Edit Designation
+    create_success: Designation was successfully added.
+    update_success: Designation was successfully updated.
+    delete_success: "%{value} designation(s) was successfully deleted."
     field:
       title: Title
     placeholder:
@@ -64,6 +67,9 @@ en:
     title: Employee
     add: Add New Employee
     edit: Edit Employee
+    create_success: Employee was successfully added.
+    update_success: Employee was successfully updated.
+    delete_success: "%{value} employee(s) was successfully deleted."
     field:
       code: Employee Code
       firstname: First Name
@@ -100,6 +106,9 @@ en:
     title: Setting
     add: Add New Setting
     edit: Edit Setting
+    create_success: Setting was successfully added.
+    update_success: Setting was successfully updated.
+    delete_success: "%{value} setting(s) was successfully deleted."
     field:
       dailyallowance: Daily Allowance
       epf: EPF
@@ -126,6 +135,9 @@ en:
     title: User
     add: Add New User
     edit: Edit User
+    create_success: User was successfully added.
+    update_success: User was successfully updated.
+    delete_success: "%{value} user(s) was successfully deleted."
     field:
       username: Username
       password: Password

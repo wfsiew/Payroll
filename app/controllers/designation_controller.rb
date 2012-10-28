@@ -53,7 +53,7 @@ class DesignationController < ApplicationController
     o = Designation.new(:title => params[:title])
     
     if o.save
-      render :json => { :success => 1 }
+      render :json => { :success => 1, :message => t('designation.create_success') }
       
     else
       render :json => DesignationHelper.get_errors(o.errors, params)
@@ -77,7 +77,7 @@ class DesignationController < ApplicationController
     o = Designation.find(params[:id])
     
     if o.update_attributes(:title => params[:title])
-      render :json => { :success => 1 }
+      render :json => { :success => 1, :message => t('designation.update_success') }
         
     else
       render :json => DesignationHelper.get_errors(o.errors, params)
@@ -95,6 +95,6 @@ class DesignationController < ApplicationController
     
     itemscount = DesignationHelper.item_message(keyword, pgnum, pgsize)
     
-    render :json => { :success => 1, :itemscount => itemscount }
+    render :json => { :success => 1, :itemscount => itemscount, :message => t('designation.delete_success', :value => ids.size) }
   end
 end

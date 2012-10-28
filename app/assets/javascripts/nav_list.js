@@ -33,11 +33,10 @@
         param['sortdir'] = sort['dir'];
       }
       
-      $.post(config.list_url, param,
-        function(result) {
-          $('#right_box').html(result);
-          init_navigate();
-        });
+      $.post(config.list_url, param, function(result) {
+        $('#right_box').html(result);
+        init_navigate();
+      });
     }
 
     /**

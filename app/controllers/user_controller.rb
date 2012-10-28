@@ -53,7 +53,7 @@ class UserController < ApplicationController
     o = User.new(:username => params[:username], :pwd => params[:pwd], :pwd_confirmation => params[:pwdconfirm])
     
     if o.save
-      render :json => { :success => 1 }
+      render :json => { :success => 1, :message => t('user.create_success') }
       
     else
       render :json => UserHelper.get_errors(o.errors, params)
@@ -77,7 +77,7 @@ class UserController < ApplicationController
     o = User.find(params[:id])
 
     if o.update_attributes(:username => params[:username], :pwd => params[:pwd], :pwd_confirmation => params[:pwdconfirm])
-      render :json => { :success => 1 }
+      render :json => { :success => 1, :message => t('user.update_success') }
         
     else
       render :json => UserHelper.get_errors(o.errors, params)
@@ -95,6 +95,6 @@ class UserController < ApplicationController
     
     itemscount = UserHelper.item_message(keyword, pgnum, pgsize)
     
-    render :json => { :success => 1, :itemscount => itemscount }
+    render :json => { :success => 1, :itemscount => itemscount, :message => t('user.delete_success', :value => ids.size) }
   end
 end

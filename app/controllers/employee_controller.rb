@@ -66,7 +66,7 @@ class EmployeeController < ApplicationController
     if address_valid && employee_valid
       o.address = a
       if o.save
-        render :json => { :success => 1 }
+        render :json => { :success => 1, :message => t('employee.create_success') }
           
       else
         render :json => EmployeeHelper.get_errors(o.errors, a.errors, params)
@@ -112,7 +112,7 @@ class EmployeeController < ApplicationController
     if address_valid && employee_valid
       o.address = a
       if o.save
-        render :json => { :success => 1 }
+        render :json => { :success => 1, :message => t('employee.update_success') }
           
       else
         render :json => EmployeeHelper.get_errors(o.errors, a.errors, params)
@@ -135,6 +135,6 @@ class EmployeeController < ApplicationController
     
     itemscount = EmployeeHelper.item_message(find, keyword, pgnum, pgsize)
     
-    render :json => { :success => 1, :itemscount => itemscount }
+    render :json => { :success => 1, :itemscount => itemscount, :message => t('employee.delete_success', :value => ids.size) }
   end
 end

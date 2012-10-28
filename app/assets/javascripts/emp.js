@@ -57,8 +57,10 @@
       $('#add-form input').next().remove();
       $('#add-form select').next().remove();
       $.post(url.create, data, function(result) {
-        if (result.success == 1)
+        if (result.success == 1) {
+          stat.show_status(0, result.message);
           save_success();
+        }
           
         else if (result.error == 1) {
           for (var e in result.errors) {
@@ -110,8 +112,10 @@
       $('#edit-form input').next().remove();
       $('#edit-form select').next().remove();
       $.post(url.update + id, data, function(result) {
-        if (result.success == 1)
+        if (result.success == 1) {
+          stat.show_status(0, result.message);
           update_success();
+        }
         
         else if (result.error == 1) {
           for (var e in result.errors) {
@@ -174,6 +178,7 @@
 
       $.post(url.del, data, function(result) {
         if (result.success == 1) {
+          stat.show_status(0, result.message);
           nav_list.set_item_msg(result.itemscount);
           var tr = $(trlist.join(','));
           tr.remove();

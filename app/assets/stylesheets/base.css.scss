@@ -203,6 +203,14 @@ div.row_button {
   z-index: 3000;
 }
 
+#status-panel {
+  width: 300px;
+  position: absolute;
+  top: -14px;
+  left: 20px;
+  display: none;
+}
+
 input[type='text'], input[type='password'] {
   border: 1px solid #ccc;
 }
