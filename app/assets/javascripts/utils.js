@@ -67,10 +67,11 @@
       var o = $(id);
       try {
         o.dialog('destroy');
-        o.remove();
       }
       
       catch (e) {}
+      
+      o.remove();
     }
 
     /**
