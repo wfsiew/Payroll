@@ -5,8 +5,8 @@ var payslip = ( function() {
         print();
       });
       var w = opener;
-      var theme = w.theme.current_theme;
-      $.themes.init({defaultTheme : theme});
+      var _theme = w.theme.current_theme();
+      $.themes.init({defaultTheme : _theme});
     }
 
     return {
