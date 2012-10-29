@@ -26,7 +26,7 @@
       $('#dialog_add_body').load(url.add, function() {
         $('.save_button.save').click(func_save);
         $('.save_button.cancel').click(func_cancel_add);
-        $('#add-form').tooltip();
+        $('#add-form').tooltip({track: true});
         utils.bind_hover($('.save_button'));
         $('#dialog-add').dialog('open');
       });
@@ -100,7 +100,7 @@
           return func_update(id);
         });
         $('.save_button.cancel').click(func_cancel_edit);
-        $('#edit-form').tooltip();
+        $('#edit-form').tooltip({track: true});
         utils.bind_hover($('.save_button'));
         $('#dialog-edit').dialog('open');
       });
@@ -247,7 +247,7 @@
       $('#id_display,#id_selection').change(nav_list.show_list);
       $('#id_query').keypress(nav_list.query_keypress);
       $('#id_query').keyup(nav_list.query_keyup);
-      $('#id_query').tooltip();
+      $('#id_query').tooltip({track: true});
       $('#dialog-add').dialog(popup_dialog_opt);
       $('#dialog-edit').dialog(popup_dialog_opt);
       utils.init_alert_dialog('#dialog-message');
