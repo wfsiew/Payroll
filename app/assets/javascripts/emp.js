@@ -26,7 +26,7 @@
       $('#dialog_add_body').load(url.add, function() {
         $('.save_button.save').click(func_save);
         $('.save_button.cancel').click(func_cancel_add);
-        $('#add-form').tooltip({track: true});
+        $('#add-form').tooltip({track: false});
         utils.bind_hover($('.save_button'));
         $('#dialog-add').dialog('open');
       });
@@ -100,7 +100,7 @@
           return func_update(id);
         });
         $('.save_button.cancel').click(func_cancel_edit);
-        $('#edit-form').tooltip({track: true});
+        $('#edit-form').tooltip({track: false});
         utils.bind_hover($('.save_button'));
         $('#dialog-edit').dialog('open');
       });
