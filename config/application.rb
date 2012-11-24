@@ -59,10 +59,10 @@ module Payroll
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     
-    config.assets.precompile += %w(_payslip.css _payslip.js blitzer/jquery-ui-1.9.1.custom.min.css)
+    config.assets.precompile += %w(_payslip.css _payslip.js blitzer/jquery-ui-1.9.2.custom.min.css)
     
     jquitheme = %w(blitzer dark-hive trontastic humanity)
-    jquicss = 'jquery-ui-1.9.1.custom.min.css'
+    jquicss = 'jquery-ui-1.9.2.custom.min.css'
     
     jquitheme.each do |t|
       config.assets.precompile << "#{t}/#{jquicss}"

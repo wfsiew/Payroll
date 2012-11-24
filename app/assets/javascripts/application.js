@@ -11,7 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require_self
-//= require jquery
+//= require jquery_lib
 //= require jquery_ujs
 //= require jquery_ui
 //= require libs
