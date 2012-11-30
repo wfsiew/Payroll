@@ -8,12 +8,12 @@ body {
 }
 
 #maincontainer {
-  width: 840px; /*Width of main container*/
+  /*width: 840px; /*Width of main container*/
 }
 
 #topsection {
   height: 40px; /*Height of top section*/
-  width: 995px;
+  /*width: 995px;*/
 }
 
 #contentwrapper {
@@ -28,7 +28,8 @@ body {
 #leftcolumn {
   float: left;
   width: 200px; /*Width of left column*/
-  margin-left: -840px; /*Set left margin to -(MainContainerWidth)*/
+  /*margin-left: -840px; /*Set left margin to -(MainContainerWidth)*/
+  margin-left: -100%;
 }
 
 .innertube {
@@ -50,7 +51,7 @@ body {
 }
 
 #table_container {
-  width: 790px;
+  /*width: 790px;*/
   border: 1px solid #cccccc;
 }
 
@@ -70,6 +71,10 @@ body {
 .search_option {
   width: 100px;
   font-size: 1em;
+}
+
+.search {
+  width: 40%;
 }
 
 .list_table {
