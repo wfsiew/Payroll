@@ -220,6 +220,7 @@
     function init() {
       init_ui_opt();
       $('#id_add').click(show_form);
+      $('#id_delete').click(func_delete);
       $('#id_find').click(nav_list.show_list);
       $('#id_display').change(nav_list.show_list);
       $('#id_query').keypress(nav_list.query_keypress);
