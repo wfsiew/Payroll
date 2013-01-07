@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: MyString
+  salary: 9.99
+  allowance: 9.99
+  bank_name: MyString
+  bank_acc_no: MyString
+  bank_acc_type: MyString
+  bank_address: MyString
+  epf_no: MyString
+  socso_no: MyString
+  income_tax_no: MyString
+  pay_type: 1
+  hourly_pay_rate: 9.99
+
+two:
+  id: MyString
+  salary: 9.99
+  allowance: 9.99
+  bank_name: MyString
+  bank_acc_no: MyString
+  bank_acc_type: MyString
+  bank_address: MyString
+  epf_no: MyString
+  socso_no: MyString
+  income_tax_no: MyString
+  pay_type: 1
+  hourly_pay_rate: 9.99

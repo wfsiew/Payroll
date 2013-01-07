@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: MyString
+  designation_id: 1
+  department_id: 1
+  employment_status_id: 1
+  job_category_id: 1
+  join_date: 2012-12-17
+  confirm_date: 2012-12-17
+
+two:
+  id: MyString
+  designation_id: 1
+  department_id: 1
+  employment_status_id: 1
+  job_category_id: 1
+  join_date: 2012-12-17
+  confirm_date: 2012-12-17

@@ -1,35 +1,37 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  ID: 
-  Code: MyString
-  FirstName: MyString
-  MiddleName: MyString
-  LastName: MyString
-  ICNo: MyString
-  Salary: 1.5
-  Street: MyString
-  City: MyString
-  State: MyString
-  PostalCode: MyString
-  Country: MyString
-  Designation: 1
-  epfNo: MyString
-  socso: MyString
+  id: MyString
+  employee_id: MyString
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  new_ic: MyString
+  old_ic: MyString
+  passport_no: MyString
+  gender: MyString
+  marital_status: MyString
+  nationality: MyString
+  dob: 2012-12-17
+  place_of_birth: MyString
+  race: MyString
+  religion: MyString
+  is_bumi: false
 
 two:
-  ID: 
-  Code: MyString
-  FirstName: MyString
-  MiddleName: MyString
-  LastName: MyString
-  ICNo: MyString
-  Salary: 1.5
-  Street: MyString
-  City: MyString
-  State: MyString
-  PostalCode: MyString
-  Country: MyString
-  Designation: 1
-  epfNo: MyString
-  socso: MyString
+  id: MyString
+  employee_id: MyString
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  new_ic: MyString
+  old_ic: MyString
+  passport_no: MyString
+  gender: MyString
+  marital_status: MyString
+  nationality: MyString
+  dob: 2012-12-17
+  place_of_birth: MyString
+  race: MyString
+  religion: MyString
+  is_bumi: false
