@@ -28,4 +28,5 @@
 //= require admin/jobcat
 //= require admin/dept
 //= require admin/payrate
+//= require admin/chart
 // require_tree .

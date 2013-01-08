@@ -39,6 +39,10 @@ body {
 }
 
 #progress_status {
+  width: 200px;
+  position: absolute;
+  top: -14px;
+  left: 20px;
   display: none;
 }
 

@@ -73,6 +73,10 @@ Payroll::Application.routes.draw do
       match 'update(/:id)' => 'pay_rate#update', :as => :update, :via => :post
       match 'delete' => 'pay_rate#destroy', :as => :delete, :via => :post
     end
+    
+    scope 'chart', :as => 'chart' do
+      match '' => 'chart#index', :via => :get
+    end
   end
   
   scope 'setting', :as => 'setting' do
