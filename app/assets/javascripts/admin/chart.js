@@ -6,7 +6,10 @@ var cht = ( function() {
     }
 
     function chart() {
-      var colors = Highcharts.getOptions().colors, categories = ['MSIE', 'Firefox', 'Chrome', 'Safari', 'Opera'], name = 'Browser brands', data = [{
+      var colors = Highcharts.getOptions().colors, 
+      categories = ['MSIE', 'Firefox', 'Chrome', 'Safari', 'Opera'], 
+      name = 'Browser brands', 
+      data = [{
         y : 55.11,
         color : colors[0],
         drilldown : {
@@ -186,4 +189,4 @@ var cht = ( function() {
     return {
       load : load
     };
-  }()); 
+  }());

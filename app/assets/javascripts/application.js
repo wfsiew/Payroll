@@ -21,10 +21,6 @@
 //= require stat
 //= require base
 //= require menu
-//= require emp
-//= require des
-//= require conf
-//= require user
 //= require payroll
 //= require sort
 // require_tree .
