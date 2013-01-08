@@ -9,5 +9,10 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def month_name(i)
+    ApplicationHelper.month_name(i)
+  end
+  
   helper_method :fmt_date
+  helper_method :month_name
 end

@@ -90,12 +90,6 @@ module ApplicationHelper
     def self.numeric?(val)
       true if Float(val) rescue false
     end
-    
-    # Get month name for the specified month number,
-    # e.g return January for 1
-    def self.month_name(i)
-      Date::MONTHNAMES[i]
-    end
   end
   
   class Sort
@@ -109,5 +103,15 @@ module ApplicationHelper
     def to_s
       "#{@column} #{@direction}"
     end
+  end
+  
+  # Get month name for the specified month number,
+  # e.g return January for 1
+  def self.month_name(i)
+    Date::MONTHNAMES[i]
+  end
+  
+  def self.date_fmt
+    '%d-%m-%Y'
   end
 end

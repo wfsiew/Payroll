@@ -4,7 +4,7 @@
       <tr>
         <th class="data chkbox"><input class="hdchk" type="checkbox" /></th>
         <th class="data">
-          <div id="hd_id" class="sortheader hover">
+          <div id="hd_staff_id" class="sortheader hover">
             <span class="colheader">Id</span>
             <span class="sorticon"></span>
           </div>
@@ -37,13 +37,13 @@
     </thead>
     <tbody>
     <% @data[:list].each do |o| %>
-      <tr id="<%= o.id %>" month="<%= o.month %>" year="<%= o.year %>" class="<%= cycle("ui-state-active", "ui-state-default") %>">
+      <tr id="tr_<%= o.id %>" class="<%= cycle("ui-state-active", "ui-state-default") %>">
         <td class="data chkbox"><input class="chk" type="checkbox" /></td>
-        <td class="data"><%= h o.id %></td>
-        <td class="data"><%= h o.total_hours %></td>
-        <td class="data"><%= h o.month %></td>
+        <td class="data"><%= h o.staff_id %></td>
+        <td class="data"><%= number_with_precision o.total_hours, :precision => 2 %></td>
+        <td class="data"><%= h month_name(o.month) %></td>
         <td class="data"><%= h o.year %></td>
-        <td class="data"><%= h o.hourly_pay_rate %></td>
+        <td class="data"><%= number_with_precision o.hourly_pay_rate, :precision => 2 %></td>
       </tr>
     <% end %>
     </tbody>

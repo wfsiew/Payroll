@@ -1,8 +1,9 @@
-class EmployeePayroll < ActiveRecord::Base
-  attr_accessible :hourly_pay_rate, :id, :month, :total_hours, :year
+class PayRate < ActiveRecord::Base
+  attr_accessible :hourly_pay_rate, :id, :month, :staff_id, :total_hours, :year
   
-  self.table_name = 'employee_payroll'
+  self.table_name = 'pay_rate'
   
+  validates_presence_of :staff_id, :message => 'Satff ID is required'
   validates_presence_of :total_hours, :message => 'Total hours is required'
   validates_presence_of :month, :message => 'Month is required'
   validates_presence_of :year, :message => 'Year is required'

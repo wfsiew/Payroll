@@ -76,7 +76,7 @@ var emp = ( function() {
               if (!d) {
                 var o = {
                   field : e,
-                  msg : result.employee.errors[e]
+                  msg : result.employee.errors[e][0]
                 };
                 var h = new EJS({
                   url : '/assets/tpl/label_error.html',
@@ -100,7 +100,7 @@ var emp = ( function() {
               if (!d) {
                 var o = {
                   field : e,
-                  msg : result.employee_contact.errors[e]
+                  msg : result.employee_contact.errors[e][0]
                 };
                 var h = new EJS({
                   url : '/assets/tpl/label_error_inline.html',
@@ -117,7 +117,7 @@ var emp = ( function() {
               if (!d) {
                 var o = {
                   field : e,
-                  msg : result.employee_job.errors[e]
+                  msg : result.employee_job.errors[e][0]
                 };
                 var h = new EJS({
                   url : '/assets/tpl/label_error_inline.html',
@@ -137,7 +137,7 @@ var emp = ( function() {
               if (!d) {
                 var o = {
                   field : e,
-                  msg : result.employee_salary.errors[e]
+                  msg : result.employee_salary.errors[e][0]
                 };
                 var h = new EJS({
                   url : '/assets/tpl/label_error_inline.html',
@@ -153,7 +153,7 @@ var emp = ( function() {
               if (!d) {
                 var o = {
                   field : e,
-                  msg : result.employee_qualification.errors[e]
+                  msg : result.employee_qualification.errors[e][0]
                 };
                 var h = new EJS({
                   url : '/assets/tpl/label_error_inline.html',
@@ -219,7 +219,7 @@ var emp = ( function() {
               if (!d) {
                 var o = {
                   field : e,
-                  msg : result.employee.errors[e]
+                  msg : result.employee.errors[e][0]
                 };
                 var h = new EJS({
                   url : '/assets/tpl/label_error.html',
@@ -243,7 +243,7 @@ var emp = ( function() {
               if (!d) {
                 var o = {
                   field : e,
-                  msg : result.employee_contact.errors[e]
+                  msg : result.employee_contact.errors[e][0]
                 };
                 var h = new EJS({
                   url : '/assets/tpl/label_error_inline.html',
@@ -260,7 +260,7 @@ var emp = ( function() {
               if (!d) {
                 var o = {
                   field : e,
-                  msg : result.employee_job.errors[e]
+                  msg : result.employee_job.errors[e][0]
                 };
                 var h = new EJS({
                   url : '/assets/tpl/label_error_inline.html',
@@ -280,7 +280,7 @@ var emp = ( function() {
               if (!d) {
                 var o = {
                   field : e,
-                  msg : result.employee_salary.errors[e]
+                  msg : result.employee_salary.errors[e][0]
                 };
                 var h = new EJS({
                   url : '/assets/tpl/label_error_inline.html',
@@ -296,7 +296,7 @@ var emp = ( function() {
               if (!d) {
                 var o = {
                   field : e,
-                  msg : result.employee_qualification.errors[e]
+                  msg : result.employee_qualification.errors[e][0]
                 };
                 var h = new EJS({
                   url : '/assets/tpl/label_error_inline.html',

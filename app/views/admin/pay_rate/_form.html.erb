@@ -2,10 +2,10 @@
   <table>
     <tr>
       <td valign="top" class="lbl">
-        <%= label_tag :id, 'Staff ID', :class => 'label' %>
+        <%= label_tag :staff_id, 'Staff ID', :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :id, @payrate.id, :id => 'id_id', :class => 'text', :placeholder => 'enter staff id',
+        <%= text_field_tag :staff_id, @payrate.staff_id, :id => 'id_staff_id', :class => 'text', :placeholder => 'enter staff id',
                            :title => 'enter staff id' %>
       </td>
     </tr>
@@ -23,8 +23,7 @@
         <%= label_tag :month, 'Month', :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :month, @payrate.month, :id => 'id_month', :class => 'text', :placeholder => 'enter month',
-                           :title => 'enter month' %>
+        <%= select_tag :month, options_for_select(@month_hash, @payrate.month), :id => 'id_month', :class => 'select' %>
       </td>
     </tr>
     <tr>

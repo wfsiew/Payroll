@@ -71,14 +71,6 @@ ActiveRecord::Schema.define(:version => 20130108011912) do
     t.date    "confirm_date"
   end
 
-  create_table "employee_payroll", :id => false, :force => true do |t|
-    t.string  "id",              :limit => 40, :null => false
-    t.float   "total_hours",                   :null => false
-    t.integer "month",                         :null => false
-    t.integer "year",                          :null => false
-    t.float   "hourly_pay_rate",               :null => false
-  end
-
   create_table "employee_qualification", :force => true do |t|
     t.integer "level",                                     :null => false
     t.string  "institute",                                 :null => false
@@ -113,6 +105,14 @@ ActiveRecord::Schema.define(:version => 20130108011912) do
   end
 
   add_index "job_category", ["name"], :name => "name", :unique => true
+
+  create_table "pay_rate", :force => true do |t|
+    t.string  "staff_id",        :null => false
+    t.float   "total_hours",     :null => false
+    t.integer "month",           :null => false
+    t.integer "year",            :null => false
+    t.float   "hourly_pay_rate", :null => false
+  end
 
   create_table "user", :force => true do |t|
     t.integer "role",     :null => false

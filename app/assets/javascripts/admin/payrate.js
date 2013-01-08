@@ -84,17 +84,53 @@ var payrate = ( function() {
       return false;
     }
     
-    function func_edit(id, month, year) {
-      if (!id || !month || !year)
+    function func_edit(id) {
+      if (!id)
         return false;
         
-      
+      id = utils.get_itemid(id);
+      $('#dialog_edit_body').load(url.edit + id, function() {
+        $('.save_button.save').click(function() {
+          return func_update(id);
+        });
+        $('.save_button.cancel').click(func_cancel_edit);
+        $('#edit-form').tooltip({track: true});
+        utils.bind_hover($('.save_button'));
+        $('#dialog-edit').dialog('open');
+      });
       return false;
     }
     
-    function func_update(id, month, year) {
+    function func_update(id) {
       var data = get_data('edit');
-      
+      $('#edit-form input').next().remove();
+      $.post(url.update + id, data, function(result) {
+        if (result.success == 1) {
+          stat.show_status(0, result.message);
+          update_success();
+        }
+        
+        else if (result.error == 1) {
+          for (var e in result.errors) {
+            var d = $('#error_' + e).get(0);
+            if (!d) {
+              var o = {
+                field : e,
+                msg : result.errors[e][0]
+              };
+              var h = new EJS({
+                url : '/assets/tpl/label_error.html',
+                ext : '.html'
+              }).render(o);
+              $("#edit-form input[name='" + e + "']").after(h);
+            }
+          }
+        }
+        
+        else
+          utils.show_dialog(2, result);
+      });
+
       return false;
     }
     
@@ -154,7 +190,7 @@ var payrate = ( function() {
       var form = (t == 'add' ? $('#add-form') : $('#edit-form'));
 
       var data = {
-        id : form.find('#id_id').val(),
+        staff_id : form.find('#id_staff_id').val(),
         total_hours : form.find('#id_total_hours').val(),
         month : form.find('#id_month').val(),
         year : form.find('#id_year').val(),
@@ -166,7 +202,7 @@ var payrate = ( function() {
     
     function get_search_param() {
       var param = {
-        id :  encodeURIComponent($('#id_id').val()),
+        staff_id :  encodeURIComponent($('#id_staff_id').val()),
         month : $('#id_month').val(),
         year : $('#id_year').val()
       };
@@ -184,11 +220,8 @@ var payrate = ( function() {
       utils.bind_hoverlist($('.list_table tbody tr'));
       $('.list_table tbody').selectable({
         selected : function(evt, ui) {
-          var o = $(ui.selected);
-          var id = o.attr('id');
-          var month = o.attr('month');
-          var year = o.attr('year');
-          func_edit(id, month, year);
+          var id = ui.selected.id;
+          func_edit(id);
         }
       });
       $('.sortheader').click(sort_list);

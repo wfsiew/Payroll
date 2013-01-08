@@ -37,7 +37,7 @@ class Admin::EmployeeController < Admin::AdminController
                 :designation => designation,
                 :dept => dept }
                 
-    if employee.blank? && staff_id.blank? && employment_status == 0 && supervisor.blank? && designation == 0 && dept == 0
+    if employee.blank? && staff_id.blank? && employment_status == 0 && designation == 0 && dept == 0
       @data = EmployeeHelper.get_all(pgnum, pgsize, sort)
       
     else
