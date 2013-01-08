@@ -1,0 +1,37 @@
+<table>
+  <tr>
+    <td>
+      <%= label_tag :id_username, 'Username', :class => 'label' %>
+    </td>
+    <td class="colspacing">
+      <%= text_field_tag :username, nil, :id => 'id_username', :class => 'text', :placeholder => 'type here to search', :title => 'type here to search' %>
+    </td>
+    <td>
+      <%= label_tag :id_user_role, 'User Role', :class => 'label' %>
+    </td>
+    <td class="colspacing">
+      <select id="id_user_role" class="search_option">
+        <%= options_for_select [['All', 0], ['Admin', 1], ['Normal User', 2]] %>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= label_tag :id_employee, 'Employee Name', :class => 'label' %>
+    </td>
+    <td class="colspacing">
+      <%= text_field_tag :employee, nil, :id => 'id_employee', :class => 'text', :placeholder => 'type here to search', :title => 'type here to search' %>
+    </td>
+    <td>
+      <%= label_tag :id_status, 'Status', :class => 'label' %>
+    </td>
+    <td>
+      <select id="id_status" class="search_option">
+        <%= options_for_select [['All', 0], ['Enabled', 1], ['Disabled', 2]] %>
+      </select>
+    </td>
+  </tr>
+</table>
+<br />
+<% @include_search = true %>
+<%= render 'shared/panel_button' %>

@@ -1,0 +1,40 @@
+<%= form_tag('.', :id => @form_id, :class => 'save_form ui-widget-content ui-widget ui-corner-all') do %>
+  <div id="tabs">
+    <ul>
+      <li>
+        <a href="#tabs-1">Personal Details</a>
+      </li>
+      <li>
+        <a href="#tabs-2">Contact Details</a>
+      </li>
+      <li>
+        <a href="#tabs-3">Job</a>
+      </li>
+      <li>
+        <a href="#tabs-4">Salary</a>
+      </li>
+      <li>
+        <a href="#tabs-5">Qualification</a>
+      </li>
+    </ul>
+    <div id="tabs-1">
+      <%= render 'form_employee' %>
+    </div>
+    <div id="tabs-2">
+      <%= render 'form_employee_contact' %>
+    </div>
+    <div id="tabs-3">
+      <%= render 'form_employee_job' %>
+    </div>
+    <div id="tabs-4">
+      <%= render 'form_employee_salary' %>
+    </div>
+    <div id="tabs-5">
+      <%= render 'form_employee_qualification' %>
+    </div>
+  </div>
+  <div class="row_button">
+    <%= render 'shared/save_button' %>
+    <%= render 'shared/cancel_button' %>
+  </div>
+<% end %>

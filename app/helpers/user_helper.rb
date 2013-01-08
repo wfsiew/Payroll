@@ -15,9 +15,9 @@ module UserHelper
       :list => list, :sortcolumn => sort.column, :sortdir => sort.direction }
   end
   
-  def self.get_filter_by(keyword, pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
+  def self.get_filter_by(filters, pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
     sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
-    criteria = User.where('username like ?', "%#{keyword}%")
+    criteria, order = get_filter_criteria(filters, sort)
     total = criteria.count
     pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
     order = sort.to_s
@@ -30,29 +30,12 @@ module UserHelper
   end
   
   def self.get_errors(errors, attr = {})
-    m = {}
-    errors.each do |k, v|
-      if v == 'user.unique.username'
-        m[k] = I18n.t(v, :value => attr[:username])
-        next
-
-      elsif v == 'user.tooshort.username'
-        m[k] = I18n.t(v, :value => 3)
-        next
-        
-      elsif v == 'user.tooshort.password'
-        m[k] = I18n.t(v, :value => 4)
-        next
-        
-      end
-      m[k] = I18n.t(v)
-    end
-    { :error => 1, :errors => m }
+    { :error => 1, :errors => errors }
   end
   
-  def self.item_message(keyword, pagenum, pagesize)
+  def self.item_message(filters, pagenum, pagesize)
     total = 0
-    if keyword.blank?
+    if filters.blank?
       total = User.count
       pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
       return pager.item_message
@@ -62,6 +45,45 @@ module UserHelper
       total = criteria.count
       pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
       return pager.item_message
+    end
+  end
+  
+  private
+  
+  def self.get_filter_criteria(filters, sort = nil)
+    employee_keyword = "%#{filters[:employee]}%"
+    username_keyword = "%#{filters[:username]}%"
+    order = sort.present? ? sort.to_s : nil
+    if filters[:employee].present?
+      criteria = get_join(filters)
+      
+    else
+      criteria = User
+    end
+    
+    if filters[:username].present?
+      criteria = criteria.where('username like ?', username_keyword)
+    end
+    
+    if filters[:role] != 0
+      criteria = criteria.where(:role => filters[:role])
+    end
+    
+    if filters[:employee].present?
+      criteria = criteria.where('e.first_name like ? or e.middle_name like ? or e.last_name like ?',
+                                 employee_keyword, employee_keyword, employee_keyword)
+    end
+    
+    if filters[:status] != 0
+      criteria = criteria.where(:status => filters[:status] == 1 ? true : false)
+    end
+    
+    return criteria, order
+  end
+  
+  def self.get_join(filters)
+    if filters[:employee].present?
+      User.joins('inner join employee e on user.id = e.user_id')
     end
   end
 end

@@ -134,6 +134,16 @@ body {
   width: 200px;
 }
 
+.textarea {
+  width: 200px;
+  height: 100px;
+}
+
+.textarea2 {
+  width: 250px;
+  height: 50px;
+}
+
 .select {
   width: 202px;
   font-size: 1em;
@@ -215,6 +225,10 @@ div.row_button {
   top: -14px;
   left: 20px;
   display: none;
+}
+
+.colspacing {
+  padding-right: 50px;
 }
 
 input[type='text'], input[type='password'] {

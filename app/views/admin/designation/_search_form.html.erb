@@ -1,0 +1,5 @@
+<%= label_tag :id_selection, 'Search By', :class => 'label' %>
+<select id="id_selection" class="search_option">
+  <%= options_for_select({ 'All' => 0, 'Job Title' => 1, 'Job Description' => 2, 'Note' => 3 }) %>
+</select>
+<%= render 'shared/search_panel' %>

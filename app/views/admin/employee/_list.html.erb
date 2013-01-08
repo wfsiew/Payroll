@@ -1,0 +1,72 @@
+<% if @data.present? && @data[:list].any? %>
+  <table class="list_table">
+    <thead class="ui-widget-header">
+      <tr>
+        <th class="data chkbox"><input class="hdchk" type="checkbox" /></th>
+        <th class="data">
+          <div id="hd_staff_id" class="sortheader hover">
+            <span class="colheader">Id</span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_first_name" class="sortheader hover">
+            <span class="colheader">First (&amp; Middle) Name</span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_last_name" class="sortheader hover">
+            <span class="colheader">Last Name</span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_d-title" class="sortheader hover">
+            <span class="colheader">Job Title</span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_es-name" class="sortheader hover">
+            <span class="colheader">Employment Status</span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_dept-name" class="sortheader hover">
+            <span class="colheader">Department</span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @data[:list].each do |o| %>
+      <tr id="tr_<%= o.id %>" class="<%= cycle("ui-state-active", "ui-state-default") %>">
+        <% ej = o.employee_job %>
+        <td class="data chkbox"><input class="chk" type="checkbox" /></td>
+        <td class="data"><%= h o.staff_id %></td>
+        <td class="data"><%= h o.first_name %></td>
+        <td class="data"><%= h o.last_name %></td>
+        <td class="data">
+          <% if ej.present? %>
+            <%= h ej.designation.title if ej.designation.present? %>
+          <% end %>
+        </td>
+        <td class="data">
+          <% if ej.present? %>
+            <%= h ej.employment_status.name if ej.employment_status.present? %>
+          <% end %>
+        </td>
+        <td class="data">
+          <% if ej.present? %>
+            <%= h ej.department.name if ej.department.present? %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+<input id="id_pg" type="hidden" value="<%= @data[:hasprev] %>,<%= @data[:hasnext] %>,<%= @data[:prevpage] %>,<%= @data[:nextpage] %>,<%= @data[:item_msg] %>,<%= @data[:sortcolumn] %>,<%= @data[:sortdir] %>" />

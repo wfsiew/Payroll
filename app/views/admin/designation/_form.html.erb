@@ -1,0 +1,40 @@
+<%= form_tag('.', :id => @form_id, :class => 'save_form ui-widget-content ui-widget ui-corner-all') do %>
+  <table>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :title, 'Job Title', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :title, @designation.title, :id => 'id_title', :class => 'text', :placeholder => 'enter job title',
+                           :title => 'enter job title' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :desc, 'Job Description', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_area_tag :desc, @designation.desc, :id => 'id_desc', :class => 'textarea', :placeholder => 'enter job description',
+                          :title => 'enter job description' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :note, 'Note', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_area_tag :note, @designation.note, :id => 'id_note', :class => 'textarea', :placeholder => 'enter note',
+                          :title => 'enter note' %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <div class="row_button">
+          <%= render 'shared/save_button' %>
+          <%= render 'shared/cancel_button' %>
+        </div>
+      </td>
+    </tr>
+  </table>
+<% end %>

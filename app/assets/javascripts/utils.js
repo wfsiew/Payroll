@@ -1,6 +1,7 @@
 ﻿var utils = ( function() {
     var typing_timer = null;
     var done_typing_interval = 2000;
+    var date_format = 'dd-mm-yy';
 
     /**
      * @public
@@ -26,7 +27,6 @@
      */
     function init_server_error_dialog() {
       $(document).ajaxError(function(evt, jqXHR, ajaxOptions, errorThrown) {
-        $.unblockUI();
         show_error_dialog(jqXHR.responseText);
       });
       $('#error-dialog').dialog({
@@ -48,14 +48,11 @@
      */
     function init_progress() {
       $(document).ajaxSend(function(evt, jqXHR, ajaxOptions) {
-        $.blockUI({
-          message : $('#progress_status'),
-          css : {
-            border : 'none'
-          }
-        });
+        $('#progress_status').show();
       });
-      $(document).ajaxComplete($.unblockUI);
+      $(document).ajaxComplete(function() {
+        $('#progress_status').hide();
+      });
     }
 
     /**
@@ -213,6 +210,18 @@
         
       return s.replace(a, b);
     }
+    
+    /**
+     * @public
+     * This function returns the options for datepicker. 
+     */
+    function date_opt() {
+      return {
+        dateFormat : date_format,
+        changeMonth : true,
+        changeYear : true
+      };
+    }
 
     return {
       init_alert_dialog : init_alert_dialog,
@@ -228,6 +237,8 @@
       stop_filter_timer : stop_filter_timer,
       get_itemid : get_itemid,
       set_disabled : set_disabled,
-      safe_replace : safe_replace
+      safe_replace : safe_replace,
+      date_format : date_format,
+      date_opt : date_opt
     };
 }());

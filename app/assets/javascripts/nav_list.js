@@ -2,7 +2,9 @@
     var config = {
       list_url : '',
       list_func : null,
-      del_func : null
+      del_func : null,
+      save_func : null,
+      search_param_func : null
     };
 
     /**
@@ -24,7 +26,7 @@
       var pgsize = $('#id_display').val();
       var pgnum = $('#id_display').data('pgnum');
       var sort = get_sort();
-      var param = get_search_param();
+      var param = ($.isFunction(config.search_param_func) ? config.search_param_func() : get_search_param());
       param['pgnum'] = pgnum;
       param['pgsize'] = pgsize;
       
@@ -153,6 +155,14 @@
           
         else
           utils.set_disabled('#id_delete', 1, null);
+      }
+      
+      if ($.isFunction(config.save_func)) {
+        if ($('.list_table')[0] != null)
+          utils.set_disabled('#id_save', 0, config.save_func);
+          
+        else
+          utils.set_disabled('#id_save', 1, null);
       }
       
       sort.init_sort($('#hd_' + utils.safe_replace(arr[5], '.', '-')), arr[6]);

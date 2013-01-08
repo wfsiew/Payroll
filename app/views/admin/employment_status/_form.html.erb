@@ -1,0 +1,22 @@
+<%= form_tag('.', :id => @form_id, :class => 'save_form ui-widget-content ui-widget ui-corner-all') do %>
+  <table>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :name, 'Name', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :name, @empstatus.name, :id => 'id_name', :class => 'text', :placeholder => 'enter name',
+                           :title => 'enter name' %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <div class="row_button">
+          <%= render 'shared/save_button' %>
+          <%= render 'shared/cancel_button' %>
+        </div>
+      </td>
+    </tr>
+  </table>
+<% end %>

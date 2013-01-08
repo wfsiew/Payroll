@@ -1,5 +1,7 @@
+require 'securerandom'
+
 module EmployeeHelper
-  DEFAULT_SORT_COLUMN = 'code'
+  DEFAULT_SORT_COLUMN = 'staff_id'
   DEFAULT_SORT_DIR = 'ASC'
   
   def self.get_all(pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
@@ -11,8 +13,8 @@ module EmployeeHelper
     has_next = pager.has_next? ? 1 : 0
     has_prev = pager.has_prev? ? 1 : 0
     
-    if sort.column == 'd.title'
-      criteria = get_join_designation
+    if sort.column == 'd.title' || sort.column == 'es.name' || sort.column == 'dept.name' || sort.column == 'e.first_name'
+      criteria = get_join({}, sort)
       
     else
       criteria = Employee
@@ -23,9 +25,9 @@ module EmployeeHelper
       :list => list, :sortcolumn => sort.column, :sortdir => sort.direction }
   end
   
-  def self.get_filter_by(find, keyword, pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
+  def self.get_filter_by(filters, pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
     sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
-    criteria, order = get_filter_criteria(find, keyword, sort)
+    criteria, order = get_filter_criteria(filters, sort)
     total = criteria.count
     pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
     
@@ -36,84 +38,183 @@ module EmployeeHelper
       :list => list, :sortcolumn => sort.column, :sortdir => sort.direction }
   end
   
-  def self.get_errors(errors, others = nil, attr = {})
+  def self.get_errors(errors, attr = {})
     m = {}
-    errors.each do |k, v|
-      if v == 'employee.unique.code'
-        m[k] = I18n.t(v, :value => attr[:code])
-        next
-      end
-      m[k] = I18n.t(v)
-    end
-    
-    if others.present?
-      others.each do |k, v|
-        m[k] = I18n.t(v)
-      end
-    end
-    { :error => 1, :errors => m }
+    { :error => 1, :errors => errors }
   end
   
-  def self.item_message(find, keyword, pagenum, pagesize)
+  def self.item_message(filters, pagenum, pagesize)
     total = 0
-    if find == 0 && keyword.blank?
+    if filters.blank?
       total = Employee.count
       pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
       return pager.item_message
       
     else
-      criteria, order = get_filter_criteria(find, keyword)
+      criteria, order = get_filter_criteria(filters)
       total = criteria.count
       pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
       return pager.item_message
     end
   end
   
+  def self.employee_obj(params)
+    q = params[:employee]
+    
+    _dob = q[:dob]
+    dob = Date.strptime(_dob, ApplicationHelper.date_fmt) if _dob.present?
+    
+    Employee.new(:id => SecureRandom.uuid, :staff_id => q[:staff_id], :first_name => q[:first_name], :middle_name => q[:middle_name],
+                 :last_name => q[:last_name], :new_ic => q[:new_ic], :old_ic => q[:old_ic], :passport_no => q[:passport_no],
+                 :gender => q[:gender], :marital_status => q[:marital_status], :nationality => q[:nationality],
+                 :dob => dob, :place_of_birth => q[:place_of_birth], :race => q[:race], :religion => q[:religion],
+                 :is_bumi => q[:is_bumi], :user_id => q[:user_id])
+  end
+  
+  def self.update_obj(o, params)
+    q = params[:employee]
+    
+    _dob = q[:dob]
+    dob = Date.strptime(_dob, ApplicationHelper.date_fmt) if _dob.present?
+    
+    o.update_attributes(:staff_id => q[:staff_id], :first_name => q[:first_name], :middle_name => q[:middle_name],
+                        :last_name => q[:last_name], :new_ic => q[:new_ic], :old_ic => q[:old_ic], 
+                        :passport_no => q[:passport_no], :gender => q[:gender], :marital_status => q[:marital_status], 
+                        :nationality => q[:nationality], :dob => dob, :place_of_birth => q[:place_of_birth], 
+                        :race => q[:race], :religion => q[:religion], :is_bumi => q[:is_bumi], :user_id => q[:user_id])
+  end
+  
+  def self.update_info(o, params)
+    q = params[:employee]
+    
+    _dob = q[:dob]
+    dob = Date.strptime(_dob, ApplicationHelper.date_fmt) if _dob.present?
+    
+    o.update_attributes(:first_name => q[:first_name], :middle_name => q[:middle_name],
+                        :last_name => q[:last_name], :new_ic => q[:new_ic], :old_ic => q[:old_ic], 
+                        :passport_no => q[:passport_no], :gender => q[:gender], :marital_status => q[:marital_status], 
+                        :nationality => q[:nationality], :dob => dob, :place_of_birth => q[:place_of_birth], 
+                        :race => q[:race], :religion => q[:religion], :is_bumi => q[:is_bumi])
+  end
+  
   private
   
-  def self.get_filter_criteria(find, keyword, sort = nil)
-    text = "%#{keyword}%"
+  def self.get_filter_criteria(filters, sort = nil)
+    employee_keyword = "%#{filters[:employee]}%"
+    staff_id_keyword = "%#{filters[:staff_id]}%"
+    supervisor_keyword = "%#{filters[:supervisor]}%"
     order = sort.present? ? sort.to_s : nil
-    if (sort.present? && sort.column == 'd.title') || (find == 0 || find == 6)
-      criteria = get_join_designation
+    if filters[:employment_status] != 0 || filters[:designation] != 0 || filters[:dept] != 0 ||
+      sort.present?
+      criteria = get_join(filters, sort)
       
     else
       criteria = Employee
     end
     
-    case find
-    when 1
-      criteria = criteria.where('code like ?', text)
-      return criteria, order
-      
-    when 2
-      criteria = criteria.where('firstname like ?', text)
-      return criteria, order
-      
-    when 3
-      criteria = criteria.where('middlename like ?', text)
-      return criteria, order
-      
-    when 4
-      criteria = criteria.where('lastname like ?', text)
-      return criteria, order
-      
-    when 5
-      criteria = criteria.where('icno like ?', text)
-      return criteria, order
-      
-    when 6
-      criteria = criteria.where('d.title like ?', text)
-      return criteria, order
-      
-    else
-      criteria = criteria.where('code like ? or firstname like ? or middlename like ? or lastname like ? or icno like ? or d.title like ?', 
-                                 text, text, text, text, text, text)
-      return criteria, order
+    if filters[:employee].present?
+      criteria = criteria.where('first_name like ? or middle_name like ? or last_name like ?',
+                                 employee_keyword, employee_keyword, employee_keyword)
     end
+    
+    if filters[:staff_id].present?
+      crieria = crieria.where('staff_id like ?', staff_id_keyword)
+    end
+    
+    if filters[:employment_status] != 0
+      criteria = crieria.where('es.id = ?', filters[:employment_status])
+    end
+    
+    if filters[:supervisor].present?
+      crieria = crieria.where('e.first_name like ? or e.middle_name like ? or e.last_name ?',
+                               supervisor_keyword, supervisor_keyword, supervisor_keyword)
+    end
+    
+    return criteria, order
   end
   
-  def self.get_join_designation
-    Employee.joins('left outer join designation d on employee.designation_id = d.id')
+  def self.get_join(filters, sort = nil)
+    joinhash = {}
+    
+    if filters.any?
+      if filters[:employment_status] != 0
+        q = Employee.joins('inner join employee_job ej on employee.id = ej.id')
+        .joins('inner join employment_status es on ej.employment_status_id = es.id')
+        joinhash[:employment_status] = true
+      end
+
+      if filters[:designation] != 0
+        if q.blank?
+          q = Employee.joins('inner join employee_job ej on employee.id = ej.id')
+          .joins('inner join designation d on ej.designation_id = d.id')
+
+        else
+          q = q.joins('inner join designation d on ej.designation_id = d.id')
+        end
+
+        joinhash[:designation] = true
+      end
+
+      if filters[:dept] != 0
+        if q.blank?
+          q = Employee.joins('inner join employee_job ej on employee.id = ej.id')
+          .joins('inner join department dept on ej.department_id = dept.id')
+
+        else
+          q = q.joins('inner join department dept on ej.department_id = dept.id')
+        end
+
+        joinhash[:dept] = true
+      end
+    end
+    
+    if sort.present?
+      if sort.column == 'd.title'
+        if joinhash.has_key?(:employment_status) && !joinhash.has_key?(:designation)
+           q = q.joins('left outer join designation d on ej.designation_id = d.id')
+           
+        elsif !joinhash.has_key?(:employment_status) && !joinhash.has_key?(:designation)
+          if q.blank?
+            q = Employee.joins('left outer join employee_job ej on employee.id = ej.id')
+                        .joins('left outer join designation d on ej.designation_id = d.id')
+                        
+          else
+            q = q.joins('left outer join employee_job ej on employee.id = ej.id')
+                 .joins('left outer join designation d on ej.designation_id = d.id')
+          end
+        end
+      end
+      
+      if sort.column == 'es.name'
+        if !joinhash.has_key?(:employment_status)
+          if q.blank?
+            q = Employee.joins('left outer join employee_job ej on employee.id = ej.id')
+                        .joins('left outer join employment_status es on ej.employment_status_id = es.id')
+                        
+          else
+            q = q.joins('left outer join employee_job ej on employee.id = ej.id')
+                 .joins('left outer join employment_status es on ej.employment_status_id = es.id')
+          end
+        end
+      end
+    end
+    
+    if sort.column == 'dept.name'
+      if joinhash.has_key?(:employment_status) && !joinhash.has_key?(:dept)
+        q = q.joins('left outer join department dept on ej.department_id = dept.id')
+        
+      elsif !joinhash.has_key?(:employment_status) && !joinhash.has_key?(:dept)
+        if q.blank?
+          q = Employee.joins('left outer join employee_job ej on employee.id = ej.id')
+                      .joins('left outer join department dept on ej.department_id = dept.id')
+          
+        else
+          q = q.joins('left outer join employee_job ej on employee.id = ej.id')
+               .joins('left outer join department dept on ej.department_id = dept.id')
+        end
+      end
+    end
+    
+    q
   end
 end

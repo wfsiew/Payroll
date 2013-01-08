@@ -15,9 +15,9 @@ module DesignationHelper
       :list => list, :sortcolumn => sort.column, :sortdir => sort.direction }
   end
   
-  def self.get_filter_by(keyword, pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
+  def self.get_filter_by(find, keyword, pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
     sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
-    criteria = Designation.where('title like ?', "%#{keyword}%")
+    criteria, order = get_filter_criteria(find, keyword, sort)
     total = criteria.count
     pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
     order = sort.to_s
@@ -30,15 +30,7 @@ module DesignationHelper
   end
   
   def self.get_errors(errors, attr = {})
-    m = {}
-    errors.each do |k, v|
-      if v == 'designation.unique.title'
-        m[k] = I18n.t(v, :value => attr[:title])
-        next
-      end
-      m[k] = I18n.t(v)
-    end
-    { :error => 1, :errors => m }
+    { :error => 1, :errors => errors }
   end
   
   def self.item_message(keyword, pagenum, pagesize)
@@ -53,6 +45,32 @@ module DesignationHelper
       total = criteria.count
       pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
       return pager.item_message
+    end
+  end
+  
+  private
+  
+  def self.get_filter_criteria(find, keyword, sort = nil)
+    text = "%#{keyword}%"
+    order = sort.present? ? sort.to_s : nil
+    criteria = Designation
+    
+    case find
+    when 1
+      criteria = criteria.where('title like ?', text)
+      return criteria, order
+      
+    when 2
+      criteria = criteria.where('desc like ?', text)
+      return criteria, order
+      
+    when 3
+      criteria = criteria.where('note like ?', text)
+      return criteria, order
+      
+    else
+      criteria = criteria.where('title like ? or desc like ? or note like ?', text, text, text)
+      return criteria, order
     end
   end
 end

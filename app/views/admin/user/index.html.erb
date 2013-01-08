@@ -1,0 +1,13 @@
+<% @title = 'User' %>
+<% @dialog_title = 'User' %>
+<% @dialog_add_title = 'Add New User' %>
+<% @dialog_edit_title = 'Edit User' %>
+<% content_for :search_form do %>
+  <%= render 'search_form' %>
+<% end %>
+<% content_for :content_list do %>
+  <%= render 'list' %>
+<% end %>
+<% content_for :dialog do %>
+  <%= render 'shared/dialog_save' %>
+<% end %>

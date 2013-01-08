@@ -12,7 +12,6 @@ one:
   socso_no: MyString
   income_tax_no: MyString
   pay_type: 1
-  hourly_pay_rate: 9.99
 
 two:
   id: MyString
@@ -26,4 +25,3 @@ two:
   socso_no: MyString
   income_tax_no: MyString
   pay_type: 1
-  hourly_pay_rate: 9.99

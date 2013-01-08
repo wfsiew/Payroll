@@ -1,0 +1,56 @@
+<%= form_tag('.', :id => @form_id, :class => 'save_form ui-widget-content ui-widget ui-corner-all') do %>
+  <table>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :role, 'User Role', :class => 'label' %>
+      </td>
+      <td>
+        <%= select_tag :role, options_for_select(User.roles, @user.role), :id => 'id_role', :class => 'select' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :username, 'Username', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :username, @user.username, :id => 'id_username', :class => 'text', :placeholder => 'enter username',
+                           :title => 'enter username' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :status, 'Status', :class => 'label' %>
+      </td>
+      <td>
+        <%= select_tag :status, options_for_select(User.statuses, @user.status == true || @user.status.blank? ? 1 : 0), :id => 'id_status', :class => 'select' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :pwd, 'Password', :class => 'label' %>
+      </td>
+      <td>
+        <%= password_field_tag :pwd, @user.pwd, :id => 'id_password', :class => 'text', :placeholder => 'enter password',
+                               :title => 'Minimum is 4 characters' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :pwd_confirmation, 'Confirm Password', :class => 'label' %>
+      </td>
+      <td>
+        <%= password_field_tag :pwd_confirmation, @user.pwd_confirmation, :id => 'id_passwordconfirm', :class => 'text', :placeholder => 'enter password confirmation',
+                               :title => 'enter password confirmation' %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <div class="row_button">
+          <%= render 'shared/save_button' %>
+          <%= render 'shared/cancel_button' %>
+        </div>
+      </td>
+    </tr>
+  </table>
+<% end %>

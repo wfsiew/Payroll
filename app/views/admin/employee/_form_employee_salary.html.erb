@@ -1,0 +1,85 @@
+<div id="form-employee-salary">
+  <table>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :salary, 'Salary', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :salary, @employee_salary.salary, :id => 'id_salary', :class => 'text', :placeholder => 'enter salary',
+                           :title => 'enter salary' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :allowance, 'Allowance', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :allowance, @employee_salary.allowance, :id => 'id_allowance', :class => 'text', :placeholder => 'enter allowance',
+                           :title => 'enter allowance' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :bank_name, 'Bank Name', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :bank_name, @employee_salary.bank_name, :id => 'id_bank_name', :class => 'text', :placeholder => 'enter bank name',
+                           :title => 'enter bank name' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :bank_acc_no, 'Bank Account No.', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :bank_acc_no, @employee_salary.bank_acc_no, :id => 'id_bank_acc_no', :class => 'text', :placeholder => 'enter bank account no.',
+                           :title => 'enter bank account no.' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :bank_acc_type, 'Bank Account Type', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :bank_acc_type, @employee_salary.bank_acc_type, :id => 'id_bank_acc_type', :class => 'text', :placeholder => 'enter bank account type',
+                           :title => 'enter bank account type' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :bank_address, 'Bank Address', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :bank_address, @employee_salary.bank_address, :id => 'id_bank_address', :class => 'text', :placeholder => 'enter bank address',
+                           :title => 'enter bank address' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :epf_no, 'EPF no.', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :epf_no, @employee_salary.epf_no, :id => 'id_epf_no', :class => 'text', :placeholder => 'enter EPF no.',
+                           :title => 'enter EPF no.' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :socso_no, 'SOCSO no.', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :socso_no, @employee_salary.socso_no, :id => 'id_socso_no', :class => 'text', :placeholder => 'enter SOCSO no.',
+                           :title => 'enter SOCSO no.' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :income_tax_no, 'Income Tax no.', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :income_tax_no, @employee_salary.income_tax_no, :id => 'id_income_tax_no', :class => 'text', :placeholder => 'enter income tax no.',
+                           :title => 'enter income tax no.' %>
+      </td>
+    </tr>
+  </table>
+</div>

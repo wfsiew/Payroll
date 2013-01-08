@@ -1,0 +1,64 @@
+<div id="form-employee-job">
+  <table>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label :designation_id, 'Job Title', :class => 'label' %>
+      </td>
+      <td>
+        <select id="id_designation_id" class="select">
+          <option value="0">-- Select --</option>
+          <%= options_from_collection_for_select(@designations, :id, :title, @employee_job.designation_id.blank? ? '0' : @employee_job.designation_id) %>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label :employment_status_id, 'Employment Status', :class => 'label' %>
+      </td>
+      <td>
+        <select id="id_employment_status_id" class="select">
+          <option value="0">-- Select --</option>
+          <%= options_from_collection_for_select(@employment_statuses, :id, :name, @employee_job.employment_status_id.blank? ? '0' : @employee_job.employment_status_id) %>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label :job_category_id, 'Job Category', :class => 'label' %>
+      </td>
+      <td>
+        <select id="id_job_category_id" class="select">
+          <option value="0">-- Select --</option>
+          <%= options_from_collection_for_select(@job_categories, :id, :name, @employee_job.job_category_id.blank? ? '0' : @employee_job.job_category_id) %>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label :join_date, 'Join Date', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :join_date, fmt_date(@employee_job.join_date), :id => 'id_join_date', :class => 'text date_input', :placeholder => 'dd-mm-YYYY' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label :confirm_date, 'Confirm Date', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :confirm_date, fmt_date(@employee_job.confirm_date), :id => 'id_confirm_date', :class => 'text date_input', :placeholder => 'dd-mm-YYYY' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label :department_id, 'Department', :class => 'label' %>
+      </td>
+      <td>
+        <select id="id_department_id" class="select">
+          <option value="0">-- Select --</option>
+          <%= options_from_collection_for_select(@departments, :id, :name, @employee_job.department_id.blank? ? '0' : @employee_job.department_id) %>
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>

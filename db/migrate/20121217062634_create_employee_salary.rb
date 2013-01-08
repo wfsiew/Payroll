@@ -12,7 +12,6 @@ class CreateEmployeeSalary < ActiveRecord::Migration
       t.string :socso_no
       t.string :income_tax_no
       t.integer :pay_type
-      t.decimal :hourly_pay_rate, :precision => 10, :scale => 2
     end
     
     change_column :employee_salary, :id, :string, :limit => 40
