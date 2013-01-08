@@ -1,0 +1,58 @@
+<%= form_tag('.', :id => @form_id, :class => 'save_form ui-widget-content ui-widget ui-corner-all') do %>
+  <table>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :id, 'Staff ID', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :id, @payrate.id, :id => 'id_id', :class => 'text', :placeholder => 'enter staff id',
+                           :title => 'enter staff id' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :total_hours, 'Total hours', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :total_hours, @payrate.total_hours, :id => 'id_total_hours', :class => 'text', :placeholder => 'enter total hours',
+                           :title => 'enter total hours' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :month, 'Month', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :month, @payrate.month, :id => 'id_month', :class => 'text', :placeholder => 'enter month',
+                           :title => 'enter month' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :year, 'Year', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :year, @payrate.year, :id => 'id_year', :class => 'text', :placeholder => 'enter year',
+                           :title => 'enter year' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :pay_rate, 'Pay rate', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :pay_rate, @payrate.hourly_pay_rate, :id => 'id_pay_rate', :class => 'text', :placeholder => 'enter hourly pay rate',
+                           :title => 'enter hourly pay rate' %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <div class="row_button">
+          <%= render 'shared/save_button' %>
+          <%= render 'shared/cancel_button' %>
+        </div>
+      </td>
+    </tr>
+  </table>
+<% end %>

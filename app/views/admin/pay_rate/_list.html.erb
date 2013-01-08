@@ -1,0 +1,52 @@
+<% if @data.present? && @data[:list].any? %>
+  <table class="list_table">
+    <thead class="ui-widget-header">
+      <tr>
+        <th class="data chkbox"><input class="hdchk" type="checkbox" /></th>
+        <th class="data">
+          <div id="hd_id" class="sortheader hover">
+            <span class="colheader">Id</span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_total_hours" class="sortheader hover">
+            <span class="colheader">Total Hours</span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_month" class="sortheader hover">
+            <span class="colheader">Month</span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_year" class="sortheader hover">
+            <span class="colheader">Year</span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_hourly_pay_rate" class="sortheader hover">
+            <span class="colheader">Hourly Pay Rate</span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @data[:list].each do |o| %>
+      <tr id="<%= o.id %>" month="<%= o.month %>" year="<%= o.year %>" class="<%= cycle("ui-state-active", "ui-state-default") %>">
+        <td class="data chkbox"><input class="chk" type="checkbox" /></td>
+        <td class="data"><%= h o.id %></td>
+        <td class="data"><%= h o.total_hours %></td>
+        <td class="data"><%= h o.month %></td>
+        <td class="data"><%= h o.year %></td>
+        <td class="data"><%= h o.hourly_pay_rate %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+<input id="id_pg" type="hidden" value="<%= @data[:hasprev] %>,<%= @data[:hasnext] %>,<%= @data[:prevpage] %>,<%= @data[:nextpage] %>,<%= @data[:item_msg] %>,<%= @data[:sortcolumn] %>,<%= @data[:sortdir] %>" />

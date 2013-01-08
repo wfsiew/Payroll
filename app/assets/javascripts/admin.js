@@ -27,4 +27,5 @@
 //= require admin/empstatus
 //= require admin/jobcat
 //= require admin/dept
+//= require admin/payrate
 // require_tree .

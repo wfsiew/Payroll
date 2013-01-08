@@ -64,7 +64,15 @@ Payroll::Application.routes.draw do
       match 'delete' => 'department#destroy', :as => :delete, :via => :post
     end
     
-    
+    scope 'payrate', :as => 'payrate' do
+      match '' => 'pay_rate#index', :via => :get
+      match 'list' => 'pay_rate#list', :as => :list, :via => [:get, :post]
+      match 'new' => 'pay_rate#new', :as => :new, :via => :get
+      match 'create' => 'pay_rate#create', :as => :create, :via => :post
+      match 'edit(/:id(/:month(/:year)))' => 'pay_rate#edit', :as => :edit, :via => :get
+      match 'update(/:id(/:month(/:year)))' => 'pay_rate#update', :as => :update, :via => :post
+      match 'delete' => 'pay_rate#destroy', :as => :delete, :via => :post
+    end
   end
   
   scope 'setting', :as => 'setting' do

@@ -1,7 +1,7 @@
 class CreateEmployeePayrolls < ActiveRecord::Migration
   def change
     create_table :employee_payroll, { :id => false, :force => true } do |t|
-      t.string :id, :null => false, :limit => 40
+      t.string :id, :null => false
       t.float :total_hours, :null => false
       t.integer :month, :null => false
       t.integer :year, :null => false
