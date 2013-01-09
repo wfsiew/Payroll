@@ -76,6 +76,7 @@ Payroll::Application.routes.draw do
     
     scope 'chart', :as => 'chart' do
       match '' => 'chart#index', :via => :get
+      match 'data' => 'chart#data', :via => :get
     end
   end
   
