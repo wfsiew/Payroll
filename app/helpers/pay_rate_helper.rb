@@ -54,7 +54,7 @@ module PayRateHelper
     order = sort.present? ? sort.to_s : nil
     criteria = PayRate
     if filters[:staff_id].present?
-      crieria = crieria.where('staff_id like ?', staff_id_keyword)
+      criteria = criteria.where('staff_id like ?', staff_id_keyword)
     end
     
     if filters[:month] != 0
