@@ -6,6 +6,7 @@ class Admin::PayRateController < Admin::AdminController
   # GET /payrate.json
   def index
     @data = PayRateHelper.get_all
+    @month_hash = month_options
     
     respond_to do |fmt|
       fmt.html { render 'index', :layout => 'list' }
@@ -117,17 +118,5 @@ class Admin::PayRateController < Admin::AdminController
     end
     
     render :json => { :success => 1, :itemscount => itemscount, :message => "#{ids.size} pay rate(s) was successfully deleted." }
-  end
-  
-  private
-  
-  def month_options
-    months = I18n.t('date.month_names')
-    o = {}
-    
-    (1..12).each do |m|
-      o[months[m]] = m
-    end
-    o
   end
 end

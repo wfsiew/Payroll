@@ -1,4 +1,7 @@
 var cht = ( function() {
+    var url = {
+      data : '/admin/chart/data/'
+    };
 
     // Radialize the colors
     Highcharts.getOptions().colors = $.map(Highcharts.getOptions().colors, function(color) {
@@ -12,14 +15,7 @@ var cht = ( function() {
         ]
       };
     });
-
-    function init() {
-      $.getJSON('/admin/chart/data/', null, function(result) {
-        chart1(result.pie);
-        chart2(result.column);
-      });
-    }
-
+    
     function chart1(result) {
       // Build the chart
       var chart = new Highcharts.Chart({
@@ -30,7 +26,7 @@ var cht = ( function() {
           plotShadow : false
         },
         title : {
-          text : 'Hourly Payroll for 2012'
+          text : result.title
         },
         tooltip : {
           pointFormat : '{series.name}: <b>{point.percentage}%</b>',
@@ -52,8 +48,8 @@ var cht = ( function() {
         },
         series : [{
           type : 'pie',
-          name : 'Hourly Payroll for 2012',
-          data : result
+          name : result.title,
+          data : result.pie
         }]
       });
     }
@@ -65,18 +61,18 @@ var cht = ( function() {
           type : 'column'
         },
         title : {
-          text : 'Hourly Payroll for 2012'
+          text : result.title
         },
         subtitle : {
           text : ''
         },
         xAxis : {
-          categories : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+          categories : result.column.categories
         },
         yAxis : {
           min : 0,
           title : {
-            text : 'Hourly Payroll for 2012'
+            text : result.title
           }
         },
         legend : {
@@ -102,10 +98,69 @@ var cht = ( function() {
         },
         series : [{
           name : 'Hourly Payroll',
-          data : result,
+          data : result.column.data,
           showInLegend : false
         }]
       });
+    }
+    
+    function draw_chart() {
+      var data = get_search_param();
+      $.post(url.data, data, function(result) {
+        chart1(result);
+        chart2(result);
+      });
+    }
+    
+    function get_checked_month() {
+      if ($('.chkall').attr('checked') == 'checked')
+        return 0;
+        
+      else {
+        var a = [];
+        $('.chkmonth:checked').each(function(idx, elm) {
+          a.push($(this).val());
+        });
+        return (a == [] ? 0 : a);
+      }
+    }
+    
+    function get_search_param() {
+      var month = get_checked_month();
+      
+      var param = {
+        staff_id : encodeURIComponent($('#id_staff_id').val()),
+        year : $('#id_year').val()
+      };
+      if (month == 0)
+        param['month'] = 0;
+        
+      else
+        param['month[]'] = month;
+      
+      return param;
+    }
+    
+    function uncheck_all_month() {
+      var a = $(this).attr('checked');
+      if (a == 'checked')
+        $('.chkmonth').removeAttr('checked');
+    }
+    
+    function uncheck_all() {
+      var a = $(this).attr('checked');
+      if (a == 'checked')
+        $('.chkall').removeAttr('checked');
+    }
+
+    function init() {
+      $('#id_find').click(draw_chart);
+      $('.chkall').click(uncheck_all_month);
+      $('.chkmonth').click(uncheck_all)
+      $('#id_staff_id,#id_month,#id_year').tooltip({track: true});
+      utils.init_alert_dialog('#dialog-message');
+      utils.bind_hover($('#id_find'));
+      draw_chart();
     }
 
     function load() {
@@ -115,4 +170,4 @@ var cht = ( function() {
     return {
       load : load
     };
-  }());
+}());

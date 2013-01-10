@@ -1,0 +1,34 @@
+<table>
+  <tr>
+    <td>
+      <%= label_tag :id_staff_id, 'Id', :class => 'label' %>
+    </td>
+    <td class="colspacing">
+      <%= text_field_tag :id_staff_id, nil, :id => 'id_staff_id', :class => 'search', :placeholder => 'type here to search', 
+                         :title => 'type here to search' %>
+    </td>
+    <td>
+      <%= label_tag :id_year, 'Year', :class => 'label' %>
+    </td>
+    <td class="colspacing">
+      <%= text_field_tag :year, nil, :id => 'id_year', :class => 'search', :placeholder => 'type here to search', 
+                         :title => 'type here to search' %>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <%= label_tag :id_month, 'Month', :class => 'label' %>
+    </td>
+    <td colspan="4">
+      <label>All</label>
+      <input type="checkbox" name="month" value="0" class="chkall" />
+      <% for k, v in @month_hash %>
+      <label><%= k[0..2] %></label>
+      <input type="checkbox" name="month" value="<%= v %>" class="chkmonth" />
+      <% end %>
+    </td>
+  </tr>
+</table>
+<br />
+<%= render 'shared/search_button' %>
