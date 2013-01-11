@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Monthly Payslip</title>
+  <%= favicon_link_tag    "favicon.ico", :rel => "shortcut icon" %>
+  <%= favicon_link_tag    "favicon.ico", :rel => "icon", :type => "image/x-icon" %>
+  <%= stylesheet_link_tag    "_payslip", :media => "all" %>
+  <%= javascript_include_tag "_payslip" %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="ui-widget-content">
+  <table class="heading">
+    <tr>
+      <td valign="top"><span class="boldtext">NAME</span> : <%= @employee.first_name %> <%= @employee.middle_name %> <%= @employee.last_name %></td>
+      <td align="right">
+        <table>
+          <tr>
+            <td align="left"><span class="boldtext">PERIOD</span></td>
+            <td> : <%= @period %></td>
+          </tr>
+          <tr>
+            <td align="left"><span class="boldtext">EMPLOYEE ID</span></td>
+            <td> : <%= @employee.staff_id %></td>
+          </tr>
+          <tr>
+            <td align="left"><span class="boldtext">IC NO.</span></td>
+            <td> : <%= @employee.new_ic %></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <table class="data_table">
+    <thead>
+      <tr>
+        <th>--- EARNINGS ---</th>
+        <th class="amt"><span>--- RM ---</span></th>
+        <th>--- DEDUCTIONS ---</th>
+        <th class="amt"><span>--- RM ---</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="det boldtext">BASIC PAY</span></td>
+        <td class="amt"><span><%= number_to_currency @employee_salary.salary, :unit => '' %></span></td>
+        <td><span class="det boldtext"><%= t('payslip.epf') %></span></td>
+        <td class="amt"><span><%= number_to_currency @employee_salary.epf, :unit => '' %></span></td>
+      </tr>
+      <tr>
+        <td><span class="det boldtext">ALLOWANCE</span></td>
+        <td class="amt"><span><%= number_to_currency @employee_salary.allowance, :unit => '' %></span></td>
+        <td><span class="det boldtext">EMPLOYEE SOCSO</span></td>
+        <td class="amt"><span><%= number_to_currency @employee_salary.socso, :unit => '' %></span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><span class="det boldtext">INCOME TAX</span></td>
+        <td class="amt"><span><%= number_to_currency @employee_salary.income_tax, :unit => '' %></span></td>
+      </tr>
+      <tr>
+        <td class="sum amt boldtext"><span>TOTAL : </span></td>
+        <td class="sum amt"><span><%= number_to_currency @total_earnings, :unit => '' %></span></td>
+        <td class="sum amt boldtext"><span>TOTAL : </span></td>
+        <td class="sum amt"><span><%= number_to_currency @total_deduct, :unit => '' %></span></td>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+        <td class="amt boldtext"><span>NETT PAY : </span></td>
+        <td class="amt"><span><%= number_to_currency @nett_salary, :unit => '' %></span></td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="subdet">
+    <tr>
+      <td><span class="boldtext">EPF</span></td>
+      <td> : <%= @employee_salary.epf_no %></td>
+    </tr>
+    <tr>
+      <td><span class="boldtext">SOCSO</span></td>
+      <td> : <%= @employee_salary.socso_no %></td>
+    </tr>
+  </table>
+  <div class="print_container">
+    <div class="print_button hover ui-state-default ui-corner-all">
+      <span class="icons printicon paddicon">Print</span>
+    </div>
+  </div>
+</body>
+</html>

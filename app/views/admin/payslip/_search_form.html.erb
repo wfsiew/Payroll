@@ -1,0 +1,69 @@
+<table>
+  <tr>
+    <td>
+      <%= label_tag :id_employee, 'Employee', :class => 'label' %>
+    </td>
+    <td class="colspacing">
+      <%= text_field_tag :employee, nil, :id => 'id_employee', :class => 'search', :placeholder => 'type here to search', 
+                         :title => 'type here to search' %>
+    </td>
+    <td>
+      <%= label_tag :id_staff_id, 'Id', :class => 'label' %>
+    </td>
+    <td>
+      <%= text_field_tag :staff_id, nil, :id => 'id_staff_id', :class => 'search', :placeholder => 'type here to search', 
+                         :title => 'type here to search' %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= label_tag :id_employment_status, 'Employment Status', :class => 'label' %>
+    </td>
+    <td class="colspacing">
+      <select id="id_employment_status" class="select">
+        <option value="0">All</option>
+        <%= options_from_collection_for_select(@employmentstatus, :id, :name) %>
+      </select>
+    </td>
+    <td>
+      <%= label_tag :id_designation, 'Job Title', :class => 'label' %>
+    </td>
+    <td class="colspacing">
+      <select id="id_designation" class="select">
+        <option value="0">All</option>
+        <%= options_from_collection_for_select(@designation, :id, :title) %>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= label_tag :id_dept, 'Department', :label => 'label' %>
+    </td>
+    <td>
+      <select id="id_dept" class="select">
+        <option value="0">All</option>
+        <%= options_from_collection_for_select(@dept, :id, :name) %>
+      </select>
+    </td>
+    <td>
+      <%= label_tag :id_month, 'Month', :class => 'label' %>
+    </td>
+    <td>
+      <select id="id_month" class="select">
+        <%= options_for_select(@month_hash) %>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= label_tag :id_year, 'Year', :class => 'label' %>
+    </td>
+    <td class="colspacing">
+      <%= text_field_tag :year, nil, :id => 'id_year', :class => 'search', :placeholder => 'enter year', 
+                         :title => 'enter year' %>
+    </td>
+    <td colspan="2"></td>
+  </tr>
+</table>
+<br />
+<%= render 'shared/search_button' %>
