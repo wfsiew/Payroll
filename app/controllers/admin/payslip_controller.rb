@@ -49,21 +49,49 @@ class Admin::PayslipController < Admin::AdminController
     @employee = Employee.find(params[:id])
     @employee_salary = @employee.employee_salary
     
-    if @employee_salary.blank?
-      @employee_salary = EmployeeSalary.new
-    end
-    
+    _month = params[:month].to_i
     month = month_name(params[:month].to_i)
     year = params[:year].blank? ? Time.now.year : params[:year].to_i
     @period = "#{month}-#{year}"
     
-    @total_earnings = PayslipHelper.total_earnings(@employee_salary)
-    @total_deduct = PayslipHelper.total_deductions(@employee_salary)
-    @nett_salary = PayslipHelper.nett_salary(@employee_salary)
+    if @employee_salary.blank?
+      @total_earnings = 0
+      @total_deduct = 0
+      @nett_salary = 0
+      
+      @employee_salary = EmployeeSalary.new
+      
+      respond_to do |fmt|
+        fmt.html { render 'payslip_monthly' }
+        fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary] }
+      end
+      
+    else
+      if @employee_salary.pay_type == 1
+        @total_earnings = PayslipHelper.total_earnings(@employee_salary)
+        @total_deduct = PayslipHelper.total_deductions(@employee_salary)
+        @nett_salary = PayslipHelper.nett_salary(@employee_salary)
     
-    respond_to do |fmt|
-      fmt.html { render 'payslip_monthly' }
-      fmt.json { render :json => [@employee, @setting, @total_earnings, @total_deduct, @nett_salary] }
+        respond_to do |fmt|
+          fmt.html { render 'payslip_monthly' }
+          fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary] }
+        end
+        
+      else
+        filters = { :staff_id => @employee.staff_id, :year => year, :month => _month }
+        @total_earnings = PayslipHelper.total_earnings_hourly(@employee_salary, filters)
+        @total_deduct = PayslipHelper.total_deductions(@employee_salary)
+        @nett_salary = PayslipHelper.nett_salary_hourly(@employee_salary, filters)
+        
+        o = PayRate.where(filters)
+        @total_hours = o.first.blank? ? 0 : o.first.total_hours
+        @hourly_pay_rate = o.first.blank? ? 0 : o.first.hourly_pay_rate
+        
+        respond_to do |fmt|
+          fmt.html { render 'payslip_hourly' }
+          fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary] }
+        end
+      end
     end
   end
 end

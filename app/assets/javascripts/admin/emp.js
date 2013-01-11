@@ -388,8 +388,7 @@ var emp = ( function() {
         race : form.find('#id_race').val(),
         religion : form.find('#id_religion').val(),
         is_bumi : form.find('#id_is_bumi').prop('checked'),
-        user_id : form.find('#id_user_id').val(),
-        supervisor_id : form.find('#id_supervisor_id').val()
+        user_id : form.find('#id_user_id').val()
       };
 
       return { employee : data };

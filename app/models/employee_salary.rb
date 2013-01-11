@@ -15,7 +15,7 @@ class EmployeeSalary < ActiveRecord::Base
   validates_presence_of :pay_type, :message => 'Pay Type is required'
   validates_presence_of :epf, :message => 'EPF Deduction is required'
   
-  validates_numericality_of :salary, :greater_than => 0, :message => 'Salary is invalid'
+  validates_numericality_of :salary, :greater_than_or_equal_to => 0, :message => 'Salary is invalid'
   validates_numericality_of :allowance, :greater_than_or_equal_to => 0, :message => 'Allowance is invalid'
   validates_numericality_of :epf, :greater_than_or_equal_to => 0, :message => 'EPF Deduction is invalid'
   validates_numericality_of :socso, :greater_than_or_equal_to => 0, :message => 'SOCSO Deduction is invalid'

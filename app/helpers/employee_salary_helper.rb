@@ -5,8 +5,8 @@ module EmployeeSalaryHelper
   
   def self.is_empty_params?(params)
     q = params[:employee_salary]
-    if q[:salary].blank? && q[:allowance].blank? && q[:bank_name].blank? && q[:bank_acc_no].blank? && q[:bank_acc_type].blank? &&
-      q[:bank_address].blank? && q[:epf_no].blank? && q[:socso_no].blank? && q[:income_tax_no].blank?
+    if q[:salary].blank? && q[:allowance].blank? && q[:epf].blank? && q[:socso].blank? && q[:bank_name].blank? && q[:bank_acc_no].blank? && 
+      q[:bank_acc_type].blank? && q[:bank_address].blank? && q[:epf_no].blank? && q[:socso_no].blank? && q[:income_tax_no].blank?
       return true
     end
     false

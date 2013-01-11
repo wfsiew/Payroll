@@ -143,17 +143,5 @@
       </td>
       <td colspan="2"></td>
     </tr>
-    <tr>
-      <td valign="top" class="lbl">
-        <%= label_tag :pay_type, 'Pay Type', :class => 'label' %>
-      </td>
-      <td>
-        <select id="id_pay_type" class="select">
-          <option value="0">-- Select --</option>
-          <%= options_for_select([['-- Select --', 0], ['Monthly', 1], ['Hourly', 2]], 
-              @employee_salary.pay_type.blank? ? 0 : @employee_salary.pay_type) %>
-        </select>
-      </td>
-    </tr>
   </table>
 </div>
