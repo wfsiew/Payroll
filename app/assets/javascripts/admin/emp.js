@@ -443,6 +443,9 @@ var emp = ( function() {
       var data = {
         salary : form.find('#id_salary').val(),
         allowance : form.find('#id_allowance').val(),
+        epf : form.find('#id_epf').val(),
+        socso : form.find('#id_socso').val(),
+        income_tax : form.find('#id_income_tax').val(),
         bank_name : form.find('#id_bank_name').val(),
         bank_acc_no : form.find('#id_bank_acc_no').val(),
         bank_acc_type : form.find('#id_bank_acc_type').val(),

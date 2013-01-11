@@ -1,12 +1,14 @@
 require 'securerandom'
 
 def clear_data
+  Employee.delete_all
   EmployeeJob.delete_all
   Designation.delete_all
   Department.delete_all
   JobCategory.delete_all
   EmploymentStatus.delete_all
   PayRate.delete_all
+  EmployeeSalary.delete_all
 end
 
 def create_employee(x)
@@ -73,6 +75,16 @@ def create_payrate(staff_id)
   end
 end
 
+def create_salary(x)
+  o = EmployeeSalary.create(:id => x[:id], :salary => x[:salary], :allowance => x[:allowance],
+                            :epf => x[:epf], :socso => x[:socso], :income_tax => x[:income_tax],
+                            :bank_name => x[:bank_name], :bank_acc_no => x[:bank_acc_no],
+                            :bank_acc_type => x[:bank_acc_type], :bank_address => x[:bank_address],
+                            :epf_no => x[:epf_no], :socso_no => x[:socso_no], :income_tax_no => x[:income_tax_no],
+                            :pay_type => x[:pay_type])
+  o
+end
+
 def init
   o = create_employee(:staff_id => 'S0001', :first_name => 'Ben', :last_name => 'Ng', :new_ic => '77665544',
                       :gender => 'M', :marital_status => 'S', :dob => Date.new(1988, 6, 5), :place_of_birth => 'PJ')
@@ -92,6 +104,13 @@ def init
   create_payrate('S0001')
   create_payrate('S0002')
   create_payrate('S0003')
+  
+  o = create_employee(:staff_id => 'S0004', :first_name => 'Kelly', :last_name => 'Yap', :new_ic => '55441122',
+                      :gender => 'F', :marital_status => 'S', :dob => Date.new(1979, 6, 5), :place_of_birth => 'KL')
+  empsal = create_salary(:id => o.id, :salary => rand(2500..3000), :allowance => rand(60..100), :epf => rand(100..200),
+                         :socso => rand(90..110), :income_tax => rand(100..200), :bank_name => 'RHB', :bank_acc_no => '667743290',
+                         :bank_acc_type => 'savings', :bank_address => 'oug', :epf_no => '59876000', :socso_no => '76545',
+                         :income_tax_no => 'ASD965777', :pay_type => 1)
 end
 
 clear_data

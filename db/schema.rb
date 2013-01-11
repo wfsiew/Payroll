@@ -84,6 +84,9 @@ ActiveRecord::Schema.define(:version => 20130108011912) do
   create_table "employee_salary", :force => true do |t|
     t.decimal "salary",        :precision => 10, :scale => 2, :null => false
     t.decimal "allowance",     :precision => 10, :scale => 2
+    t.decimal "epf",           :precision => 10, :scale => 2
+    t.decimal "socso",         :precision => 10, :scale => 2
+    t.decimal "income_tax",    :precision => 10, :scale => 2
     t.string  "bank_name",                                    :null => false
     t.string  "bank_acc_no",                                  :null => false
     t.string  "bank_acc_type",                                :null => false

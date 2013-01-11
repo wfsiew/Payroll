@@ -20,6 +20,33 @@
     </tr>
     <tr>
       <td valign="top" class="lbl">
+        <%= label_tag :epf, 'EPF Deduction', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :epf, @employee_salary.epf, :id => 'id_epf', :class => 'text', :placeholder => 'enter EPF deduction',
+                           :title => 'enter EPF deduction' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :socso, 'SOCSO Deduction', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :socso, @employee_salary.socso, :id => 'id_socso', :class => 'text', :placeholder => 'enter SOCSO deduction',
+                           :title => 'enter SOCSO deduction' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :income_tax, 'Income Tax Deduction', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :income_tax, @employee_salary.income_tax, :id => 'id_income_tax', :class => 'text', :placeholder => 'enter Income Tax deduction',
+                           :title => 'enter Income Tax deduction' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
         <%= label_tag :bank_name, 'Bank Name', :class => 'label' %>
       </td>
       <td>
