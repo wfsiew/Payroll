@@ -1,0 +1,40 @@
+<%= form_tag('.', :id => @form_id, :class => 'save_form ui-widget-content ui-widget ui-corner-all') do %>
+  <table>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :duration, 'Duration', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :duration, @rate.duration, :id => 'id_duration', :class => 'text', :placeholder => 'enter duration',
+                           :title => 'enter duration' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :year, 'Year', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :year, @rate.year, :id => 'id_year', :class => 'text', :placeholder => 'enter year',
+                           :title => 'enter year' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :pay_rate, 'Pay rate', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :pay_rate, @rate.pay_rate, :id => 'id_pay_rate', :class => 'text', :placeholder => 'enter overtime pay rate',
+                           :title => 'enter overtime pay rate' %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <div class="row_button">
+          <%= render 'shared/save_button' %>
+          <%= render 'shared/cancel_button' %>
+        </div>
+      </td>
+    </tr>
+  </table>
+<% end %>

@@ -4,6 +4,8 @@ one:
   id: MyString
   salary: 9.99
   allowance: 9.99
+  epf: 9.99
+  socso: 9.99
   bank_name: MyString
   bank_acc_no: MyString
   bank_acc_type: MyString
@@ -17,6 +19,8 @@ two:
   id: MyString
   salary: 9.99
   allowance: 9.99
+  epf: 9.99
+  socso: 9.99
   bank_name: MyString
   bank_acc_no: MyString
   bank_acc_type: MyString

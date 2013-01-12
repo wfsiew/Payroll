@@ -1,0 +1,15 @@
+<table>
+  <tr>
+    <td>
+      <%= label_tag :id_year, 'Year', :class => 'label' %>
+    </td>
+    <td class="colspacing">
+      <%= text_field_tag :year, nil, :id => 'id_year', :class => 'search', :placeholder => 'type here to search', 
+                         :title => 'type here to search' %>
+    </td>
+    <td colspan="2"></td>
+  </tr>
+</table>
+<br />
+<% @include_search = true %>
+<%= render 'shared/panel_button' %>

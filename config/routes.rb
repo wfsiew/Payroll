@@ -74,6 +74,16 @@ Payroll::Application.routes.draw do
       match 'delete' => 'pay_rate#destroy', :as => :delete, :via => :post
     end
     
+    scope 'overtimerate', :as => 'overtimerate' do
+      match '' => 'overtime_rate#index', :via => :get
+      match 'list' => 'overtime_rate#list', :as => :list, :via => [:get, :post]
+      match 'new' => 'overtime_rate#new', :as => :new, :via => :get
+      match 'create' => 'overtime_rate#create', :as => :create, :via => :post
+      match 'edit(/:id)' => 'overtime_rate#edit', :as => :edit, :via => :get
+      match 'update(/:id)' => 'overtime_rate#update', :as => :update, :via => :post
+      match 'delete' => 'overtime_rate#destroy', :as => :delete, :via => :post
+    end
+    
     scope 'chart', :as => 'chart' do
       match '' => 'chart#index', :via => :get
       match 'data' => 'chart#data', :via => [:get, :post]

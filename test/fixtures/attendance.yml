@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: MyString
+  employee_id: MyString
+  work_date: 2013-01-12
+  time_in: 2013-01-12 23:18:51
+  time_out: 2013-01-12 23:18:51
+
+two:
+  id: MyString
+  employee_id: MyString
+  work_date: 2013-01-12
+  time_in: 2013-01-12 23:18:51
+  time_out: 2013-01-12 23:18:51

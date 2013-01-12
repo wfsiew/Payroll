@@ -1,0 +1,13 @@
+<% @title = 'Employee Overtime Pay Rate' %>
+<% @dialog_title = 'Employee Overtime Pay Rate' %>
+<% @dialog_add_title = 'Add New Overtime Pay Rate' %>
+<% @dialog_edit_title = 'Edit Overtime Pay Rate' %>
+<% content_for :search_form do %>
+  <%= render 'search_form' %>
+<% end %>
+<% content_for :content_list do %>
+  <%= render 'list' %>
+<% end %>
+<% content_for :dialog do %>
+  <%= render 'shared/dialog_save' %>
+<% end %>

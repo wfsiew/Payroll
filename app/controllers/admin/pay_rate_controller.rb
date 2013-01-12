@@ -70,6 +70,8 @@ class Admin::PayRateController < Admin::AdminController
     end
   end
   
+  # GET /payrate/edit/1
+  # GET /payrate/edit/1.json
   def edit
     @payrate = PayRate.find(params[:id])
     @form_id = 'edit-form'

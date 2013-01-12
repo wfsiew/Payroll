@@ -1,0 +1,38 @@
+<% if @data.present? && @data[:list].any? %>
+  <table class="list_table">
+    <thead class="ui-widget-header">
+      <tr>
+        <th class="data chkbox"><input class="hdchk" type="checkbox" /></th>
+        <th class="data">
+          <div id="hd_duration" class="sortheader hover">
+            <span class="colheader">Duration (hour)</span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_year" class="sortheader hover">
+            <span class="colheader">Year</span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+        <th class="data">
+          <div id="hd_pay_rate" class="sortheader hover">
+            <span class="colheader">Pay Rate</span>
+            <span class="sorticon"></span>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @data[:list].each do |o| %>
+      <tr id="tr_<%= o.id %>" class="<%= cycle("ui-state-active", "ui-state-default") %>">
+        <td class="data chkbox"><input class="chk" type="checkbox" /></td>
+        <td class="data"><%= number_with_precision o.duration, :precision => 2 %></td>
+        <td class="data"><%= h o.year %></td>
+        <td class="data"><%= number_with_precision o.pay_rate, :precision => 2 %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+<input id="id_pg" type="hidden" value="<%= @data[:hasprev] %>,<%= @data[:hasnext] %>,<%= @data[:prevpage] %>,<%= @data[:nextpage] %>,<%= @data[:item_msg] %>,<%= @data[:sortcolumn] %>,<%= @data[:sortdir] %>" />

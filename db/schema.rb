@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130108011912) do
+ActiveRecord::Schema.define(:version => 20130112151851) do
+
+  create_table "attendance", :force => true do |t|
+    t.string "employee_id", :limit => 40, :null => false
+    t.date   "work_date"
+    t.time   "time_in"
+    t.time   "time_out"
+  end
 
   create_table "department", :force => true do |t|
     t.string "name", :null => false
@@ -108,6 +115,12 @@ ActiveRecord::Schema.define(:version => 20130108011912) do
   end
 
   add_index "job_category", ["name"], :name => "name", :unique => true
+
+  create_table "overtime_rate", :force => true do |t|
+    t.float   "duration"
+    t.integer "year"
+    t.float   "pay_rate"
+  end
 
   create_table "pay_rate", :force => true do |t|
     t.string  "staff_id",        :null => false

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  duration: 1.5
+  year: 1
+  pay_rate: 1.5
+
+two:
+  duration: 1.5
+  year: 1
+  pay_rate: 1.5

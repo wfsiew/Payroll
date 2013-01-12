@@ -28,6 +28,7 @@
 //= require admin/jobcat
 //= require admin/dept
 //= require admin/payrate
+//= require admin/overtimerate
 //= require admin/chart
 //= require admin/payslip
 // require_tree .
