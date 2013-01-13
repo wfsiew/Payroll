@@ -53,10 +53,16 @@
         <td class="amt"><span><%= number_to_currency @employee_salary.socso, :unit => '' %></span></td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
+        <td><span class="det boldtext">TOTAL OVERTIME</span></td>
+        <td class="amt"><span><%= number_to_currency @total_overtime, :unit => '' %></span></td>
         <td><span class="det boldtext">INCOME TAX</span></td>
         <td class="amt"><span><%= number_to_currency @employee_salary.income_tax, :unit => '' %></span></td>
+      </tr>
+      <tr>
+        <td><span class="det boldtext">TOTAL OVERTIME EARNINGS</span></td>
+        <td class="amt"><span><%= number_to_currency @total_overtime_earnings, :unit => '' %></span></td>
+        <td></td>
+        <td></td>
       </tr>
       <tr>
         <td class="sum amt boldtext"><span>TOTAL : </span></td>

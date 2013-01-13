@@ -71,6 +71,10 @@ class Admin::PayslipController < Admin::AdminController
         @total_earnings = PayslipHelper.total_earnings(@employee_salary)
         @total_deduct = PayslipHelper.total_deductions(@employee_salary)
         @nett_salary = PayslipHelper.nett_salary(@employee_salary)
+        
+        filters = { :year => year, :month => month, :employee_id => @employee.id }
+        @total_overtime = PayslipHelper.total_overtime(filters)
+        @total_overtime_earnings = PayslipHelper.total_overtime_earnings(filters, @total_overtime)
     
         respond_to do |fmt|
           fmt.html { render 'payslip_monthly' }

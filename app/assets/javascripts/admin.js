@@ -31,4 +31,5 @@
 //= require admin/overtimerate
 //= require admin/chart
 //= require admin/payslip
+//= require admin/att
 // require_tree .

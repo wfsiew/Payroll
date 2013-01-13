@@ -94,6 +94,11 @@ Payroll::Application.routes.draw do
       match 'list' => 'payslip#list', :via => [:get, :post]
       match 'slip(/:id(/:month(/:year)))' => 'payslip#payslip', :as => :slip, :via => :get
     end
+    
+    scope 'att', :as => 'att' do
+      match '' => 'attendance#index', :via => :get
+      match 'list' => 'attendance#list', :via => [:get, :post]
+    end
   end
   
   scope 'setting', :as => 'setting' do

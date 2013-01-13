@@ -14,15 +14,47 @@ module PayslipHelper
   end
   
   def self.total_earnings_hourly(employee_salary, filters)
-    criteria = PayRate.where(:staff_id => filters[:staff_id])
-    criteria = criteria.where(:year => filters[:year])
-    criteria = criteria.where(:month => filters[:month])
-    earnings = criteria.sum('total_hours * hourly_pay_rate')
-    p earnings
-    earnings
+    total = PayRate.where(:staff_id => filters[:staff_id])
+                   .where(:year => filters[:year])
+                   .where(:month => filters[:month])
+                   .sum('total_hours * hourly_pay_rate')
+    total.to_f
   end
   
   def self.nett_salary_hourly(employee_salary, filters)
     total_earnings_hourly(employee_salary, filters) - total_deductions(employee_salary)
+  end
+  
+  def self.total_overtime(filters)
+    year = filters[:year]
+    month = filters[:month]
+    id = filters[:employee_id]
+    
+    list = Attendance.where(:employee_id => id)
+                     .where('month(work_date) = ?', month)
+                     .where('year(work_date) = ?', year).all
+    
+    duration = 0
+    v = nil
+    
+    list.each do |o|
+      to = o.time_out.localtime
+      v = Time.new(to.year, to.month, to.day, 18, to.min, to.sec)
+      x = (to - v) / 3600.0
+      duration += x
+    end
+    
+    duration
+  end
+  
+  def self.total_overtime_earnings(filters, duration)
+    year = filters[:year]
+    o = OvertimeRate.where(:year => year).first
+    total = 0
+    if o.present?
+      total = (duration / o.duration) * o.pay_rate
+    end
+    
+    total
   end
 end

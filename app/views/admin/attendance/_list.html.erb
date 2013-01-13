@@ -1,0 +1,40 @@
+<% if @data.present? && @data[:list].any? %>
+  <table class="list_table">
+    <thead class="ui-widget-header">
+      <tr>
+        <th class="data">
+          <span class="colheader">Date</span>
+        </th>
+        <th class="data">
+          <span class="colheader">Employeee Name</span>
+        </th>
+        <th class="data">
+          <span class="colheader">Time In</span>
+        </th>
+        <th class="data">
+          <span class="colheader">Time Out</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @data[:list].each do |o| %>
+      <% e = o.employee %>
+      <tr id="tr_<%= o.id %>" class="<%= cycle("ui-state-active", "ui-state-default") %>">
+        <td class="data">
+          <%= h fmt_date(o.work_date) %>
+        </td>
+        <td class="data">
+          <%= h e.first_name %> <%= h e.middle_name %> <%= h e.last_name %>
+        </td>
+        <td class="data">
+          <%= h fmt_time(o.time_in) %>
+        </td>
+        <td class="data">
+          <%= h fmt_time(o.time_out) %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+<input id="id_pg" type="hidden" value="<%= @data[:hasprev] %>,<%= @data[:hasnext] %>,<%= @data[:prevpage] %>,<%= @data[:nextpage] %>,<%= @data[:item_msg] %>,<%= @data[:sortcolumn] %>,<%= @data[:sortdir] %>" />

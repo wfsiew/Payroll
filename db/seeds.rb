@@ -86,6 +86,28 @@ def create_salary(x)
   o
 end
 
+def create_overtime_rate(x)
+  o = OvertimeRate.create(:duration => x[:duration], :year => x[:year], :pay_rate => x[:pay_rate])
+  o
+end
+
+def create_attendance(x)
+  o = Attendance.create(:id => x[:id], :employee_id => x[:employee_id], :work_date => x[:work_date], 
+                        :time_in => x[:time_in], :time_out => x[:time_out])
+  o
+end
+
+def create_list_attendance(x)
+  t = [2, 3, 4, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 21, 22, 23, 24, 25,
+       28, 29, 30, 31]
+  for k in t
+    ti = Time.new(2012, 1, k, 8, rand(20..59), 0)
+    to = Time.new(2012, 1, k, rand(18..20), rand(0..50), 0)
+    create_attendance(:id => SecureRandom.uuid, :employee_id => x[:employee_id], :work_date => Date.new(2012, 1, k), 
+                      :time_in => ti, :time_out => to)
+  end
+end
+
 def init
   o = create_employee(:staff_id => 'S0001', :first_name => 'Ben', :last_name => 'Ng', :new_ic => '77665544',
                       :gender => 'M', :marital_status => 'S', :dob => Date.new(1988, 6, 5), :place_of_birth => 'PJ')
@@ -118,28 +140,6 @@ def init
                          :socso => rand(90..110), :income_tax => rand(100..200), :bank_name => 'RHB', :bank_acc_no => '667743290',
                          :bank_acc_type => 'savings', :bank_address => 'oug', :epf_no => '59876000', :socso_no => '76545',
                          :income_tax_no => 'ASD965777', :pay_type => 1)
-end
-
-def create_overtime_rate(x)
-  o = OvertimeRate.create(:duration => x[:duration], :year => x[:year], :pay_rate => x[:pay_rate])
-  o
-end
-
-def create_attendance(x)
-  o = Attendance.create(:id => x[:id], :employee_id => x[:employee_id], :work_date => x[:work_date], 
-                        :time_in => x[:time_in], :time_out => x[:time_out])
-  o
-end
-
-def create_list_attendance(x)
-  t = [2, 3, 4, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 21, 22, 23, 24, 25,
-       28, 29, 30, 31]
-  for k in t
-    ti = Time.new(2012, 1, k, 8, rand(20..59), 0)
-    to = Time.new(2012, 1, k, rand(18..20), rand(0..50), 0)
-    create_attendance(:id => SecureRandom.uuid, :employee_id => x[:employee_id], :work_date => Date.new(2012, 1, k), 
-                      :time_in => ti, :time_out => to)
-  end
 end
 
 clear_data

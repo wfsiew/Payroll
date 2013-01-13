@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    <td>
+      <%= label_tag :id_employee, 'Employee', :class => 'label' %>
+    </td>
+    <td class="colspacing">
+      <%= text_field_tag :employee, nil, :id => 'id_employee', :class => 'search', :placeholder => 'type here to search', 
+                         :title => 'type here to search' %>
+    </td>
+    <td>
+      <%= label_tag :id_work_date, 'Working Date', :class => 'label' %>
+    </td>
+    <td>
+      <%= text_field_tag :work_date, nil, :id => 'id_work_date', :class => 'search date_input', :placeholder => 'dd-mm-YYYY' %>
+    </td>
+  </tr>
+</table>
+<br />
+<%= render 'shared/search_button' %>
+
