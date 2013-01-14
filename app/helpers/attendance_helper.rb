@@ -33,8 +33,8 @@ module AttendanceHelper
   def self.get_filter_criteria(filters, sort = nil)
     employee_keyword = "%#{filters[:employee]}%"
     order = sort.present? ? sort.to_s : nil
-    if filters[:employee].present?
-      criteria = get_join
+    if filters[:employee].present? || sort.present?
+      criteria = get_join(filters, sort)
       
     else
       criteria = Attendance
@@ -52,7 +52,24 @@ module AttendanceHelper
     return criteria, order
   end
   
-  def self.get_join
-    Attendance.joins('inner join employee e on attendance.staff_id = e.staff_id')
+  def self.get_join(filters, sort = nil)
+    joinhash = {}
+    
+    if filters.any?
+      if filters[:employee].present?
+        q = Attendance.joins('inner join employee e on attendance.staff_id = e.staff_id')
+        joinhash[:employee] = true
+      end
+    end
+    
+    if sort.present?
+      if sort.column == 'e.first_name'
+        if !joinhash.has_key?(:employee)
+          q = Attendance.joins('left outer join employee e on attendance.staff_id = e.staff_id')
+        end
+      end
+    end
+    
+    q
   end
 end

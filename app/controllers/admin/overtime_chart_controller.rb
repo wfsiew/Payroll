@@ -33,7 +33,7 @@ class Admin::OvertimeChartController < Admin::AdminController
       criteria = criteria.where('month(work_date) in (?)', month)
     end
     
-    list = criteria.order('month(work_date)').all
+    list = criteria.order(:work_date).all
     months = I18n.t('date.month_names')
     
     b = Array.new(12) { |x| 0 }

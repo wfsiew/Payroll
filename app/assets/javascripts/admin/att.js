@@ -11,6 +11,15 @@ var att = ( function() {
       
       return param;
     }
+    
+    function sort_list() {
+      var s = sort.set_sort_css($(this));
+      nav_list.set_sort(s);
+    }
+    
+    function init_list() {
+      $('.sortheader').click(sort_list);
+    }
 
     function init() {
       $('.date_input').datepicker(utils.date_opt());
@@ -20,7 +29,7 @@ var att = ( function() {
       utils.init_alert_dialog('#dialog-message');
       utils.bind_hover($('#id_find'));
       nav_list.config.list_url = url.list;
-      nav_list.config.list_func = null;
+      nav_list.config.list_func = init_list;
       nav_list.config.search_param_func = get_search_param;
       nav_list.init();
     }

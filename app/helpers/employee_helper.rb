@@ -139,14 +139,14 @@ module EmployeeHelper
     if filters.any?
       if filters[:employment_status] != 0
         q = Employee.joins('inner join employee_job ej on employee.id = ej.id')
-        .joins('inner join employment_status es on ej.employment_status_id = es.id')
+                    .joins('inner join employment_status es on ej.employment_status_id = es.id')
         joinhash[:employment_status] = true
       end
 
       if filters[:designation] != 0
         if q.blank?
           q = Employee.joins('inner join employee_job ej on employee.id = ej.id')
-          .joins('inner join designation d on ej.designation_id = d.id')
+                      .joins('inner join designation d on ej.designation_id = d.id')
 
         else
           q = q.joins('inner join designation d on ej.designation_id = d.id')
@@ -158,7 +158,7 @@ module EmployeeHelper
       if filters[:dept] != 0
         if q.blank?
           q = Employee.joins('inner join employee_job ej on employee.id = ej.id')
-          .joins('inner join department dept on ej.department_id = dept.id')
+                      .joins('inner join department dept on ej.department_id = dept.id')
 
         else
           q = q.joins('inner join department dept on ej.department_id = dept.id')
