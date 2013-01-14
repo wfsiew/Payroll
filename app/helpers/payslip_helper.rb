@@ -28,18 +28,17 @@ module PayslipHelper
   def self.total_overtime(filters)
     year = filters[:year]
     month = filters[:month]
-    id = filters[:employee_id]
+    id = filters[:staff_id]
     
-    list = Attendance.where(:employee_id => id)
+    list = Attendance.where(:staff_id => id)
                      .where('month(work_date) = ?', month)
                      .where('year(work_date) = ?', year).all
     
     duration = 0
-    v = nil
     
     list.each do |o|
       to = o.time_out.localtime
-      v = Time.new(to.year, to.month, to.day, 18, to.min, to.sec)
+      v = Time.new(to.year, to.month, to.day, 18, 0, 0)
       x = (to - v) / 3600.0
       duration += x
     end

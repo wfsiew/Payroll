@@ -99,8 +99,14 @@ Payroll::Application.routes.draw do
       match '' => 'attendance#index', :via => :get
       match 'list' => 'attendance#list', :via => [:get, :post]
     end
+    
+    scope 'overtime', :as => 'overtime' do
+      match 'chart' => 'overtime_chart#index', :via => :get
+      match 'chart/data' => 'overtime_chart#data', :via => [:get, :post]
+    end
   end
   
+  # not used
   scope 'setting', :as => 'setting' do
     match '' => 'setting#index', :via => :get
 	  match 'list' => 'setting#list', :as => :list, :via => [:get, :post]

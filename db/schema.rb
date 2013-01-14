@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20130112151851) do
 
   create_table "attendance", :force => true do |t|
-    t.string "employee_id", :limit => 40, :null => false
+    t.string "staff_id",  :null => false
     t.date   "work_date"
     t.time   "time_in"
     t.time   "time_out"
@@ -121,6 +121,8 @@ ActiveRecord::Schema.define(:version => 20130112151851) do
     t.integer "year"
     t.float   "pay_rate"
   end
+
+  add_index "overtime_rate", ["year"], :name => "year", :unique => true
 
   create_table "pay_rate", :force => true do |t|
     t.string  "staff_id",        :null => false

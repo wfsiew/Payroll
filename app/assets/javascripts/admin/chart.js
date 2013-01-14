@@ -72,7 +72,7 @@ var cht = ( function() {
         yAxis : {
           min : 0,
           title : {
-            text : result.title
+            text : result.column.yaxis
           }
         },
         legend : {

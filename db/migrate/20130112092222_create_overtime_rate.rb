@@ -5,5 +5,7 @@ class CreateOvertimeRate < ActiveRecord::Migration
       t.integer :year
       t.float :pay_rate
     end
+    
+    add_index :overtime_rate, [:year], { :name => 'year', :unique => true }
   end
 end

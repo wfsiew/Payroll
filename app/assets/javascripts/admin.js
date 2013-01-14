@@ -32,4 +32,5 @@
 //= require admin/chart
 //= require admin/payslip
 //= require admin/att
+//= require admin/otcht
 // require_tree .

@@ -14,4 +14,14 @@ class PayRate < ActiveRecord::Base
   validates_numericality_of :month, :less_than_or_equal_to => 12, :message => 'Month is invalid'
   validates_numericality_of :year, :greater_than => 0, :message => 'Year is invalid'
   validates_numericality_of :hourly_pay_rate, :greater_than => 0, :message => 'Hourly pay rate is invalid'
+  
+  def hourly_pay_rate
+    a = read_attribute(:hourly_pay_rate)
+    a.blank? ? 0 : a
+  end
+  
+  def total_hours
+    a = read_attribute(:total_hours)
+    a.blank? ? 0 : a
+  end
 end

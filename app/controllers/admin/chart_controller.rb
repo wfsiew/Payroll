@@ -10,11 +10,12 @@ class Admin::ChartController < Admin::AdminController
   
   def data
     staff_id = params[:staff_id].blank? ? '' : params[:staff_id]
-    month = params[:month].blank? ? 0 : params[:month]
+    month = params[:month].blank? ? '0' : params[:month]
     year = params[:year].blank? ? 0 : params[:year].to_i
     
     criteria = PayRate
     title = 'Hourly Payroll'
+    yaxis = 'Total Amount (RM)'
     
     if staff_id.present?
       criteria = criteria.where(:staff_id => staff_id)
@@ -33,16 +34,18 @@ class Admin::ChartController < Admin::AdminController
     months = I18n.t('date.month_names')
     
     o = []
-    c = []
+    b = []
     categories = []
     list.each do |k, v|
       y = v
       o << [months[k], y]
-      c << v
+      b << v
       categories << months[k][0..2]
     end
     
-    @data = { :pie => o, :column => { :data => c, :categories => categories }, :title => title }
+    c = b.collect { |x| x.round(2) }
+    
+    @data = { :pie => o, :column => { :data => c, :categories => categories, :yaxis => yaxis }, :title => title }
     
     render :json => @data
   end

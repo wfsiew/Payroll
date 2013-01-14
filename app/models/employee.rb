@@ -8,7 +8,7 @@ class Employee < ActiveRecord::Base
   has_one :employee_salary, :dependent => :destroy, :foreign_key => 'id'
   has_one :employee_qualification, :dependent => :destroy, :foreign_key => 'id'
   has_one :employee, :foreign_key => 'id'
-  has_many :attendance, :foreign_key => 'employee_id'
+  has_many :attendance, :foreign_key => 'staff_id', :primary_key => 'staff_id'
   belongs_to :user
   
   validates_presence_of :staff_id, :message => 'Employee ID is required'

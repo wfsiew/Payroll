@@ -2,7 +2,7 @@ class CreateAttendance < ActiveRecord::Migration
   def change
     create_table :attendance, { :primary_key => 'id' } do |t|
       t.string :id, :null => false, :limit => 40
-      t.string :employee_id, :null => false, :limit => 40
+      t.string :staff_id, :null => false
       t.date :work_date
       t.time :time_in
       t.time :time_out

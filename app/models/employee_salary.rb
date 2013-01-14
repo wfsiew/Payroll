@@ -20,4 +20,29 @@ class EmployeeSalary < ActiveRecord::Base
   validates_numericality_of :epf, :greater_than_or_equal_to => 0, :message => 'EPF Deduction is invalid'
   validates_numericality_of :socso, :greater_than_or_equal_to => 0, :message => 'SOCSO Deduction is invalid'
   validates_numericality_of :income_tax, :greater_than_or_equal_to => 0, :message => 'Income Tax Deduction is invalid'
+  
+  def allowance
+    a = read_attribute(:allowance)
+    a.blank? ? 0 : a
+  end
+  
+  def epf
+    a = read_attribute(:epf)
+    a.blank? ? 0 : a
+  end
+  
+  def income_tax
+    a = read_attribute(:income_tax)
+    a.blank? ? 0 : a
+  end
+  
+  def salary
+    a = read_attribute(:salary)
+    a.blank? ? 0 : a
+  end
+  
+  def socso
+    a = read_attribute(:socso)
+    a.blank? ? 0 : a
+  end
 end

@@ -1,5 +1,7 @@
 class Admin::PayslipController < Admin::AdminController
   
+  # GET /payslip
+  # GET /payslip.json
   def index
     @data = EmployeeHelper.get_all
     @employmentstatus = EmploymentStatus.order(:name).all
@@ -13,6 +15,8 @@ class Admin::PayslipController < Admin::AdminController
     end
   end
   
+  # GET /payslip/list
+  # GET /payslip/list.json
   def list
     employee = params[:employee].blank? ? '' : params[:employee]
     staff_id = params[:staff_id].blank? ? '' : params[:staff_id]
@@ -45,6 +49,8 @@ class Admin::PayslipController < Admin::AdminController
     end
   end
   
+  # GET /payslip/slip/1/1/2012
+  # GET /payslip/slip/1/1/2012.json
   def payslip
     @employee = Employee.find(params[:id])
     @employee_salary = @employee.employee_salary
@@ -72,13 +78,13 @@ class Admin::PayslipController < Admin::AdminController
         @total_deduct = PayslipHelper.total_deductions(@employee_salary)
         @nett_salary = PayslipHelper.nett_salary(@employee_salary)
         
-        filters = { :year => year, :month => month, :employee_id => @employee.id }
+        filters = { :year => year, :month => month, :staff_id => @employee.staff_id }
         @total_overtime = PayslipHelper.total_overtime(filters)
         @total_overtime_earnings = PayslipHelper.total_overtime_earnings(filters, @total_overtime)
     
         respond_to do |fmt|
           fmt.html { render 'payslip_monthly' }
-          fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary] }
+          fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary, @total_overtime, @total_overtime_earnings] }
         end
         
       else
@@ -93,7 +99,7 @@ class Admin::PayslipController < Admin::AdminController
         
         respond_to do |fmt|
           fmt.html { render 'payslip_hourly' }
-          fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary] }
+          fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary, @total_hours, @hourly_pay_rate] }
         end
       end
     end
