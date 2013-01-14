@@ -10,7 +10,15 @@ module AttendanceHelper
     
     has_next = pager.has_next? ? 1 : 0
     has_prev = pager.has_prev? ? 1 : 0
-    list = Attendance.order(order).all(:offset => pager.lower_bound, :limit => pager.pagesize)
+    
+    if sort.column == 'e.first_name'
+      criteria = get_join({}, sort)
+      
+    else
+      criteria = Attendance
+    end
+    
+    list = criteria.order(order).all(:offset => pager.lower_bound, :limit => pager.pagesize)
     { :item_msg => pager.item_message, :hasnext => has_next, :hasprev => has_prev, :nextpage => pagenum + 1, :prevpage => pagenum - 1,
       :list => list, :sortcolumn => sort.column, :sortdir => sort.direction }
   end
@@ -35,10 +43,9 @@ module AttendanceHelper
     order = sort.present? ? sort.to_s : nil
     if filters[:employee].present? || sort.present?
       criteria = get_join(filters, sort)
-      
-    else
-      criteria = Attendance
     end
+    
+    criteria = Attendance if criteria.blank?
     
     if filters[:work_date].present?
       criteria = criteria.where('work_date = ?', filters[:work_date])

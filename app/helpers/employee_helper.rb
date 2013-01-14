@@ -107,10 +107,9 @@ module EmployeeHelper
     if filters[:employment_status] != 0 || filters[:designation] != 0 || filters[:dept] != 0 ||
       sort.present?
       criteria = get_join(filters, sort)
-      
-    else
-      criteria = Employee
     end
+    
+    criteria = Employee if criteria.blank?
     
     if filters[:employee].present?
       criteria = criteria.where('first_name like ? or middle_name like ? or last_name like ?',
@@ -118,16 +117,11 @@ module EmployeeHelper
     end
     
     if filters[:staff_id].present?
-      crieria = crieria.where('staff_id like ?', staff_id_keyword)
+      criteria = criteria.where('staff_id like ?', staff_id_keyword)
     end
     
     if filters[:employment_status] != 0
-      criteria = crieria.where('es.id = ?', filters[:employment_status])
-    end
-    
-    if filters[:supervisor].present?
-      crieria = crieria.where('e.first_name like ? or e.middle_name like ? or e.last_name ?',
-                               supervisor_keyword, supervisor_keyword, supervisor_keyword)
+      criteria = criteria.where('es.id = ?', filters[:employment_status])
     end
     
     return criteria, order
