@@ -10,16 +10,7 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery_lib
-//= require jquery_ujs
-//= require jquery_ui
-//= require libs
-//= require utils
-//= require nav_list
-//= require theme
-//= require stat
-//= require menu
-//= require sort
+//= require application
 //= require admin/base
 //= require admin/user
 //= require admin/emp

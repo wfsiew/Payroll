@@ -11,6 +11,12 @@ def clear_data
   OvertimeRate.delete_all
   EmployeeSalary.delete_all
   Attendance.delete_all
+  User.delete_all
+end
+
+def create_user
+  o = User.create(:id => SecureRandom.uuid, :username => 'admin', :pwd => 'admin123', :pwd_confirmation => 'admin123', :status => 1, 
+                  :role => User::ADMIN)
 end
 
 def create_employee(x)
@@ -126,6 +132,8 @@ def list_day(month, year)
 end
 
 def init
+  adm = create_user
+  
   o = create_employee(:staff_id => 'S0001', :first_name => 'Ben', :last_name => 'Ng', :new_ic => '77665544',
                       :gender => 'M', :marital_status => 'S', :dob => Date.new(1988, 6, 5), :place_of_birth => 'PJ')
   create_list_attendance(:staff_id => o.staff_id)

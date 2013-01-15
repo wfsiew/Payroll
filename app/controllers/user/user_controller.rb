@@ -1,7 +1,7 @@
 class User::UserController < ApplicationController
   layout false
   
-  #before_filter :authenticate_normal_user
+  before_filter :authenticate_normal_user
   
   protected
   
@@ -22,13 +22,11 @@ class User::UserController < ApplicationController
   end
   
   def get_employee_id
-    'c7d0cd2b-38c0-47a2-8c74-38d368653b33'
-    #session[:employee_id]
+    session[:employee_id]
   end
   
   def get_staff_id
-    'S0001'
-    #session[:staff_id]
+    session[:staff_id]
   end
   
   helper_method :normal_user

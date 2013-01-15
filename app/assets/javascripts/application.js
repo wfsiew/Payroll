@@ -19,8 +19,6 @@
 //= require nav_list
 //= require theme
 //= require stat
-//= require base
 //= require menu
-//= require payroll
 //= require sort
 // require_tree .
