@@ -1,7 +1,6 @@
 class Admin::OvertimeChartController < Admin::AdminController
   
   # GET /overtime/chart
-  # GET /overtime/chart.json
   def index
     @month_hash = month_options
     

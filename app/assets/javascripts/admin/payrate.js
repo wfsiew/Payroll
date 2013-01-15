@@ -232,7 +232,7 @@ var payrate = ( function() {
       $('#id_add').click(show_form);
       $('#id_find').click(nav_list.show_list);
       $('#id_display').change(nav_list.show_list);
-      $('#id_staff_id,#id_month,#id_year').tooltip({track: true});
+      $('#id_staff_id').tooltip({track: true});
       $('#dialog-add').dialog(popup_dialog_opt);
       $('#dialog-edit').dialog(popup_dialog_opt);
       utils.init_alert_dialog('#dialog-message');

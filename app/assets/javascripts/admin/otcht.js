@@ -116,8 +116,8 @@ var otcht = ( function() {
     function init() {
       $('#id_gen').click(draw_chart);
       $('.chkall').click(uncheck_all_month);
-      $('.chkmonth').click(uncheck_all)
-      $('#id_staff_id,#id_month,#id_year').tooltip({track: true});
+      $('.chkmonth').click(uncheck_all);
+      $('#id_staff_id').tooltip({track: true});
       utils.init_alert_dialog('#dialog-message');
       utils.bind_hover($('#id_gen'));
       draw_chart();

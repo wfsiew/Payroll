@@ -49,9 +49,7 @@
       <%= label_tag :id_month, 'Month', :class => 'label' %>
     </td>
     <td>
-      <select id="id_month" class="select">
-        <%= options_for_select(@month_hash) %>
-      </select>
+      <%= select_month(Date.today, { }, { :id => 'id_month', :class => 'select' }) %>
     </td>
   </tr>
   <tr>
@@ -59,8 +57,7 @@
       <%= label_tag :id_year, 'Year', :class => 'label' %>
     </td>
     <td class="colspacing">
-      <%= text_field_tag :year, nil, :id => 'id_year', :class => 'search', :placeholder => 'enter year', 
-                         :title => 'enter year' %>
+      <%= select_year(Date.today, { :start_year => Time.now.year, :end_year => end_year }, { :id => 'id_year', :class => 'select' }) %>
     </td>
     <td colspan="2"></td>
   </tr>

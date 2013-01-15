@@ -78,9 +78,9 @@ Payroll::Application.routes.draw do
       match 'delete' => 'pay_rate#destroy', :as => :delete, :via => :post
     end
     
-    scope 'chart', :as => 'chart' do
-      match '' => 'chart#index', :via => :get
-      match 'data' => 'chart#data', :via => [:get, :post]
+    scope 'hourly', :as => 'hourly' do
+      match 'chart' => 'hourly_payroll_chart#index', :via => :get
+      match 'chart/data' => 'hourly_payroll_chart#data', :via => [:get, :post]
     end
     
     scope 'payslip', :as => 'payslip' do

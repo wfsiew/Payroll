@@ -6,7 +6,6 @@ class Admin::PayRateController < Admin::AdminController
   # GET /payrate.json
   def index
     @data = PayRateHelper.get_all
-    @month_hash = month_options
     
     respond_to do |fmt|
       fmt.html { render 'index', :layout => 'list' }
@@ -49,7 +48,6 @@ class Admin::PayRateController < Admin::AdminController
   def new
     @payrate = PayRate.new
     @form_id = 'add-form'
-    @month_hash = month_options
     
     respond_to do |fmt|
       fmt.html { render :partial => 'form' }
@@ -75,7 +73,6 @@ class Admin::PayRateController < Admin::AdminController
   def edit
     @payrate = PayRate.find(params[:id])
     @form_id = 'edit-form'
-    @month_hash = month_options
     
     respond_to do |fmt|
       fmt.html { render :partial => 'form' }

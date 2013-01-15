@@ -13,7 +13,6 @@ var payslip = ( function() {
 
     function init() {
       $('#id_gen').click(func_generate);
-      $('#id_year').tooltip({track : true});
       utils.init_alert_dialog('#dialog-message');
       utils.bind_hover($('#id_gen'));
     }

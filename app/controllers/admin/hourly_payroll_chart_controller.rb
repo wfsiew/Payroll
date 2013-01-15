@@ -1,5 +1,6 @@
-class Admin::ChartController < Admin::AdminController
+class Admin::HourlyPayrollChartController < Admin::AdminController
   
+  # GET /hourly/chart
   def index
     @month_hash = month_options
     
@@ -8,6 +9,7 @@ class Admin::ChartController < Admin::AdminController
     end
   end
   
+  # GET /hourly/chart/data
   def data
     staff_id = params[:staff_id].blank? ? '' : params[:staff_id]
     month = params[:month].blank? ? '0' : params[:month]

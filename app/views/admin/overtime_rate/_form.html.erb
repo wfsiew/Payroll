@@ -14,8 +14,7 @@
         <%= label_tag :year, 'Year', :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :year, @rate.year, :id => 'id_year', :class => 'text', :placeholder => 'enter year',
-                           :title => 'enter year' %>
+        <%= select_year(@rate.year, { :start_year => Time.now.year, :end_year => end_year, :field_name => 'year' }, { :id => 'id_year', :class => 'select' }) %>
       </td>
     </tr>
     <tr>

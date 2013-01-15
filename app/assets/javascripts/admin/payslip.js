@@ -47,7 +47,7 @@ var payslip = ( function() {
     function init() {
       $('#id_find').click(nav_list.show_list);
       $('#id_display').change(nav_list.show_list);
-      $('#id_employee,#id_staff_id,#id_year').tooltip({track : true});
+      $('#id_employee,#id_staff_id').tooltip({track : true});
       utils.init_alert_dialog('#dialog-message');
       utils.bind_hover($('#id_find'));
       nav_list.config.list_url = url.list;

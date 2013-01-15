@@ -7,7 +7,6 @@ class Admin::PayslipController < Admin::AdminController
     @employmentstatus = EmploymentStatus.order(:name).all
     @designation = Designation.order(:title).all
     @dept = Department.order(:name).all
-    @month_hash = month_options
     
     respond_to do |fmt|
       fmt.html { render 'index', :layout => 'list' }

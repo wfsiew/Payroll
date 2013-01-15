@@ -1,7 +1,6 @@
 class User::OvertimeChartController < User::UserController
   
   # GET /overtime/chart
-  # GET /overtime/chart.json
   def index
     @month_hash = month_options
     

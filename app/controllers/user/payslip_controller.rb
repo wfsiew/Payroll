@@ -1,8 +1,6 @@
 class User::PayslipController < User::UserController
   
   def index
-    @month_hash = month_options
-    
     respond_to do |fmt|
       fmt.html
     end

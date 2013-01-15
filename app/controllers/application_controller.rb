@@ -29,7 +29,12 @@ class ApplicationController < ActionController::Base
     o
   end
   
+  def end_year
+    2000
+  end
+  
   helper_method :fmt_date
   helper_method :fmt_time
   helper_method :month_name
+  helper_method :end_year
 end

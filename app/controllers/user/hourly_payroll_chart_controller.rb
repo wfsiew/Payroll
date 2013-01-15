@@ -1,7 +1,6 @@
 class User::HourlyPayrollChartController < User::UserController
   
   # GET /hourly/chart
-  # GET /hourly/chart.json
   def index
     @month_hash = month_options
     

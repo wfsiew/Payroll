@@ -29,7 +29,7 @@
 //= require admin/dept
 //= require admin/payrate
 //= require admin/overtimerate
-//= require admin/chart
+//= require admin/hpcht
 //= require admin/payslip
 //= require admin/att
 //= require admin/otcht

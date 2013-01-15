@@ -23,7 +23,7 @@
         <%= label_tag :month, 'Month', :class => 'label' %>
       </td>
       <td>
-        <%= select_tag :month, options_for_select(@month_hash, @payrate.month), :id => 'id_month', :class => 'select' %>
+        <%= select_month(@payrate.month, { :field_name => 'month' }, { :id => 'id_month', :class => 'select' }) %>
       </td>
     </tr>
     <tr>
@@ -31,8 +31,7 @@
         <%= label_tag :year, 'Year', :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :year, @payrate.year, :id => 'id_year', :class => 'text', :placeholder => 'enter year',
-                           :title => 'enter year' %>
+        <%= select_year(@payrate.year, { :start_year => Time.now.year, :end_year => end_year, :field_name => 'year' }, { :id => 'id_year', :class => 'select' }) %>
       </td>
     </tr>
     <tr>
