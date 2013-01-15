@@ -44,7 +44,8 @@ body {
   margin-right: 10px;
   margin-top: 10px;
   display: inline-block;
-  padding: 0 10px 0 10px;
+  width: 70px;
+  padding-left: 10px;
 }
 
 #progress_status {
@@ -224,6 +225,7 @@ div.row_button {
   display: inline-block;
   width: 70px;
   text-align: justify;
+  padding-left: 10px;
 }
 
 .theme_options {
@@ -232,7 +234,7 @@ div.row_button {
   position: absolute;
   top: 45px;
   /*left: 890px;*/
-  left: 90%;
+  left: 83%;
   z-index: 3000;
 }
 
@@ -360,4 +362,10 @@ input[type='text']:FOCUS, input[type='password']:FOCUS {
 }
 .detailicon {
   background-position: 0 -231px !important;
+}
+.logouticon {
+  background-position: 0 -252px !important;
+}
+.loginicon {
+  background-position: 0 -273px !important;
 }
