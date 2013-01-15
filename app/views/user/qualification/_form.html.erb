@@ -1,0 +1,70 @@
+<form id="save-form" class="save_form ui-widget-content ui-widget" method="post">
+  <table>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :level, 'Level', :class => 'label' %>
+      </td>
+      <td>
+        <select id="id_level" class="select">
+          <option value="0">-- Select --</option>
+          <%= options_for_select([['-- Select --', 0], 
+              ['PhD', 1], ['Masters Degree', 2], ['Bachelor Degree', 3], ['Diploma', 4], ['STPM', 5], ['SPM', 6], 
+              ['Others', 7]], 
+              @employee_qualification.level.blank? ? 0 : @employee_qualification.level) %>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :institute, 'Institute', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :institute, @employee_qualification.institute, :id => 'id_institute', :class => 'text', :placeholder => 'enter institute',
+                           :title => 'enter institute' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :major, 'Major', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :major, @employee_qualification.major, :id => 'id_major', :class => 'text', :placeholder => 'enter major',
+                           :title => 'enter major' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :year, 'Year', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :year, @employee_qualification.year, :id => 'id_year', :class => 'text', :placeholder => 'enter year',
+                           :title => 'enter year' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :gpa, 'GPA/Grade', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :gpa, @employee_qualification.gpa, :id => 'id_gpa', :class => 'text', :placeholder => 'enter gpa/grade',
+                           :title => 'enter gpa/grade' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :start_date, 'Start Date', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :start_date, fmt_date(@employee_qualification.start_date), :id => 'id_start_date', :class => 'text date_input', :placeholder => 'dd-mm-YYYY' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :end_date, 'End Date', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :end_date, fmt_date(@employee_qualification.end_date), :id => 'id_end_date', :class => 'text date_input', :placeholder => 'dd-mm-YYYY' %>
+      </td>
+    </tr>
+  </table>
+</form>

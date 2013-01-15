@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <td>
+      <%= label_tag :id_year, 'Year', :class => 'label' %>
+    </td>
+    <td class="colspacing">
+      <%= text_field_tag :year, nil, :id => 'id_year', :class => 'search', :placeholder => 'enter year', 
+                         :title => 'enter year' %>
+    </td>
+    <td>
+      <%= label_tag :id_month, 'Month', :class => 'label' %>
+    </td>
+    <td class="colspacing">
+      <select id="id_month" class="select">
+        <%= options_for_select(@month_hash) %>
+      </select>
+    </td>
+  </tr>
+</table>
+<br />
+<%= render 'shared/gen_button' %>

@@ -1,11 +1,11 @@
 var overtimerate = ( function() {
     var url = {
-      add : '/admin/overtimerate/new/',
-      create : '/admin/overtimerate/create/',
-      edit : '/admin/overtimerate/edit/',
-      update : '/admin/overtimerate/update/',
-      del : '/admin/overtimerate/delete/',
-      list : '/admin/overtimerate/list/'
+      add : '/admin/overtime/rate/new/',
+      create : '/admin/overtime/rate/create/',
+      edit : '/admin/overtime/rate/edit/',
+      update : '/admin/overtime/rate/update/',
+      del : '/admin/overtime/rate/delete/',
+      list : '/admin/overtime/rate/list/'
     };
     
     var popup_dialog_opt = null;
@@ -241,7 +241,7 @@ var overtimerate = ( function() {
     }
     
     function load() {
-      menu.get('/admin/overtimerate/', init);
+      return menu.get('/admin/overtime/rate/', init);
     }
     
     return {

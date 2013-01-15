@@ -1,0 +1,16 @@
+<div id="menu">
+  <h3><%= link_to 'Personal', '#' %></h3>
+  <div>
+    <div><%= link_to 'Personal Details', '#', :onclick => "return info.load()", :id => 'menu_info' %></div>
+    <div><%= link_to 'Contact Details', '#', :onclick => "return contact.load()" %></div>
+    <div><%= link_to 'Job', '#', :onclick => "return job.load()" %></div>
+    <div><%= link_to 'Salary', '#', :onclick => "return salary.load()" %></div>
+    <div><%= link_to 'Qualification', '#', :onclick => "return qualification.load()" %></div>
+  </div>
+  <h3><%= link_to 'Payroll', '#' %></h3>
+  <div>
+    <div><%= link_to 'Overtime Chart', '#', :onclick => "return otcht.load()" %></div>
+    <div><%= link_to 'Hourly Payroll Chart', '#', :onclick => "return hpcht.load()" %></div>
+    <div><%= link_to 'Payslip', '#', :onclick => "return payslip.load()" %></div>
+  </div>
+</div>

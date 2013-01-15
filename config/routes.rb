@@ -1,6 +1,10 @@
 Payroll::Application.routes.draw do
   root :to => 'admin/home#index'
   
+  match 'login' => 'application#new', :as => :login
+  match 'auth' => 'application#create', :as => :auth
+  match 'logout' => 'application#destroy', :as => :logout
+  
   namespace :admin do
     match 'index' => 'home#index', :as => :index, :via => :get
     
@@ -74,16 +78,6 @@ Payroll::Application.routes.draw do
       match 'delete' => 'pay_rate#destroy', :as => :delete, :via => :post
     end
     
-    scope 'overtimerate', :as => 'overtimerate' do
-      match '' => 'overtime_rate#index', :via => :get
-      match 'list' => 'overtime_rate#list', :as => :list, :via => [:get, :post]
-      match 'new' => 'overtime_rate#new', :as => :new, :via => :get
-      match 'create' => 'overtime_rate#create', :as => :create, :via => :post
-      match 'edit(/:id)' => 'overtime_rate#edit', :as => :edit, :via => :get
-      match 'update(/:id)' => 'overtime_rate#update', :as => :update, :via => :post
-      match 'delete' => 'overtime_rate#destroy', :as => :delete, :via => :post
-    end
-    
     scope 'chart', :as => 'chart' do
       match '' => 'chart#index', :via => :get
       match 'data' => 'chart#data', :via => [:get, :post]
@@ -101,8 +95,60 @@ Payroll::Application.routes.draw do
     end
     
     scope 'overtime', :as => 'overtime' do
+      scope 'rate', :as => 'rate' do
+        match '' => 'overtime_rate#index', :via => :get
+        match 'list' => 'overtime_rate#list', :as => :list, :via => [:get, :post]
+        match 'new' => 'overtime_rate#new', :as => :new, :via => :get
+        match 'create' => 'overtime_rate#create', :as => :create, :via => :post
+        match 'edit(/:id)' => 'overtime_rate#edit', :as => :edit, :via => :get
+        match 'update(/:id)' => 'overtime_rate#update', :as => :update, :via => :post
+        match 'delete' => 'overtime_rate#destroy', :as => :delete, :via => :post
+      end
+      
       match 'chart' => 'overtime_chart#index', :via => :get
       match 'chart/data' => 'overtime_chart#data', :via => [:get, :post]
+    end
+  end
+  
+  namespace :user do
+    match 'index' => 'home#index', :as => :index, :via => :get
+    
+    scope 'info', :as => 'info' do
+      match '' => 'info#index', :as => :index, :via => :get
+      match 'update' => 'info#update', :as => :update, :via => :post
+    end
+    
+    scope 'contact', :as => 'contact' do
+      match '' => 'contact#index', :via => :get
+      match 'update' => 'contact#update', :as => :update, :via => :post
+    end
+    
+    scope 'job', :as => 'job' do
+      match '' => 'job#index', :via => :get
+    end
+    
+    scope 'salary', :as => 'salary' do
+      match '' => 'salary#index', :via => :get
+    end
+    
+    scope 'qualification', :as => 'qualification' do
+      match '' => 'qualification#index', :via => :get
+      match 'update' => 'qualification#update', :as => :update, :via => :post
+    end
+    
+    scope 'overtime', :as => 'overtime' do
+      match 'chart' => 'overtime_chart#index', :via => :get
+      match 'chart/data' => 'overtime_chart#data', :via => [:get, :post]
+    end
+    
+    scope 'hourly', :as => 'hourly' do
+      match 'chart' => 'hourly_payroll_chart#index', :via => :get
+      match 'chart/data' => 'hourly_payroll_chart#data', :via => [:get, :post]
+    end
+    
+    scope 'payslip', :as => 'payslip' do
+      match '' => 'payslip#index', :via => :get
+      match 'slip(/:month(/:year))' => 'payslip#payslip', :as => :slip, :via => :get
     end
   end
   

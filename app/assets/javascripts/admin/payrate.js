@@ -245,7 +245,7 @@ var payrate = ( function() {
     }
 
     function load() {
-      menu.get('/admin/payrate/', init);
+      return menu.get('/admin/payrate/', init);
     }
 
     return {

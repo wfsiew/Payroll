@@ -1,0 +1,55 @@
+<% @dialog_title = 'Job Details' %>
+<div class="page_title ui-widget-header ui-widget">Job Details</div>
+<div class="ui-widget-content ui-widget">
+  <table>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label :designation_id, 'Job Title', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h @employee_job.designation.title if @employee_job.designation.present? %></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label :employment_status_id, 'Employment Status', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h @employee_job.employment_status.name if @employee_job.employment_status.present? %></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label :job_category_id, 'Job Category', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h @employee_job.job_category.name if @employee_job.job_category.present? %></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label :join_date, 'Join Date', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h fmt_date(@employee_job.join_date) %></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label :confirm_date, 'Confirm Date', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h fmt_date(@employee_job.confirm_date) %></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label :department_id, 'Department', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h @employee_job.department.name if @employee_job.department.present? %></span>
+      </td>
+    </tr>
+  </table>
+</div>
+<%= render 'shared/alert_panel' %>

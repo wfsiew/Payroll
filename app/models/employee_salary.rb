@@ -45,4 +45,17 @@ class EmployeeSalary < ActiveRecord::Base
     a = read_attribute(:socso)
     a.blank? ? 0 : a
   end
+  
+  def display_pay_type
+    case self.pay_type
+    when 1
+      'Monthly'
+    
+    when 2
+      'Hourly'
+      
+    else
+      ''
+    end
+  end
 end

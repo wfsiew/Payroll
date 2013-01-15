@@ -1,0 +1,143 @@
+<form id="save-form" class="save_form ui-widget-content ui-widget" method="post">
+  <table>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :full_name, 'Full Name', :class => 'label' %>
+      </td>
+      <td valign="top">
+        <%= text_field_tag :first_name, @employee.first_name, :id => 'id_first_name', :class => 'text', :placeholder => 'enter first name',
+                           :title => 'enter first name' %>
+      </td>
+      <td valign="top">
+        <%= text_field_tag :middle_name, @employee.middle_name, :id => 'id_middle_name', :class => 'text', :placeholder => 'enter middle name',
+                           :title => 'enter middle name' %>
+      </td>
+      <td valign="top">
+        <%= text_field_tag :last_name, @employee.last_name, :id => 'id_last_name', :class => 'text', :placeholder => 'enter last name',
+                           :title => 'enter last name' %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td align="center">First Name</td>
+      <td align="center">Middle Name</td>
+      <td align="center">Last Name</td>
+    </tr>
+  </table>
+  <hr />
+  <table>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :staff_id, 'Employee Id', :class => 'label' %>
+      </td>
+      <td valign="top" class="colspacing">
+        <span><%= h @employee.staff_id %>
+      </td>
+      <td valign="top" class="lbl">
+        <%= label_tag :new_ic, 'New I.C No.', :class => 'label' %> 
+      </td>
+      <td>
+        <%= text_field_tag :new_ic, @employee.new_ic, :id => 'id_new_ic', :class => 'text', :placeholder => 'enter new I.C no.',
+                           :title => 'enter new I.C no.' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :passport_no, 'Passport No', :class => 'label' %>
+      </td>
+      <td class="colspacing">
+        <%= text_field_tag :passport_no, @employee.passport_no, :id => 'Passport No.', :class => 'text', :placeholder => 'enter passport no.',
+                           :title => 'enter passport no.' %>
+      </td>
+      <td valign="top" class="lbl">
+        <%= label_tag :old_ic, 'Old I.C No.', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :old_ic, @employee.old_ic, :id => 'id_old_ic', :class => 'text', :placeholder => 'enter old I.C no.',
+                           :title => 'enter old I.C no.' %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4">
+      <hr />
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :gender, 'Gender', :class => 'label' %>
+      </td>
+      <td valign="top">
+        <%= radio_button_tag :gender, 'M', @employee.gender == 'M' ? true : false %>
+        <%= label_tag :gender_m, 'Male' %>
+        <%= radio_button_tag :gender, 'F', @employee.gender == 'F' ? true : false %>
+        <%= label_tag :gender_f, 'Female', :id => 'lb_gender_f' %> </td>
+      <td valign="top" class="lbl">
+        <%= label_tag :marital_status, 'Marital Status', :class => 'label' %>
+      </td>
+      <td>
+        <%= select_tag :marital_status,
+          options_for_select([['-- Select --', '0'], ['Single', 'S'], ['Married', 'M'], ['Other', 'O']], @employee.marital_status.blank? ? '0' : @employee.marital_status),
+          :id => 'id_marital_status', :class => 'select' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :nationality, 'Nationality', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :nationality, @employee.nationality, :id => 'id_nationality', :class => 'text', :placeholder => 'enter nationality',
+                           :title => 'enter nationality' %>
+      </td>
+      <td colspan="2"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :dob, 'Date of Birth', :class => 'label' %>
+      </td>
+      <td class="colspacing">
+        <%= text_field_tag :dob, fmt_date(@employee.dob), :id => 'id_dob', :class => 'text date_input', :placeholder => 'dd-mm-YYYY' %>
+      </td>
+      <td valign="top" class="lbl">
+        <%= label_tag :place_of_birth, 'Place of Birth', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :place_of_birth, @employee.place_of_birth, :id => 'id_place_of_birth', :class => 'text', :placeholder => 'enter place of birth',
+                           :title => 'enter place of birth' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :race, 'Race', :class => 'label' %>
+      </td>
+      <td class="colspacing">
+        <%= text_field_tag :race, @employee.race, :id => 'id_race', :class => 'text', :placeholder => 'enter race',
+                           :title => 'enter race' %>
+      </td>
+      <td>
+        <%= label_tag :is_bumi, 'Is Bumiputra', :class => 'label' %>
+      </td>
+      <td>
+        <%= check_box_tag :is_bumi, nil, @employee.is_bumi, :id => 'id_is_bumi' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :religion, 'Religion', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :religion, @employee.religion, :id => 'id_religion', :class => 'text', :placeholder => 'enter religion',
+                           :title => 'enter religion' %>
+      </td>
+      <td colspan="2"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :user_id, 'Username', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h @user.username %></span>
+      </td>
+      <td colspan="2"></td>
+    </tr>
+  </table>
+</form>

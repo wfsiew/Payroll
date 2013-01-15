@@ -1,8 +1,8 @@
 var otcht = ( function() {
     var url = {
-      data : '/admin/overtime/chart/data/'
+      data : '/user/overtime/chart/data/'
     };
-    
+
     function chart1(result) {
       var chart = new Highcharts.Chart({
         chart : {
@@ -89,7 +89,6 @@ var otcht = ( function() {
       var month = get_checked_month();
       
       var param = {
-        staff_id : encodeURIComponent($('#id_staff_id').val()),
         year : $('#id_year').val()
       };
       if (month == 0)
@@ -117,17 +116,17 @@ var otcht = ( function() {
       $('#id_gen').click(draw_chart);
       $('.chkall').click(uncheck_all_month);
       $('.chkmonth').click(uncheck_all)
-      $('#id_staff_id,#id_month,#id_year').tooltip({track: true});
+      $('#id_month,#id_year').tooltip({track: true});
       utils.init_alert_dialog('#dialog-message');
       utils.bind_hover($('#id_gen'));
       draw_chart();
     }
 
     function load() {
-      return menu.get('/admin/overtime/chart/', init);
+      return menu.get('/user/overtime/chart/', init);
     }
 
     return {
       load : load
     };
-}());
+}()); 

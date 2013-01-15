@@ -38,6 +38,15 @@ body {
   margin-top: 0;
 }
 
+.top_right {
+  float: right;
+  clear: all;
+  margin-right: 10px;
+  margin-top: 10px;
+  display: inline-block;
+  font-size: 1.3em;
+}
+
 #progress_status {
   width: 200px;
   position: absolute;
@@ -348,4 +357,7 @@ input[type='text']:FOCUS, input[type='password']:FOCUS {
 }
 .charticon {
   background-position: 0 -210px !important;
+}
+.detailicon {
+  background-position: 0 -231px !important;
 }

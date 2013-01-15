@@ -1,0 +1,111 @@
+<% @dialog_title = 'Salary Details' %>
+<div class="page_title ui-widget-header ui-widget">Salary Details</div>
+<div class="ui-widget-content ui-widget">
+  <table>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :salary, 'Salary', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h @employee_salary.salary %></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :allowance, 'Allowance', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h @employee_salary.allowance %></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :epf, 'EPF Deduction', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= @employee_salary.epf %></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :socso, 'SOCSO Deduction', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h @employee_salary.socso %></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :income_tax, 'Income Tax Deduction', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h @employee_salary.income_tax %></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :bank_name, 'Bank Name', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h @employee_salary.bank_name %></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :bank_acc_no, 'Bank Account No.', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h @employee_salary.bank_acc_no %></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :bank_acc_type, 'Bank Account Type', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h @employee_salary.bank_acc_type %></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :bank_address, 'Bank Address', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h @employee_salary.bank_address %></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :epf_no, 'EPF no.', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h @employee_salary.epf_no %></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :socso_no, 'SOCSO no.', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h @employee_salary.socso_no %></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :income_tax_no, 'Income Tax no.', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h @employee_salary.income_tax_no %></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :pay_type, 'Pay Type', :class => 'label' %>
+      </td>
+      <td>
+        <span><%= h @employee_salary.display_pay_type %></span>
+      </td>
+    </tr>
+  </table>
+</div>
+<%= render 'shared/alert_panel' %>
