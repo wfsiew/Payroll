@@ -11,7 +11,7 @@
       <%= label_tag :id_year, 'Year', :class => 'label' %>
     </td>
     <td class="colspacing">
-      <%= select_year(0, { :start_year => Time.now.year, :end_year => end_year, :prompt => 'All' }, { :id => 'id_year', :class => 'select' }) %>
+      <%= select_year(Date.today, { :start_year => Time.now.year, :end_year => end_year }, { :id => 'id_year', :class => 'select' }) %>
     </td>
     <td></td>
   </tr>
