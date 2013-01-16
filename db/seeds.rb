@@ -126,13 +126,16 @@ end
 
 def create_list_attendance(x) 
   month = (1..12)
-  for m in month
-    days = list_day(m, 2012)
-    for k in days
-      ti = Time.new(2012, m, k, 8, rand(20..59), 0)
-      to = Time.new(2012, m, k, rand(18..20), rand(0..50), 0)
-      create_attendance(:id => SecureRandom.uuid, :staff_id => x[:staff_id], :work_date => Date.new(2012, m, k), 
-                        :time_in => ti, :time_out => to)
+  year = (2000..Time.now.year)
+  for y in year
+    for m in month
+      days = list_day(m, y)
+      for k in days
+        ti = Time.new(y, m, k, 8, rand(20..59), 0)
+        to = Time.new(y, m, k, rand(18..20), rand(0..50), 0)
+        create_attendance(:id => SecureRandom.uuid, :staff_id => x[:staff_id], :work_date => Date.new(y, m, k), 
+                          :time_in => ti, :time_out => to)
+      end
     end
   end
 end
@@ -173,7 +176,7 @@ def init
   empstat = create_employment_status('Probation')
   empstat = create_employment_status('Confirmed')
   empjob = create_job(:id => o.id, :designation_id => des.id, :department_id => dept.id, :employment_status_id => empstat.id,
-                      :job_category_id => jobcat.id, :join_date => Date.new(2012, 1, 1), :confirm_date => Date.new(2012, 3, 1))
+                      :job_category_id => jobcat.id, :join_date => Date.new(2000, 1, 1), :confirm_date => Date.new(2000, 3, 1))
               
   a = create_user(:username => 'ken', :pwd => 'ken123', :role => User::NORMAL_USER)          
   o = create_employee(:staff_id => 'S0002', :first_name => 'Ken', :last_name => 'Lee', :new_ic => '785400',
@@ -192,7 +195,7 @@ def init
   dept = create_dept('Admin')
   jobcat = create_job_cat('Administration')
   empjob = create_job(:id => o.id, :designation_id => des.id, :department_id => dept.id, :employment_status_id => empstat.id,
-                      :job_category_id => jobcat.id, :join_date => Date.new(2012, 2, 1), :confirm_date => Date.new(2012, 4, 1))
+                      :job_category_id => jobcat.id, :join_date => Date.new(2000, 2, 1), :confirm_date => Date.new(2000, 4, 1))
   
   a = create_user(:username => 'steve', :pwd => 'steve123', :role => User::NORMAL_USER)
   o = create_employee(:staff_id => 'S0003', :first_name => 'Steve', :last_name => 'Yap', :new_ic => '65098765',
@@ -211,7 +214,7 @@ def init
   dept = create_dept('Sales')
   jobcat = create_job_cat('Sales')
   empjob = create_job(:id => o.id, :designation_id => des.id, :department_id => dept.id, :employment_status_id => empstat.id,
-                      :job_category_id => jobcat.id, :join_date => Date.new(2012, 3, 1), :confirm_date => Date.new(2012, 5, 1))
+                      :job_category_id => jobcat.id, :join_date => Date.new(2000, 3, 1), :confirm_date => Date.new(2000, 5, 1))
                         
   create_payrate('S0001')
   create_payrate('S0002')
@@ -234,7 +237,7 @@ def init
   dept = create_dept('Marketing')
   jobcat = create_job_cat('Marketing')
   empjob = create_job(:id => o.id, :designation_id => des.id, :department_id => dept.id, :employment_status_id => empstat.id,
-                      :job_category_id => jobcat.id, :join_date => Date.new(2012, 1, 1), :confirm_date => Date.new(2012, 3, 1))
+                      :job_category_id => jobcat.id, :join_date => Date.new(2000, 1, 1), :confirm_date => Date.new(2000, 3, 1))
                          
   create_overtime_rate(:duration => 1, :year => 2012, :pay_rate => 50)
 end
