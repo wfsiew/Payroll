@@ -42,7 +42,9 @@ class Admin::OvertimeChartController < Admin::AdminController
       v = Time.new(to.year, to.month, to.day, 18, 0, 0)
       x = (to - v) / 3600.0
       m = o.work_date.month
-      b[m - 1] += x
+      if x > 0
+        b[m - 1] += x
+      end
     end
     
     c = b.collect { |x| x.round(2) }
