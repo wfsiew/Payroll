@@ -52,10 +52,11 @@ class Admin::DepartmentController < Admin::AdminController
     o = Department.new(:name => params[:name])
     
     if o.save
-      render :json => { :success => 1, :message => 'Department was successfully added.' }
+      render :json => { :success => 1, 
+                        :message => 'Department was successfully added.' }
       
     else
-      render :json => DepartmentHelper.get_errors(o.errors, params)
+      render :json => DepartmentHelper.get_errors(o.errors)
     end
   end
   
@@ -76,10 +77,11 @@ class Admin::DepartmentController < Admin::AdminController
     o = Department.find(params[:id])
     
     if o.update_attributes(:name => params[:name])
-      render :json => { :success => 1, :message => 'Department was successfully updated.' }
+      render :json => { :success => 1, 
+                        :message => 'Department was successfully updated.' }
         
     else
-      render :json => DepartmentHelper.get_errors(o.errors, params)
+      render :json => DepartmentHelper.get_errors(o.errors)
     end
   end
   
@@ -94,6 +96,8 @@ class Admin::DepartmentController < Admin::AdminController
     
     itemscount = DepartmentHelper.item_message(keyword, pgnum, pgsize)
     
-    render :json => { :success => 1, :itemscount => itemscount, :message => "#{ids.size} Department(s) was successfully deleted." }
+    render :json => { :success => 1, 
+                      :itemscount => itemscount, 
+                      :message => "#{ids.size} Department(s) was successfully deleted." }
   end
 end

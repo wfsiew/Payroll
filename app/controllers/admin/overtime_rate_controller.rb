@@ -54,10 +54,11 @@ class Admin::OvertimeRateController < Admin::AdminController
     o = OvertimeRate.new(:duration => params[:duration], :year => params[:year], :pay_rate => params[:pay_rate])
                             
     if o.save
-      render :json => { :success => 1, :message => 'Overtime Rate successfully added.' }
+      render :json => { :success => 1, 
+                        :message => 'Overtime Rate successfully added.' }
       
     else
-      render :json => OvertimeRateHelper.get_errors(o.errors, params)
+      render :json => OvertimeRateHelper.get_errors(o.errors)
     end
   end
   
@@ -78,10 +79,11 @@ class Admin::OvertimeRateController < Admin::AdminController
     o = OvertimeRate.find(params[:id])
     
     if o.update_attributes(:duration => params[:duration], :year => params[:year], :pay_rate => params[:pay_rate])
-      render :json => { :success => 1, :message => 'Pay Rate was successfully updated.' }
+      render :json => { :success => 1, 
+                        :message => 'Pay Rate was successfully updated.' }
       
     else
-      render :json => OvertimeRateHelper.get_errors(o.errors, params)
+      render :json => OvertimeRateHelper.get_errors(o.errors)
     end
   end
   
@@ -103,6 +105,8 @@ class Admin::OvertimeRateController < Admin::AdminController
       itemscount = OvertimeRateHelper.item_message(filters, pgnum, pgsize)
     end
     
-    render :json => { :success => 1, :itemscount => itemscount, :message => "#{ids.size} Overtime rate(s) was successfully deleted." }
+    render :json => { :success => 1, 
+                      :itemscount => itemscount, 
+                      :message => "#{ids.size} Overtime rate(s) was successfully deleted." }
   end
 end

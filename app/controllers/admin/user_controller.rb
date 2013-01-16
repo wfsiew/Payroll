@@ -65,10 +65,11 @@ class Admin::UserController < Admin::AdminController
     o = User.new(:id => SecureRandom.uuid, :role => params[:role],:username => params[:username], :status => status, :pwd => params[:pwd], :pwd_confirmation => params[:pwdconfirm])
     
     if o.save
-      render :json => { :success => 1, :message => 'User was successfully added.' }
+      render :json => { :success => 1, 
+                        :message => 'User was successfully added.' }
       
     else
-      render :json => UserHelper.get_errors(o.errors, params)
+      render :json => UserHelper.get_errors(o.errors)
     end
   end
   
@@ -91,10 +92,11 @@ class Admin::UserController < Admin::AdminController
     status = status == '1' ? true : false
 
     if o.update_attributes(:role => params[:role], :username => params[:username], :status => status, :pwd => params[:pwd], :pwd_confirmation => params[:pwdconfirm])
-      render :json => { :success => 1, :message => 'User was successfully updated.' }
+      render :json => { :success => 1, 
+                        :message => 'User was successfully updated.' }
         
     else
-      render :json => UserHelper.get_errors(o.errors, params)
+      render :json => UserHelper.get_errors(o.errors)
     end
   end
   
@@ -122,6 +124,8 @@ class Admin::UserController < Admin::AdminController
       itemscount = UserHelper.item_message(filters, pgnum, pgsize)
     end
     
-    render :json => { :success => 1, :itemscount => itemscount, :message => "#{ids.size} user(s) was successfully deleted." }
+    render :json => { :success => 1, 
+                      :itemscount => itemscount, 
+                      :message => "#{ids.size} user(s) was successfully deleted." }
   end
 end

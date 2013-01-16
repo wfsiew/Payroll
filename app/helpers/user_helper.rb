@@ -11,8 +11,14 @@ module UserHelper
     has_next = pager.has_next? ? 1 : 0
     has_prev = pager.has_prev? ? 1 : 0
     list = User.order(order).all(:offset => pager.lower_bound, :limit => pager.pagesize)
-    { :item_msg => pager.item_message, :hasnext => has_next, :hasprev => has_prev, :nextpage => pagenum + 1, :prevpage => pagenum - 1,
-      :list => list, :sortcolumn => sort.column, :sortdir => sort.direction }
+    { :item_msg => pager.item_message, 
+      :hasnext => has_next, 
+      :hasprev => has_prev, 
+      :nextpage => pagenum + 1, 
+      :prevpage => pagenum - 1,
+      :list => list, 
+      :sortcolumn => sort.column, 
+      :sortdir => sort.direction }
   end
   
   def self.get_filter_by(filters, pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
@@ -25,11 +31,17 @@ module UserHelper
     has_next = pager.has_next? ? 1 : 0
     has_prev = pager.has_prev? ? 1 : 0
     list = criteria.order(order).all(:offset => pager.lower_bound, :limit => pager.pagesize)
-    { :item_msg => pager.item_message, :hasnext => has_next, :hasprev => has_prev, :nextpage => pagenum + 1, :prevpage => pagenum - 1,
-      :list => list, :sortcolumn => sort.column, :sortdir => sort.direction }
+    { :item_msg => pager.item_message, 
+      :hasnext => has_next, 
+      :hasprev => has_prev, 
+      :nextpage => pagenum + 1, 
+      :prevpage => pagenum - 1,
+      :list => list, 
+      :sortcolumn => sort.column, 
+      :sortdir => sort.direction }
   end
   
-  def self.get_errors(errors, attr = {})
+  def self.get_errors(errors)
     { :error => 1, :errors => errors }
   end
   

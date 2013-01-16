@@ -116,7 +116,8 @@ class Admin::EmployeeController < Admin::AdminController
       oq.save if b4
     end
     
-    render :json => { :success => 1, :message => 'Employee was successfully added.' }
+    render :json => { :success => 1, 
+                      :message => 'Employee was successfully added.' }
   end
   
   # GET /employee/edit/1
@@ -184,11 +185,11 @@ class Admin::EmployeeController < Admin::AdminController
     v5 = b4 ? true : oq.valid?
     
     if !v1 || !v2 || !v3 || !v4 || !v5
-      employee_errors = EmployeeHelper.get_errors(o.errors, params)
-      employee_contact_errors = EmployeeContactHelper.get_errors(oc.errors, params)
-      employee_job_errors = EmployeeJobHelper.get_errors(oej.errors, params)
-      employee_salary_errors = EmployeeSalaryHelper.get_errors(osa.errors, params)
-      employee_qualification_errors = EmployeeQualificationHelper.get_errors(oq.errors, params)
+      employee_errors = EmployeeHelper.get_errors(o.errors)
+      employee_contact_errors = EmployeeContactHelper.get_errors(oc.errors)
+      employee_job_errors = EmployeeJobHelper.get_errors(oej.errors)
+      employee_salary_errors = EmployeeSalaryHelper.get_errors(osa.errors)
+      employee_qualification_errors = EmployeeQualificationHelper.get_errors(oq.errors)
       
       errors = { :error => 1, :employee => employee_errors,
                               :employee_contact => employee_contact_errors,
@@ -230,7 +231,8 @@ class Admin::EmployeeController < Admin::AdminController
       end
     end
     
-    render :json => { :success => 1, :message => 'Employee was successfully updated.' }
+    render :json => { :success => 1, 
+                      :message => 'Employee was successfully updated.' }
   end
   
   # POST /employee/delete
@@ -259,6 +261,8 @@ class Admin::EmployeeController < Admin::AdminController
       itemscount = EmployeeHelper.item_message(filters, pgnum, pgsize)
     end
     
-    render :json => { :success => 1, :itemscount => itemscount, :message => "#{ids.size} employee(s) was successfully deleted." }
+    render :json => { :success => 1, 
+                      :itemscount => itemscount, 
+                      :message => "#{ids.size} employee(s) was successfully deleted." }
   end
 end

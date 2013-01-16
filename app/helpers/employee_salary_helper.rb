@@ -1,5 +1,5 @@
 module EmployeeSalaryHelper
-  def self.get_errors(errors, attr = {})
+  def self.get_errors(errors)
     { :error => 1, :errors => errors }
   end
   

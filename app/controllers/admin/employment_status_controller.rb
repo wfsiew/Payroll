@@ -52,10 +52,11 @@ class Admin::EmploymentStatusController < Admin::AdminController
     o = EmploymentStatus.new(:name => params[:name])
     
     if o.save
-      render :json => { :success => 1, :message => 'Employment Status was successfully added.' }
+      render :json => { :success => 1, 
+                        :message => 'Employment Status was successfully added.' }
       
     else
-      render :json => EmploymentStatusHelper.get_errors(o.errors, params)
+      render :json => EmploymentStatusHelper.get_errors(o.errors)
     end
   end
   
@@ -76,10 +77,11 @@ class Admin::EmploymentStatusController < Admin::AdminController
     o = EmploymentStatus.find(params[:id])
     
     if o.update_attributes(:name => params[:name])
-      render :json => { :success => 1, :message => 'Employment Status was successfully updated.' }
+      render :json => { :success => 1, 
+                        :message => 'Employment Status was successfully updated.' }
         
     else
-      render :json => EmploymentStatusHelper.get_errors(o.errors, params)
+      render :json => EmploymentStatusHelper.get_errors(o.errors)
     end
   end
   
@@ -94,6 +96,8 @@ class Admin::EmploymentStatusController < Admin::AdminController
     
     itemscount = EmploymentStatusHelper.item_message(keyword, pgnum, pgsize)
     
-    render :json => { :success => 1, :itemscount => itemscount, :message => "#{ids.size} Employment Status(es) was successfully deleted." }
+    render :json => { :success => 1, 
+                      :itemscount => itemscount, 
+                      :message => "#{ids.size} Employment Status(es) was successfully deleted." }
   end
 end

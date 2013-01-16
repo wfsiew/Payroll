@@ -19,10 +19,11 @@ class User::InfoController < User::UserController
     o = Employee.find(id)
     
     if EmployeeHelper.update_info(o, params)
-      render :json => { :success => 1, :message => 'Personal Details was successfully updated.' }
+      render :json => { :success => 1, 
+                        :message => 'Personal Details was successfully updated.' }
       
     else
-      render :json => EmployeeHelper.get_errors(o.errors, params)
+      render :json => EmployeeHelper.get_errors(o.errors)
     end
   end
 end

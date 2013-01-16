@@ -26,18 +26,20 @@ class User::ContactController < User::UserController
     
     if oc_new
       if oc.save
-        render :json => { :success => 1, :message => 'Contact Details was successfully updated.' }
+        render :json => { :success => 1, 
+                          :message => 'Contact Details was successfully updated.' }
         
       else
-        render :json => EmployeeContactHelper.get_errors(oc.errors, params)
+        render :json => EmployeeContactHelper.get_errors(oc.errors)
       end
       
     else
       if EmployeeContactHelper.update_obj(oc, params)
-        render :json => { :success => 1, :message => 'Contact Details was successfully updated.' }
+        render :json => { :success => 1, 
+                          :message => 'Contact Details was successfully updated.' }
         
       else
-        render :json => EmployeeContactHelper.get_errors(oc.errors, params)
+        render :json => EmployeeContactHelper.get_errors(oc.errors)
       end
     end
   end

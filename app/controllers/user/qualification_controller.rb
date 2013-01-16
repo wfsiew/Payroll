@@ -26,18 +26,20 @@ class User::QualificationController < User::UserController
     
     if oq_new
       if oq.save
-        render :json => { :success => 1, :message => 'Qualifications was successfully updated.' }
+        render :json => { :success => 1, 
+                          :message => 'Qualifications was successfully updated.' }
         
       else
-        render :json => EmployeeQualificationHelper.get_errors(oq.errors, params)
+        render :json => EmployeeQualificationHelper.get_errors(oq.errors)
       end
       
     else
       if EmployeeQualificationHelper.update_obj(oq, params)
-        render :json => { :success => 1, :message => 'Qualifications was successfully updated.' }
+        render :json => { :success => 1, 
+                          :message => 'Qualifications was successfully updated.' }
         
       else
-        render :json => EmployeeQualificationHelper.get_errors(oq.errors, params)
+        render :json => EmployeeQualificationHelper.get_errors(oq.errors)
       end
     end
   end

@@ -52,10 +52,11 @@ class Admin::JobCategoryController < Admin::AdminController
     o = JobCategory.new(:name => params[:name])
     
     if o.save
-      render :json => { :success => 1, :message => 'Job Category was successfully added.' }
+      render :json => { :success => 1, 
+                        :message => 'Job Category was successfully added.' }
       
     else
-      render :json => JobCategoryHelper.get_errors(o.errors, params)
+      render :json => JobCategoryHelper.get_errors(o.errors)
     end
   end
   
@@ -76,10 +77,11 @@ class Admin::JobCategoryController < Admin::AdminController
     o = JobCategory.find(params[:id])
     
     if o.update_attributes(:name => params[:name])
-      render :json => { :success => 1, :message => 'Job Category was successfully updated.' }
+      render :json => { :success => 1, 
+                        :message => 'Job Category was successfully updated.' }
         
     else
-      render :json => JobCategoryHelper.get_errors(o.errors, params)
+      render :json => JobCategoryHelper.get_errors(o.errors)
     end
   end
   
@@ -94,6 +96,8 @@ class Admin::JobCategoryController < Admin::AdminController
     
     itemscount = JobCategoryHelper.item_message(keyword, pgnum, pgsize)
     
-    render :json => { :success => 1, :itemscount => itemscount, :message => "#{ids.size} Job Categori(es) was successfully deleted." }
+    render :json => { :success => 1, 
+                      :itemscount => itemscount, 
+                      :message => "#{ids.size} Job Categori(es) was successfully deleted." }
   end
 end

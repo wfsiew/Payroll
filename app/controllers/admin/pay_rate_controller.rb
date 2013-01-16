@@ -61,10 +61,11 @@ class Admin::PayRateController < Admin::AdminController
                     :month => params[:month], :year => params[:year], :hourly_pay_rate => params[:pay_rate])
                             
     if o.save
-      render :json => { :success => 1, :message => 'Pay Rate successfully added.' }
+      render :json => { :success => 1, 
+                        :message => 'Pay Rate successfully added.' }
       
     else
-      render :json => PayRateHelper.get_errors(o.errors, params)
+      render :json => PayRateHelper.get_errors(o.errors)
     end
   end
   
@@ -86,10 +87,11 @@ class Admin::PayRateController < Admin::AdminController
     
     if o.update_attributes(:staff_id => params[:staff_id], :total_hours => params[:total_hours],
                            :month => params[:month], :year => params[:year], :hourly_pay_rate => params[:pay_rate])
-      render :json => { :success => 1, :message => 'Pay Rate was successfully updated.' }
+      render :json => { :success => 1, 
+                        :message => 'Pay Rate was successfully updated.' }
       
     else
-      render :json => PayRateHelper.get_errors(o.errors, params)
+      render :json => PayRateHelper.get_errors(o.errors)
     end
   end
   
@@ -116,6 +118,8 @@ class Admin::PayRateController < Admin::AdminController
       itemscount = PayRateHelper.item_message(filters, pgnum, pgsize)
     end
     
-    render :json => { :success => 1, :itemscount => itemscount, :message => "#{ids.size} pay rate(s) was successfully deleted." }
+    render :json => { :success => 1, 
+                      :itemscount => itemscount, 
+                      :message => "#{ids.size} pay rate(s) was successfully deleted." }
   end
 end

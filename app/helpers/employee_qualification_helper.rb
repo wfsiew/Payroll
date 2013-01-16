@@ -1,6 +1,5 @@
 module EmployeeQualificationHelper
-  def self.get_errors(errors, attr = {})
-    m = {}
+  def self.get_errors(errors)
     { :error => 1, :errors => errors }
   end
   
