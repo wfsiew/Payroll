@@ -95,11 +95,15 @@ def create_employment_status(x)
 end
 
 def create_payrate(staff_id)
-  for m in (1..12)
-    h = rand(40..60)
-    r = rand(12..18)
-    o = PayRate.create(:id => SecureRandom.uuid, :staff_id => staff_id, :total_hours => h, :month => m, :year => 2012,
-                       :hourly_pay_rate => r)
+  month = (1..12)
+  year = (2000..Time.now.year)
+  for y in year
+    for m in month
+      h = rand(40..60)
+      r = rand(12..18)
+      o = PayRate.create(:id => SecureRandom.uuid, :staff_id => staff_id, :total_hours => h, :month => m, :year => y,
+                         :hourly_pay_rate => r)
+    end
   end
 end
 
