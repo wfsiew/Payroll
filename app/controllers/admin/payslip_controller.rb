@@ -55,7 +55,7 @@ class Admin::PayslipController < Admin::AdminController
     @employee_salary = @employee.employee_salary
     
     _month = params[:month].to_i
-    month = month_name(params[:month].to_i)
+    month = params[:month].to_i
     year = params[:year].blank? ? Time.now.year : params[:year].to_i
     @period = "#{month}-#{year}"
     
