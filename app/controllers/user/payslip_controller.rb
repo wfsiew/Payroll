@@ -30,13 +30,13 @@ class User::PayslipController < User::UserController
       
     else
       if @employee_salary.pay_type == 1
-        @total_earnings = PayslipHelper.total_earnings(@employee_salary)
-        @total_deduct = PayslipHelper.total_deductions(@employee_salary)
-        @nett_salary = PayslipHelper.nett_salary(@employee_salary)
-        
         filters = { :year => year, :month => _month, :staff_id => @employee.staff_id }
         @total_overtime = PayslipHelper.total_overtime(filters)
         @total_overtime_earnings = PayslipHelper.total_overtime_earnings(filters, @total_overtime)
+        
+        @total_earnings = PayslipHelper.total_earnings(@employee_salary, @total_overtime_earnings)
+        @total_deduct = PayslipHelper.total_deductions(@employee_salary)
+        @nett_salary = PayslipHelper.nett_salary(@employee_salary, @total_overtime_earnings)
     
         respond_to do |fmt|
           fmt.html { render 'admin/payslip/payslip_monthly' }
