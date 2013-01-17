@@ -94,11 +94,11 @@ class Admin::EmployeeController < Admin::AdminController
     v5 = b4 ? true : oq.valid?
     
     if !v1 || !v2 || !v3 || !v4 || !v5
-      employee_errors = EmployeeHelper.get_errors(o.errors, params)
-      employee_contact_errors = EmployeeContactHelper.get_errors(oc.errors, params)
-      employee_job_errors = EmployeeJobHelper.get_errors(oej.errors, params)
-      employee_salary_errors = EmployeeSalaryHelper.get_errors(osa.errors, params)
-      employee_qualification_errors = EmployeeQualificationHelper.get_errors(oq.errors, params)
+      employee_errors = EmployeeHelper.get_errors(o.errors)
+      employee_contact_errors = EmployeeContactHelper.get_errors(oc.errors)
+      employee_job_errors = EmployeeJobHelper.get_errors(oej.errors)
+      employee_salary_errors = EmployeeSalaryHelper.get_errors(osa.errors)
+      employee_qualification_errors = EmployeeQualificationHelper.get_errors(oq.errors)
       
       errors = { :error => 1, :employee => employee_errors,
                               :employee_contact => employee_contact_errors,
