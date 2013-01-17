@@ -117,9 +117,11 @@ def create_salary(x)
   o
 end
 
-def create_overtime_rate(x)
-  o = OvertimeRate.create(:duration => x[:duration], :year => x[:year], :pay_rate => x[:pay_rate])
-  o
+def create_overtime_rate
+  year = (2000..Time.now.year)
+  for y in year
+    o = OvertimeRate.create(:duration => 1, :year => y, :pay_rate => rand(10..50))
+  end
 end
 
 def create_attendance(x)
@@ -243,7 +245,7 @@ def init
   empjob = create_job(:id => o.id, :designation_id => des.id, :department_id => dept.id, :employment_status_id => empstat.id,
                       :job_category_id => jobcat.id, :join_date => Date.new(2000, 1, 1), :confirm_date => Date.new(2000, 3, 1))
                          
-  create_overtime_rate(:duration => 1, :year => 2012, :pay_rate => 50)
+  create_overtime_rate
 end
 
 clear_data
