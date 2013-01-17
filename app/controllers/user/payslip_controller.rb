@@ -34,7 +34,7 @@ class User::PayslipController < User::UserController
         @total_deduct = PayslipHelper.total_deductions(@employee_salary)
         @nett_salary = PayslipHelper.nett_salary(@employee_salary)
         
-        filters = { :year => year, :month => month, :staff_id => @employee.staff_id }
+        filters = { :year => year, :month => _month, :staff_id => @employee.staff_id }
         @total_overtime = PayslipHelper.total_overtime(filters)
         @total_overtime_earnings = PayslipHelper.total_overtime_earnings(filters, @total_overtime)
     
@@ -44,7 +44,7 @@ class User::PayslipController < User::UserController
         end
         
       else
-        filters = { :staff_id => @employee.staff_id, :year => year, :month => _month }
+        filters = { :year => year, :month => _month, :staff_id => @employee.staff_id }
         @total_earnings = PayslipHelper.total_earnings_hourly(@employee_salary, filters)
         @total_deduct = PayslipHelper.total_deductions(@employee_salary)
         @nett_salary = PayslipHelper.nett_salary_hourly(@employee_salary, filters)
