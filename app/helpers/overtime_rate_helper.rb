@@ -4,7 +4,7 @@ module OvertimeRateHelper
   
   def self.get_all(pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
     sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
-    total = PayRate.count
+    total = OvertimeRate.count
     pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
     order = sort.to_s
     
