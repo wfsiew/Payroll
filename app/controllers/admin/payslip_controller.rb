@@ -1,5 +1,7 @@
+# This controller serves incoming requests to display out the Employee records for pay slip generation.
 class Admin::PayslipController < Admin::AdminController
   
+  # List all records.
   # GET /payslip
   # GET /payslip.json
   def index
@@ -9,11 +11,12 @@ class Admin::PayslipController < Admin::AdminController
     @dept = Department.order(:name).all
     
     respond_to do |fmt|
-      fmt.html { render 'index', :layout => 'list' }
+      fmt.html { render :layout => LAYOUT[:list] }
       fmt.json { render :json => @data }
     end
   end
   
+  # List records by filtering.
   # GET /payslip/list
   # GET /payslip/list.json
   def list
@@ -48,6 +51,7 @@ class Admin::PayslipController < Admin::AdminController
     end
   end
   
+  # Display the pay slip information.
   # GET /payslip/slip/1/1/2012
   # GET /payslip/slip/1/1/2012.json
   def payslip
@@ -72,6 +76,7 @@ class Admin::PayslipController < Admin::AdminController
       end
       
     else
+      # checks whether the salary type is monthly
       if @employee_salary.pay_type == 1
         filters = { :year => year, :month => _month, :staff_id => @employee.staff_id }
         @total_overtime = PayslipHelper.total_overtime(filters)
@@ -86,6 +91,7 @@ class Admin::PayslipController < Admin::AdminController
           fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary, @total_overtime, @total_overtime_earnings] }
         end
         
+      # hourly type
       else
         filters = { :year => year, :month => _month, :staff_id => @employee.staff_id }
         @total_earnings = PayslipHelper.total_earnings_hourly(@employee_salary, filters)

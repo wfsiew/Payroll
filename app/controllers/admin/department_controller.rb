@@ -1,16 +1,19 @@
+# This controller serves incoming requests to display out the Department records.
 class Admin::DepartmentController < Admin::AdminController
   
+  # List all records.
   # GET /dept
   # GET /dept.json
   def index
     @data = DepartmentHelper.get_all
     
     respond_to do |fmt|
-      fmt.html { render 'index', :layout => 'list' }
+      fmt.html { render :layout => LAYOUT[:list] }
       fmt.json { render :json => @data }
     end
   end
   
+  # List records by filtering.
   # GET /dept/list
   # GET /dept/list.json
   def list
@@ -35,6 +38,7 @@ class Admin::DepartmentController < Admin::AdminController
     end
   end
   
+  # Display the Department form.
   # GET /dept/new
   # GET /dept/new.json
   def new
@@ -47,6 +51,7 @@ class Admin::DepartmentController < Admin::AdminController
     end
   end
   
+  # Create new Department record.
   # POST /dept/create
   def create
     o = Department.new(:name => params[:name])
@@ -60,6 +65,7 @@ class Admin::DepartmentController < Admin::AdminController
     end
   end
   
+  # Display the Department form, with existing record to edit.
   # GET /dept/edit/1
   # GET /dept/edit/1.json
   def edit
@@ -72,6 +78,7 @@ class Admin::DepartmentController < Admin::AdminController
     end
   end
   
+  # Update Department record.
   # POST /dept/update/1
   def update
     o = Department.find(params[:id])
@@ -85,6 +92,7 @@ class Admin::DepartmentController < Admin::AdminController
     end
   end
   
+  # Delete a list of Department records.
   # POST /dept/delete
   def destroy
     keyword = params[:keyword].blank? ? '' : params[:keyword]

@@ -1,14 +1,17 @@
+# This controller serves incoming requests to display Hourly Payroll Chart.
 class Admin::HourlyPayrollChartController < Admin::AdminController
   
+  # Display the main page.
   # GET /hourly/chart
   def index
     @month_hash = month_options
     
     respond_to do |fmt|
-      fmt.html { render 'index', :layout => 'chart' }
+      fmt.html { render :layout => LAYOUT[:chart] }
     end
   end
   
+  # Get the hourly payroll json data to be populated to the chart.
   # GET /hourly/chart/data
   def data
     staff_id = params[:staff_id].blank? ? '' : params[:staff_id]
@@ -39,15 +42,17 @@ class Admin::HourlyPayrollChartController < Admin::AdminController
     b = []
     categories = []
     list.each do |k, v|
-      y = v
-      o << [months[k], y]
+      o << [months[k], v]
       b << v
       categories << months[k][0..2]
     end
     
     c = b.collect { |x| x.round(2) }
     
-    @data = { :pie => o, :column => { :data => c, :categories => categories, :yaxis => yaxis }, :title => title }
+    @data = { :pie => o, :column => { :data => c, 
+                                      :categories => categories, 
+                                      :yaxis => yaxis }, 
+                                      :title => title }
     
     render :json => @data
   end

@@ -1,16 +1,19 @@
+# This controller serves incoming requests to display out the Attendance records.
 class Admin::AttendanceController < Admin::AdminController
   
+  # List all records.
   # GET /att
   # GET /att.json
   def index
     @data = AttendanceHelper.get_all
     
     respond_to do |fmt|
-      fmt.html { render 'index', :layout => 'list' }
+      fmt.html { render :layout => LAYOUT[:list] }
       fmt.json { render :json => @data }
     end
   end
   
+  # List records by filtering.
   # GET /att/list
   # GET /att/list.json
   def list

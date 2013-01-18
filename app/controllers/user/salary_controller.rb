@@ -1,5 +1,7 @@
+# This controller serves incoming requests to display out the EmployeeSalary record.
 class User::SalaryController < User::UserController
   
+  # Display the information.
   # GET /salary
   # GET /salary.json
   def index
@@ -7,7 +9,7 @@ class User::SalaryController < User::UserController
     @employee_salary = EmployeeSalaryHelper.find(id)
     
     respond_to do |fmt|
-      fmt.html { render 'index' }
+      fmt.html
       fmt.json { render :json => @employee_salary }
     end
   end

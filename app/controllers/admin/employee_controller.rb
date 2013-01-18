@@ -1,7 +1,9 @@
 require 'securerandom'
 
+# This controller serves incoming requests to display out the Employee records.
 class Admin::EmployeeController < Admin::AdminController
   
+  # List all records.
   # GET /employee
   # GET /employee.json
   def index
@@ -11,11 +13,12 @@ class Admin::EmployeeController < Admin::AdminController
     @dept = Department.order(:name).all
     
     respond_to do |fmt|
-      fmt.html { render 'index', :layout => 'list' }
+      fmt.html { render :layout => LAYOUT[:list] }
       fmt.json { render :json => @data }
     end
   end
   
+  # List records by filtering.
   # GET /employee/list
   # GET /employee/list.json
   def list
@@ -50,6 +53,7 @@ class Admin::EmployeeController < Admin::AdminController
     end
   end
   
+  # Display the Employee form.
   # GET /employee/new
   # GET /employee/new.json
   def new
@@ -71,6 +75,7 @@ class Admin::EmployeeController < Admin::AdminController
     end
   end
   
+  # Create new Employee record.
   # POST /employee/create
   def create
     o = EmployeeHelper.employee_obj(params)
@@ -120,6 +125,7 @@ class Admin::EmployeeController < Admin::AdminController
                       :message => 'Employee was successfully added.' }
   end
   
+  # Display the Employee form, with existing record to edit.
   # GET /employee/edit/1
   # GET /employee/edit/1.json
   def edit
@@ -141,6 +147,7 @@ class Admin::EmployeeController < Admin::AdminController
     end
   end
   
+  # Update Employee record.
   # POST /employee/update
   def update
     o = Employee.find(params[:id])
@@ -235,6 +242,7 @@ class Admin::EmployeeController < Admin::AdminController
                       :message => 'Employee was successfully updated.' }
   end
   
+  # Delete a list of Employee records.
   # POST /employee/delete
   def destroy
     employee = params[:employee].blank? ? '' : params[:employee]

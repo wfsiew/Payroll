@@ -1,11 +1,17 @@
+# This controller serves incoming requests to display out the Employee pay slip.
 class User::PayslipController < User::UserController
   
+  # Display the main page.
+  # GET /payslip
   def index
     respond_to do |fmt|
       fmt.html
     end
   end
   
+  # Display the pay slip information.
+  # GET /payslip/slip
+  # GET /payslip/slip.json
   def payslip
     id = get_employee_id
     @employee = Employee.find(id)
@@ -29,6 +35,7 @@ class User::PayslipController < User::UserController
       end
       
     else
+      # checks whether the salary type is monthly
       if @employee_salary.pay_type == 1
         filters = { :year => year, :month => _month, :staff_id => @employee.staff_id }
         @total_overtime = PayslipHelper.total_overtime(filters)
@@ -43,6 +50,7 @@ class User::PayslipController < User::UserController
           fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary, @total_overtime, @total_overtime_earnings] }
         end
         
+      # hourly type
       else
         filters = { :year => year, :month => _month, :staff_id => @employee.staff_id }
         @total_earnings = PayslipHelper.total_earnings_hourly(@employee_salary, filters)

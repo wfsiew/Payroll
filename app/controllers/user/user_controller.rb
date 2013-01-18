@@ -7,6 +7,14 @@ class User::UserController < ApplicationController
   # checks whether a user is authenticated before serving any request
   before_filter :authenticate_normal_user
   
+  # Display the user page.
+  # GET /user/index
+  def index
+    respond_to do |fmt|
+      fmt.html { render :layout => LAYOUT[:user] }
+    end
+  end
+  
   protected
   
   # Returns the employee_id.

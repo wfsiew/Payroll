@@ -1,18 +1,21 @@
 require 'securerandom'
 
+# This controller serves incoming requests to display out the User records.
 class Admin::UserController < Admin::AdminController
   
+  # List all records.
   # GET /user
   # GET /user.json
   def index
     @data = UserHelper.get_all
     
     respond_to do |fmt|
-      fmt.html { render 'index', :layout => 'list' }
+      fmt.html { render :layout => LAYOUT[:list] }
       fmt.json { render :json => @data }
     end
   end
   
+  # List records by filtering.
   # GET /user/list
   # GET /user/list.json
   def list
@@ -45,6 +48,7 @@ class Admin::UserController < Admin::AdminController
     end
   end
   
+  # Display the User form.
   # GET /user/new
   # GET /user/new.json
   def new
@@ -57,6 +61,7 @@ class Admin::UserController < Admin::AdminController
     end
   end
   
+  # Create new User record.
   # POST /user/create
   def create
     status = params[:status]
@@ -73,6 +78,7 @@ class Admin::UserController < Admin::AdminController
     end
   end
   
+  # Display the User form, with existing record to edit.
   # GET /user/edit/1
   # GET /user/edit/1.json
   def edit
@@ -85,6 +91,7 @@ class Admin::UserController < Admin::AdminController
     end
   end
   
+  # Update User record.
   # POST /user/update
   def update
     o = User.find(params[:id])
@@ -100,6 +107,7 @@ class Admin::UserController < Admin::AdminController
     end
   end
   
+  # Delete a list of User records.
   # POST /user/delete
   def destroy
     username = params[:username].blank? ? '' : params[:username]

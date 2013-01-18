@@ -2,6 +2,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+  LAYOUT = {
+    :admin => 'admin',
+    :chart => 'chart',
+    :list => 'list',
+    :user => 'user'
+  }
+  
   # Authenticates a user.
   def create
     user = User.authenticate(params[:username], params[:password])

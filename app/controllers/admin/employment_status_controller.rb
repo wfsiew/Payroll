@@ -1,16 +1,19 @@
+# This controller serves incoming requests to display out the EmploymentStatus records.
 class Admin::EmploymentStatusController < Admin::AdminController
   
+  # List all records.
   # GET /empstatus
   # GET /empstatus.json
   def index
     @data = EmploymentStatusHelper.get_all
     
     respond_to do |fmt|
-      fmt.html { render 'index', :layout => 'list' }
+      fmt.html { render :layout => LAYOUT[:list] }
       fmt.json { render :json => @data }
     end
   end
   
+  # List records by filtering.
   # GET /empstatus/list
   # GET /empstatus/list.json
   def list
@@ -35,6 +38,7 @@ class Admin::EmploymentStatusController < Admin::AdminController
     end
   end
   
+  # Display the EmploymentStatus form.
   # GET /empstatus/new
   # GET /empstatus/new.json
   def new
@@ -47,6 +51,7 @@ class Admin::EmploymentStatusController < Admin::AdminController
     end
   end
   
+  # Create new EmploymentStatus record.
   # POST /empstatus/create
   def create
     o = EmploymentStatus.new(:name => params[:name])
@@ -60,6 +65,7 @@ class Admin::EmploymentStatusController < Admin::AdminController
     end
   end
   
+  # Display the EmploymentStatus form, with existing record to edit.
   # GET /empstatus/edit/1
   # GET /empstatus/edit/1.json
   def edit
@@ -72,6 +78,7 @@ class Admin::EmploymentStatusController < Admin::AdminController
     end
   end
   
+  # Update EmploymentStatus record.
   # POST /empstatus/update/1
   def update
     o = EmploymentStatus.find(params[:id])
@@ -85,6 +92,7 @@ class Admin::EmploymentStatusController < Admin::AdminController
     end
   end
   
+  # Delete a list of EmploymentStatus records.
   # POST /empstatus/delete
   def destroy
     keyword = params[:keyword].blank? ? '' : params[:keyword]

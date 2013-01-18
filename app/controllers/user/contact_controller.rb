@@ -1,5 +1,7 @@
+# This controller serves incoming requests to display out the EmployeeContact record.
 class User::ContactController < User::UserController
   
+  # Display the contact.
   # GET /contact
   # GET /contact.json
   def index
@@ -7,11 +9,12 @@ class User::ContactController < User::UserController
     @employee_contact = EmployeeContactHelper.find(id)
     
     respond_to do |fmt|
-      fmt.html { render 'index' }
+      fmt.html
       fmt.json { render :json => @employee_contact }
     end
   end
   
+  # Update the contact.
   # POST /contact/update
   def update
     id = get_employee_id

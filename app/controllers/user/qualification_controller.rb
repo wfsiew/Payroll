@@ -1,5 +1,7 @@
+# This controller serves incoming requests to display out the EmployeeQualification record.
 class User::QualificationController < User::UserController
   
+  # Display the qualification.
   # GET /qualification
   # GET /qualification.json
   def index
@@ -7,11 +9,12 @@ class User::QualificationController < User::UserController
     @employee_qualification = EmployeeQualificationHelper.find(id)
     
     respond_to do |fmt|
-      fmt.html { render 'index' }
+      fmt.html
       fmt.json { render :json => @employee_qualification }
     end
   end
   
+  # Update the qualification.
   # POST /qualification/update
   def update
     id = get_employee_id

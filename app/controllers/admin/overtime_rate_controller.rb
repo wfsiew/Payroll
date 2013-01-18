@@ -1,3 +1,4 @@
+# This controller serves incoming requests to display out the OvertimeRate records.
 class Admin::OvertimeRateController < Admin::AdminController
   
   # GET /overtimerate
@@ -6,11 +7,12 @@ class Admin::OvertimeRateController < Admin::AdminController
     @data = OvertimeRateHelper.get_all
     
     respond_to do |fmt|
-      fmt.html { render 'index', :layout => 'list' }
+      fmt.html { render :layout => LAYOUT[:list] }
       fmt.json { render :json => @data }
     end
   end
   
+  # List records by filtering.
   # GET /overtimerate/list
   # GET /overtimerate/list.json
   def list
@@ -37,6 +39,7 @@ class Admin::OvertimeRateController < Admin::AdminController
     end
   end
   
+  # Display the OvertimeRate form.
   # GET /overtimerate/new
   # GET /overtimerate/new.json
   def new
@@ -49,6 +52,7 @@ class Admin::OvertimeRateController < Admin::AdminController
     end
   end
   
+  # Create new OvertimeRate record.
   # POST /overtimerate/create
   def create
     o = OvertimeRate.new(:duration => params[:duration], :year => params[:year], :pay_rate => params[:pay_rate])
@@ -62,6 +66,7 @@ class Admin::OvertimeRateController < Admin::AdminController
     end
   end
   
+  # Display the OvertimeRate form, with existing record to edit.
   # GET /overtimerate/edit/1
   # GET /overtimerate/edit/1.json
   def edit
@@ -74,6 +79,7 @@ class Admin::OvertimeRateController < Admin::AdminController
     end
   end
   
+  # Update OvertimeRate record.
   # POST /overtimerate/update
   def update
     o = OvertimeRate.find(params[:id])
@@ -87,6 +93,7 @@ class Admin::OvertimeRateController < Admin::AdminController
     end
   end
   
+  # Delete a list of OvertimeRate records.
   # POST /overtimerate/delete
   def destroy
     year = params[:year].blank? ? 0 : params[:year].to_i

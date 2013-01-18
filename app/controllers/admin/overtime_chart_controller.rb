@@ -1,14 +1,17 @@
+# This controller serves incoming requests to display Employee Overtime Chart.
 class Admin::OvertimeChartController < Admin::AdminController
   
+  # Display the main page.
   # GET /overtime/chart
   def index
     @month_hash = month_options
     
     respond_to do |fmt|
-      fmt.html { render 'index', :layout => 'chart' }
+      fmt.html { render :layout => LAYOUT[:chart] }
     end
   end
   
+  # Get the overtime json data to be populated to the chart.
   # GET /overtime/chart/data
   def data
     staff_id = params[:staff_id].blank? ? '' : params[:staff_id]

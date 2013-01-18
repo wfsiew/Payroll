@@ -1,5 +1,7 @@
+# This controller serves incoming requests to display out the Employee record.
 class User::InfoController < User::UserController
   
+  # Display the information.
   # GET /info
   # GET /info.json
   def index
@@ -8,11 +10,12 @@ class User::InfoController < User::UserController
     @user = @employee.user
     
     respond_to do |fmt|
-      fmt.html { render 'index' }
+      fmt.html
       fmt.json { render :json => @employee }
     end
   end
   
+  # Update the information.
   # POST /info/update
   def update
     id = get_employee_id

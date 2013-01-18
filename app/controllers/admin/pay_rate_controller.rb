@@ -1,5 +1,6 @@
 require 'securerandom'
 
+# This controller serves incoming requests to display out the PayRate records.
 class Admin::PayRateController < Admin::AdminController
   
   # GET /payrate
@@ -8,11 +9,12 @@ class Admin::PayRateController < Admin::AdminController
     @data = PayRateHelper.get_all
     
     respond_to do |fmt|
-      fmt.html { render 'index', :layout => 'list' }
+      fmt.html { render :layout => LAYOUT[:list] }
       fmt.json { render :json => @data }
     end
   end
   
+  # List records by filtering.
   # GET /payrate/list
   # GET /payrrate/list.json
   def list
@@ -43,6 +45,7 @@ class Admin::PayRateController < Admin::AdminController
     end
   end
   
+  # Display the PayRate form.
   # GET /payrate/new
   # GET /payrate/new.json
   def new
@@ -55,6 +58,7 @@ class Admin::PayRateController < Admin::AdminController
     end
   end
   
+  # Create new PayRate record.
   # POST /payrate/create
   def create
     o = PayRate.new(:id => SecureRandom.uuid, :staff_id => params[:staff_id], :total_hours => params[:total_hours], 
@@ -69,6 +73,7 @@ class Admin::PayRateController < Admin::AdminController
     end
   end
   
+  # Display the PayRate form, with existing record to edit.
   # GET /payrate/edit/1
   # GET /payrate/edit/1.json
   def edit
@@ -81,6 +86,7 @@ class Admin::PayRateController < Admin::AdminController
     end
   end
   
+  # Update PayRate record.
   # POST /payrate/update
   def update
     o = PayRate.find(params[:id])
@@ -95,6 +101,7 @@ class Admin::PayRateController < Admin::AdminController
     end
   end
   
+  # Delete a list of PayRate records.
   # POST /payrate/delete
   def destroy
     staff_id = params[:staff_id].blank? ? '' : params[:staff_id]

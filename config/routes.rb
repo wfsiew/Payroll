@@ -6,7 +6,7 @@ Payroll::Application.routes.draw do
   match 'logout' => 'application#destroy', :as => :logout
   
   namespace :admin do
-    match 'index' => 'home#index', :as => :index, :via => :get
+    match 'index' => 'admin#index', :as => :index, :via => :get
     
     scope 'user', :as => 'user' do
       match '' => 'user#index', :via => :get
@@ -111,7 +111,7 @@ Payroll::Application.routes.draw do
   end
   
   namespace :user do
-    match 'index' => 'home#index', :as => :index, :via => :get
+    match 'index' => 'user#index', :as => :index, :via => :get
     
     scope 'info', :as => 'info' do
       match '' => 'info#index', :as => :index, :via => :get

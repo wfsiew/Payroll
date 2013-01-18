@@ -1,16 +1,19 @@
+# This controller serves incoming requests to display out the JobCategory records.
 class Admin::JobCategoryController < Admin::AdminController
   
+  # List all records.
   # GET /jobcat
   # GET /jobcat.json
   def index
     @data = JobCategoryHelper.get_all
     
     respond_to do |fmt|
-      fmt.html { render 'index', :layout => 'list' }
+      fmt.html { render :layout => LAYOUT[:list] }
       fmt.json { render :json => @data }
     end
   end
   
+  # List records by filtering.
   # GET /jobcat/list
   # GET /jobcat/list.json
   def list
@@ -35,6 +38,7 @@ class Admin::JobCategoryController < Admin::AdminController
     end
   end
   
+  # Display the JobCategory form.
   # GET /jobcat/new
   # GET /jobcat/new.json
   def new
@@ -47,6 +51,7 @@ class Admin::JobCategoryController < Admin::AdminController
     end
   end
   
+  # Create new JobCategory record.
   # POST /jobcat/create
   def create
     o = JobCategory.new(:name => params[:name])
@@ -60,6 +65,7 @@ class Admin::JobCategoryController < Admin::AdminController
     end
   end
   
+  # Display the JobCategory form, with existing record to edit.
   # GET /jobcat/edit/1
   # GET /jobcat/edit/1.json
   def edit
@@ -72,6 +78,7 @@ class Admin::JobCategoryController < Admin::AdminController
     end
   end
   
+  # Update JobCategory record.
   # POST /jobcat/update/1
   def update
     o = JobCategory.find(params[:id])
@@ -85,6 +92,7 @@ class Admin::JobCategoryController < Admin::AdminController
     end
   end
   
+  # Delete a list of JobCategory records.
   # POST /jobcat/delete
   def destroy
     keyword = params[:keyword].blank? ? '' : params[:keyword]

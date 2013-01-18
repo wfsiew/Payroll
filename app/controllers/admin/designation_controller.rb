@@ -1,16 +1,19 @@
+# This controller serves incoming requests to display out the Designation records.
 class Admin::DesignationController < Admin::AdminController
   
+  # List all records.
   # GET /designation
   # GET /designation.json
   def index
     @data = DesignationHelper.get_all
     
     respond_to do |fmt|
-      fmt.html { render 'index', :layout => 'list' }
+      fmt.html { render :layout => LAYOUT[:list] }
       fmt.json { render :json => @data }
     end
   end
   
+  # List records by filtering.
   # GET /designation/list
   # GET /designation/list.json
   def list
@@ -36,6 +39,7 @@ class Admin::DesignationController < Admin::AdminController
     end
   end
   
+  # Display the Designation form.
   # GET /designation/new
   # GET /designation/new.json
   def new
@@ -48,6 +52,7 @@ class Admin::DesignationController < Admin::AdminController
     end
   end
   
+  # Create new Designation record.
   # POST /designation/create
   def create
     o = Designation.new(:title => params[:title], :desc => params[:desc], :note => params[:note])
@@ -61,6 +66,7 @@ class Admin::DesignationController < Admin::AdminController
     end
   end
   
+  # Display the Designation form, with existing record to edit.
   # GET /designation/edit/1
   # GET /designation/edit/1.json
   def edit
@@ -73,6 +79,7 @@ class Admin::DesignationController < Admin::AdminController
     end
   end
   
+  # Update Designation record.
   # POST /designation/update/1
   def update
     o = Designation.find(params[:id])
@@ -86,6 +93,7 @@ class Admin::DesignationController < Admin::AdminController
     end
   end
   
+  # Delete a list of Designation records.
   # POST /designation/delete
   def destroy
     keyword = params[:keyword].blank? ? '' : params[:keyword]
