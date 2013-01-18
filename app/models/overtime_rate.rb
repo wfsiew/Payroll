@@ -1,3 +1,4 @@
+# Model for overtime_rate table.
 class OvertimeRate < ActiveRecord::Base
   attr_accessible :duration, :pay_rate, :year
   

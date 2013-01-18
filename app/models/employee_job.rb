@@ -1,5 +1,7 @@
+# Model for employee_job table.
 class EmployeeJob < ActiveRecord::Base
-  attr_accessible :confirm_date, :department_id, :designation_id, :employment_status_id, :id, :job_category_id, :join_date
+  attr_accessible :confirm_date, :department_id, :designation_id, :employment_status_id, :id, 
+                  :job_category_id, :join_date
   
   self.table_name = 'employee_job'
   

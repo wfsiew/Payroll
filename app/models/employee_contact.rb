@@ -1,5 +1,7 @@
+# Model for employee_contact table.
 class EmployeeContact < ActiveRecord::Base
-  attr_accessible :address_1, :address_2, :address_3, :city, :country, :home_phone, :id, :mobile_phone, :other_email, :postcode, :state, :work_email
+  attr_accessible :address_1, :address_2, :address_3, :city, :country, :home_phone, :id, 
+                  :mobile_phone, :other_email, :postcode, :state, :work_email
   
   self.table_name = 'employee_contact'
   

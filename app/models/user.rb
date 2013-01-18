@@ -1,5 +1,6 @@
 require 'digest'
 
+# Model for user table.
 class User < ActiveRecord::Base
   attr_accessible :id, :pwd, :role, :status, :username, :pwd_confirmation
   attr_accessor :pwd
@@ -9,9 +10,11 @@ class User < ActiveRecord::Base
   has_one :employee, :dependent => :nullify
   
   validates :username, :uniqueness => { :message => "Username %{value} already exist" },
-                       :length => { :within => 3..50, :message => "Minimum is %{count} characters" }
+                       :length => { :within => 3..50, 
+                                    :message => "Minimum is %{count} characters" }
   validates :pwd, :confirmation => { :message => "Password doesn't match confirmation" },
-                  :length => { :within => 4..20, :message => "Minimum is %{count} characters" },
+                  :length => { :within => 4..20, 
+                               :message => "Minimum is %{count} characters" },
                   :presence => { :message => "Password is required" },
                   :if => :password_required?
                   

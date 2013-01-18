@@ -1,3 +1,4 @@
+# Model for designation table.
 class Designation < ActiveRecord::Base
   attr_accessible :id, :title, :desc, :note
   

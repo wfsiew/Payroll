@@ -1,3 +1,4 @@
+# Model for attendance table.
 class Attendance < ActiveRecord::Base
   attr_accessible :id, :staff_id, :time_in, :time_out, :work_date
   

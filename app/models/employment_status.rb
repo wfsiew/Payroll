@@ -1,3 +1,4 @@
+# Model for employment_status table.
 class EmploymentStatus < ActiveRecord::Base
   attr_accessible :id, :name
   

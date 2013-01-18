@@ -1,3 +1,4 @@
+# Model for department table.
 class Department < ActiveRecord::Base
   attr_accessible :id, :name
   

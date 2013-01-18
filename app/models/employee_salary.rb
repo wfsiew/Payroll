@@ -1,6 +1,7 @@
+# Model for employee_salary table.
 class EmployeeSalary < ActiveRecord::Base
-  attr_accessible :allowance, :bank_acc_no, :bank_acc_type, :bank_address, :bank_name, :epf, :epf_no, :id, :income_tax,
-                  :income_tax_no, :salary, :socso_no, :pay_type, :socso
+  attr_accessible :allowance, :bank_acc_no, :bank_acc_type, :bank_address, :bank_name, :epf, 
+                  :epf_no, :id, :income_tax, :income_tax_no, :salary, :socso_no, :pay_type, :socso
   
   self.table_name = 'employee_salary'
   
@@ -15,11 +16,16 @@ class EmployeeSalary < ActiveRecord::Base
   validates_presence_of :pay_type, :message => 'Pay Type is required'
   validates_presence_of :epf, :message => 'EPF Deduction is required'
   
-  validates_numericality_of :salary, :greater_than_or_equal_to => 0, :message => 'Salary is invalid'
-  validates_numericality_of :allowance, :greater_than_or_equal_to => 0, :message => 'Allowance is invalid'
-  validates_numericality_of :epf, :greater_than_or_equal_to => 0, :message => 'EPF Deduction is invalid'
-  validates_numericality_of :socso, :greater_than_or_equal_to => 0, :message => 'SOCSO Deduction is invalid'
-  validates_numericality_of :income_tax, :greater_than_or_equal_to => 0, :message => 'Income Tax Deduction is invalid'
+  validates_numericality_of :salary, :greater_than_or_equal_to => 0, 
+                                     :message => 'Salary is invalid'
+  validates_numericality_of :allowance, :greater_than_or_equal_to => 0, 
+                                        :message => 'Allowance is invalid'
+  validates_numericality_of :epf, :greater_than_or_equal_to => 0, 
+                                  :message => 'EPF Deduction is invalid'
+  validates_numericality_of :socso, :greater_than_or_equal_to => 0, 
+                                    :message => 'SOCSO Deduction is invalid'
+  validates_numericality_of :income_tax, :greater_than_or_equal_to => 0, 
+                                         :message => 'Income Tax Deduction is invalid'
   
   def allowance
     a = read_attribute(:allowance)

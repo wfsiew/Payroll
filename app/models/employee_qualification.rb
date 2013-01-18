@@ -1,3 +1,4 @@
+# Model for employee_qualification table.
 class EmployeeQualification < ActiveRecord::Base
   attr_accessible :end_date, :gpa, :id, :institute, :level, :major, :start_date, :year
   

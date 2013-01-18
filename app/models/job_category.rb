@@ -1,3 +1,4 @@
+# Model for job_category table.
 class JobCategory < ActiveRecord::Base
   attr_accessible :id, :name
   
