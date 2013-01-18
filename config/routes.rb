@@ -1,5 +1,5 @@
 Payroll::Application.routes.draw do
-  root :to => 'admin/home#index'
+  root :to => 'admin/admin#index'
   
   match 'login' => 'application#new', :as => :login
   match 'auth' => 'application#create', :as => :auth

@@ -1,9 +1,9 @@
 <% @title = 'Payroll System: Log In' %>
 
 <div class="login_box ui-corner-all">
-  <div class="msg ui-widget-header ui-state-hover ui-corner-all">Please log in to access the application:</div>
+  <div class="msg ui-state-highlight ui-corner-all">Please log in to access the application:</div>
   
-  <%= content_tag :div, notice, :class => 'notice ui-state-highlight ui-corner-all' if notice.present? %>
+  <%= content_tag :div, notice, :class => 'notice ui-state-hover ui-corner-all' if notice.present? %>
   <%= content_tag :div, alert, :class => 'errorblock ui-state-error ui-corner-all' if alert.present? %>
   
   <%= form_tag(auth_path) do %>
@@ -15,8 +15,9 @@
       <%= label_tag :password, 'Password', :class => 'editor-label' %>
       <%= password_field_tag :password, 'admin123', :class => 'text-box' %>
     </div>
-    <p class="row_login_btn">
+    
+    <div class="msg login_btn ui-state-highlight ui-corner-all">
       <%= submit_tag 'Log In', :class => 'hover ui-state-hover ui-corner-all' %>
-    </p>
+    </div>
   <% end %>
 </div>
