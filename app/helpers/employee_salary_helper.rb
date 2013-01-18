@@ -8,6 +8,10 @@ module EmployeeSalaryHelper
     if q[:salary].blank? && q[:allowance].blank? && q[:epf].blank? && q[:socso].blank? && q[:bank_name].blank? && q[:bank_acc_no].blank? && 
       q[:bank_acc_type].blank? && q[:bank_address].blank? && q[:epf_no].blank? && q[:socso_no].blank? && q[:income_tax_no].blank?
       return true
+
+    elsif q[:salary] == '0' && q[:allowance] == '0' && q[:epf] == '0' && q[:socso] == '0' && q[:bank_name].blank? && q[:bank_acc_no].blank? && 
+      q[:bank_acc_type].blank? && q[:bank_address].blank? && q[:epf_no].blank? && q[:socso_no].blank? && q[:income_tax_no].blank?
+      return true
     end
     false
   end
