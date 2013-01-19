@@ -126,7 +126,6 @@ ActiveRecord::Schema.define(:version => 20130112151851) do
 
   create_table "pay_rate", :force => true do |t|
     t.string  "staff_id",        :null => false
-    t.float   "total_hours",     :null => false
     t.integer "month",           :null => false
     t.integer "year",            :null => false
     t.float   "hourly_pay_rate", :null => false
