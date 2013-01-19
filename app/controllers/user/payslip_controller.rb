@@ -53,13 +53,9 @@ class User::PayslipController < User::UserController
       # hourly type
       else
         filters = { :year => year, :month => _month, :staff_id => @employee.staff_id }
-        @total_earnings = PayslipHelper.total_earnings_hourly(@employee_salary, filters)
+        @total_earnings, @total_hours, @hourly_pay_rate = PayslipHelper.total_earnings_hourly(@employee_salary, filters)
         @total_deduct = PayslipHelper.total_deductions(@employee_salary)
-        @nett_salary = PayslipHelper.nett_salary_hourly(@employee_salary, filters)
-        
-        o = PayRate.where(filters)
-        @total_hours = o.first.blank? ? 0 : o.first.total_hours
-        @hourly_pay_rate = o.first.blank? ? 0 : o.first.hourly_pay_rate
+        @nett_salary = PayslipHelper.nett_salary_hourly(@total_earnings, @total_deduct)
         
         respond_to do |fmt|
           fmt.html { render 'admin/payslip/payslip_hourly' }

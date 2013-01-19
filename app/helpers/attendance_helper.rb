@@ -48,6 +48,24 @@ module AttendanceHelper
       :sortdir => sort.direction }
   end
   
+  def self.get_total_hours(filters)
+    criteria = Attendance.where('year(work_date) = ? and month(work_date) = ?', 
+      filters[:year], filters[:month])
+    if filters[:staff_id].present?
+      criteria = criteria.where('staff_id = ?', filters[:staff_id])
+    end
+    
+    list = criteria.all
+    total_hours = 0
+    list.each do |o|
+      to = o.time_out.localtime
+      ti = o.time_in.localtime
+      total_hours += (to - ti) / 3600.0
+    end
+    
+    total_hours
+  end
+  
   private
   
   def self.get_filter_criteria(filters, sort = nil)

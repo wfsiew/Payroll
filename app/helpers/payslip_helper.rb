@@ -14,15 +14,15 @@ module PayslipHelper
   end
   
   def self.total_earnings_hourly(employee_salary, filters)
-    total = PayRate.where(:staff_id => filters[:staff_id])
-                   .where(:year => filters[:year])
-                   .where(:month => filters[:month])
-                   .sum('total_hours * hourly_pay_rate')
-    total.to_f
+    total_hours = AttendanceHelper.get_total_hours(filters)
+    rate = PayRateHelper.get_pay_rate(filters)
+    
+    earnings = (total_hours * rate) + employee_salary.allowance
+    return earnings, total_hours, rate
   end
   
-  def self.nett_salary_hourly(employee_salary, filters)
-    total_earnings_hourly(employee_salary, filters) - total_deductions(employee_salary)
+  def self.nett_salary_hourly(earnings, deductions)
+    earnings - deductions
   end
   
   def self.total_overtime(filters)

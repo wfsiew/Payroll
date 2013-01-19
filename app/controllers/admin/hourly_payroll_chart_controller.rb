@@ -18,33 +18,51 @@ class Admin::HourlyPayrollChartController < Admin::AdminController
     month = params[:month].blank? ? '0' : params[:month]
     year = params[:year].blank? ? 0 : params[:year].to_i
     
-    criteria = PayRate
     title = 'Hourly Payroll'
     yaxis = 'Total Amount (RM)'
     
+    months = I18n.t('date.month_names')
+    
+    o = Array.new(12) { |x| [months[x + 1], 0] }
+    b = Array.new(12) { |x| 0 }
+    categories = Array.new(12) { |x| months[x + 1][0..2] }
+    
     if staff_id.present?
-      criteria = criteria.where(:staff_id => staff_id)
+      liststaff = [staff_id]
+      
+    else
+      list = PayRate.select('distinct(staff_id)').all
+      liststaff = list.collect { |x| x.staff_id }
     end
     
     if year != 0
-      criteria = criteria.where(:year => year)
+      listyear = [year]
       title = "Hourly Payroll for #{year}"
+      
+    else
+      list = PayRate.select('distinct(year)').all
+      listyear = list.collect { |x| x.year }
     end
     
     if month != '0'
-      criteria = criteria.where('month in (?)', month)
+      listmonth = month.collect { |x| x.to_i }
+      
+    else
+      list = PayRate.select('distinct(month)').all
+      listmonth = list.collect { |x| x.month }
     end
     
-    list = criteria.group(:month).order(:month).sum('total_hours * hourly_pay_rate')
-    months = I18n.t('date.month_names')
-    
-    o = []
-    b = []
-    categories = []
-    list.each do |k, v|
-      o << [months[k], v]
-      b << v
-      categories << months[k][0..2]
+    listyear.each do |y|
+      listmonth.each do |m|
+        liststaff.each do |s|
+          filters = { :year => y, :month => m, :staff_id => s }
+          total_hours = AttendanceHelper.get_total_hours(filters)
+          rate = PayRateHelper.get_pay_rate(filters)
+          v = total_hours * rate
+          o[m - 1][1] = v
+          b[m - 1] += v
+        end
+      end
     end
     
     c = b.collect { |x| x.round(2) }

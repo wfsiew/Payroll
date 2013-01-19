@@ -59,6 +59,15 @@ module PayRateHelper
     end
   end
   
+  def self.get_pay_rate(filters)
+    o = PayRate.where(:staff_id => filters[:staff_id])
+               .where(:year => filters[:year])
+               .where(:month => filters[:month]).first
+    rate = 0
+    rate = o.hourly_pay_rate if o.present?
+    rate
+  end
+  
   private
   
   def self.get_filter_criteria(filters, sort = nil)
