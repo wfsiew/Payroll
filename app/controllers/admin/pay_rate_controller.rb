@@ -61,8 +61,9 @@ class Admin::PayRateController < Admin::AdminController
   # Create new PayRate record.
   # POST /payrate/create
   def create
-    o = PayRate.new(:id => SecureRandom.uuid, :staff_id => params[:staff_id], :total_hours => params[:total_hours], 
-                    :month => params[:month], :year => params[:year], :hourly_pay_rate => params[:pay_rate])
+    o = PayRate.new(:id => SecureRandom.uuid, :staff_id => params[:staff_id], 
+                    :month => params[:month], :year => params[:year], 
+                    :hourly_pay_rate => params[:pay_rate])
                             
     if o.save
       render :json => { :success => 1, 
@@ -91,8 +92,8 @@ class Admin::PayRateController < Admin::AdminController
   def update
     o = PayRate.find(params[:id])
     
-    if o.update_attributes(:staff_id => params[:staff_id], :total_hours => params[:total_hours],
-                           :month => params[:month], :year => params[:year], :hourly_pay_rate => params[:pay_rate])
+    if o.update_attributes(:staff_id => params[:staff_id], :month => params[:month], 
+                           :year => params[:year], :hourly_pay_rate => params[:pay_rate])
       render :json => { :success => 1, 
                         :message => 'Pay Rate was successfully updated.' }
       

@@ -191,7 +191,6 @@ var payrate = ( function() {
 
       var data = {
         staff_id : form.find('#id_staff_id').val(),
-        total_hours : form.find('#id_total_hours').val(),
         month : form.find('#id_month').val(),
         year : form.find('#id_year').val(),
         pay_rate : form.find('#id_pay_rate').val()

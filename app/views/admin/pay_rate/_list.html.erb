@@ -10,12 +10,6 @@
           </div>
         </th>
         <th class="data">
-          <div id="hd_total_hours" class="sortheader hover">
-            <span class="colheader">Total Hours</span>
-            <span class="sorticon"></span>
-          </div>
-        </th>
-        <th class="data">
           <div id="hd_month" class="sortheader hover">
             <span class="colheader">Month</span>
             <span class="sorticon"></span>
@@ -40,7 +34,6 @@
       <tr id="tr_<%= o.id %>" class="<%= cycle("ui-state-active", "ui-state-default") %>">
         <td class="data chkbox"><input class="chk" type="checkbox" /></td>
         <td class="data"><%= h o.staff_id %></td>
-        <td class="data"><%= number_with_precision o.total_hours, :precision => 2 %></td>
         <td class="data"><%= h month_name(o.month) %></td>
         <td class="data"><%= h o.year %></td>
         <td class="data"><%= number_with_precision o.hourly_pay_rate, :precision => 2 %></td>
