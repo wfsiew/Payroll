@@ -136,8 +136,8 @@ def create_list_attendance(x)
     for m in month
       days = list_day(m, y)
       for k in days
-        ti = Time.new(y, m, k, 8, rand(20..59), 0)
-        to = Time.new(y, m, k, rand(18..20), rand(0..50), 0)
+        ti = Time.new(y, m, k, 8, rand(20..59), 0, '+08:00')
+        to = Time.new(y, m, k, rand(18..20), rand(0..50), 0, '+08:00')
         create_attendance(:id => SecureRandom.uuid, :staff_id => x[:staff_id], :work_date => Date.new(y, m, k), 
                           :time_in => ti, :time_out => to)
       end

@@ -58,8 +58,8 @@ module AttendanceHelper
     list = criteria.all
     total_hours = 0
     list.each do |o|
-      to = o.time_out.localtime
-      ti = o.time_in.localtime
+      to = ApplicationHelper.localtime(o.time_out.localtime)
+      ti = ApplicationHelper.localtime(o.time_in.localtime)
       total_hours += (to - ti) / 3600.0
     end
     

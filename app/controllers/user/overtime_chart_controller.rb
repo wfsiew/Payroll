@@ -39,8 +39,8 @@ class User::OvertimeChartController < User::UserController
     b = Array.new(12) { |x| 0 }
     categories = Array.new(12) { |x| months[x + 1][0..2] }
     list.each do |o|
-      to = o.time_out.localtime
-      v = Time.new(to.year, to.month, to.day, 18, 0, 0)
+      to = ApplicationHelper.localtime(o.time_out)
+      v = Time.new(to.year, to.month, to.day, 18, 0, 0, '+08:00')
       x = (to - v) / 3600.0
       m = o.work_date.month
       b[m - 1] += x

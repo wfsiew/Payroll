@@ -78,7 +78,7 @@ class ApplicationController < ActionController::Base
   # Helper method.
   def fmt_time(t)
     if t.present?
-      t.localtime.strftime('%l:%M %p')
+      t.in_time_zone('Kuala Lumpur').strftime('%l:%M %p')
     end
   end
   

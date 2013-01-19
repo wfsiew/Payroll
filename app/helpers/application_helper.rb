@@ -111,7 +111,7 @@ module ApplicationHelper
     Date::MONTHNAMES[i]
   end
   
-  def self.date_fmt
-    '%d-%m-%Y'
+  def self.localtime(t)
+    t.in_time_zone('Kuala Lumpur')
   end
 end
