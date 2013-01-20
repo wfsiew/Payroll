@@ -108,6 +108,11 @@ Payroll::Application.routes.draw do
       match 'chart' => 'overtime_chart#index', :via => :get
       match 'chart/data' => 'overtime_chart#data', :via => [:get, :post]
     end
+    
+    scope 'workhours', :as => 'workhours' do
+      match 'chart' => 'total_work_hours_chart#index', :via => :get
+      match 'chart/data' => 'total_work_hours_chart#data', :via => [:get, :post]
+    end
   end
   
   namespace :user do
@@ -139,6 +144,11 @@ Payroll::Application.routes.draw do
     scope 'overtime', :as => 'overtime' do
       match 'chart' => 'overtime_chart#index', :via => :get
       match 'chart/data' => 'overtime_chart#data', :via => [:get, :post]
+    end
+    
+    scope 'workhours', :as => 'workhours' do
+      match 'chart' => 'total_work_hours_chart#index', :via => :get
+      match 'chart/data' => 'total_work_hours_chart#data', :via => [:get, :post]
     end
     
     scope 'hourly', :as => 'hourly' do

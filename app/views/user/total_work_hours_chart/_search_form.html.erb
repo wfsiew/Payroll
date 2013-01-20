@@ -1,0 +1,26 @@
+<table>
+  <tr>
+    <td>
+      <%= label_tag :id_year, 'Year', :class => 'label' %>
+    </td>
+    <td class="colspacing">
+      <%= select_year(Date.today, { :start_year => Time.now.year, :end_year => end_year }, { :id => 'id_year', :class => 'select' }) %>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <%= label_tag :id_month, 'Month', :class => 'label' %>
+    </td>
+    <td colspan="2">
+      <label>All</label>
+      <input type="checkbox" name="month" value="0" class="chkall" />
+      <% for k, v in @month_hash %>
+      <label><%= k[0..2] %></label>
+      <input type="checkbox" name="month" value="<%= v %>" class="chkmonth" />
+      <% end %>
+    </td>
+  </tr>
+</table>
+<br />
+<%= render 'shared/chart_button' %>

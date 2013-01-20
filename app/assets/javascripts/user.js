@@ -19,5 +19,6 @@
 //= require user/qualification
 //= require user/otcht
 //= require user/hpcht
+//= require user/wkcht
 //= require user/payslip
 // require_tree .

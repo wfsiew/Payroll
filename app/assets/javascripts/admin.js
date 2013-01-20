@@ -24,4 +24,5 @@
 //= require admin/payslip
 //= require admin/att
 //= require admin/otcht
+//= require admin/wkcht
 // require_tree .
