@@ -1,5 +1,8 @@
+# This controller serves incoming requests to display Employee Total Hours Worked Chart.
 class User::TotalWorkHoursChartController < User::UserController
   
+  # Display the main page.
+  # GET /workhours/chart
   def index
     @month_hash = month_options
     
@@ -8,6 +11,8 @@ class User::TotalWorkHoursChartController < User::UserController
     end
   end
   
+  # Get the total hours worked json data to be populated to the chart.
+  # GET /workhours/chart/data
   def data
     month = params[:month].blank? ? '0' : params[:month]
     year = params[:year].blank? ? 0 : params[:year].to_i
