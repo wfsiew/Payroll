@@ -60,7 +60,7 @@ module Payroll
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     
-    config.assets.precompile += %w(loginui.css _payslip.css _payslip.js blitzer/jquery-ui-1.10.0.custom.min.css admin.css admin.js user.css user.js)
+    config.assets.precompile += %w(loginui.css _payslip.css _payslip.js dark-hive/jquery-ui-1.10.0.custom.min.css admin.css admin.js user.css user.js)
     
     jquitheme = %w(blitzer dark-hive trontastic humanity)
     jquicss = 'jquery-ui-1.10.0.custom.min.css'
