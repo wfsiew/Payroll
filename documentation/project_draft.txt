@@ -1,0 +1,7 @@
+1. Intoduction
+---------------
+
+The payroll system keeps accurate employee data stored in an easily accessible database. 
+The system is web based which has the ability to update and maintain employee information, 
+define the salary, pay rate, overtime rate, deductions, income tax, generate pay-slip, and 
+generate and manage the payroll processes according to the salary structure assigned to the employee.
