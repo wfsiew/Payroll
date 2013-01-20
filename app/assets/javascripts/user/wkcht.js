@@ -1,5 +1,5 @@
-var wkcht = (function() {
-  var url = {
+var wkcht = ( function() {
+    var url = {
       data : '/user/workhours/chart/data/'
     };
 
