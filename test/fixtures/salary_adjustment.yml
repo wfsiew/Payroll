@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: MyString
+  staff_id: MyString
+  inc: 1.5
+  amount: 1.5
+  month: 1
+  year: 2013
+
+two:
+  id: MyString
+  staff_id: MyString
+  increment: 1.5
+  amount: 1.5
+  month: 1
+  year: 2013

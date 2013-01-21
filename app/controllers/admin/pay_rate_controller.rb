@@ -16,7 +16,7 @@ class Admin::PayRateController < Admin::AdminController
   
   # List records by filtering.
   # GET /payrate/list
-  # GET /payrrate/list.json
+  # GET /payrate/list.json
   def list
     staff_id = params[:staff_id].blank? ? '' : params[:staff_id]
     month = params[:month].blank? ? 0 : params[:month].to_i

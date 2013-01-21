@@ -1,0 +1,29 @@
+<table>
+  <tr>
+    <td>
+      <%= label_tag :id_staff_id, 'Id', :class => 'label' %>
+    </td>
+    <td class="colspacing">
+      <%= text_field_tag :id_staff_id, nil, :id => 'id_staff_id', :class => 'search', :placeholder => 'type here to search', 
+                         :title => 'type here to search' %>
+    </td>
+    <td>
+      <%= label_tag :id_month, 'Month', :class => 'label' %>
+    </td>
+    <td>
+      <%= select_month(0, { :prompt => 'All' }, { :id => 'id_month', :class => 'select' }) %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= label_tag :id_year, 'Year', :class => 'label' %>
+    </td>
+    <td class="colspacing">
+      <%= select_year(0, { :start_year => Time.now.year, :end_year => end_year, :prompt => 'All' }, { :id => 'id_year', :class => 'select' }) %>
+    </td>
+    <td colspan="2"></td>
+  </tr>
+</table>
+<br />
+<% @include_search = true %>
+<%= render 'shared/panel_button' %>

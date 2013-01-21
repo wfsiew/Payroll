@@ -113,6 +113,16 @@ Payroll::Application.routes.draw do
       match 'chart' => 'total_work_hours_chart#index', :via => :get
       match 'chart/data' => 'total_work_hours_chart#data', :via => [:get, :post]
     end
+    
+    scope 'salaryadj', :as => 'salaryadj' do
+      match '' => 'salary_adjustment#index', :via => :get
+      match 'list' => 'salary_adjustment#list', :as => :list, :via => [:get, :post]
+      match 'new' => 'salary_adjustment#new', :as => :new, :via => :get
+      match 'create' => 'salary_adjustment#create', :as => :create, :via => :post
+      match 'edit(/:id)' => 'salary_adjustment#edit', :as => :edit, :via => :get
+      match 'update(/:id)' => 'salary_adjustment#update', :as => :update, :via => :post
+      match 'delete' => 'salary_adjustment#destroy', :as => :delete, :via => :post
+    end
   end
   
   namespace :user do

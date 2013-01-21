@@ -1,0 +1,47 @@
+<%= form_tag('.', :id => @form_id, :class => 'save_form ui-widget-content ui-widget ui-corner-all') do %>
+  <table>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :staff_id, 'Staff ID', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :staff_id, @adj.staff_id, :id => 'id_staff_id', :class => 'text', :placeholder => 'enter staff id',
+                           :title => 'enter staff id' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :inc, 'Increment', :class => 'label' %>
+      </td>
+      <td>
+        <%= text_field_tag :inc, @adj.inc, :id => 'id_inc', :class => 'text', :placeholder => 'enter increment',
+                           :title => 'enter increment' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :month, 'Month', :class => 'label' %>
+      </td>
+      <td>
+        <%= select_month(@adj.month, { :field_name => 'month' }, { :id => 'id_month', :class => 'select' }) %>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="lbl">
+        <%= label_tag :year, 'Year', :class => 'label' %>
+      </td>
+      <td>
+        <%= select_year(@adj.year, { :start_year => Time.now.year, :end_year => end_year, :field_name => 'year' }, { :id => 'id_year', :class => 'select' }) %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <div class="row_button">
+          <%= render 'shared/save_button' %>
+          <%= render 'shared/cancel_button' %>
+        </div>
+      </td>
+    </tr>
+  </table>
+<% end %>

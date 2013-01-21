@@ -25,4 +25,5 @@
 //= require admin/att
 //= require admin/otcht
 //= require admin/wkcht
+//= require admin/saladj
 // require_tree .
