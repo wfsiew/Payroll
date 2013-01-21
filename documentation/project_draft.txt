@@ -1,7 +1,46 @@
+Abstract
+---------------
+The Payroll System project is a fully ajax enabled web application which is developed to solve the 
+manual payroll system. The system is very useful for the payroll transaction. It can ease the work for 
+payroll administrator, and the system is systematic compared to the manual system. The Payroll System can 
+solve many problems faced by the payroll administrator, such as the calculation of each employee's salary 
+will be calculated by the system. In addition, it can improve the time efficiency, provide a user friendly 
+environment, and it is paperless. From the Payroll System, it also improves the payroll administrator's 
+work performance. Furthermore, it provides shorter time for information reftrieval and easier way to 
+maintain the payroll detail. The system can control all the payroll transactions by protecting the data 
+from being accessed by unauthorized user. The system also has the function to print the pay slips and 
+various charts. Moreover, the system can automatically calculate the salary and user friendly. Besides, 
+it has the function to maintain employee information, backup data, search, and keep history record. 
+The employee can update their own details, and view/print their latest salary details without having to 
+get from the payroll administrator. Payroll administrator also can control the user authority where only 
+certain users have access rights to access the system.
+The methodology that used in the Payroll System is Software Prototyping technique. 
+The Software Prototyping technique refers to the activity of creating prototypes of software applications. 
+A prototype typically simulates only a few aspects of, and may be completely different from the final 
+product. The process of prototyping involves the following steps, which are identify basic requirements, 
+develop initial prototype, review, and revise and enhance the prototype.
+The scope for the Payroll System will be divided into two main categories, monthly type salary (with 
+overtime rates), and hourly type salary, which paid by hours worked (with hourly rate).
+As the conclusion, it has many advantages for payroll administrator and the employee
+by using the Payroll System.
+
 1. Intoduction
 ---------------
 
-The payroll system keeps accurate employee data stored in an easily accessible database. 
-The system is web based which has the ability to update and maintain employee information, 
-define the salary, pay rate, overtime rate, deductions, income tax, generate pay-slip, and 
-generate and manage the payroll processes according to the salary structure assigned to the employee.
+The Payroll System is very important for the companies or industries where it can ease the work for 
+payroll administrator, and the system is systematic compared to the manual system.
+Therefore, the Payroll System is developed to solve the problems exist in manual system.
+The Payroll System has many functions where it is very useful for both payroll administrator and the
+employee. The main function for the Payroll System is it can help the payroll administrator to calculate
+the salary and print the pay slips. In addition, the Payroll System also has functions to save, update, and
+delete employee information. Payroll administrator can backup the database to avoid any data missing from the system.
+Besides, the Payroll System also has the functionality to allow both payroll administrator and employee to 
+view overtime charts, toal hours worked chart, and hourly payroll chart. Furthermore, the Payroll System
+has the user authority function to make the system more secure.
+
+2. Significance of the project
+---------------
+
+
+3. Problem Statement
+---------------
