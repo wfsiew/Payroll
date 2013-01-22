@@ -9,9 +9,12 @@
   </div>
   <h3><%= link_to 'Payroll', '#' %></h3>
   <div>
-    <div><%= link_to 'Overtime Chart', '#', :onclick => "return otcht.load()" %></div>
     <div><%= link_to 'Total Work Hours Chart', '#', :onclick => "return wkcht.load()" %></div>
+    <% if @pay_type == 1 %>
+    <div><%= link_to 'Overtime Chart', '#', :onclick => "return otcht.load()" %></div>
+    <% else %>
     <div><%= link_to 'Hourly Payroll Chart', '#', :onclick => "return hpcht.load()" %></div>
+    <% end %>
     <div><%= link_to 'Payslip', '#', :onclick => "return payslip.load()" %></div>
   </div>
 </div>

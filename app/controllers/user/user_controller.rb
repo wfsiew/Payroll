@@ -10,6 +10,10 @@ class User::UserController < ApplicationController
   # Display the user page.
   # GET /user/index
   def index
+    id = get_employee_id
+    @employee_salary = EmployeeSalaryHelper.find(id)
+    @pay_type = @employee_salary.pay_type
+    
     respond_to do |fmt|
       fmt.html { render :layout => LAYOUT[:user] }
     end

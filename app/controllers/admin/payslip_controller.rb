@@ -81,14 +81,19 @@ class Admin::PayslipController < Admin::AdminController
         filters = { :year => year, :month => _month, :staff_id => @employee.staff_id }
         @total_overtime = PayslipHelper.total_overtime(filters)
         @total_overtime_earnings = PayslipHelper.total_overtime_earnings(filters, @total_overtime)
+        @adjustment = SalaryAdjustmentHelper.get_salary_adjustment(filters)
         
-        @total_earnings = PayslipHelper.total_earnings(@employee_salary, @total_overtime_earnings)
+        @total_earnings = PayslipHelper.total_earnings(@employee_salary, @adjustment, @total_overtime_earnings)
         @total_deduct = PayslipHelper.total_deductions(@employee_salary)
-        @nett_salary = PayslipHelper.nett_salary(@employee_salary, @total_overtime_earnings)
+        @nett_salary = PayslipHelper.nett_salary(@total_earnings, @total_deduct)
+        
+        @basic_pay = @employee_salary.salary + @adjustment
     
         respond_to do |fmt|
           fmt.html { render 'payslip_monthly' }
-          fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary, @total_overtime, @total_overtime_earnings] }
+          fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary, 
+                                      @total_overtime, @total_overtime_earnings, @adjustment,
+                                      @basic_pay] }
         end
         
       # hourly type
@@ -101,7 +106,8 @@ class Admin::PayslipController < Admin::AdminController
         
         respond_to do |fmt|
           fmt.html { render 'payslip_hourly' }
-          fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary, @total_hours, @hourly_pay_rate] }
+          fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary, 
+                                      @total_hours, @hourly_pay_rate] }
         end
       end
     end

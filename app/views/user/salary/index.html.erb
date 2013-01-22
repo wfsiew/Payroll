@@ -7,7 +7,7 @@
         <%= label_tag :salary, 'Salary', :class => 'label' %>
       </td>
       <td>
-        <span><%= h @employee_salary.salary %></span>
+        <span><%= number_to_currency @basic_pay, :unit => '' %></span>
       </td>
     </tr>
     <tr>
@@ -15,7 +15,7 @@
         <%= label_tag :allowance, 'Allowance', :class => 'label' %>
       </td>
       <td>
-        <span><%= h @employee_salary.allowance %></span>
+        <span><%= number_to_currency @employee_salary.allowance, :unit => '' %></span>
       </td>
     </tr>
     <tr>
@@ -23,7 +23,7 @@
         <%= label_tag :epf, 'EPF Deduction', :class => 'label' %>
       </td>
       <td>
-        <span><%= @employee_salary.epf %></span>
+        <span><%= number_to_currency @employee_salary.epf, :unit => '' %></span>
       </td>
     </tr>
     <tr>
@@ -31,7 +31,7 @@
         <%= label_tag :socso, 'SOCSO Deduction', :class => 'label' %>
       </td>
       <td>
-        <span><%= h @employee_salary.socso %></span>
+        <span><%= number_to_currency @employee_salary.socso, :unit => '' %></span>
       </td>
     </tr>
     <tr>
@@ -39,7 +39,7 @@
         <%= label_tag :income_tax, 'Income Tax Deduction', :class => 'label' %>
       </td>
       <td>
-        <span><%= h @employee_salary.income_tax %></span>
+        <span><%= number_to_currency @employee_salary.income_tax, :unit => '' %></span>
       </td>
     </tr>
     <tr>

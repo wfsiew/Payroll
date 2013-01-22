@@ -4,7 +4,6 @@ class CreateSalaryAdjustment < ActiveRecord::Migration
       t.string :id, :null => false, :limit => 40
       t.string :staff_id, :null => false
       t.float :inc, :null => false
-      t.decimal :amount, :null => false, :precision => 10, :scale => 2
       t.integer :month, :null => false
       t.integer :year, :null => false
     end

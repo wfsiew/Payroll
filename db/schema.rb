@@ -126,17 +126,18 @@ ActiveRecord::Schema.define(:version => 20130121125208) do
 
   create_table "pay_rate", :force => true do |t|
     t.string  "staff_id",        :null => false
+    t.float   "total_hours",     :null => false
     t.integer "month",           :null => false
     t.integer "year",            :null => false
     t.float   "hourly_pay_rate", :null => false
   end
 
   create_table "salary_adjustment", :force => true do |t|
-    t.string  "staff_id",                                 :null => false
-    t.float   "increment",                                :null => false
-    t.decimal "amount",    :precision => 10, :scale => 2, :null => false
-    t.integer "month",                                    :null => false
-    t.integer "year",                                     :null => false
+    t.string  "staff_id",                                :null => false
+    t.float   "inc",                                     :null => false
+    t.decimal "amount",   :precision => 10, :scale => 2, :null => false
+    t.integer "month",                                   :null => false
+    t.integer "year",                                    :null => false
   end
 
   create_table "user", :force => true do |t|

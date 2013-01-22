@@ -59,6 +59,13 @@ module SalaryAdjustmentHelper
     end
   end
   
+  def self.get_salary_adjustment(filters)
+    o = SalaryAdjustment.where(:staff_id => filters[:staff_id])
+                        .where('year <= ?', filters[:year])
+                        .sum('inc')
+    o.to_f
+  end
+  
   private
   
   def self.get_filter_criteria(filters, sort = nil)

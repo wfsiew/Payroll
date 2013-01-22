@@ -4,13 +4,14 @@ module PayslipHelper
     employee_salary.epf + employee_salary.socso + employee_salary.income_tax
   end
   
-  def self.total_earnings(employee_salary, total_overtime_earnings)
+  def self.total_earnings(employee_salary, adjustment, total_overtime_earnings)
     return 0.0 if employee_salary.blank?
-    employee_salary.salary + employee_salary.allowance + total_overtime_earnings
+    amt = employee_salary.salary + adjustment
+    amt + employee_salary.allowance + total_overtime_earnings
   end
   
-  def self.nett_salary(employee_salary, total_overtime_earnings)
-    total_earnings(employee_salary, total_overtime_earnings) - total_deductions(employee_salary)
+  def self.nett_salary(earnings, deductions)
+    earnings - deductions
   end
   
   def self.total_earnings_hourly(employee_salary, filters)

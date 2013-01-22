@@ -1,5 +1,6 @@
 require 'securerandom'
 
+# This controller serves incoming requests to display out the SalaryAdjustment records.
 class Admin::SalaryAdjustmentController < Admin::AdminController
   
   # GET /salaryadj
@@ -13,6 +14,7 @@ class Admin::SalaryAdjustmentController < Admin::AdminController
     end
   end
   
+  # List records by filtering.
   # GET /salaryadj/list
   # GET /salaryadj/list.json
   def list
@@ -43,6 +45,7 @@ class Admin::SalaryAdjustmentController < Admin::AdminController
     end
   end
   
+  # Display the SalaryAdjustment form.
   # GET /salaryadj/new
   # GET /salaryadj/new.json
   def new
@@ -55,27 +58,14 @@ class Admin::SalaryAdjustmentController < Admin::AdminController
     end
   end
   
+  # Create new SalaryAdjustment record.
   # POST /salaryadj/create
   def create
     staff_id = params[:staff_id]
-    employee = Employee.where(:staff_id => staff_id).first
-    employee_salary = employee.employee_salary
-    salary = employee_salary.blank? ? 0 : employee_salary.salary
-    inc = params[:inc].blank? ? 0 : params[:inc].to_f
-    year = params[:year].blank? ? 0 : params[:year].to_i
-    
-    acc_inc = SalaryAdjustment.where('year < ?', year).sum('inc').to_f
-    
-    if salary > 0
-      amount = salary + inc + acc_inc
-      
-    else
-      amount = 0
-    end
     
     o = SalaryAdjustment.new(:id => SecureRandom.uuid, :staff_id => params[:staff_id],
-                             :inc => inc, :amount => amount,
-                             :month => params[:month], :year => year)
+                             :inc => params[:inc], :month => params[:month], 
+                             :year => params[:year])
                             
     if o.save
       render :json => { :success => 1, 
@@ -86,6 +76,7 @@ class Admin::SalaryAdjustmentController < Admin::AdminController
     end
   end
   
+  # Display the SalaryAdjustment form, with existing record to edit.
   # GET /salaryadj/edit/1
   # GET /salaryadj/edit/1.json
   def edit
@@ -98,14 +89,13 @@ class Admin::SalaryAdjustmentController < Admin::AdminController
     end
   end
   
+  # Update SalaryAdjustment record.
   # POST /salaryadj/update
   def update
     o = SalaryAdjustment.find(params[:id])
-    inc = params[:inc].blank? ? 0 : params[:inc].to_f
-    amount = o.amount - o.inc + inc
     
-    if o.update_attributes(:staff_id => params[:staff_id], :inc => inc, 
-                           :amount => amount, :month => params[:month], :year => params[:year])
+    if o.update_attributes(:staff_id => params[:staff_id], :inc => params[:inc], 
+                           :month => params[:month], :year => params[:year])
       render :json => { :success => 1, 
                         :message => 'Pay Rate was successfully updated.' }
       
@@ -114,6 +104,7 @@ class Admin::SalaryAdjustmentController < Admin::AdminController
     end
   end
   
+  # Delete a list of SalaryAdjustment records.
   # POST /salaryadj/delete
   def destroy
     staff_id = params[:staff_id].blank? ? '' : params[:staff_id]
