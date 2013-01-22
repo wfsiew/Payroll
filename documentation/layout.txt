@@ -1,0 +1,62 @@
+Acknowledgement
+Abstract
+List Of Tables
+List Of Figures
+
+Chapter 1
+Introduction
+1.1 Overview
+1.2 Problem Statements
+1.3 Significance of the project
+1.4 Project Limitations
+1.6 Expected Output
+1.7 Conclusion
+
+Chapter 2
+Objective And Scope
+2.1 Objective
+2.2 Scope
+
+Chapter 3
+Methodology
+3.1 Development Process
+    3.1.1 Project Identification And Selection
+	3.1.2 Project Initiation And Planning
+	3.1.3 Analysis
+	3.1.4 Logical Design
+	3.1.5 Physical Design
+	3.1.6 Implementation
+	3.1.7 Maintenance
+	
+3.2 Technology Used
+    3.2.1 Hardware And Software Requirement
+	3.2.2 Web Framework
+	
+Chapter 4
+Literature Review
+
+Chapter 5
+New System
+6.1 Introduction
+6.2 Logical Design
+    6.2.1 User Interface Design
+	6.2.2. Logical Databases Design
+	       6.2.2.1 Database
+		   6.2.2.2 Conceptual Data Modeling
+6.3 Physical Design
+    6.3.1 How System Works
+6.4 Feature Of New System
+6.5 Benefits Of New System
+
+Chapter 6
+Implementation
+
+Chapter 7
+Conclusion
+7.1 Advantages Of The System
+7.2 Disadvantages Of The System
+7.3 Problems Encountered
+7.4 Suggestions For Further Work
+
+References
+Appendices
