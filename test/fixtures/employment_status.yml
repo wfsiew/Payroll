@@ -2,8 +2,8 @@
 
 one:
   id: 1
-  name: MyString
+  name: Probation
 
 two:
-  id: 1
-  name: MyString
+  id: 2
+  name: Terminated

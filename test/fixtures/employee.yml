@@ -1,16 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  id: MyString
-  employee_id: MyString
+  id: 1
+  staff_id: 0001
   first_name: MyString
   middle_name: MyString
   last_name: MyString
   new_ic: MyString
   old_ic: MyString
   passport_no: MyString
-  gender: MyString
-  marital_status: MyString
+  gender: M
+  marital_status: S
   nationality: MyString
   dob: 2012-12-17
   place_of_birth: MyString
@@ -19,16 +19,16 @@ one:
   is_bumi: false
 
 two:
-  id: MyString
-  employee_id: MyString
+  id: 2
+  staff_id: 0002
   first_name: MyString
   middle_name: MyString
   last_name: MyString
   new_ic: MyString
   old_ic: MyString
   passport_no: MyString
-  gender: MyString
-  marital_status: MyString
+  gender: F
+  marital_status: O
   nationality: MyString
   dob: 2012-12-17
   place_of_birth: MyString

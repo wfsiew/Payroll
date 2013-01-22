@@ -1,17 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  id: MyString
-  staff_id: MyString
-  total_hours: 1.5
+  id: 1
+  staff_id: 0001
   month: 1
   year: 1
   hourly_pay_rate: 1.5
 
 two:
-  id: MyString
-  staff_id: MyString
-  total_hours: 1.5
+  id: 2
+  staff_id: 0002
   month: 1
   year: 1
   hourly_pay_rate: 1.5

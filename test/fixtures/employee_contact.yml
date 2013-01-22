@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  id: MyString
+  id: 1
   address_1: MyString
   address_2: MyString
   address_3: MyString
@@ -15,7 +15,7 @@ one:
   other_email: MyString
 
 two:
-  id: MyString
+  id: 2
   address_1: MyString
   address_2: MyString
   address_3: MyString

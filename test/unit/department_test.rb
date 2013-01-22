@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class DepartmentTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  test 'should create create department' do
+    o = Department.new
+	o.name = 'Account'
+	
+	assert o.save
+  end
 end
