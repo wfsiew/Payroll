@@ -24,7 +24,8 @@ class Admin::AttendanceController < Admin::AdminController
     
     pgnum = params[:pgnum].blank? ? 1 : params[:pgnum].to_i
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
-    sortcolumn = params[:sortcolumn].blank? ? AttendanceHelper::DEFAULT_SORT_COLUMN : params[:sortcolumn]
+    sortcolumn = params[:sortcolumn].blank? ? AttendanceHelper::DEFAULT_SORT_COLUMN 
+                                            : params[:sortcolumn]
     sortdir = params[:sortdir].blank? ? AttendanceHelper::DEFAULT_SORT_DIR : params[:sortdir]
     
     sort = ApplicationHelper::Sort.new(sortcolumn, sortdir)

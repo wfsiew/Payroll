@@ -29,7 +29,8 @@ class Admin::EmployeeController < Admin::AdminController
     dept = params[:dept].blank? ? 0 : params[:dept].to_i
     pgnum = params[:pgnum].blank? ? 1 : params[:pgnum].to_i
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
-    sortcolumn = params[:sortcolumn].blank? ? EmployeeHelper::DEFAULT_SORT_COLUMN : params[:sortcolumn]
+    sortcolumn = params[:sortcolumn].blank? ? EmployeeHelper::DEFAULT_SORT_COLUMN 
+                                            : params[:sortcolumn]
     sortdir = params[:sortdir].blank? ? EmployeeHelper::DEFAULT_SORT_DIR : params[:sortdir]
     
     sort = ApplicationHelper::Sort.new(sortcolumn, sortdir)
@@ -40,7 +41,8 @@ class Admin::EmployeeController < Admin::AdminController
                 :designation => designation,
                 :dept => dept }
                 
-    if employee.blank? && staff_id.blank? && employment_status == 0 && designation == 0 && dept == 0
+    if employee.blank? && staff_id.blank? && employment_status == 0 && designation == 0 && 
+      dept == 0
       @data = EmployeeHelper.get_all(pgnum, pgsize, sort)
       
     else
@@ -130,10 +132,14 @@ class Admin::EmployeeController < Admin::AdminController
   # GET /employee/edit/1.json
   def edit
     @employee = Employee.find(params[:id])
-    @employee_contact = @employee.employee_contact.blank? ? EmployeeContact.new : @employee.employee_contact
-    @employee_job = @employee.employee_job.blank? ? EmployeeJob.new : @employee.employee_job
-    @employee_salary = @employee.employee_salary.blank? ? EmployeeSalary.new : @employee.employee_salary
-    @employee_qualification = @employee.employee_qualification.blank? ? EmployeeQualification.new : @employee.employee_qualification
+    @employee_contact = @employee.employee_contact.blank? ? EmployeeContact.new 
+                                                          : @employee.employee_contact
+    @employee_job = @employee.employee_job.blank? ? EmployeeJob.new 
+                                                  : @employee.employee_job
+    @employee_salary = @employee.employee_salary.blank? ? EmployeeSalary.new 
+                                                        : @employee.employee_salary
+    @employee_qualification = @employee.employee_qualification.blank? ? EmployeeQualification.new 
+                              : @employee.employee_qualification
     @form_id = 'edit-form'
     @users = User.order(:username).all
     @designations = Designation.order(:title).all
@@ -262,7 +268,8 @@ class Admin::EmployeeController < Admin::AdminController
                 :designation => designation,
                 :dept => dept }
     
-    if employee.blank? && staff_id.blank? && employment_status == 0 && designation == 0 && dept == 0
+    if employee.blank? && staff_id.blank? && employment_status == 0 && designation == 0 && 
+      dept == 0
       itemscount = EmployeeHelper.item_message(nil, pgnum, pgsize)
       
     else

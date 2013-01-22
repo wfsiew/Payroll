@@ -20,8 +20,10 @@ class Admin::EmploymentStatusController < Admin::AdminController
     keyword = params[:keyword].blank? ? '' : params[:keyword]
     pgnum = params[:pgnum].blank? ? 1 : params[:pgnum].to_i
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
-    sortcolumn = params[:sortcolumn].blank? ? EmploymentStatusHelper::DEFAULT_SORT_COLUMN : params[:sortcolumn]
-    sortdir = params[:sortdir].blank? ? EmploymentStatusHelper::DEFAULT_SORT_DIR : params[:sortdir]
+    sortcolumn = params[:sortcolumn].blank? ? EmploymentStatusHelper::DEFAULT_SORT_COLUMN 
+                                            : params[:sortcolumn]
+    sortdir = params[:sortdir].blank? ? EmploymentStatusHelper::DEFAULT_SORT_DIR 
+                                      : params[:sortdir]
     
     sort = ApplicationHelper::Sort.new(sortcolumn, sortdir)
     

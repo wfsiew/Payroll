@@ -21,7 +21,8 @@ class Admin::DesignationController < Admin::AdminController
     keyword = params[:keyword].blank? ? '' : params[:keyword]
     pgnum = params[:pgnum].blank? ? 1 : params[:pgnum].to_i
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
-    sortcolumn = params[:sortcolumn].blank? ? DesignationHelper::DEFAULT_SORT_COLUMN : params[:sortcolumn]
+    sortcolumn = params[:sortcolumn].blank? ? DesignationHelper::DEFAULT_SORT_COLUMN 
+                                            : params[:sortcolumn]
     sortdir = params[:sortdir].blank? ? DesignationHelper::DEFAULT_SORT_DIR : params[:sortdir]
     
     sort = ApplicationHelper::Sort.new(sortcolumn, sortdir)
@@ -84,7 +85,8 @@ class Admin::DesignationController < Admin::AdminController
   def update
     o = Designation.find(params[:id])
     
-    if o.update_attributes(:title => params[:title], :desc => params[:desc], :note => params[:note])
+    if o.update_attributes(:title => params[:title], :desc => params[:desc], 
+                           :note => params[:note])
       render :json => { :success => 1, 
                         :message => 'Job Title was successfully updated.' }
         
