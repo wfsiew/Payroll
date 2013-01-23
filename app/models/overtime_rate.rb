@@ -5,12 +5,12 @@ class OvertimeRate < ActiveRecord::Base
   self.table_name = 'overtime_rate'
   
   validates_presence_of :duration, :message => 'Duration is required'
-  validates_presence_of :pay_rate, :message => 'Pay rate is required'
   validates_presence_of :year, :message => 'Year is required'
+  validates_presence_of :pay_rate, :message => 'Pay Rate is required'
   
   validates_numericality_of :duration, :greater_than_or_equal_to => 0, :message => 'Duration is invalid'
   validates_numericality_of :year, :greater_than => 0, :message => 'Year is invalid'
-  validates_numericality_of :pay_rate, :greater_than => 0, :message => 'Pay rate is invalid'
+  validates_numericality_of :pay_rate, :greater_than => 0, :message => 'Pay Rate is invalid'
   
   validates_uniqueness_of :year, :message => "Overtime rate for year %{value} already exist"
   

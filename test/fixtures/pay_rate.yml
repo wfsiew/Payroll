@@ -4,12 +4,12 @@ one:
   id: 1
   staff_id: 0001
   month: 1
-  year: 1
+  year: 2011
   hourly_pay_rate: 1.5
 
 two:
   id: 2
   staff_id: 0002
-  month: 1
-  year: 1
+  month: 2
+  year: 2011
   hourly_pay_rate: 1.5

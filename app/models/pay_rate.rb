@@ -4,7 +4,7 @@ class PayRate < ActiveRecord::Base
   
   self.table_name = 'pay_rate'
   
-  validates_presence_of :staff_id, :message => 'Satff ID is required'
+  validates_presence_of :staff_id, :message => 'Staff ID is required'
   validates_presence_of :month, :message => 'Month is required'
   validates_presence_of :year, :message => 'Year is required'
   validates_presence_of :hourly_pay_rate, :message => 'Hourly pay rate is required'

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  level: 4
+  institute: APIT
+  major: IT
+  year: 2009
+  gpa: 3.4
+  start_date: 2004-05-06
+  end_date: 2006-05-09
+  
+two:
+  id: 2
+  level: 4
+  institute: Sedaya
+  major: Engineering
+  year: 2008
+  gpa: 3.7
+  start_date: 2003-03-01
+  end_date: 2005-05-10
