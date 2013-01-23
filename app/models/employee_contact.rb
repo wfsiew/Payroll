@@ -12,5 +12,5 @@ class EmployeeContact < ActiveRecord::Base
   validates_presence_of :state, :message => 'State is required'
   validates_presence_of :postcode, :message => 'Postal Code is required'
   validates_presence_of :country, :message => 'Country is required'
-  validates_presence_of :work_email, :message => 'Work email is required'
+  validates_presence_of :work_email, :message => 'Work Email is required'
 end

@@ -30,11 +30,20 @@ class DepartmentTest < ActiveSupport::TestCase
     assert_raise(ActiveRecord::RecordNotFound) { Department.find(o.id) }
   end
   
-  test "should not create a department without required fields" do
+  test 'should not create a department without required fields' do
     o = Department.new
     assert !o.valid?
     assert o.errors[:name].any?
     
     assert_equal ['Name is required'], o.errors[:name]
+  end
+  
+  test 'should not create a department with duplicate name' do
+    o = Department.new
+    o.name = 'Marketing'
+    assert !o.valid?
+    assert o.errors[:name].any?
+    
+    assert_equal ['Department Marketing already exist'], o.errors[:name]
   end
 end

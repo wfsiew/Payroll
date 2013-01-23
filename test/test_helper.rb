@@ -7,6 +7,8 @@ class ActiveSupport::TestCase
   #
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
+  self.use_transactional_fixtures = true
+  set_fixture_class :employment_status => 'EmploymentStatus'
   fixtures :all
 
   # Add more helper methods to be used by all tests here...

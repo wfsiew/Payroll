@@ -30,11 +30,20 @@ class DesignationTest < ActiveSupport::TestCase
     assert_raise(ActiveRecord::RecordNotFound) { Designation.find(o.id) }
   end
   
-  test "should not create a designation without required fields" do
+  test 'should not create a designation without required fields' do
     o = Designation.new
     assert !o.valid?
     assert o.errors[:title].any?
     
     assert_equal ['Job Title is required'], o.errors[:title]
+  end
+  
+  test 'should not create a designation with duplicate title' do
+    o = Designation.new
+    o.title = 'Admin'
+    assert !o.valid?
+    assert o.errors[:title].any?
+    
+    assert_equal ['Job Title Admin already exist'], o.errors[:title]
   end
 end

@@ -1,14 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  id: MyString
+  id: 1
   staff_id: MyString
   work_date: 2013-01-12
   time_in: 2013-01-12 23:18:51
   time_out: 2013-01-12 23:18:51
 
 two:
-  id: MyString
+  id: 2
   staff_id: MyString
   work_date: 2013-01-12
   time_in: 2013-01-12 23:18:51
