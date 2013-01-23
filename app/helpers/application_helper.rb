@@ -114,4 +114,8 @@ module ApplicationHelper
   def self.localtime(t)
     t.in_time_zone('Kuala Lumpur')
   end
+  
+  def self.date_fmt
+    '%d-%m-%Y'
+  end
 end

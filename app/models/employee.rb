@@ -6,10 +6,10 @@ class Employee < ActiveRecord::Base
   
   self.table_name = 'employee'
   
-  has_one :employee_contact, :dependent => :destroy, :foreign_key => 'id'
-  has_one :employee_job, :dependent => :destroy, :foreign_key => 'id'
-  has_one :employee_salary, :dependent => :destroy, :foreign_key => 'id'
-  has_one :employee_qualification, :dependent => :destroy, :foreign_key => 'id'
+  has_one :employee_contact, :foreign_key => 'id'
+  has_one :employee_job, :foreign_key => 'id'
+  has_one :employee_salary, :foreign_key => 'id'
+  has_one :employee_qualification, :foreign_key => 'id'
   has_one :employee, :foreign_key => 'id'
   has_many :attendance, :foreign_key => 'staff_id', :primary_key => 'staff_id'
   belongs_to :user

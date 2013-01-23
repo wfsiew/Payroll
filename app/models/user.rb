@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   
   self.table_name = 'user'
   
-  has_one :employee, :dependent => :nullify
+  has_one :employee
   
   validates :username, :uniqueness => { :message => "Username %{value} already exist" },
                        :length => { :within => 3..50, 
