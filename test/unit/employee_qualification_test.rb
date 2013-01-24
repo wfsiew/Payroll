@@ -41,7 +41,15 @@ class EmployeeQualificationTest < ActiveSupport::TestCase
     o = EmployeeQualification.new
     assert !o.valid?
     assert o.errors[:level].any?
+    assert o.errors[:institute].any?
+    assert o.errors[:year].any?
+    assert o.errors[:start_date].any?
+    assert o.errors[:end_date].any?
     
     assert_equal ['Qualification Level is required'], o.errors[:level]
+    assert_equal ['Institute name is required'], o.errors[:institute]
+    assert_equal ['Year obtained is required'], o.errors[:year]
+    assert_equal ['Start Date is required'], o.errors[:start_date]
+    assert_equal ['End Date is required'], o.errors[:end_date]
   end
 end

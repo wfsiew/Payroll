@@ -172,23 +172,6 @@ Payroll::Application.routes.draw do
     end
   end
   
-  # not used
-  scope 'setting', :as => 'setting' do
-    match '' => 'setting#index', :via => :get
-	  match 'list' => 'setting#list', :as => :list, :via => [:get, :post]
-	  match 'new' => 'setting#new', :as => :new, :via => :get
-    match 'create' => 'setting#create', :as => :create, :via => :post
-    match 'edit(/:id)' => 'setting#edit', :as => :edit, :via => :get
-    match 'update(/:id)' => 'setting#update', :as => :update, :via => :post
-    match 'delete' => 'setting#destroy', :as => :delete, :via => :post
-  end
-  
-  scope 'payroll', :as => 'payroll' do
-    match '' => 'payroll#index', :via => :get
-    match 'list' => 'payroll#list', :as => :list, :via => [:get, :post]
-    match 'report(/:id(/:month))' => 'payroll#report', :as => :report, :via => :get
-  end
-  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

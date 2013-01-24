@@ -2,7 +2,7 @@
 
 one:
   id: 1
-  staff_id: 0001
+  staff_id: C0001
   first_name: MyString
   middle_name: MyString
   last_name: MyString
@@ -20,7 +20,7 @@ one:
 
 two:
   id: 2
-  staff_id: 0002
+  staff_id: C0002
   first_name: MyString
   middle_name: MyString
   last_name: MyString
