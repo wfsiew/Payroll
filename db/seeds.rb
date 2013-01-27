@@ -12,6 +12,7 @@ def clear_data
   OvertimeRate.delete_all
   EmployeeSalary.delete_all
   Attendance.delete_all
+  SalaryAdjustment.delete_all
   User.delete_all
 end
 
@@ -127,6 +128,15 @@ def create_attendance(x)
   o = Attendance.create(:id => x[:id], :staff_id => x[:staff_id], :work_date => x[:work_date], 
                         :time_in => x[:time_in], :time_out => x[:time_out])
   o
+end
+
+def create_salary_adj(staff_id)
+  year = (2001..Time.now.year)
+  for y in year
+    r = rand(50..90)
+    o = SalaryAdjustment.create(:id => SecureRandom.uuid, :staff_id => staff_id, :inc => r,
+                                :month => 1, :year => y)
+  end
 end
 
 def create_list_attendance(x) 
@@ -245,6 +255,7 @@ def init
                       :job_category_id => jobcat.id, :join_date => Date.new(2000, 1, 1), :confirm_date => Date.new(2000, 3, 1))
                          
   create_overtime_rate
+  create_salary_adj('S0004')
 end
 
 clear_data
