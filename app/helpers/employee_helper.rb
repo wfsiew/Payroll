@@ -135,6 +135,14 @@ module EmployeeHelper
       criteria = criteria.where('es.id = ?', filters[:employment_status])
     end
     
+    if filters[:designation] != 0
+      criteria = criteria.where('d.id = ?', filters[:designation])
+    end
+    
+    if filters[:dept] != 0
+      criteria = criteria.where('dept.id = ?', filters[:dept])
+    end
+    
     return criteria, order
   end
   
