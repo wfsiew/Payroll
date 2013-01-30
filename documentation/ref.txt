@@ -1,3 +1,8 @@
+[1] http://en.wikipedia.org/wiki/Web_application
+[2] http://en.wikipedia.org/wiki/Payroll
+[3] http://en.wikipedia.org/wiki/Single-page_application
+[4] 
+
 [1] http://en.wikipedia.org/wiki/Questionnaire
 [2] http://www.qne.com.my/QnE+Payroll+System_32_1.htm
 [3] http://www.hr2000.com.my/product.htm
