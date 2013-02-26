@@ -185,7 +185,7 @@
         delete param['find']
         
       else
-        param['keyword'] = encodeURIComponent(keyword);
+        param['keyword'] = keyword;
       
       return param;
     }

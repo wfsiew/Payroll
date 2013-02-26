@@ -203,9 +203,9 @@
     
     function get_search_param() {
       var param = {
-        username :  encodeURIComponent($('#id_username').val()),
+        username :  $('#id_username').val(),
         role : $('#id_user_role').val(),
-        employee : encodeURIComponent($('#id_employee').val()),
+        employee : $('#id_employee').val(),
         status : $('#id_status').val()
       };
       

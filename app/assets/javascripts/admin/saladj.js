@@ -201,7 +201,7 @@ var saladj = ( function() {
     
     function get_search_param() {
       var param = {
-        staff_id :  encodeURIComponent($('#id_staff_id').val()),
+        staff_id :  $('#id_staff_id').val(),
         month : $('#id_month').val(),
         year : $('#id_year').val()
       };

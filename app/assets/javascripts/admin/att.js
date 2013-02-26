@@ -6,7 +6,7 @@ var att = ( function() {
     function get_search_param() {
       var param = {
         work_date : $('#id_work_date').val(),
-        employee : encodeURIComponent($('#id_employee').val())
+        employee : $('#id_employee').val()
       };
       
       return param;

@@ -18,8 +18,8 @@ var payslip = ( function() {
   
     function get_search_param() {
       var param = {
-        employee : encodeURIComponent($('#id_employee').val()),
-        staff_id : encodeURIComponent($('#id_staff_id').val()),
+        employee : $('#id_employee').val(),
+        staff_id : $('#id_staff_id').val(),
         employment_status : $('#id_employment_status').val(),
         designation : $('#id_designation').val(),
         dept : $('#id_dept').val()

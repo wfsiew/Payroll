@@ -89,7 +89,7 @@ var otcht = ( function() {
       var month = get_checked_month();
       
       var param = {
-        staff_id : encodeURIComponent($('#id_staff_id').val()),
+        staff_id : $('#id_staff_id').val(),
         year : $('#id_year').val()
       };
       if (month == 0)
