@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
   
   protected
   
-  # Returs the current user's user_id.
+  # Returns the current user's user_id.
   def current_user
     return unless session[:user_id]
     @current_user ||= session[:user_id]
