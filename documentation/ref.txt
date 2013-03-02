@@ -11,3 +11,6 @@
 [2] http://www.qne.com.my/QnE+Payroll+System_32_1.htm
 [3] http://www.hr2000.com.my/product.htm
 [4] http://www.doi.gov/ibc/services/hr/fpps.cfm
+
+[1] http://en.wikipedia.org/wiki/Requirements_analysis
+[2] http://en.wikipedia.org/wiki/Software_prototyping
