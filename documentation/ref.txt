@@ -10,6 +10,9 @@
 [9] http://money.howstuffworks.com/payroll-system1.htm
 [10] http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
 
+[11] http://en.wikipedia.org/wiki/Requirements_analysis
+[12] http://en.wikipedia.org/wiki/Software_prototyping
+[13] http://en.wikipedia.org/wiki/Software_requirements_specification
 
 
 
@@ -17,6 +20,3 @@
 [2] http://www.qne.com.my/QnE+Payroll+System_32_1.htm
 [3] http://www.hr2000.com.my/product.htm
 [4] http://www.doi.gov/ibc/services/hr/fpps.cfm
-
-[1] http://en.wikipedia.org/wiki/Requirements_analysis
-[2] http://en.wikipedia.org/wiki/Software_prototyping
