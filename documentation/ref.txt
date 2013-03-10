@@ -1,13 +1,16 @@
-[1] http://en.wikipedia.org/wiki/Web_application
-[2] http://en.wikipedia.org/wiki/Single-page_application
+[1] http://www.dbnetsolutions.co.uk/Articles/BenefitsOfWebBasedApplications.aspx
+[2] http://www.ehow.com/info_7771494_introduction-payroll-systems.html
 [3] http://en.wikipedia.org/wiki/Ajax_(programming)
-[4] http://money.howstuffworks.com/payroll-system1.htm
-[5] http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
+[4] http://www.adaptivepath.com/ideas/ajax-new-approach-web-applications
+[5] http://www.javacertificate.net/ajax_article.php
+[6] http://www.tutorialspoint.com/ajax/ajax_technology.htm
 
-[4] http://www.qne.com.my/QnE+Payroll+System_32_1.htm
-[5] http://www.payroll.com.sg/
-[6] http://www.hr2000.com.my/product.htm
-[7] http://www.doi.gov/ibc/services/hr/fpps.cfm
+[7] http://en.wikipedia.org/wiki/Web_application
+[8] http://en.wikipedia.org/wiki/Single-page_application
+[9] http://money.howstuffworks.com/payroll-system1.htm
+[10] http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
+
+
 
 
 [1] http://en.wikipedia.org/wiki/Questionnaire
