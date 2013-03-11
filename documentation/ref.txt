@@ -22,6 +22,7 @@
 [19] http://www.cavehill.uwi.edu/staff/eportfolios/paulwalcott/courses/comp2145/2009/design_-_concepts_and_principles.htm
 [20] http://en.wikipedia.org/wiki/Website_architecture
 [21] http://www.webdesignfromscratch.com/website-architecture/ia-models/
+[22] http://singlepageappbook.com/goal.html
 
 
 [1] http://en.wikipedia.org/wiki/Questionnaire
