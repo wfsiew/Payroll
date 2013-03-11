@@ -20,7 +20,8 @@
 [18] http://en.wikipedia.org/wiki/Functional_requirements
 
 [19] http://www.cavehill.uwi.edu/staff/eportfolios/paulwalcott/courses/comp2145/2009/design_-_concepts_and_principles.htm
-[20] http://www.webdesignfromscratch.com/website-architecture/ia-models/
+[20] http://en.wikipedia.org/wiki/Website_architecture
+[21] http://www.webdesignfromscratch.com/website-architecture/ia-models/
 
 
 [1] http://en.wikipedia.org/wiki/Questionnaire
