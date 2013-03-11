@@ -13,8 +13,11 @@
 [11] http://en.wikipedia.org/wiki/Requirements_analysis
 [12] http://en.wikipedia.org/wiki/Software_prototyping
 [13] http://en.wikipedia.org/wiki/Software_requirements_specification
-
-
+[14] http://en.wikipedia.org/wiki/Operating_environment
+[15] http://jquery.com/
+[16] http://jqueryui.com/
+[17] http://www.highcharts.com/
+[18] http://en.wikipedia.org/wiki/Functional_requirements
 
 [1] http://en.wikipedia.org/wiki/Questionnaire
 [2] http://www.qne.com.my/QnE+Payroll+System_32_1.htm
