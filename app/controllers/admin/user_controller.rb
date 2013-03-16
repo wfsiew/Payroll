@@ -67,7 +67,9 @@ class Admin::UserController < Admin::AdminController
     status = params[:status]
     status = status == '1' ? true : false
     
-    o = User.new(:id => SecureRandom.uuid, :role => params[:role],:username => params[:username], :status => status, :pwd => params[:pwd], :pwd_confirmation => params[:pwdconfirm])
+    o = User.new(:id => SecureRandom.uuid, :role => params[:role],
+                 :username => params[:username], :status => status, 
+                 :pwd => params[:pwd], :pwd_confirmation => params[:pwdconfirm])
     
     if o.save
       render :json => { :success => 1, 
@@ -98,10 +100,12 @@ class Admin::UserController < Admin::AdminController
     status = params[:status]
     status = status == '1' ? true : false
 
-    if o.update_attributes(:role => params[:role], :username => params[:username], :status => status, :pwd => params[:pwd], :pwd_confirmation => params[:pwdconfirm])
+    if o.update_attributes(:role => params[:role], :username => params[:username],
+                           :status => status, :pwd => params[:pwd], 
+                           :pwd_confirmation => params[:pwdconfirm])
       render :json => { :success => 1, 
                         :message => 'User was successfully updated.' }
-        
+      
     else
       render :json => UserHelper.get_errors(o.errors)
     end
