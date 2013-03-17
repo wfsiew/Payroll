@@ -91,6 +91,10 @@ body {
   width: 200px;
 }
 
+.pg {
+  width: 50px;
+}
+
 .list_table {
   width: 100%;
   border-collapse: collapse;
@@ -117,6 +121,12 @@ body {
   text-align: center;
   white-space: nowrap;
   padding: 0 50px 2px 50px;
+}
+
+.go_button {
+  text-align: center;
+  white-space: nowrap;
+  padding: 0 15px 2px 15px;
 }
 
 #id_add, #id_delete {

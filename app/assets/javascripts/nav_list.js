@@ -64,6 +64,20 @@
       $('#id_display').data('pgnum', arr[3]);
       update_list();
     }
+    
+    /**
+     * @private
+     * This function navigate the list to the specified page. 
+     */
+    function go_page() {
+      var pg = $('#id_pagenum').val();
+      var page = 1;
+      if ($.trim(pg) != '' && $.isNumeric(pg))
+        page = parseInt(pg);
+        
+      $('#id_display').data('pgnum', page);
+      update_list();
+    }
 
     /**
      * @public
@@ -149,6 +163,14 @@
         utils.set_disabled('#id_next', 0, go_next);
       }
       
+      if (arr[0] == '1' || arr[1] == '1') {
+        utils.set_disabled('#id_go', 0, go_page);
+      }
+      
+      else if (arr[0] == '0' && arr[1] == '0') {
+        utils.set_disabled('#id_go', 1, null);
+      }
+      
       if ($.isFunction(config.del_func)) {
         if ($('.list_table')[0] != null)
           utils.set_disabled('#id_delete', 0, config.del_func);
@@ -164,6 +186,8 @@
         else
           utils.set_disabled('#id_save', 1, null);
       }
+      
+      $('#id_pagenum').val(arr[7]);
       
       sort.init_sort($('#hd_' + utils.safe_replace(arr[5], '.', '-')), arr[6]);
       set_item_msg(arr[4]);

@@ -1,6 +1,13 @@
 <table class="nav_table">
   <tr>
     <td>
+      Page&nbsp;
+      <input id="id_pagenum" type="text" class="pg" /> of <%= @data[:totalpage] %>
+      <span id="id_go" class="go_button ui-state-default ui-corner-all">
+        <span>Go</span>
+      </span>
+    </td>
+    <td>
       <span id="id_prev" class="page_button ui-state-default ui-corner-all">
         <span class="icons lefticon">&nbsp;</span>
       </span>
@@ -12,6 +19,7 @@
     </td>
   </tr>
   <tr>
+    <td></td>
     <td>
       <label for="id_display">Display:</label>
       <select id="id_display">

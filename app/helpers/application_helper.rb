@@ -64,6 +64,14 @@ module ApplicationHelper
       else
         @pagesize = pagesize
       end
+      
+      if total_pages < @pagenum
+        @pagenum = total_pages
+      end
+      
+      if @pagenum < 1
+        @pagenum = 1
+      end
     end
   end
     

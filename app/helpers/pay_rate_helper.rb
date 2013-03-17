@@ -18,7 +18,9 @@ module PayRateHelper
       :prevpage => pagenum - 1,
       :list => list, 
       :sortcolumn => sort.column, 
-      :sortdir => sort.direction }
+      :sortdir => sort.direction,
+      :page => pager.pagenum,
+      :totalpage => pager.total_pages }
   end
   
   def self.get_filter_by(filters, pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
@@ -37,7 +39,9 @@ module PayRateHelper
       :prevpage => pagenum - 1,
       :list => list, 
       :sortcolumn => sort.column, 
-      :sortdir => sort.direction }
+      :sortdir => sort.direction,
+      :page => pager.pagenum,
+      :totalpage => pager.total_pages }
   end
   
   def self.get_errors(errors)
