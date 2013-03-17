@@ -21,7 +21,7 @@ class User::QualificationController < User::UserController
     oq = EmployeeQualificationHelper.find(id)
     
     oq_new = false
-    if oq.blank?
+    if oq.id.blank?
       o = Employee.find(id)
       oq = EmployeeQualificationHelper.employee_qualification_obj(o, params)
       oq_new = true

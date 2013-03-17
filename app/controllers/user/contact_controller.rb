@@ -21,7 +21,7 @@ class User::ContactController < User::UserController
     oc = EmployeeContactHelper.find(id)
     
     oc_new = false
-    if oc.blank?
+    if oc.id.blank?
       o = Employee.find(id)
       oc = EmployeeContactHelper.employee_contact_obj(o, params)
       oc_new = true
