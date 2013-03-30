@@ -2,28 +2,28 @@
 
 one:
   id: 1
-  address_1: MyString
-  address_2: MyString
-  address_3: MyString
-  city: MyString
-  state: MyString
-  postcode: MyString
-  country: MyString
-  home_phone: MyString
-  mobile_phone: MyString
-  work_email: MyString
-  other_email: MyString
+  address_1: 8
+  address_2: Jalan Puteri
+  address_3: Taman Puteri
+  city: Kuala Lumpur
+  state: W.P
+  postcode: 54000
+  country: Malaysia
+  home_phone: 038766056
+  mobile_phone: 0123398765
+  work_email: ken@gmail.com
+  other_email: ken@yahoo.com
 
 two:
   id: 2
-  address_1: MyString
-  address_2: MyString
-  address_3: MyString
-  city: MyString
-  state: MyString
-  postcode: MyString
-  country: MyString
-  home_phone: MyString
-  mobile_phone: MyString
-  work_email: MyString
-  other_email: MyString
+  address_1: 9
+  address_2: Jalan Maju
+  address_3: Taman Bahagia
+  city: Kuala Lumpur
+  state: W.P
+  postcode: 56000
+  country: Malaysia
+  home_phone: 038876599
+  mobile_phone: 0128744522
+  work_email: ben@gmail.com
+  other_email: ben@yahoo.net

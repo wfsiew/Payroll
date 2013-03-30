@@ -3,7 +3,11 @@
 one:
   id: 1
   title: Programmer
+  desc: Software development
+  note: Programming job
 
 two:
   id: 2
   title: Admin
+  desc: Admin work
+  note: Admin job

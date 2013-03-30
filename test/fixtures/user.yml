@@ -1,15 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+admin:
   id: 1
   role: 1
   username: admin
-  status: false
-  password: MyString
+  status: true
+  password: e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4 # secret
 
-two:
+ben:
   id: 2
-  role: 1
+  role: 2
+  username: ken
+  status: true
+  password: e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4 # secret
+  
+ken:
+  id: 3
+  role: 2
   username: ben
-  status: false
-  password: MyString
+  status: true
+  password: e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4 # secret

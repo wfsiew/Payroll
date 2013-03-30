@@ -2,14 +2,14 @@
 
 one:
   id: 1
-  staff_id: MyString
+  staff_id: C0001
   work_date: 2013-01-12
   time_in: 2013-01-12 23:18:51
   time_out: 2013-01-12 23:18:51
 
 two:
   id: 2
-  staff_id: MyString
+  staff_id: C0002
   work_date: 2013-01-12
   time_in: 2013-01-12 23:18:51
   time_out: 2013-01-12 23:18:51

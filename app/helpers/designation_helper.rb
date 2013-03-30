@@ -77,7 +77,7 @@ module DesignationHelper
       return criteria, order
       
     when 2
-      criteria = criteria.where('desc like ?', text)
+      criteria = criteria.where('`desc` like ?', text)
       return criteria, order
       
     when 3
@@ -85,7 +85,7 @@ module DesignationHelper
       return criteria, order
       
     else
-      criteria = criteria.where('title like ? or desc like ? or note like ?', text, text, text)
+      criteria = criteria.where('title like ? or `desc` like ? or note like ?', text, text, text)
       return criteria, order
     end
   end

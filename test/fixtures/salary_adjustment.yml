@@ -2,14 +2,14 @@
 
 one:
   id: 1
-  staff_id: 0001
+  staff_id: C0001
   inc: 1.5
   month: 1
   year: 2013
 
 two:
   id: 2
-  staff_id: 0002
+  staff_id: C0002
   inc: 1.5
   month: 1
   year: 2013

@@ -3,35 +3,37 @@
 one:
   id: 1
   staff_id: C0001
-  first_name: MyString
-  middle_name: MyString
-  last_name: MyString
-  new_ic: MyString
-  old_ic: MyString
-  passport_no: MyString
+  first_name: ken
+  middle_name: ong
+  last_name: mun
+  new_ic: 554498824
+  old_ic: 
+  passport_no: 12889100025
   gender: M
   marital_status: S
-  nationality: MyString
+  nationality: Malaysian
   dob: 2012-12-17
-  place_of_birth: MyString
-  race: MyString
-  religion: MyString
+  place_of_birth: Serdang
+  race: Chinese
+  religion: Christian
   is_bumi: false
+  user_id: 2
 
 two:
   id: 2
   staff_id: C0002
-  first_name: MyString
-  middle_name: MyString
-  last_name: MyString
-  new_ic: MyString
-  old_ic: MyString
-  passport_no: MyString
+  first_name: ben
+  middle_name: looi
+  last_name: kin
+  new_ic: 7654399054
+  old_ic: 
+  passport_no: 560083200
   gender: F
   marital_status: O
-  nationality: MyString
+  nationality: Malaysian
   dob: 2012-12-17
-  place_of_birth: MyString
-  race: MyString
-  religion: MyString
+  place_of_birth: Puchong
+  race: Chinese
+  religion: Buddhist
   is_bumi: false
+  user_id: 3

@@ -2,30 +2,30 @@
 
 one:
   id: 1
-  salary: 9.99
-  allowance: 9.99
-  epf: 9.99
-  socso: 9.99
-  bank_name: MyString
-  bank_acc_no: MyString
-  bank_acc_type: MyString
-  bank_address: MyString
-  epf_no: MyString
-  socso_no: MyString
-  income_tax_no: MyString
+  salary: 4200
+  allowance: 20
+  epf: 350
+  socso: 10
+  bank_name: Maybank
+  bank_acc_no: 0956644
+  bank_acc_type: Savings
+  bank_address: Serdang
+  epf_no: 776499
+  socso_no: 9954788
+  income_tax_no: 0096734567
   pay_type: 1
 
 two:
   id: 2
-  salary: 9.99
-  allowance: 9.99
-  epf: 9.99
-  socso: 9.99
-  bank_name: MyString
-  bank_acc_no: MyString
-  bank_acc_type: MyString
-  bank_address: MyString
-  epf_no: MyString
-  socso_no: MyString
-  income_tax_no: MyString
-  pay_type: 1
+  salary: 3400
+  allowance: 50
+  epf: 300
+  socso: 30
+  bank_name: Public
+  bank_acc_no: 88650066
+  bank_acc_type: Savings
+  bank_address: Puchong
+  epf_no: 560099
+  socso_no: 5930033
+  income_tax_no: 0958467443
+  pay_type: 2
