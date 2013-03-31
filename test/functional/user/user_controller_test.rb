@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class User::UserControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should get index" do
+    login_as :ben
+    get :index
+    assert_response :success
+  end
 end

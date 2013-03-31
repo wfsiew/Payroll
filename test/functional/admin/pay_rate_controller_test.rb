@@ -34,7 +34,7 @@ class Admin::PayRateControllerTest < ActionController::TestCase
   test "should create pay rate" do
     login_as :admin
     assert_difference('PayRate.count') do
-      post :create, { :staff_id => 'C0005', 
+      post :create, { :staff_id => 'C0007', 
                       :month => @rate.month, :year => @rate.year, 
                       :pay_rate => @rate.hourly_pay_rate }
     end

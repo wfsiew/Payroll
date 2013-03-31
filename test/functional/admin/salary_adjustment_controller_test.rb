@@ -34,7 +34,7 @@ class Admin::SalaryAdjustmentControllerTest < ActionController::TestCase
   test "should create salary adjustment" do
     login_as :admin
     assert_difference('SalaryAdjustment.count') do
-      post :create, { :staff_id => 'C0006',
+      post :create, { :staff_id => 'C0003',
                       :inc => 300, :month => 8, 
                       :year => 2013 }
     end
@@ -56,7 +56,7 @@ class Admin::SalaryAdjustmentControllerTest < ActionController::TestCase
   
   test "should update salary adjustment" do
     login_as :admin
-    post :update, { :id => @adj.id, :staff_id => 'C0007', :inc => 250, 
+    post :update, { :id => @adj.id, :staff_id => 'C0003', :inc => 250, 
                     :month => 10, :year => 2013 }
     assert_response :success
     data = JSON.parse(@response.body)

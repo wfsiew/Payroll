@@ -52,7 +52,7 @@ class Admin::EmployeeControllerTest < ActionController::TestCase
     assert_difference('Employee.count') do
       post :create, { 
         :employee => { 
-          :staff_id => 'C0004', :first_name => 'wong', :middle_name => 'yan', 
+          :staff_id => 'C0003', :first_name => 'wong', :middle_name => 'yan', 
           :last_name => 'kin', :new_ic => '098455673', :old_ic => '88744532', 
           :passport_no => @employee.passport_no, :gender => @employee.gender, :marital_status => @employee.marital_status, 
           :nationality => @employee.nationality, :dob => '15-08-1977', :place_of_birth => @employee.place_of_birth, 

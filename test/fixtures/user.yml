@@ -10,13 +10,13 @@ admin:
 ben:
   id: 2
   role: 2
-  username: ken
+  username: ben
   status: true
   password: e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4 # secret
   
 ken:
   id: 3
   role: 2
-  username: ben
+  username: ken
   status: true
   password: e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4 # secret

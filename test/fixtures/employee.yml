@@ -3,7 +3,7 @@
 one:
   id: 1
   staff_id: C0001
-  first_name: ken
+  first_name: ben
   middle_name: ong
   last_name: mun
   new_ic: 554498824
@@ -22,7 +22,7 @@ one:
 two:
   id: 2
   staff_id: C0002
-  first_name: ben
+  first_name: ken
   middle_name: looi
   last_name: kin
   new_ic: 7654399054
