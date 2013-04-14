@@ -34,7 +34,8 @@ class Admin::DesignationControllerTest < ActionController::TestCase
   test "should create designation" do
     login_as :admin
     assert_difference('Designation.count') do
-      post :create, { :title => 'Account', :desc => 'Accounting', :note => 'account related tasks' }
+      post :create, { :title => 'Account', :desc => 'Accounting', 
+                      :note => 'account related tasks' }
     end
     
     assert_response :success
@@ -54,7 +55,8 @@ class Admin::DesignationControllerTest < ActionController::TestCase
   
   test "should update designation" do
     login_as :admin
-    post :update, { :id => @des.id, :title => 'Audit', :desc => 'Audit job', :note => 'Audit task' }
+    post :update, { :id => @des.id, :title => 'Audit', :desc => 'Audit job', 
+                    :note => 'Audit task' }
     assert_response :success
     data = JSON.parse(@response.body)
     assert_equal 1, data['success']

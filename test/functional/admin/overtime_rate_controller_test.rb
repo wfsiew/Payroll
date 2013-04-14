@@ -54,7 +54,8 @@ class Admin::OvertimeRateControllerTest < ActionController::TestCase
   
   test "should update overtime rate" do
     login_as :admin
-    post :update, { :id => @rate.id, :duration => @rate.duration, :year => 2005, :pay_rate => @rate.pay_rate }
+    post :update, { :id => @rate.id, :duration => @rate.duration, :year => 2005, 
+                    :pay_rate => @rate.pay_rate }
     assert_response :success
     data = JSON.parse(@response.body)
     assert_equal 1, data['success']

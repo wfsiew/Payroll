@@ -13,12 +13,12 @@ class UserTest < ActiveSupport::TestCase
   end
   
   test 'should find user' do
-    id = user(:one).id
+    id = user(:ben).id
     assert_nothing_raised { User.find(id) }
   end
   
   test 'should update user' do
-    o = user(:two)
+    o = user(:ken)
     assert o.update_attributes(:role => 2, :status => false)
     
     o.password = 'bbb'
@@ -28,7 +28,7 @@ class UserTest < ActiveSupport::TestCase
   end
   
   test 'should destroy user' do
-    o = user(:one)
+    o = user(:ben)
     o.destroy
     assert_raise(ActiveRecord::RecordNotFound) { User.find(o.id) }
   end
@@ -59,7 +59,7 @@ class UserTest < ActiveSupport::TestCase
     
     assert_equal ["Password doesn't match confirmation"], o.errors[:pwd]
     
-    o = user(:two)
+    o = user(:ken)
     assert !o.update_attributes(:pwd => 'jjjj', :pwd_confirmation => 'mmmm')
     assert o.errors[:pwd].any?
     
