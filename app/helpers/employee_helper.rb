@@ -14,8 +14,8 @@ module EmployeeHelper
     has_next = pager.has_next? ? 1 : 0
     has_prev = pager.has_prev? ? 1 : 0
     
-    if sort.column == 'd.title' || sort.column == 'es.name' || sort.column == 'dept.name' 
-      || sort.column == 'e.first_name'
+    if sort.column == 'd.title' || sort.column == 'es.name' || 
+	  sort.column == 'dept.name' || sort.column == 'e.first_name'
       criteria = get_join({}, sort)
       
     else
