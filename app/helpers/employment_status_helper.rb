@@ -10,7 +10,8 @@ module EmploymentStatusHelper
     
     has_next = pager.has_next? ? 1 : 0
     has_prev = pager.has_prev? ? 1 : 0
-    list = EmploymentStatus.order(order).all(:offset => pager.lower_bound, :limit => pager.pagesize)
+    list = EmploymentStatus.order(order).all(:offset => pager.lower_bound, 
+                                             :limit => pager.pagesize)
     { :item_msg => pager.item_message, 
       :hasnext => has_next, 
       :hasprev => has_prev, 
@@ -23,7 +24,8 @@ module EmploymentStatusHelper
       :totalpage => pager.total_pages }
   end
   
-  def self.get_filter_by(keyword, pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
+  def self.get_filter_by(keyword, pagenum = 1, 
+    pagesize = ApplicationHelper::Pager.default_page_size,
     sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
     criteria = EmploymentStatus.where('name like ?', "%#{keyword}%")
     total = criteria.count
@@ -32,7 +34,8 @@ module EmploymentStatusHelper
     
     has_next = pager.has_next? ? 1 : 0
     has_prev = pager.has_prev? ? 1 : 0
-    list = criteria.order(order).all(:offset => pager.lower_bound, :limit => pager.pagesize)
+    list = criteria.order(order).all(:offset => pager.lower_bound, 
+                                     :limit => pager.pagesize)
     { :item_msg => pager.item_message, 
       :hasnext => has_next, 
       :hasprev => has_prev, 

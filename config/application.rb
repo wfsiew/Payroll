@@ -25,12 +25,14 @@ module Payroll
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 
-    # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
+    # Set Time.zone default to the specified zone and make Active Record auto-convert to 
+    # this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
     config.time_zone = 'Kuala Lumpur'
 
-    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
+    # The default locale is :en and all translations from config/locales/*.rb,yml are auto 
+    # loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
@@ -49,9 +51,10 @@ module Payroll
     # config.active_record.schema_format = :sql
 
     # Enforce whitelist mode for mass assignment.
-    # This will create an empty whitelist of attributes available for mass-assignment for all models
-    # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
-    # parameters by using an attr_accessible or attr_protected declaration.
+    # This will create an empty whitelist of attributes available for mass-assignment for 
+    # all models in your app. As such, your models will need to explicitly whitelist or 
+    # blacklist accessible parameters by using an attr_accessible or attr_protected 
+    # declaration.
     config.active_record.whitelist_attributes = true
 
     # Enable the asset pipeline
@@ -60,7 +63,8 @@ module Payroll
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     
-    config.assets.precompile += %w(loginui.css _payslip.css _payslip.js dark-hive/jquery-ui-1.10.2.custom.min.css admin.css admin.js user.css user.js)
+    config.assets.precompile += %w(loginui.css _payslip.css _payslip.js 
+      dark-hive/jquery-ui-1.10.2.custom.min.css admin.css admin.js user.css user.js)
     
     jquitheme = %w(blitzer dark-hive trontastic humanity)
     jquicss = 'jquery-ui-1.10.2.custom.min.css'

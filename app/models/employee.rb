@@ -1,8 +1,8 @@
 # Model for employee table.
 class Employee < ActiveRecord::Base
-  attr_accessible :dob, :staff_id, :user_id, :first_name, :gender, :id, :is_bumi, :last_name, 
-                  :marital_status, :middle_name, :nationality, :new_ic, :old_ic, :passport_no, 
-                  :place_of_birth, :race, :religion
+  attr_accessible :dob, :staff_id, :user_id, :first_name, :gender, :id, :is_bumi, 
+                  :last_name, :marital_status, :middle_name, :nationality, :new_ic, 
+                  :old_ic, :passport_no, :place_of_birth, :race, :religion
   
   self.table_name = 'employee'
   

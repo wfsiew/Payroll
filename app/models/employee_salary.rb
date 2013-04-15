@@ -1,7 +1,8 @@
 # Model for employee_salary table.
 class EmployeeSalary < ActiveRecord::Base
-  attr_accessible :allowance, :bank_acc_no, :bank_acc_type, :bank_address, :bank_name, :epf, 
-                  :epf_no, :id, :income_tax, :income_tax_no, :salary, :socso_no, :pay_type, :socso
+  attr_accessible :allowance, :bank_acc_no, :bank_acc_type, :bank_address, :bank_name, 
+                  :epf, :epf_no, :id, :income_tax, :income_tax_no, :salary, :socso_no, 
+                  :pay_type, :socso
   
   self.table_name = 'employee_salary'
   

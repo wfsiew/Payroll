@@ -24,14 +24,16 @@ class Admin::EmployeeController < Admin::AdminController
   def list
     employee = params[:employee].blank? ? '' : params[:employee]
     staff_id = params[:staff_id].blank? ? '' : params[:staff_id]
-    employment_status = params[:employment_status].blank? ? 0 : params[:employment_status].to_i
+    employment_status = params[:employment_status].blank? ? 0 : 
+      params[:employment_status].to_i
     designation = params[:designation].blank? ? 0 : params[:designation].to_i
     dept = params[:dept].blank? ? 0 : params[:dept].to_i
     pgnum = params[:pgnum].blank? ? 1 : params[:pgnum].to_i
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
     sortcolumn = params[:sortcolumn].blank? ? EmployeeHelper::DEFAULT_SORT_COLUMN 
                                             : params[:sortcolumn]
-    sortdir = params[:sortdir].blank? ? EmployeeHelper::DEFAULT_SORT_DIR : params[:sortdir]
+    sortdir = params[:sortdir].blank? ? EmployeeHelper::DEFAULT_SORT_DIR : 
+      params[:sortdir]
     
     sort = ApplicationHelper::Sort.new(sortcolumn, sortdir)
     
@@ -138,8 +140,8 @@ class Admin::EmployeeController < Admin::AdminController
                                                   : @employee.employee_job
     @employee_salary = @employee.employee_salary.blank? ? EmployeeSalary.new 
                                                         : @employee.employee_salary
-    @employee_qualification = @employee.employee_qualification.blank? ? EmployeeQualification.new 
-                              : @employee.employee_qualification
+    @employee_qualification = @employee.employee_qualification.blank? ? 
+      EmployeeQualification.new : @employee.employee_qualification
     @form_id = 'edit-form'
     @users = User.order(:username).all
     @designations = Designation.order(:title).all

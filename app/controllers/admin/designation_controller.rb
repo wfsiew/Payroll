@@ -23,7 +23,8 @@ class Admin::DesignationController < Admin::AdminController
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
     sortcolumn = params[:sortcolumn].blank? ? DesignationHelper::DEFAULT_SORT_COLUMN 
                                             : params[:sortcolumn]
-    sortdir = params[:sortdir].blank? ? DesignationHelper::DEFAULT_SORT_DIR : params[:sortdir]
+    sortdir = params[:sortdir].blank? ? DesignationHelper::DEFAULT_SORT_DIR : 
+      params[:sortdir]
     
     sort = ApplicationHelper::Sort.new(sortcolumn, sortdir)
     
@@ -56,7 +57,8 @@ class Admin::DesignationController < Admin::AdminController
   # Create new Designation record.
   # POST /designation/create
   def create
-    o = Designation.new(:title => params[:title], :desc => params[:desc], :note => params[:note])
+    o = Designation.new(:title => params[:title], :desc => params[:desc], 
+                        :note => params[:note])
     
     if o.save
       render :json => { :success => 1, 

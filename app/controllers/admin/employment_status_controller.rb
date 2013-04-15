@@ -108,6 +108,7 @@ class Admin::EmploymentStatusController < Admin::AdminController
     
     render :json => { :success => 1, 
                       :itemscount => itemscount, 
-                      :message => "#{ids.size} Employment Status(es) was successfully deleted." }
+                      :message => %Q{#{ids.size} Employment Status(es) was successfully 
+                                       deleted.} }
   end
 end

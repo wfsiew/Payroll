@@ -10,7 +10,8 @@ module SalaryAdjustmentHelper
     
     has_next = pager.has_next? ? 1 : 0
     has_prev = pager.has_prev? ? 1 : 0
-    list = SalaryAdjustment.order(order).all(:offset => pager.lower_bound, :limit => pager.pagesize)
+    list = SalaryAdjustment.order(order).all(:offset => pager.lower_bound, 
+                                             :limit => pager.pagesize)
     { :item_msg => pager.item_message, 
       :hasnext => has_next, 
       :hasprev => has_prev, 
@@ -23,7 +24,8 @@ module SalaryAdjustmentHelper
       :totalpage => pager.total_pages }
   end
   
-  def self.get_filter_by(filters, pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
+  def self.get_filter_by(filters, pagenum = 1, 
+    pagesize = ApplicationHelper::Pager.default_page_size,
     sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
     criteria, order = get_filter_criteria(filters, sort)
     total = criteria.count
@@ -31,7 +33,8 @@ module SalaryAdjustmentHelper
     
     has_next = pager.has_next? ? 1 : 0
     has_prev = pager.has_prev? ? 1 : 0
-    list = criteria.order(order).all(:offset => pager.lower_bound, :limit => pager.pagesize)
+    list = criteria.order(order).all(:offset => pager.lower_bound, 
+                                     :limit => pager.pagesize)
     { :item_msg => pager.item_message, 
       :hasnext => has_next, 
       :hasprev => has_prev, 

@@ -23,7 +23,8 @@ class Admin::PayRateController < Admin::AdminController
     year = params[:year].blank? ? 0 : params[:year].to_i
     pgnum = params[:pgnum].blank? ? 1 : params[:pgnum].to_i
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
-    sortcolumn = params[:sortcolumn].blank? ? PayRateHelper::DEFAULT_SORT_COLUMN : params[:sortcolumn]
+    sortcolumn = params[:sortcolumn].blank? ? PayRateHelper::DEFAULT_SORT_COLUMN : 
+      params[:sortcolumn]
     sortdir = params[:sortdir].blank? ? PayRateHelper::DEFAULT_SORT_DIR : params[:sortdir]
     
     sort = ApplicationHelper::Sort.new(sortcolumn, sortdir)

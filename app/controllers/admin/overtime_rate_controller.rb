@@ -19,8 +19,10 @@ class Admin::OvertimeRateController < Admin::AdminController
     year = params[:year].blank? ? 0 : params[:year].to_i
     pgnum = params[:pgnum].blank? ? 1 : params[:pgnum].to_i
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
-    sortcolumn = params[:sortcolumn].blank? ? OvertimeRateHelper::DEFAULT_SORT_COLUMN : params[:sortcolumn]
-    sortdir = params[:sortdir].blank? ? OvertimeRateHelper::DEFAULT_SORT_DIR : params[:sortdir]
+    sortcolumn = params[:sortcolumn].blank? ? OvertimeRateHelper::DEFAULT_SORT_COLUMN : 
+      params[:sortcolumn]
+    sortdir = params[:sortdir].blank? ? OvertimeRateHelper::DEFAULT_SORT_DIR : 
+      params[:sortdir]
     
     sort = ApplicationHelper::Sort.new(sortcolumn, sortdir)
     
@@ -55,7 +57,8 @@ class Admin::OvertimeRateController < Admin::AdminController
   # Create new OvertimeRate record.
   # POST /overtimerate/create
   def create
-    o = OvertimeRate.new(:duration => params[:duration], :year => params[:year], :pay_rate => params[:pay_rate])
+    o = OvertimeRate.new(:duration => params[:duration], :year => params[:year], 
+                         :pay_rate => params[:pay_rate])
                             
     if o.save
       render :json => { :success => 1, 
@@ -84,7 +87,8 @@ class Admin::OvertimeRateController < Admin::AdminController
   def update
     o = OvertimeRate.find(params[:id])
     
-    if o.update_attributes(:duration => params[:duration], :year => params[:year], :pay_rate => params[:pay_rate])
+    if o.update_attributes(:duration => params[:duration], :year => params[:year], 
+                           :pay_rate => params[:pay_rate])
       render :json => { :success => 1, 
                         :message => 'Pay Rate was successfully updated.' }
       
@@ -114,6 +118,7 @@ class Admin::OvertimeRateController < Admin::AdminController
     
     render :json => { :success => 1, 
                       :itemscount => itemscount, 
-                      :message => "#{ids.size} Overtime rate(s) was successfully deleted." }
+                      :message => %Q{#{ids.size} Overtime rate(s) was successfully 
+                                       deleted.} }
   end
 end

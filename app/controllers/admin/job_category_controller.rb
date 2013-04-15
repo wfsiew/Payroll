@@ -20,8 +20,10 @@ class Admin::JobCategoryController < Admin::AdminController
     keyword = params[:keyword].blank? ? '' : params[:keyword]
     pgnum = params[:pgnum].blank? ? 1 : params[:pgnum].to_i
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
-    sortcolumn = params[:sortcolumn].blank? ? JobCategoryHelper::DEFAULT_SORT_COLUMN : params[:sortcolumn]
-    sortdir = params[:sortdir].blank? ? JobCategoryHelper::DEFAULT_SORT_DIR : params[:sortdir]
+    sortcolumn = params[:sortcolumn].blank? ? JobCategoryHelper::DEFAULT_SORT_COLUMN : 
+      params[:sortcolumn]
+    sortdir = params[:sortdir].blank? ? JobCategoryHelper::DEFAULT_SORT_DIR : 
+      params[:sortdir]
     
     sort = ApplicationHelper::Sort.new(sortcolumn, sortdir)
     
@@ -106,6 +108,7 @@ class Admin::JobCategoryController < Admin::AdminController
     
     render :json => { :success => 1, 
                       :itemscount => itemscount, 
-                      :message => "#{ids.size} Job Categori(es) was successfully deleted." }
+                      :message => %Q{#{ids.size} Job Categori(es) was successfully 
+                                       deleted.} }
   end
 end

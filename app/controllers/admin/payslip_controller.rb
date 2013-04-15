@@ -1,4 +1,5 @@
-# This controller serves incoming requests to display out the Employee records for pay slip generation.
+# This controller serves incoming requests to display out the Employee records for pay 
+# slip generation.
 class Admin::PayslipController < Admin::AdminController
   
   # List all records.
@@ -22,12 +23,14 @@ class Admin::PayslipController < Admin::AdminController
   def list
     employee = params[:employee].blank? ? '' : params[:employee]
     staff_id = params[:staff_id].blank? ? '' : params[:staff_id]
-    employment_status = params[:employment_status].blank? ? 0 : params[:employment_status].to_i
+    employment_status = params[:employment_status].blank? ? 0 : 
+      params[:employment_status].to_i
     designation = params[:designation].blank? ? 0 : params[:designation].to_i
     dept = params[:dept].blank? ? 0 : params[:dept].to_i
     pgnum = params[:pgnum].blank? ? 1 : params[:pgnum].to_i
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
-    sortcolumn = params[:sortcolumn].blank? ? EmployeeHelper::DEFAULT_SORT_COLUMN : params[:sortcolumn]
+    sortcolumn = params[:sortcolumn].blank? ? EmployeeHelper::DEFAULT_SORT_COLUMN : 
+      params[:sortcolumn]
     sortdir = params[:sortdir].blank? ? EmployeeHelper::DEFAULT_SORT_DIR : params[:sortdir]
     
     sort = ApplicationHelper::Sort.new(sortcolumn, sortdir)
@@ -38,7 +41,8 @@ class Admin::PayslipController < Admin::AdminController
                 :designation => designation,
                 :dept => dept }
                 
-    if employee.blank? && staff_id.blank? && employment_status == 0 && designation == 0 && dept == 0
+    if employee.blank? && staff_id.blank? && employment_status == 0 && designation == 0 && 
+      dept == 0
       @data = EmployeeHelper.get_all(pgnum, pgsize, sort)
       
     else
@@ -72,7 +76,8 @@ class Admin::PayslipController < Admin::AdminController
       
       respond_to do |fmt|
         fmt.html { render 'payslip_monthly' }
-        fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary] }
+        fmt.json { render :json => [@employee, @total_earnings, @total_deduct, 
+                                    @nett_salary] }
       end
       
     else
@@ -80,10 +85,12 @@ class Admin::PayslipController < Admin::AdminController
       if @employee_salary.pay_type == 1
         filters = { :year => year, :month => _month, :staff_id => @employee.staff_id }
         @total_overtime = PayslipHelper.total_overtime(filters)
-        @total_overtime_earnings = PayslipHelper.total_overtime_earnings(filters, @total_overtime)
+        @total_overtime_earnings = PayslipHelper.total_overtime_earnings(filters, 
+          @total_overtime)
         @adjustment = SalaryAdjustmentHelper.get_salary_adjustment(filters)
         
-        @total_earnings = PayslipHelper.total_earnings(@employee_salary, @adjustment, @total_overtime_earnings)
+        @total_earnings = PayslipHelper.total_earnings(@employee_salary, @adjustment, 
+          @total_overtime_earnings)
         @total_deduct = PayslipHelper.total_deductions(@employee_salary)
         @nett_salary = PayslipHelper.nett_salary(@total_earnings, @total_deduct)
         
@@ -91,9 +98,9 @@ class Admin::PayslipController < Admin::AdminController
     
         respond_to do |fmt|
           fmt.html { render 'payslip_monthly' }
-          fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary, 
-                                      @total_overtime, @total_overtime_earnings, @adjustment,
-                                      @basic_pay] }
+          fmt.json { render :json => [@employee, @total_earnings, @total_deduct, 
+                                      @nett_salary, @total_overtime, 
+                                      @total_overtime_earnings, @adjustment, @basic_pay] }
         end
         
       # hourly type
@@ -106,8 +113,8 @@ class Admin::PayslipController < Admin::AdminController
         
         respond_to do |fmt|
           fmt.html { render 'payslip_hourly' }
-          fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary, 
-                                      @total_hours, @hourly_pay_rate] }
+          fmt.json { render :json => [@employee, @total_earnings, @total_deduct, 
+                                      @nett_salary, @total_hours, @hourly_pay_rate] }
         end
       end
     end

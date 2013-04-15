@@ -10,7 +10,8 @@ module DesignationHelper
     
     has_next = pager.has_next? ? 1 : 0
     has_prev = pager.has_prev? ? 1 : 0
-    list = Designation.order(order).all(:offset => pager.lower_bound, :limit => pager.pagesize)
+    list = Designation.order(order).all(:offset => pager.lower_bound, 
+                                        :limit => pager.pagesize)
     { :item_msg => pager.item_message, 
       :hasnext => has_next, 
       :hasprev => has_prev, 
@@ -23,7 +24,8 @@ module DesignationHelper
       :totalpage => pager.total_pages }
   end
   
-  def self.get_filter_by(find, keyword, pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
+  def self.get_filter_by(find, keyword, pagenum = 1, 
+    pagesize = ApplicationHelper::Pager.default_page_size,
     sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
     criteria, order = get_filter_criteria(find, keyword, sort)
     total = criteria.count
@@ -32,7 +34,8 @@ module DesignationHelper
     
     has_next = pager.has_next? ? 1 : 0
     has_prev = pager.has_prev? ? 1 : 0
-    list = criteria.order(order).all(:offset => pager.lower_bound, :limit => pager.pagesize)
+    list = criteria.order(order).all(:offset => pager.lower_bound, 
+                                     :limit => pager.pagesize)
     { :item_msg => pager.item_message, 
       :hasnext => has_next, 
       :hasprev => has_prev, 
@@ -85,7 +88,8 @@ module DesignationHelper
       return criteria, order
       
     else
-      criteria = criteria.where('title like ? or `desc` like ? or note like ?', text, text, text)
+      criteria = criteria.where('title like ? or `desc` like ? or note like ?', text, 
+        text, text)
       return criteria, order
     end
   end

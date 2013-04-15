@@ -8,8 +8,8 @@ class User::SalaryController < User::UserController
     id = get_employee_id
     @employee = Employee.find(id)
     @employee_salary = EmployeeSalaryHelper.find(id)
-    @adjustment = SalaryAdjustmentHelper.get_salary_adjustment(:staff_id => @employee.staff_id,
-                                                               :year => Time.now.year)
+    @adjustment = SalaryAdjustmentHelper.get_salary_adjustment(
+      :staff_id => @employee.staff_id, :year => Time.now.year)
     @basic_pay = @employee_salary.salary + @adjustment
     
     respond_to do |fmt|

@@ -31,7 +31,8 @@ class User::PayslipController < User::UserController
       
       respond_to do |fmt|
         fmt.html { render 'admin/payslip/payslip_monthly' }
-        fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary] }
+        fmt.json { render :json => [@employee, @total_earnings, @total_deduct, 
+                                    @nett_salary] }
       end
       
     else
@@ -39,10 +40,12 @@ class User::PayslipController < User::UserController
       if @employee_salary.pay_type == 1
         filters = { :year => year, :month => _month, :staff_id => @employee.staff_id }
         @total_overtime = PayslipHelper.total_overtime(filters)
-        @total_overtime_earnings = PayslipHelper.total_overtime_earnings(filters, @total_overtime)
+        @total_overtime_earnings = PayslipHelper.total_overtime_earnings(filters, 
+          @total_overtime)
         @adjustment = SalaryAdjustmentHelper.get_salary_adjustment(filters)
         
-        @total_earnings = PayslipHelper.total_earnings(@employee_salary, @adjustment, @total_overtime_earnings)
+        @total_earnings = PayslipHelper.total_earnings(@employee_salary, @adjustment, 
+          @total_overtime_earnings)
         @total_deduct = PayslipHelper.total_deductions(@employee_salary)
         @nett_salary = PayslipHelper.nett_salary(@total_earnings, @total_deduct)
         
@@ -50,21 +53,23 @@ class User::PayslipController < User::UserController
     
         respond_to do |fmt|
           fmt.html { render 'admin/payslip/payslip_monthly' }
-          fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary, 
-                                      @total_overtime, @total_overtime_earnings, @adjustment,
-                                      @basic_pay] }
+          fmt.json { render :json => [@employee, @total_earnings, @total_deduct, 
+                                      @nett_salary, @total_overtime, 
+                                      @total_overtime_earnings, @adjustment, @basic_pay] }
         end
         
       # hourly type
       else
         filters = { :year => year, :month => _month, :staff_id => @employee.staff_id }
-        @total_earnings, @total_hours, @hourly_pay_rate = PayslipHelper.total_earnings_hourly(@employee_salary, filters)
+        @total_earnings, @total_hours, @hourly_pay_rate = 
+          PayslipHelper.total_earnings_hourly(@employee_salary, filters)
         @total_deduct = PayslipHelper.total_deductions(@employee_salary)
         @nett_salary = PayslipHelper.nett_salary_hourly(@total_earnings, @total_deduct)
         
         respond_to do |fmt|
           fmt.html { render 'admin/payslip/payslip_hourly' }
-          fmt.json { render :json => [@employee, @total_earnings, @total_deduct, @nett_salary, @total_hours, @hourly_pay_rate] }
+          fmt.json { render :json => [@employee, @total_earnings, @total_deduct, 
+                                      @nett_salary, @total_hours, @hourly_pay_rate] }
         end
       end
     end

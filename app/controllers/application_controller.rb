@@ -26,7 +26,8 @@ class ApplicationController < ActionController::Base
           redirect_to user_index_path and return
           
         else
-          flash.now[:alert] = 'No employee record found. Please contact the administrator to create your employee record.'
+          flash.now[:alert] = %Q{No employee record found. Please contact the administrator 
+                                 to create your employee record.}
         end
       end
       
