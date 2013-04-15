@@ -4,8 +4,16 @@ class User::QualificationControllerTest < ActionController::TestCase
   setup do
     @employee_qualification = employee_qualification(:one)
   end
+
+  test 'should get index' do
+    login_as :ben
+    get :index
+    assert_response :success
+    assert_template 'index'
+    assert_not_nil assigns(:employee_qualification)
+  end
   
-  test "should update" do
+  test 'should update' do
     login_as :ben
     post :update, { 
       :employee_qualification => { 

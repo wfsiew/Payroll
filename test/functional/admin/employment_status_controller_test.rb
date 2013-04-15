@@ -5,7 +5,7 @@ class Admin::EmploymentStatusControllerTest < ActionController::TestCase
     @employment_status = employment_status(:one)
   end
   
-  test "should get index" do
+  test 'should get index' do
     login_as :admin
     get :index
     assert_response :success
@@ -13,7 +13,7 @@ class Admin::EmploymentStatusControllerTest < ActionController::TestCase
     assert_not_nil assigns(:data)
   end
   
-  test "should get list" do
+  test 'should get list' do
     login_as :admin
     get :list, { :keyword => 'bat' }
     assert_response :success
@@ -21,7 +21,7 @@ class Admin::EmploymentStatusControllerTest < ActionController::TestCase
     assert_not_nil assigns(:data)
   end
   
-  test "should get new" do
+  test 'should get new' do
     login_as :admin
     get :new
     assert_response :success
@@ -29,7 +29,7 @@ class Admin::EmploymentStatusControllerTest < ActionController::TestCase
     assert_not_nil assigns(:empstatus)
   end
   
-  test "should create employment status" do
+  test 'should create employment status' do
     login_as :admin
     assert_difference('EmploymentStatus.count') do
       post :create, { :name => 'Contract' }
@@ -40,7 +40,7 @@ class Admin::EmploymentStatusControllerTest < ActionController::TestCase
     assert_equal 1, data['success']
   end
   
-  test "should get edit" do
+  test 'should get edit' do
     login_as :admin
     get :edit, { :id => @employment_status.id }
     assert_response :success
@@ -48,7 +48,7 @@ class Admin::EmploymentStatusControllerTest < ActionController::TestCase
     assert_not_nil assigns(:empstatus)
   end
   
-  test "should update employment status" do
+  test 'should update employment status' do
     login_as :admin
     post :update, { :id => @employment_status.id, :name => 'Part time' }
     assert_response :success
@@ -56,7 +56,7 @@ class Admin::EmploymentStatusControllerTest < ActionController::TestCase
     assert_equal 1, data['success']
   end
   
-  test "should destroy employment status" do
+  test 'should destroy employment status' do
     login_as :admin
     assert_difference('EmploymentStatus.count', -1) do
       post :destroy, { :id => [@employment_status.id] }

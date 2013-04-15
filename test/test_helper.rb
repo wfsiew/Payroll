@@ -23,6 +23,40 @@ class ActiveSupport::TestCase
       @request.session[:supervisor_id] = employee.id
     end
   end
+
+  def normal_user(test_module)
+    open_session do |user|
+      def user.logs_in(username, password)
+        get login_path
+        assert_response :success
+        assert_template 'new'
+
+        post_via_redirect auth_path, :username => username, :password => password
+
+        assert_response :success
+        assert_equal user_index_path, path
+        assert_template 'index'
+        assert_not_nil session[:user_id]
+        assert_not_nil session[:employee_id]
+        assert_not_nil session[:staff_id]
+        assert_not_nil session[:supervisor_id]
+      end
+
+      def user.logs_out
+        get_via_redirect logout_path
+        assert_response :success
+        assert_equal login_path, path
+        assert_template 'new'
+        assert_nil session[:user_id]
+        assert_nil session[:employee_id]
+        assert_nil session[:staff_id]
+        assert_nil session[:supervisor_id]
+      end
+
+      user.extend(test_module)
+      yield user if block_given?
+    end
+  end
   
   def admin_user(test_module)
     open_session do |user|

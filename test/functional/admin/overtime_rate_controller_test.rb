@@ -5,7 +5,7 @@ class Admin::OvertimeRateControllerTest < ActionController::TestCase
     @rate = overtime_rate(:one)
   end
   
-  test "should get index" do
+  test 'should get index' do
     login_as :admin
     get :index
     assert_response :success
@@ -13,7 +13,7 @@ class Admin::OvertimeRateControllerTest < ActionController::TestCase
     assert_not_nil assigns(:data)
   end
   
-  test "should get list" do
+  test 'should get list' do
     login_as :admin
     get :list, { :year => 2008 }
     assert_response :success
@@ -21,7 +21,7 @@ class Admin::OvertimeRateControllerTest < ActionController::TestCase
     assert_not_nil assigns(:data)
   end
   
-  test "should get new" do
+  test 'should get new' do
     login_as :admin
     get :new
     assert_response :success
@@ -31,7 +31,7 @@ class Admin::OvertimeRateControllerTest < ActionController::TestCase
     assert_equal 'add-form', assigns(:form_id)
   end
   
-  test "should create overtime rate" do
+  test 'should create overtime rate' do
     login_as :admin
     assert_difference('OvertimeRate.count') do
       post :create, { :duration => @rate.duration, :year => 2011, :pay_rate => @rate.pay_rate }
@@ -42,7 +42,7 @@ class Admin::OvertimeRateControllerTest < ActionController::TestCase
     assert_equal 1, data['success']
   end
   
-  test "should get edit" do
+  test 'should get edit' do
     login_as :admin
     get :edit, { :id => @rate.id }
     assert_response :success
@@ -52,7 +52,7 @@ class Admin::OvertimeRateControllerTest < ActionController::TestCase
     assert_equal 'edit-form', assigns(:form_id)
   end
   
-  test "should update overtime rate" do
+  test 'should update overtime rate' do
     login_as :admin
     post :update, { :id => @rate.id, :duration => @rate.duration, :year => 2005, 
                     :pay_rate => @rate.pay_rate }
@@ -61,7 +61,7 @@ class Admin::OvertimeRateControllerTest < ActionController::TestCase
     assert_equal 1, data['success']
   end
   
-  test "should destroy overtime rate" do
+  test 'should destroy overtime rate' do
     login_as :admin
     assert_difference('OvertimeRate.count', -1) do
       post :destroy, { :id => [@rate.id] }

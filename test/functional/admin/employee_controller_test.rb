@@ -9,7 +9,7 @@ class Admin::EmployeeControllerTest < ActionController::TestCase
     @employee_qualification = employee_qualification(:one)
   end
   
-  test "should get index" do
+  test 'should get index' do
     login_as :admin
     get :index
     assert_response :success
@@ -20,7 +20,7 @@ class Admin::EmployeeControllerTest < ActionController::TestCase
     assert_not_nil assigns(:dept)
   end
   
-  test "should get list" do
+  test 'should get list' do
     login_as :admin
     get :list, { :staff_id => 'C0001' }
     assert_response :success
@@ -28,7 +28,7 @@ class Admin::EmployeeControllerTest < ActionController::TestCase
     assert_not_nil assigns(:data)
   end
   
-  test "should get new" do
+  test 'should get new' do
     login_as :admin
     get :new
     assert_response :success
@@ -47,7 +47,7 @@ class Admin::EmployeeControllerTest < ActionController::TestCase
     assert_equal 'add-form', assigns(:form_id)
   end
   
-  test "should create employee" do
+  test 'should create employee' do
     login_as :admin
     assert_difference('Employee.count') do
       post :create, { 
@@ -95,7 +95,7 @@ class Admin::EmployeeControllerTest < ActionController::TestCase
     assert_equal 1, data['success']
   end
   
-  test "should get edit" do
+  test 'should get edit' do
     login_as :admin
     get :edit, { :id => @employee.id }
     assert_response :success
@@ -114,7 +114,7 @@ class Admin::EmployeeControllerTest < ActionController::TestCase
     assert_equal 'edit-form', assigns(:form_id)
   end
   
-  test "should update employee" do
+  test 'should update employee' do
     login_as :admin
     post :update,
     {
@@ -161,7 +161,7 @@ class Admin::EmployeeControllerTest < ActionController::TestCase
     assert_equal 1, data['success']
   end
   
-  test "should destroy employee" do
+  test 'should destroy employee' do
     login_as :admin
     assert_difference('Employee.count', -1) do
       post :destroy, { :id => [@employee.id] }

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Admin::PayslipControllerTest < ActionController::TestCase
-  test "should get index" do
+  test 'should get index' do
     login_as :admin
     get :index
     assert_response :success
@@ -12,7 +12,7 @@ class Admin::PayslipControllerTest < ActionController::TestCase
     assert_not_nil assigns(:dept)
   end
   
-  test "should get list" do
+  test 'should get list' do
     login_as :admin
     get :list, { :employee => 'ben' }
     assert_response :success
@@ -20,7 +20,7 @@ class Admin::PayslipControllerTest < ActionController::TestCase
     assert_not_nil assigns(:data)
   end
   
-  test "should get monthly payslip" do
+  test 'should get monthly payslip' do
     login_as :admin
     get :payslip, { :id => 1 }
     assert_response :success
@@ -37,7 +37,7 @@ class Admin::PayslipControllerTest < ActionController::TestCase
     assert_not_nil assigns(:basic_pay)
   end
   
-  test "should get hourly payslip" do
+  test 'should get hourly payslip' do
     login_as :admin
     get :payslip, { :id => 2 }
     assert_response :success

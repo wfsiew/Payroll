@@ -5,7 +5,7 @@ class User::InfoControllerTest < ActionController::TestCase
     @employee = employee(:one)
   end
   
-  test "should get index" do
+  test 'should get index' do
     login_as :ben
     get :index
     assert_response :success
@@ -14,7 +14,7 @@ class User::InfoControllerTest < ActionController::TestCase
     assert_not_nil assigns(:user)
   end
   
-  test "should update" do
+  test 'should update' do
     login_as :ben
     post :update, {
       :employee => { 

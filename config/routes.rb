@@ -79,6 +79,7 @@ Payroll::Application.routes.draw do
     end
     
     scope 'hourly', :as => 'hourly' do
+      
       match 'chart' => 'hourly_payroll_chart#index', :via => :get
       match 'chart/data' => 'hourly_payroll_chart#data', :via => [:get, :post]
     end
@@ -110,6 +111,7 @@ Payroll::Application.routes.draw do
     end
     
     scope 'workhours', :as => 'workhours' do
+      
       match 'chart' => 'total_work_hours_chart#index', :via => :get
       match 'chart/data' => 'total_work_hours_chart#data', :via => [:get, :post]
     end
@@ -129,13 +131,13 @@ Payroll::Application.routes.draw do
     match 'index' => 'user#index', :as => :index, :via => :get
     
     scope 'info', :as => 'info' do
-      match '' => 'info#index', :as => :index, :via => :get
-      match 'update' => 'info#update', :as => :update, :via => :post
+      match '' => 'info#index', :via => :get
+      match 'update' => 'info#update', :via => :post
     end
     
     scope 'contact', :as => 'contact' do
       match '' => 'contact#index', :via => :get
-      match 'update' => 'contact#update', :as => :update, :via => :post
+      match 'update' => 'contact#update', :via => :post
     end
     
     scope 'job', :as => 'job' do
@@ -148,7 +150,7 @@ Payroll::Application.routes.draw do
     
     scope 'qualification', :as => 'qualification' do
       match '' => 'qualification#index', :via => :get
-      match 'update' => 'qualification#update', :as => :update, :via => :post
+      match 'update' => 'qualification#update', :via => :post
     end
     
     scope 'overtime', :as => 'overtime' do

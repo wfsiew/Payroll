@@ -5,7 +5,7 @@ class User::ContactControllerTest < ActionController::TestCase
     @employee_contact = employee_contact(:two)
   end
   
-  test "should get index" do
+  test 'should get index' do
     login_as :ben
     get :index
     assert_response :success
@@ -13,7 +13,7 @@ class User::ContactControllerTest < ActionController::TestCase
     assert_not_nil assigns(:employee_contact)
   end
   
-  test "should update" do
+  test 'should update' do
     login_as :ben
     post :update, { 
       :employee_contact => { 

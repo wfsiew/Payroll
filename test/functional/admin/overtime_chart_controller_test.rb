@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Admin::OvertimeChartControllerTest < ActionController::TestCase
-  test "should get index" do
+  test 'should get index' do
     login_as :admin
     get :index
     assert_response :success
@@ -9,7 +9,7 @@ class Admin::OvertimeChartControllerTest < ActionController::TestCase
     assert_not_nil assigns(:month_hash)
   end
   
-  test "should get data" do
+  test 'should get data' do
     login_as :admin
     get :data
     assert_response :success

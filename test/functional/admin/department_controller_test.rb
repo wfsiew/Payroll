@@ -5,7 +5,7 @@ class Admin::DepartmentControllerTest < ActionController::TestCase
     @dept = department(:one)
   end
   
-  test "should get index" do
+  test 'should get index' do
     login_as :admin
     get :index
     assert_response :success
@@ -13,7 +13,7 @@ class Admin::DepartmentControllerTest < ActionController::TestCase
     assert_not_nil assigns(:data)
   end
   
-  test "should get list" do
+  test 'should get list' do
     login_as :admin
     get :list, { :keyword => 'r' }
     assert_response :success
@@ -21,7 +21,7 @@ class Admin::DepartmentControllerTest < ActionController::TestCase
     assert_not_nil assigns(:data)
   end
   
-  test "should get new" do
+  test 'should get new' do
     login_as :admin
     get :new
     assert_response :success
@@ -31,7 +31,7 @@ class Admin::DepartmentControllerTest < ActionController::TestCase
     assert_equal 'add-form', assigns(:form_id)
   end
   
-  test "should create department" do
+  test 'should create department' do
     login_as :admin
     assert_difference('Department.count') do
       post :create, { :name => 'Sales' }
@@ -42,7 +42,7 @@ class Admin::DepartmentControllerTest < ActionController::TestCase
     assert_equal 1, data['success']
   end
   
-  test "should get edit" do
+  test 'should get edit' do
     login_as :admin
     get :edit, { :id => @dept.id }
     assert_response :success
@@ -52,7 +52,7 @@ class Admin::DepartmentControllerTest < ActionController::TestCase
     assert_equal 'edit-form', assigns(:form_id)
   end
   
-  test "should update department" do
+  test 'should update department' do
     login_as :admin
     post :update, { :id => @dept.id, :name => 'Admin' }
     assert_response :success
@@ -60,7 +60,7 @@ class Admin::DepartmentControllerTest < ActionController::TestCase
     assert_equal 1, data['success']
   end
   
-  test "should destroy department" do
+  test 'should destroy department' do
     login_as :admin
     assert_difference('Department.count', -1) do
       post :destroy, { :id => [@dept.id] }

@@ -5,7 +5,7 @@ class Admin::UserControllerTest < ActionController::TestCase
     @user = user(:ben)
   end
   
-  test "should get index" do
+  test 'should get index' do
     login_as :admin
     get :index
     assert_response :success
@@ -13,7 +13,7 @@ class Admin::UserControllerTest < ActionController::TestCase
     assert_not_nil assigns(:data)
   end
   
-  test "should get list" do
+  test 'should get list' do
     login_as :admin
     get :list, { :username => 'en' }
     assert_response :success
@@ -21,7 +21,7 @@ class Admin::UserControllerTest < ActionController::TestCase
     assert_not_nil assigns(:data)
   end
   
-  test "should get new" do
+  test 'should get new' do
     login_as :admin
     get :new
     assert_response :success
@@ -31,7 +31,7 @@ class Admin::UserControllerTest < ActionController::TestCase
     assert_equal 'add-form', assigns(:form_id)
   end
   
-  test "should create user" do
+  test 'should create user' do
     login_as :admin
     assert_difference('User.count') do
       post :create, { :role => 2, :username => 'mary', :status => '1', 
@@ -43,7 +43,7 @@ class Admin::UserControllerTest < ActionController::TestCase
     assert_equal 1, data['success']
   end
   
-  test "should get edit" do
+  test 'should get edit' do
     login_as :admin
     get :edit, { :id => @user.id }
     assert_response :success
@@ -53,7 +53,7 @@ class Admin::UserControllerTest < ActionController::TestCase
     assert_equal 'edit-form', assigns(:form_id)
   end
   
-  test "should update user" do
+  test 'should update user' do
     login_as :admin
     post :update, { :id => @user.id, :role => 2, :username => 'mary',
                     :status => '1', :pwd => 'kim111', :pwdconfirm => 'kim111' }
@@ -62,7 +62,7 @@ class Admin::UserControllerTest < ActionController::TestCase
     assert_equal 1, data['success']
   end
   
-  test "should destroy user" do
+  test 'should destroy user' do
     login_as :admin
     assert_difference('User.count', -1) do
       post :destroy, { :id => [@user.id] }
