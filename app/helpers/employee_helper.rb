@@ -4,6 +4,7 @@ module EmployeeHelper
   DEFAULT_SORT_COLUMN = 'staff_id'
   DEFAULT_SORT_DIR = 'ASC'
   
+  # Get all employee records.
   def self.get_all(pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
     sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
     total = Employee.count
@@ -35,6 +36,7 @@ module EmployeeHelper
       :totalpage => pager.total_pages }
   end
   
+  # Get filtered employee records.
   def self.get_filter_by(filters, pagenum = 1, 
     pagesize = ApplicationHelper::Pager.default_page_size,
     sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
@@ -58,10 +60,12 @@ module EmployeeHelper
       :totalpage => pager.total_pages }
   end
   
+  # Get the validation errors.
   def self.get_errors(errors)
     { :error => 1, :errors => errors }
   end
   
+  # Get the item message text.
   def self.item_message(filters, pagenum, pagesize)
     total = 0
     if filters.blank?
@@ -77,6 +81,7 @@ module EmployeeHelper
     end
   end
   
+  # Get the employee object from the POST request.
   def self.employee_obj(params)
     q = params[:employee]
     
@@ -111,6 +116,7 @@ module EmployeeHelper
                         :user_id => q[:user_id])
   end
   
+  # Update the employee object.
   def self.update_info(o, params)
     q = params[:employee]
     

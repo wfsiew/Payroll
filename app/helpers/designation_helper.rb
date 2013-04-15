@@ -2,6 +2,7 @@ module DesignationHelper
   DEFAULT_SORT_COLUMN = 'title'
   DEFAULT_SORT_DIR = 'ASC'
   
+  # Get all designation records.
   def self.get_all(pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
     sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
     total = Designation.count
@@ -24,6 +25,7 @@ module DesignationHelper
       :totalpage => pager.total_pages }
   end
   
+  # Get filtered designation records.
   def self.get_filter_by(find, keyword, pagenum = 1, 
     pagesize = ApplicationHelper::Pager.default_page_size,
     sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
@@ -48,10 +50,12 @@ module DesignationHelper
       :totalpage => pager.total_pages }
   end
   
+  # Get the validation errors.
   def self.get_errors(errors)
     { :error => 1, :errors => errors }
   end
   
+  # Get the item message text.
   def self.item_message(keyword, pagenum, pagesize)
     total = 0
     if keyword.blank?

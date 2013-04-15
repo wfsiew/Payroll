@@ -2,6 +2,7 @@ module OvertimeRateHelper
   DEFAULT_SORT_COLUMN = 'year'
   DEFAULT_SORT_DIR = 'ASC'
   
+  # Get all overtime rate records.
   def self.get_all(pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
     sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
     total = OvertimeRate.count
@@ -24,6 +25,7 @@ module OvertimeRateHelper
       :totalpage => pager.total_pages }
   end
   
+  # Get filtered overtime rate records.
   def self.get_filter_by(filters, pagenum = 1, 
     pagesize = ApplicationHelper::Pager.default_page_size,
     sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
@@ -47,10 +49,12 @@ module OvertimeRateHelper
       :totalpage => pager.total_pages }
   end
   
+  # Get the validation errors.
   def self.get_errors(errors)
     { :error => 1, :errors => errors }
   end
   
+  # Get the item message text.
   def self.item_message(filters, pagenum, pagesize)
     total = 0
     if filters.blank?

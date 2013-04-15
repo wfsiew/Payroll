@@ -1,8 +1,10 @@
 module EmployeeSalaryHelper
+  # Get the validation errors
   def self.get_errors(errors)
     { :error => 1, :errors => errors }
   end
   
+  # Checks whether any salary parameters are present in the POST request.
   def self.is_empty_params?(params)
     q = params[:employee_salary]
     if q[:salary].blank? && q[:allowance].blank? && q[:epf].blank? && q[:socso].blank? && 
@@ -20,6 +22,7 @@ module EmployeeSalaryHelper
     false
   end
   
+  # Get the salary object from the POST request.
   def self.employee_salary_obj(o, params)
     q = params[:employee_salary]
     
@@ -33,6 +36,7 @@ module EmployeeSalaryHelper
                        :pay_type => q[:pay_type])
   end
   
+  # Update the salary object.
   def self.update_obj(o, params)
     q = params[:employee_salary]
     
@@ -46,6 +50,7 @@ module EmployeeSalaryHelper
                         :pay_type => q[:pay_type])
   end
   
+  # Get the salary object.
   def self.find(id)
     o = nil
     begin

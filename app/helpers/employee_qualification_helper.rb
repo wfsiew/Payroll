@@ -1,8 +1,10 @@
 module EmployeeQualificationHelper
+  # Get the validation errors.
   def self.get_errors(errors)
     { :error => 1, :errors => errors }
   end
   
+  # Checks whether any qualification parameters are present in the POST request.
   def self.is_empty_params?(params)
     q = params[:employee_qualification]
     if q[:level] == '0' && q[:institute].blank? && q[:major].blank? && q[:year].blank? && 
@@ -12,6 +14,7 @@ module EmployeeQualificationHelper
     false
   end
   
+  # Get the qualification object from the POST request.
   def self.employee_qualification_obj(o, params)
     q = params[:employee_qualification]
     
@@ -28,6 +31,7 @@ module EmployeeQualificationHelper
                               :start_date => start_date, :end_date => end_date)
   end
   
+  # Update the qualification object.
   def self.update_obj(o, params)
     q = params[:employee_qualification]
     
@@ -43,6 +47,7 @@ module EmployeeQualificationHelper
                         :start_date => start_date, :end_date => end_date)
   end
   
+  # Get the contact object.
   def self.find(id)
     o = nil
     begin

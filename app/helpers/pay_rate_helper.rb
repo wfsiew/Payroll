@@ -2,6 +2,7 @@ module PayRateHelper
   DEFAULT_SORT_COLUMN = 'staff_id'
   DEFAULT_SORT_DIR = 'ASC'
   
+  # Get all pay rate records.
   def self.get_all(pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
     sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
     total = PayRate.count
@@ -24,6 +25,7 @@ module PayRateHelper
       :totalpage => pager.total_pages }
   end
   
+  # Get filtered pay rate records.
   def self.get_filter_by(filters, pagenum = 1, 
     pagesize = ApplicationHelper::Pager.default_page_size,
     sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
@@ -47,10 +49,12 @@ module PayRateHelper
       :totalpage => pager.total_pages }
   end
   
+  # Get the validation errors.
   def self.get_errors(errors)
     { :error => 1, :errors => errors }
   end
   
+  # Get the item message text.
   def self.item_message(filters, pagenum, pagesize)
     total = 0
     if filters.blank?
@@ -66,6 +70,7 @@ module PayRateHelper
     end
   end
   
+  # Get the pay rate for a staff id in the specified year and month.
   def self.get_pay_rate(filters)
     o = PayRate.where(:staff_id => filters[:staff_id])
                .where(:year => filters[:year])

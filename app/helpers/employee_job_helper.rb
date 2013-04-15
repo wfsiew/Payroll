@@ -1,8 +1,10 @@
 module EmployeeJobHelper
+  # Get the validation errors.
   def self.get_errors(errors)
     { :error => 1, :errors => errors }
   end
   
+  # Checks whether any job parameters are present in the POST request.
   def self.is_empty_params?(params)
     q = params[:employee_job]
     if q[:designation_id] == '0' && q[:department_id] == '0' && 
@@ -13,6 +15,7 @@ module EmployeeJobHelper
     false
   end
   
+  # Get the job object from the POST request.
   def self.employee_job_obj(o, params)
     q = params[:employee_job]
     
@@ -30,6 +33,7 @@ module EmployeeJobHelper
                     :confirm_date => confirm_date)
   end
   
+  # Update the job object.
   def self.update_obj(o, params)
     q = params[:employee_job]
     
@@ -47,6 +51,7 @@ module EmployeeJobHelper
                         :confirm_date => confirm_date)
   end
   
+  # Get the job object.
   def self.find(id)
     o = nil
     begin

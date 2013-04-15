@@ -2,6 +2,7 @@ module AttendanceHelper
   DEFAULT_SORT_COLUMN = 'work_date'
   DEFAULT_SORT_DIR = 'ASC'
   
+  # Get all attendance records.
   def self.get_all(pagenum = 1, pagesize = ApplicationHelper::Pager.default_page_size,
     sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
     total = Attendance.count
@@ -32,6 +33,7 @@ module AttendanceHelper
       :totalpage => pager.total_pages }
   end
   
+  # Get filtered attendance records.
   def self.get_filter_by(filters, pagenum = 1, 
     pagesize = ApplicationHelper::Pager.default_page_size,
     sort = ApplicationHelper::Sort.new(DEFAULT_SORT_COLUMN, DEFAULT_SORT_DIR))
@@ -55,6 +57,7 @@ module AttendanceHelper
       :totalpage => pager.total_pages }
   end
   
+  # Get the total hours worked
   def self.get_total_hours(filters)
     criteria = Attendance.where('year(work_date) = ? and month(work_date) = ?', 
       filters[:year], filters[:month])

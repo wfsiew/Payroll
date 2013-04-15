@@ -1,8 +1,10 @@
 module EmployeeContactHelper
+  # Get the validation errors.
   def self.get_errors(errors)
     { :error => 1, :errors => errors }
   end
   
+  # Checks whether any contact parameters are present in the POST request.
   def self.is_empty_params?(params)
     q = params[:employee_contact]
     if q[:address_1].blank? && q[:address_2].blank? && q[:address_3].blank? && 
@@ -14,6 +16,7 @@ module EmployeeContactHelper
     false
   end
   
+  # Get the contact object from the POST request.
   def self.employee_contact_obj(o, params)
     q = params[:employee_contact]
     
@@ -25,6 +28,7 @@ module EmployeeContactHelper
                         :other_email => q[:other_email])
   end
   
+  # Update the contact object.
   def self.update_obj(o, params)
     q = params[:employee_contact]
     
@@ -36,6 +40,7 @@ module EmployeeContactHelper
                         :other_email => q[:other_email])
   end
   
+  # Get the contact object.
   def self.find(id)
     o = nil
     begin
