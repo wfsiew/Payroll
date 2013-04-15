@@ -34,7 +34,7 @@ class Admin::SalaryAdjustmentControllerTest < ActionController::TestCase
   test 'should create salary adjustment' do
     login_as :admin
     assert_difference('SalaryAdjustment.count') do
-      post :create, { :staff_id => 'C0003', :inc => 300, :month => 8, :year => 2013 }
+      post :create, { :staff_id => 'C0004', :inc => 300, :month => 8, :year => 2013 }
     end
     
     assert_response :success

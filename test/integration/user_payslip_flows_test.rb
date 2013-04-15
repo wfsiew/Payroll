@@ -43,7 +43,7 @@ class UserPayslipFlowsTest < ActionDispatch::IntegrationTest
       assert_response :success
       assert_template 'index'
 
-      get :payslip, { :id => 3 }
+      get user_payslip_slip_path, { :id => 3 }
       assert_response :success
       assert_template 'admin/payslip/payslip_hourly'
       assert_not_nil assigns(:employee)

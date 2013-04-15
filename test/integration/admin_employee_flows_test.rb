@@ -14,7 +14,7 @@ class AdminEmployeeFlowsTest < ActionDispatch::IntegrationTest
     a = admin_user(AdminEmployeeFlows)
     a.logs_in @user.username, 'secret'
 
-    a.create
+    d = {
       :employee => { 
         :staff_id => 'C0003', :first_name => 'wong', :middle_name => 'yan', 
         :last_name => 'kin', :new_ic => '098455673', :old_ic => '88744532', 
@@ -64,6 +64,8 @@ class AdminEmployeeFlowsTest < ActionDispatch::IntegrationTest
         :gpa => @employee_qualification.gpa, :start_date => '03-04-2006', 
         :end_date => '02-04-2010'
       }
+    }
+    a.create d
 
     a.update @employee,
     {

@@ -73,7 +73,11 @@ var payrate = ( function() {
                 url : '/assets/tpl/label_error.html',
                 ext : '.html'
               }).render(o);
-              $("#add-form input[name='" + e + "']").after(h);
+              if (e == 'month' || e == 'year')
+                $('#add-form #id_' + e).after(h);
+                
+              else
+                $("#add-form input[name='" + e + "']").after(h);
             }
           }
         }
@@ -122,7 +126,11 @@ var payrate = ( function() {
                 url : '/assets/tpl/label_error.html',
                 ext : '.html'
               }).render(o);
-              $("#edit-form input[name='" + e + "']").after(h);
+              if (e == 'month' || e == 'year')
+                $('#edit-form #id_' + e).after(h);
+                
+              else
+                $("#edit-form input[name='" + e + "']").after(h);
             }
           }
         }

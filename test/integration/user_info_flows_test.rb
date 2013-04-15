@@ -9,14 +9,14 @@ class UserInfoFlowsTest < ActionDispatch::IntegrationTest
   test 'view and update info' do 
     a = normal_user(UserInfoFlows)
     a.logs_in @user.username, 'secret'
-    a.update
+    a.update @employee
     a.logs_out
   end
 
   private
 
   module UserInfoFlows
-    def update
+    def update(o)
       get user_info_path
       assert_response :success
       assert_template 'index'
@@ -26,9 +26,9 @@ class UserInfoFlowsTest < ActionDispatch::IntegrationTest
       post user_info_update_path, {
         :employee => { 
           :first_name => 'wong', :middle_name => 'yan', :last_name => 'kin', :new_ic => '098455673', :old_ic => '88744532', 
-          :passport_no => @employee.passport_no, :gender => @employee.gender, :marital_status => @employee.marital_status, 
-          :nationality => @employee.nationality, :dob => '15-08-1977', :place_of_birth => @employee.place_of_birth, 
-          :race => @employee.race, :religion => @employee.religion, :is_bumi => @employee.is_bumi
+          :passport_no => o.passport_no, :gender => o.gender, :marital_status => o.marital_status, 
+          :nationality => o.nationality, :dob => '15-08-1977', :place_of_birth => o.place_of_birth, 
+          :race => o.race, :religion => o.religion, :is_bumi => o.is_bumi
         }
       }
       assert_response :success
