@@ -133,6 +133,6 @@ class Admin::SalaryAdjustmentController < Admin::AdminController
     render :json => { :success => 1, 
                       :itemscount => itemscount, 
                       :message => %Q{#{ids.size} salary adjustment(s) was successfully 
-                        deleted.} }
+                                       deleted.} }
   end
 end
