@@ -5,13 +5,14 @@
     </td>
     <td class="colspacing">
       <%= text_field_tag :employee, nil, :id => 'id_employee', :class => 'search', :placeholder => 'type here to search', 
-                         :title => 'type here to search' %>
+                         :title => 'type here to search', 'x-webkit-speech' => 'x-webkit-speech' %>
     </td>
     <td>
       <%= label_tag :id_work_date, 'Working Date', :class => 'label' %>
     </td>
     <td>
-      <%= text_field_tag :work_date, nil, :id => 'id_work_date', :class => 'search date_input', :placeholder => 'dd-mm-YYYY' %>
+      <%= text_field_tag :work_date, nil, :id => 'id_work_date', :class => 'search date_input', :placeholder => 'dd-mm-YYYY',
+                         'x-webkit-speech' => 'x-webkit-speech' %>
     </td>
   </tr>
 </table>

@@ -9,11 +9,11 @@
   <%= form_tag(auth_path) do %>
     <div class="row">
       <%= label_tag :username, 'Username', :class => 'editor-label' %>
-      <%= text_field_tag :username, 'admin', :class => 'text-box' %>
+      <%= text_field_tag :username, 'admin', :class => 'text-box', 'x-webkit-speech' => 'x-webkit-speech' %>
     </div>
     <div class="row">
       <%= label_tag :password, 'Password', :class => 'editor-label' %>
-      <%= password_field_tag :password, 'admin123', :class => 'text-box' %>
+      <%= password_field_tag :password, 'admin123', :class => 'text-box', 'x-webkit-speech' => 'x-webkit-speech' %>
     </div>
     
     <div class="msg ui-corner-all">

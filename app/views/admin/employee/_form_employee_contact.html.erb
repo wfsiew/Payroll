@@ -6,7 +6,7 @@
       </td>
       <td>
         <%= text_field_tag :address_1, @employee_contact.address_1, :id => 'id_address_1', :class => 'text', :placeholder => 'enter street',
-                           :title => 'enter street' %>
+                           :title => 'enter street', 'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
@@ -15,7 +15,7 @@
       </td>
       <td>
         <%= text_field_tag :address_2, @employee_contact.address_2, :id => 'id_address_2', :class => 'text', :placeholder => 'enter street',
-                           :title => 'enter street' %>
+                           :title => 'enter street', 'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
@@ -24,13 +24,14 @@
       </td>
       <td>
         <%= text_field_tag :address_3, @employee_contact.address_3, :id => 'id_address_3', :class => 'text', :placeholder => 'enter street',
-                           :title => 'enter street' %>
+                           :title => 'enter street', 'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
       <td valign="top" class="lbl"> <%= label_tag :city, 'City', :class => 'label' %> </td>
       <td> <%= text_field_tag :city, @employee_contact.city, :id => 'id_city', :class => 'text', :placeholder => 'enter city',
-                              :title => 'enter city' %> </td>
+                              :title => 'enter city', 'x-webkit-speech' => 'x-webkit-speech' %>
+      </td>
     </tr>
     <tr>
       <td valign="top" class="lbl">
@@ -38,7 +39,7 @@
       </td>
       <td>
         <%= text_field_tag :state, @employee_contact.state, :id => 'id_state', :class => 'text', :placeholder => 'enter state',
-                           :title => 'enter state' %>
+                           :title => 'enter state', 'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
@@ -47,7 +48,7 @@
       </td>
       <td>
         <%= text_field_tag :postcode, @employee_contact.postcode, :id => 'id_postcode', :class => 'text', :placeholder => 'enter postal code',
-                           :title => 'enter postal code' %>
+                           :title => 'enter postal code', 'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
@@ -56,7 +57,7 @@
       </td>
       <td>
         <%= text_field_tag :country, @employee_contact.country, :id => 'id_country', :class => 'text', :placeholder => 'enter country',
-                           :title => 'enter country' %>
+                           :title => 'enter country', 'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
@@ -69,7 +70,7 @@
         <%= label_tag :home_phone, 'Home Telephone', :class => 'label' %>
       </td>
       <td> <%= text_field_tag :home_phone, @employee_contact.home_phone, :id => 'id_home_phone', :class => 'text', :placeholder => 'enter home phone',
-                              :title => 'enter home phone' %>
+                              :title => 'enter home phone', 'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
@@ -78,7 +79,7 @@
       </td>
       <td>
         <%= text_field_tag :mobile_phone, @employee_contact.mobile_phone, :id => 'id_mobile_phone', :class => 'text', :placeholder => 'enter mobile phone',
-                           :title => 'enter mobile phone' %>
+                           :title => 'enter mobile phone', 'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
@@ -92,7 +93,7 @@
       </td>
       <td>
         <%= text_field_tag :work_email, @employee_contact.work_email, :id => 'id_work_email', :class => 'text', :placeholder => 'enter work email',
-                           :title => 'enter work email' %>
+                           :title => 'enter work email', 'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
@@ -101,7 +102,7 @@
       </td>
       <td>
         <%= text_field_tag :other_email, @employee_contact.other_email, :id => 'id_other_email', :class => 'text', :placeholder => 'enter other email',
-                           :title => 'enter other email' %>
+                           :title => 'enter other email', 'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
   </table>

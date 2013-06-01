@@ -14,7 +14,7 @@
       </td>
       <td>
         <%= text_field_tag :username, @user.username, :id => 'id_username', :class => 'text', :placeholder => 'enter username',
-                           :title => 'enter username' %>
+                           :title => 'enter username', 'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
@@ -31,7 +31,7 @@
       </td>
       <td>
         <%= password_field_tag :pwd, @user.pwd, :id => 'id_password', :class => 'text', :placeholder => 'enter password',
-                               :title => 'Minimum is 4 characters' %>
+                               :title => 'Minimum is 4 characters', 'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
@@ -40,7 +40,7 @@
       </td>
       <td>
         <%= password_field_tag :pwd_confirmation, @user.pwd_confirmation, :id => 'id_passwordconfirm', :class => 'text', :placeholder => 'enter password confirmation',
-                               :title => 'enter password confirmation' %>
+                               :title => 'enter password confirmation', 'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>

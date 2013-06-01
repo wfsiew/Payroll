@@ -20,7 +20,7 @@
       </td>
       <td>
         <%= text_field_tag :institute, @employee_qualification.institute, :id => 'id_institute', :class => 'text', :placeholder => 'enter institute',
-                           :title => 'enter institute' %>
+                           :title => 'enter institute', 'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
@@ -29,7 +29,7 @@
       </td>
       <td>
         <%= text_field_tag :major, @employee_qualification.major, :id => 'id_major', :class => 'text', :placeholder => 'enter major',
-                           :title => 'enter major' %>
+                           :title => 'enter major', 'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
@@ -38,7 +38,7 @@
       </td>
       <td>
         <%= text_field_tag :year, @employee_qualification.year, :id => 'id_year', :class => 'text', :placeholder => 'enter year',
-                           :title => 'enter year' %>
+                           :title => 'enter year', 'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
@@ -47,7 +47,7 @@
       </td>
       <td>
         <%= text_field_tag :gpa, @employee_qualification.gpa, :id => 'id_gpa', :class => 'text', :placeholder => 'enter gpa/grade',
-                           :title => 'enter gpa/grade' %>
+                           :title => 'enter gpa/grade', 'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
@@ -55,7 +55,8 @@
         <%= label_tag :start_date, 'Start Date', :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :start_date, fmt_date(@employee_qualification.start_date), :id => 'id_start_date', :class => 'text date_input', :placeholder => 'dd-mm-YYYY' %>
+        <%= text_field_tag :start_date, fmt_date(@employee_qualification.start_date), :id => 'id_start_date', :class => 'text date_input', :placeholder => 'dd-mm-YYYY',
+                           'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
@@ -63,7 +64,8 @@
         <%= label_tag :end_date, 'End Date', :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :end_date, fmt_date(@employee_qualification.end_date), :id => 'id_end_date', :class => 'text date_input', :placeholder => 'dd-mm-YYYY' %>
+        <%= text_field_tag :end_date, fmt_date(@employee_qualification.end_date), :id => 'id_end_date', :class => 'text date_input', :placeholder => 'dd-mm-YYYY',
+                           'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
   </table>

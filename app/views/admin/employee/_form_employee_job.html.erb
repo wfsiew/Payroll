@@ -38,7 +38,8 @@
         <%= label :join_date, 'Join Date', :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :join_date, fmt_date(@employee_job.join_date), :id => 'id_join_date', :class => 'text date_input', :placeholder => 'dd-mm-YYYY' %>
+        <%= text_field_tag :join_date, fmt_date(@employee_job.join_date), :id => 'id_join_date', :class => 'text date_input', :placeholder => 'dd-mm-YYYY',
+                           'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
@@ -46,7 +47,8 @@
         <%= label :confirm_date, 'Confirm Date', :class => 'label' %>
       </td>
       <td>
-        <%= text_field_tag :confirm_date, fmt_date(@employee_job.confirm_date), :id => 'id_confirm_date', :class => 'text date_input', :placeholder => 'dd-mm-YYYY' %>
+        <%= text_field_tag :confirm_date, fmt_date(@employee_job.confirm_date), :id => 'id_confirm_date', :class => 'text date_input', :placeholder => 'dd-mm-YYYY',
+                           'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
