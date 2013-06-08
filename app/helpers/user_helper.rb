@@ -63,7 +63,7 @@ module UserHelper
       return pager.item_message
       
     else
-      criteria = User.where('username like ?', "%#{keyword}%")
+      criteria, order = get_filter_criteria(filters)
       total = criteria.count
       pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
       return pager.item_message
