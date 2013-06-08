@@ -72,8 +72,9 @@
       <td valign="top" class="lbl">
         <%= label_tag :home_phone, 'Home Telephone', :class => 'label' %>
       </td>
-      <td> <%= text_field_tag :home_phone, @employee_contact.home_phone, :id => 'id_home_phone', :class => 'text', :placeholder => 'enter home phone',
-                              :title => 'enter home phone', 'x-webkit-speech' => 'x-webkit-speech' %>
+      <td>
+        <%= text_field_tag :home_phone, @employee_contact.home_phone, :id => 'id_home_phone', :class => 'text', :placeholder => 'enter home phone',
+                           :title => 'enter home phone', 'x-webkit-speech' => 'x-webkit-speech' %>
       </td>
     </tr>
     <tr>
