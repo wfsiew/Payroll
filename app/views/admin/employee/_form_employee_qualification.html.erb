@@ -2,7 +2,7 @@
   <table>
     <tr>
       <td valign="top" class="lbl">
-        <%= label_tag :level, 'Level', :class => 'Label' %>
+        <%= label_tag :level, 'Level', :class => 'label' %>
       </td>
       <td>
         <select id="id_level" class="select">
@@ -15,7 +15,7 @@
     </tr>
     <tr>
       <td valign="top" class="lbl">
-        <%= label_tag :institute, 'Institute', :class => 'Label' %>
+        <%= label_tag :institute, 'Institute', :class => 'label' %>
       </td>
       <td>
         <%= text_field_tag :institute, @employee_qualification.institute, :id => 'id_institute', :class => 'text', :placeholder => 'enter institute',
@@ -24,7 +24,7 @@
     </tr>
     <tr>
       <td valign="top" class="lbl">
-        <%= label_tag :major, 'Major', :class => 'Label' %>
+        <%= label_tag :major, 'Major', :class => 'label' %>
       </td>
       <td>
         <%= text_field_tag :major, @employee_qualification.major, :id => 'id_major', :class => 'text', :placeholder => 'enter major',
@@ -33,7 +33,7 @@
     </tr>
     <tr>
       <td valign="top" class="lbl">
-        <%= label_tag :year, 'Year', :class => 'Label' %>
+        <%= label_tag :year, 'Year', :class => 'label' %>
       </td>
       <td>
         <%= text_field_tag :year, @employee_qualification.year, :id => 'id_year', :class => 'text', :placeholder => 'enter year',
@@ -42,7 +42,7 @@
     </tr>
     <tr>
       <td valign="top" class="lbl">
-        <%= label_tag :gpa, 'GPA/Grade', :class => 'Label' %>
+        <%= label_tag :gpa, 'GPA/Grade', :class => 'label' %>
       </td>
       <td>
         <%= text_field_tag :gpa, @employee_qualification.gpa, :id => 'id_gpa', :class => 'text', :placeholder => 'enter gpa/grade',
@@ -51,7 +51,7 @@
     </tr>
     <tr>
       <td valign="top" class="lbl">
-        <%= label_tag :start_date, 'Start Date', :class => 'Label' %>
+        <%= label_tag :start_date, 'Start Date', :class => 'label' %>
       </td>
       <td>
         <%= text_field_tag :start_date, fmt_date(@employee_qualification.start_date), :id => 'id_start_date', :class => 'text date_input', :placeholder => 'dd-mm-YYYY',
@@ -60,7 +60,7 @@
     </tr>
     <tr>
       <td valign="top" class="lbl">
-        <%= label_tag :end_date, 'End Date', :class => 'Label' %>
+        <%= label_tag :end_date, 'End Date', :class => 'label' %>
       </td>
       <td>
         <%= text_field_tag :end_date, fmt_date(@employee_qualification.end_date), :id => 'id_end_date', :class => 'text date_input', :placeholder => 'dd-mm-YYYY',
