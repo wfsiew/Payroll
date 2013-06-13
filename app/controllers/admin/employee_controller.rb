@@ -119,10 +119,10 @@ class Admin::EmployeeController < Admin::AdminController
                
     ActiveRecord::Base.transaction do
       o.save
-      oc.save if b1
-      oej.save if b2
-      osa.save if b3
-      oq.save if b4
+      oc.save unless b1
+      oej.save unless b2
+      osa.save unless b3
+      oq.save unless b4
     end
     
     render :json => { :success => 1, 
@@ -262,7 +262,13 @@ class Admin::EmployeeController < Admin::AdminController
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
     ids = params[:id]
     
-    Employee.delete_all(:id => ids)
+    ActiveRecord::Base.transaction do
+      Employee.delete_all(:id => ids)
+      EmployeeContact.delete_all(:id => ids)
+      EmployeeJob.delete_all(:id => ids)
+      EmployeeSalary.delete_all(:id => ids)
+      EmployeeQualification.delete_all(:id => ids)
+    end
     
     filters = { :employee => employee,
                 :staff_id => staff_id,

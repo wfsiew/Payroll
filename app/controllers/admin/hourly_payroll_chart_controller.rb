@@ -59,7 +59,7 @@ class Admin::HourlyPayrollChartController < Admin::AdminController
           total_hours = AttendanceHelper.get_total_hours(filters)
           rate = PayRateHelper.get_pay_rate(filters)
           v = total_hours * rate
-          o[m - 1][1] = v
+          o[m - 1][1] += v
           b[m - 1] += v
         end
       end
