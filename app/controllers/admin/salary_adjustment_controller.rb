@@ -71,7 +71,7 @@ class Admin::SalaryAdjustmentController < Admin::AdminController
                             
     if o.save
       render :json => { :success => 1, 
-                        :message => 'Salary Adjustment successfully added.' }
+                        :message => 'Salary Adjustment was successfully added.' }
       
     else
       render :json => SalaryAdjustmentHelper.get_errors(o.errors)
@@ -99,7 +99,7 @@ class Admin::SalaryAdjustmentController < Admin::AdminController
     if o.update_attributes(:staff_id => params[:staff_id], :inc => params[:inc], 
                            :month => params[:month], :year => params[:year])
       render :json => { :success => 1, 
-                        :message => 'Pay Rate was successfully updated.' }
+                        :message => 'Salary Adjustment was successfully updated.' }
       
     else
       render :json => PayRateHelper.get_errors(o.errors)
