@@ -109,7 +109,6 @@ class Admin::PayRateController < Admin::AdminController
     staff_id = params[:staff_id].blank? ? '' : params[:staff_id]
     month = params[:month].blank? ? 0 : params[:month].to_i
     year = params[:year].blank? ? 0 : params[:year].to_i
-    status = params[:status].blank? ? 0 : params[:status].to_i
     pgnum = params[:pgnum].blank? ? 1 : params[:pgnum].to_i
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
     ids = params[:id]
