@@ -23,31 +23,29 @@ module EmployeeSalaryHelper
   end
   
   # Get the salary object from the POST request.
-  def self.employee_salary_obj(o, params)
+  def self.employee_salary_obj(o, x, params)
     q = params[:employee_salary]
     
-    EmployeeSalary.new(:id => o.id, :salary => q[:salary], :allowance => q[:allowance], 
-                       :epf => q[:epf], :socso => q[:socso], 
-                       :income_tax => q[:income_tax], :bank_name => q[:bank_name], 
-                       :bank_acc_no => q[:bank_acc_no], 
-                       :bank_acc_type => q[:bank_acc_type], 
-                       :bank_address => q[:bank_address], :epf_no => q[:epf_no],
-                       :socso_no => q[:socso_no], :income_tax_no => q[:income_tax_no],
-                       :pay_type => q[:pay_type])
-  end
-  
-  # Update the salary object.
-  def self.update_obj(o, params)
-    q = params[:employee_salary]
+    if x.blank?
+      x = EmployeeSalary.new
+      x.id = o.id
+    end
     
-    o.update_attributes(:salary => q[:salary], :allowance => q[:allowance], 
-                        :epf => q[:epf], :socso => q[:socso], 
-                        :income_tax => q[:income_tax], :bank_name => q[:bank_name], 
-                        :bank_acc_no => q[:bank_acc_no], 
-                        :bank_acc_type => q[:bank_acc_type], 
-                        :bank_address => q[:bank_address], :epf_no => q[:epf_no],
-                        :socso_no => q[:socso_no], :income_tax_no => q[:income_tax_no], 
-                        :pay_type => q[:pay_type])
+    x.salary = q[:salary]
+    x.allowance = q[:allowance]
+    x.epf = q[:epf]
+    x.socso = q[:socso]
+    x.income_tax = q[:income_tax]
+    x.bank_name = q[:bank_name]
+    x.bank_acc_no = q[:bank_acc_no]
+    x.bank_acc_type = q[:bank_acc_type]
+    x.bank_address = q[:bank_address]
+    x.epf_no = q[:epf_no]
+    x.socso_no = q[:socso_no]
+    x.income_tax_no = q[:income_tax_no]
+    x.pay_type = q[:pay_type]
+    
+    x
   end
   
   # Get the salary object.

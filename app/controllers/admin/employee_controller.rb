@@ -82,19 +82,19 @@ class Admin::EmployeeController < Admin::AdminController
   # Create new Employee record.
   # POST /employee/create
   def create
-    o = EmployeeHelper.employee_obj(params)
+    o = EmployeeHelper.employee_obj(nil, params)
          
     b1 = EmployeeContactHelper.is_empty_params?(params)
-    oc = EmployeeContactHelper.employee_contact_obj(o, params)
+    oc = EmployeeContactHelper.employee_contact_obj(o, nil, params)
 
     b2 = EmployeeJobHelper.is_empty_params?(params)                         
-    oej = EmployeeJobHelper.employee_job_obj(o, params)
+    oej = EmployeeJobHelper.employee_job_obj(o, nil, params)
            
     b3 = EmployeeSalaryHelper.is_empty_params?(params)                  
-    osa = EmployeeSalaryHelper.employee_salary_obj(o, params)
+    osa = EmployeeSalaryHelper.employee_salary_obj(o, nil, params)
     
     b4 = EmployeeQualificationHelper.is_empty_params?(params)                          
-    oq = EmployeeQualificationHelper.employee_qualification_obj(o, params)
+    oq = EmployeeQualificationHelper.employee_qualification_obj(o, nil, params)
                               
     v1 = o.valid?
     v2 = b1 ? true : oc.valid?
@@ -163,28 +163,34 @@ class Admin::EmployeeController < Admin::AdminController
     oej = o.employee_job
     osa = o.employee_salary
     oq = o.employee_qualification
+
+	  o = EmployeeHelper.employee_obj(o, params)
+	  oc = EmployeeContactHelper.employee_contact_obj(o, oc, params)
+	  oej = EmployeeJobHelper.employee_job_obj(o, oej, params)
+	  osa = EmployeeSalaryHelper.employee_salary_obj(o, osa, params)
+	  oq = EmployeeQualificationHelper.employee_qualification_obj(o, oq, params)
     
     oc_new = false
     if oc.blank?
-      oc = EmployeeContactHelper.employee_contact_obj(o, params)
+      
       oc_new = true
     end
     
     oej_new = false
     if oej.blank?
-      oej = EmployeeJobHelper.employee_job_obj(o, params)
+      
       oej_new = true
     end
     
     osa_new = false
     if osa.blank?
-      osa = EmployeeSalaryHelper.employee_salary_obj(o, params)
+      
       osa_new = true
     end
     
     oq_new = false
     if oq.blank?
-      oq = EmployeeQualificationHelper.employee_qualification_obj(o, params)
+      
       oq_new = true
     end
     
@@ -215,35 +221,11 @@ class Admin::EmployeeController < Admin::AdminController
     end
     
     ActiveRecord::Base.transaction do
-      EmployeeHelper.update_obj(o, params)
-      
-      if oc_new
-        oc.save
-        
-      else
-        EmployeeContactHelper.update_obj(oc, params)
-      end
-      
-      if oej_new
-        oej.save
-        
-      else
-        EmployeeJobHelper.update_obj(oej, params)
-      end
-      
-      if osa_new
-        osa.save
-        
-      else
-        EmployeeSalaryHelper.update_obj(osa, params)
-      end
-      
-      if oq_new
-        oq.save
-        
-      else
-        EmployeeQualificationHelper.update_obj(oq, params)
-      end
+      o.save
+      oc.save unless b1
+      oej.save unless b2
+      osa.save unless b3
+      oq.save unless b4
     end
     
     render :json => { :success => 1, 

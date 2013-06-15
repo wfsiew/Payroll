@@ -17,27 +17,27 @@ module EmployeeContactHelper
   end
   
   # Get the contact object from the POST request.
-  def self.employee_contact_obj(o, params)
+  def self.employee_contact_obj(o, x, params)
     q = params[:employee_contact]
     
-    EmployeeContact.new(:id => o.id, :address_1 => q[:address_1], 
-                        :address_2 => q[:address_2], :address_3 => q[:address_3],
-                        :city => q[:city], :state => q[:state], :postcode => q[:postcode], 
-                        :country => q[:country], :home_phone => q[:home_phone], 
-                        :mobile_phone => q[:mobile_phone], :work_email => q[:work_email],
-                        :other_email => q[:other_email])
-  end
-  
-  # Update the contact object.
-  def self.update_obj(o, params)
-    q = params[:employee_contact]
+    if x.blank?
+      x = EmployeeContact.new
+      x.id = o.id
+    end
     
-    o.update_attributes(:address_1 => q[:address_1], :address_2 => q[:address_2], 
-                        :address_3 => q[:address_3], :city => q[:city], 
-                        :state => q[:state], :postcode => q[:postcode], 
-                        :country => q[:country], :home_phone => q[:home_phone], 
-                        :mobile_phone => q[:mobile_phone], :work_email => q[:work_email],
-                        :other_email => q[:other_email])
+    x.address_1 = q[:address_1]
+    x.address_2 = q[:address_2]
+    x.address_3 = q[:address_3]
+    x.city = q[:city]
+    x.state = q[:state]
+    x.postcode = q[:postcode]
+    x.country = q[:country]
+    x.home_phone = q[:home_phone]
+    x.mobile_phone = q[:mobile_phone]
+    x.work_email = q[:work_email]
+    x.other_email = q[:other_email]
+    
+    x
   end
   
   # Get the contact object.

@@ -15,7 +15,7 @@ module EmployeeQualificationHelper
   end
   
   # Get the qualification object from the POST request.
-  def self.employee_qualification_obj(o, params)
+  def self.employee_qualification_obj(o, x, params)
     q = params[:employee_qualification]
     
     _start_date = q[:start_date]
@@ -25,26 +25,20 @@ module EmployeeQualificationHelper
       ApplicationHelper.date_fmt) if _start_date.present?
     end_date = Date.strptime(_end_date, ApplicationHelper.date_fmt) if _end_date.present?
     
-    EmployeeQualification.new(:id => o.id, :level => q[:level], 
-                              :institute => q[:institute], :major => q[:major], 
-                              :year => q[:year], :gpa => q[:gpa], 
-                              :start_date => start_date, :end_date => end_date)
-  end
-  
-  # Update the qualification object.
-  def self.update_obj(o, params)
-    q = params[:employee_qualification]
+    if x.blank?
+      x = EmployeeQualification.new
+      x.id = o.id
+    end
     
-    _start_date = q[:start_date]
-    _end_date = q[:end_date]
+    x.level = q[:level]
+    x.institute = q[:institute]
+    x.major = q[:major]
+    x.year = q[:year]
+    x.gpa = q[:gpa], 
+    x.start_date = start_date
+    x.end_date = end_date
     
-    start_date = Date.strptime(_start_date, 
-      ApplicationHelper.date_fmt) if _start_date.present?
-    end_date = Date.strptime(_end_date, ApplicationHelper.date_fmt) if _end_date.present?
-    
-    o.update_attributes(:level => q[:level], :institute => q[:institute], 
-                        :major => q[:major], :year => q[:year], :gpa => q[:gpa], 
-                        :start_date => start_date, :end_date => end_date)
+    x
   end
   
   # Get the contact object.

@@ -16,7 +16,7 @@ module EmployeeJobHelper
   end
   
   # Get the job object from the POST request.
-  def self.employee_job_obj(o, params)
+  def self.employee_job_obj(o, x, params)
     q = params[:employee_job]
     
     _join_date = q[:join_date]
@@ -25,30 +25,20 @@ module EmployeeJobHelper
       ApplicationHelper.date_fmt) if _join_date.present?
     confirm_date = Date.strptime(_confirm_date, 
       ApplicationHelper.date_fmt) if _confirm_date.present?
+      
+    if x.blank?
+      x = EmployeeJob.new
+      x.id = o.id
+    end
     
-    EmployeeJob.new(:id => o.id, :designation_id => q[:designation_id], 
-                    :department_id => q[:department_id], 
-                    :employment_status_id => q[:employment_status_id], 
-                    :job_category_id => q[:job_category_id], :join_date => join_date, 
-                    :confirm_date => confirm_date)
-  end
-  
-  # Update the job object.
-  def self.update_obj(o, params)
-    q = params[:employee_job]
+    x.designation_id = q[:designation_id]
+    x.department_id = q[:department_id]
+    x.employment_status_id = q[:employment_status_id]
+    x.job_category_id = q[:job_category_id]
+    x.join_date = join_date
+    x.confirm_date = confirm_date
     
-    _join_date = q[:join_date]
-    _confirm_date = q[:confirm_date]
-    join_date = Date.strptime(_join_date, 
-      ApplicationHelper.date_fmt) if _join_date.present?
-    confirm_date = Date.strptime(_confirm_date, 
-      ApplicationHelper.date_fmt) if _confirm_date.present?
-    
-    o.update_attributes(:designation_id => q[:designation_id], 
-                        :department_id => q[:department_id],
-                        :employment_status_id => q[:employment_status_id], 
-                        :job_category_id => q[:job_category_id], :join_date => join_date, 
-                        :confirm_date => confirm_date)
+    x
   end
   
   # Get the job object.

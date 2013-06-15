@@ -82,38 +82,35 @@ module EmployeeHelper
   end
   
   # Get the employee object from the POST request.
-  def self.employee_obj(params)
+  def self.employee_obj(o, params)
     q = params[:employee]
     
     _dob = q[:dob]
     dob = Date.strptime(_dob, ApplicationHelper.date_fmt) if _dob.present?
-    
-    Employee.new(:id => SecureRandom.uuid, :staff_id => q[:staff_id], 
-                 :first_name => q[:first_name], :middle_name => q[:middle_name],
-                 :last_name => q[:last_name], :new_ic => q[:new_ic], 
-                 :old_ic => q[:old_ic], :passport_no => q[:passport_no],
-                 :gender => q[:gender], :marital_status => q[:marital_status], 
-                 :nationality => q[:nationality], :dob => dob, 
-                 :place_of_birth => q[:place_of_birth], :race => q[:race], 
-                 :religion => q[:religion], :is_bumi => q[:is_bumi], 
-                 :user_id => q[:user_id])
-  end
-  
-  def self.update_obj(o, params)
-    q = params[:employee]
-    
-    _dob = q[:dob]
-    dob = Date.strptime(_dob, ApplicationHelper.date_fmt) if _dob.present?
-    
-    o.update_attributes(:staff_id => q[:staff_id], :first_name => q[:first_name], 
-                        :middle_name => q[:middle_name], :last_name => q[:last_name], 
-                        :new_ic => q[:new_ic], :old_ic => q[:old_ic], 
-                        :passport_no => q[:passport_no], :gender => q[:gender], 
-                        :marital_status => q[:marital_status], 
-                        :nationality => q[:nationality], :dob => dob, 
-                        :place_of_birth => q[:place_of_birth], :race => q[:race], 
-                        :religion => q[:religion], :is_bumi => q[:is_bumi], 
-                        :user_id => q[:user_id])
+
+	if o.blank?
+	  o = Employee.new
+	  o.id = SecureRandom.uuid
+	end
+
+	o.staff_id = q[:staff_id]
+	o.first_name = q[:first_name]
+	o.middle_name = q[:middle_name]
+	o.last_name = q[:last_name]
+	o.new_ic = q[:new_ic]
+	o.old_ic = q[:old_ic]
+	o.passport_no = q[:passport_no]
+	o.gender = q[:gender]
+	o.marital_status = q[:marital_status]
+	o.nationality = q[:nationality]
+	o.dob = dob
+	o.place_of_birth = q[:place_of_birth]
+	o.race = q[:race]
+	o.religion = q[:religion]
+	o.is_bumi = q[:is_bumi]
+	o.user_id = q[:user_id]
+
+	o
   end
   
   # Update the employee object.
