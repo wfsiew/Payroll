@@ -234,6 +234,7 @@
       nav_list.config.list_url = url.list;
       nav_list.config.list_func = init_list;
       nav_list.config.del_func = func_delete;
+      nav_list.config.search_param_func = null;
       nav_list.init();
     }
 
