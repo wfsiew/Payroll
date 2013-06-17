@@ -56,15 +56,15 @@ module DesignationHelper
   end
   
   # Get the item message text.
-  def self.item_message(keyword, pagenum, pagesize)
+  def self.item_message(find, keyword, pagenum, pagesize)
     total = 0
-    if keyword.blank?
+    if find == 0 && keyword.blank?
       total = Designation.count
       pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
       return pager.item_message
       
     else
-      criteria = Designation.where('title like ?', "%#{keyword}%")
+      criteria, order = get_filter_criteria(find, keyword)
       total = criteria.count
       pager = ApplicationHelper::Pager.new(total, pagenum, pagesize)
       return pager.item_message

@@ -100,6 +100,7 @@ class Admin::DesignationController < Admin::AdminController
   # Delete a list of Designation records.
   # POST /designation/delete
   def destroy
+    find = params[:find].blank? ? 0 : params[:find].to_i
     keyword = params[:keyword].blank? ? '' : params[:keyword]
     pgnum = params[:pgnum].blank? ? 1 : params[:pgnum].to_i
     pgsize = params[:pgsize].blank? ? 0 : params[:pgsize].to_i
@@ -107,7 +108,7 @@ class Admin::DesignationController < Admin::AdminController
     
     Designation.delete_all(:id => ids)
     
-    itemscount = DesignationHelper.item_message(keyword, pgnum, pgsize)
+    itemscount = DesignationHelper.item_message(find, keyword, pgnum, pgsize)
     
     render :json => { :success => 1, 
                       :itemscount => itemscount, 
