@@ -164,35 +164,11 @@ class Admin::EmployeeController < Admin::AdminController
     osa = o.employee_salary
     oq = o.employee_qualification
 
-	  o = EmployeeHelper.employee_obj(o, params)
-	  oc = EmployeeContactHelper.employee_contact_obj(o, oc, params)
-	  oej = EmployeeJobHelper.employee_job_obj(o, oej, params)
-	  osa = EmployeeSalaryHelper.employee_salary_obj(o, osa, params)
-	  oq = EmployeeQualificationHelper.employee_qualification_obj(o, oq, params)
-    
-    oc_new = false
-    if oc.blank?
-      
-      oc_new = true
-    end
-    
-    oej_new = false
-    if oej.blank?
-      
-      oej_new = true
-    end
-    
-    osa_new = false
-    if osa.blank?
-      
-      osa_new = true
-    end
-    
-    oq_new = false
-    if oq.blank?
-      
-      oq_new = true
-    end
+    o = EmployeeHelper.employee_obj(o, params)
+    oc = EmployeeContactHelper.employee_contact_obj(o, oc, params)
+    oej = EmployeeJobHelper.employee_job_obj(o, oej, params)
+    osa = EmployeeSalaryHelper.employee_salary_obj(o, osa, params)
+    oq = EmployeeQualificationHelper.employee_qualification_obj(o, oq, params)
     
     b1 = EmployeeContactHelper.is_empty_params?(params)
     b2 = EmployeeJobHelper.is_empty_params?(params)
